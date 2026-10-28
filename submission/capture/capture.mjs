@@ -65,11 +65,15 @@ async function houseTour() {
   }
   mark("orbit");
   await pause(2);
-  await page.getByRole("button", { name: /^Walk$/ }).first().click().catch(() => {});
+  await page.getByRole("radio", { name: "Walk" }).first().click().catch(() => page.keyboard.press("v"));
   mark("walk");
-  await pause(3);
+  await pause(4);
+  if (box) await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2).catch(() => {});
+  await pause(1);
+  await page.keyboard.down("w"); await pause(3.5); await page.keyboard.up("w");
+  await page.keyboard.down("ArrowLeft"); await pause(1.2); await page.keyboard.up("ArrowLeft");
   await page.keyboard.down("w"); await pause(3); await page.keyboard.up("w");
-  await page.keyboard.down("d"); await pause(1); await page.keyboard.up("d");
+  await page.keyboard.down("ArrowRight"); await pause(1.5); await page.keyboard.up("ArrowRight");
   await page.keyboard.down("w"); await pause(2); await page.keyboard.up("w");
   mark("walked");
   await pause(2);

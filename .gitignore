@@ -72,3 +72,9 @@ submission/capture/out/
 submission/video/node_modules/
 e2e/out/
 e2e/node_modules/
+submission/video/renders/
+submission/video/assets/footage/
+submission/video/assets/music/
+submission/video/.hyperframes/
+submission/video_work/vo/
+submission/capture/out/

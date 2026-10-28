@@ -1,0 +1,25 @@
+<template>
+<style>
+@font-face { font-family: "Geist"; src: url("assets/fonts/Geist-Variable.woff2") format("woff2"); font-weight: 100 900; }
+@font-face { font-family: "Geist Mono"; src: url("assets/fonts/GeistMono-Variable.woff2") format("woff2"); font-weight: 100 900; }
+@font-face { font-family: "Noto Nastaliq Urdu"; src: url("assets/fonts/NotoNastaliqUrdu.ttf") format("truetype"); font-weight: 400 700; }
+#root { position: absolute; inset: 0; background: #f3f2ee; font-family: "Geist", sans-serif; color: #16161a; overflow: hidden; }
+
+#end-mark { position: absolute; left: 50%; top: 250px; width: 110px; height: 110px; margin-left: -55px; }
+#end-word { position: absolute; left: 0; right: 0; top: 390px; text-align: center; font-size: 110px; font-weight: 660; letter-spacing: -0.05em; }
+#end-links { position: absolute; left: 0; right: 0; top: 580px; text-align: center; font: 500 32px "Geist Mono", monospace; color: #16161a; line-height: 1.7; }
+#end-links small { display: block; font: 500 30px "Geist", sans-serif; color: #5b5b63; margin-top: 18px; }
+</style>
+<div data-hf-id="hf-gwfo" id="root" data-composition-id="end" data-width="1920" data-height="1080">
+  <img data-hf-id="hf-xqfn" id="end-mark" class="clip" data-start="0" data-duration="8.47" data-track-index="0" src="assets/img/naqsha-mark.svg" alt="">
+  <div data-hf-id="hf-97dy" id="end-word" class="clip" data-start="0" data-duration="8.47" data-track-index="1">Naqsha</div>
+  <div data-hf-id="hf-sbnu" id="end-links" class="clip" data-start="0" data-duration="8.47" data-track-index="2">naqsha-963839790554.us-central1.run.app<br data-hf-id="hf-x5px">github.com/abdm693/naqsha<small data-hf-id="hf-b59j">Open source · AGPL-3.0 · Pivot Analytix</small></div></div>
+<script>
+const tl = gsap.timeline({ paused: true });
+tl.fromTo("#end-mark", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.7)" }, 0.1);
+tl.fromTo("#end-word", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 0.3);
+tl.fromTo("#end-links", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 1.0);
+tl.fromTo("#end-word", { scale: 1 }, { scale: 1.04, duration: 6, ease: "none" }, 1.5);
+window.__timelines["end"] = tl;
+</script>
+</template>
