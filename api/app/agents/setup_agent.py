@@ -245,6 +245,52 @@ class Turn:
         return [update_brief, get_lda_envelope, research_local_rules, ask, present_understanding, complete_setup]
 
 
+# Cities whose development authority Naqsha knows by name; their rules are researched on the web (Tavily) on first use.
+CITY_AUTHORITY = {"islamabad": "CDA", "karachi": "SBCA", "rawalpindi": "RDA", "faisalabad": "FDA", "multan": "MDA",
+                  "gujranwala": "GDA", "peshawar": "PDA", "quetta": "QDA", "hyderabad": "HDA", "sialkot": "SDA",
+                  "dubai": "DM", "abu dhabi": "ADM", "sharjah": "SM"}
+LAHORE_AUTHORITIES = {"LDA", "DHA", "BAHRIA", "OTHER"}
+
+
+def strip_reasoning(text: str) -> str:
+    """Drop reasoning a model let slip into its reply ("…</think> Thanks…", "<think>…</think>")."""
+    text = re.sub(r"<think>.*?</think>", "", text or "", flags=re.S)
+    if "</think>" in text:
+        text = text.split("</think>")[-1]
+    return text.strip()
+
+
+async def ensure_local_rules(turn: "Turn") -> None:
+    """The city is known, it isn't Lahore, and there is no rule pack yet: set the authority and research its rules."""
+    b = turn.brief
+    city = str(b.get("city") or "").strip()
+    if not city or city.lower() == "lahore" or b.get("rules_pack"):
+        return
+    auth = str(b.get("authority") or "").upper()
+    if auth in LAHORE_AUTHORITIES or not auth:
+        auth = CITY_AUTHORITY.get(city.lower())
+    if not auth:
+        return
+    from . import research
+    try:
+        pack = await research.research(city, auth)
+    except Exception:
+        log.exception("rule research for %s failed", auth)
+        return
+    if not pack:
+        return
+    turn.brief = {**b, "authority": auth,
+                  "rules_pack": {"authority": auth, "name": pack.get("authority_name"), "instrument": pack.get("instrument"),
+                                 "sources": [{"title": x.get("title"), "url": x.get("url"), "official": x.get("official")}
+                                             for x in pack.get("sources") or []][:5],
+                                 "caveats": pack.get("caveats") or []}}
+    turn.updated = True
+    turn.patch_fields |= {"authority", "rules_pack"}
+    if turn.reply and turn.reply.get("text") and auth.lower() not in turn.reply["text"].lower():
+        turn.reply["text"] = (f"I looked up {pack.get('authority_name') or auth}'s building rules for your plot online; "
+                              f"please confirm them with {auth}. " + turn.reply["text"])
+
+
 NULLISH = {"none", "null", "nil", "n/a", "na", "unknown", "", "undefined"}
 
 
@@ -360,6 +406,11 @@ async def agent_turn(project: dict, brief: dict, before: dict, history: list[dic
                 break
     except Exception:
         log.exception("setup agent failed; falling back to the question bank")
+    # a home outside Lahore gets its authority's rules looked up even if the model forgot to call the tool
+    await ensure_local_rules(turn)
+    if turn.reply and turn.reply.get("text"):
+        turn.reply["text"] = strip_reasoning(turn.reply["text"])
+    final_text = strip_reasoning(final_text)
     brief, push = intake.clamp_storeys(turn.brief)  # never more storeys than the authority allows (DHA: 2)
     if push:
         turn.patch_fields.add("storeys")

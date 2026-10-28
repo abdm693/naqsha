@@ -152,7 +152,7 @@ export function Landing() {
               transition={{ duration: 0.6, ease: ease.out, delay: 0.24 }}
               className="mt-8 flex flex-wrap gap-x-5 gap-y-2 text-[14px] text-ink-3 sm:mt-10"
             >
-              {["Design by conversation", "Or upload your drawing", "Bylaw‑checked", "Walk every room"].map((t) => (
+              {["Talk it through or upload a drawing", "Bylaw‑checked", "Walk every room"].map((t) => (
                 <li key={t} className="flex items-center gap-2">
                   <span className="size-1.5 rounded-full bg-accent" aria-hidden />
                   {t}

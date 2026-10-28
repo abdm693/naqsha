@@ -70,3 +70,5 @@ submission/**/critique*.md
 submission/capture/node_modules/
 submission/capture/out/
 submission/video/node_modules/
+e2e/out/
+e2e/node_modules/
