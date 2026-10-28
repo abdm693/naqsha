@@ -1,0 +1,348 @@
+/*
+ * HouseViewer overlays. Self-contained, but on the app's design tokens (docs/design/DESIGN.md) when they exist:
+ * HUD = glass-hud over 3D (rgb(24 24 27 / .58), blur 24, inset hairline), Geist, cobalt accent for "selected".
+ */
+.nq-viewer {
+  --nq-hud: var(--color-hud, #18181b);
+  --nq-ink: var(--color-hud-ink, #f5f5f7);
+  --nq-ink-2: var(--color-hud-ink-2, #a3a3ad);
+  --nq-hud-accent: var(--color-hud-accent, #7d93ff);
+  --nq-accent: var(--color-accent, #2747f5);
+  --nq-accent-press: var(--color-accent-press, #1f3bd6);
+  --nq-ease: var(--ease-out, cubic-bezier(0.22, 1, 0.36, 1));
+  --nq-ease-sheet: var(--ease-sheet, cubic-bezier(0.32, 0.72, 0, 1));
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: linear-gradient(#b9c7cf, #d9d6cd);
+  font-family: var(--font-sans, "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif);
+  font-size: 13px;
+  color: var(--nq-ink);
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+  cursor: grab;
+  isolation: isolate;
+  container-type: inline-size;
+  container-name: nqviewer;
+}
+.nq-viewer:active { cursor: grabbing; }
+.nq-viewer[data-comment="1"][data-mode="orbit"] { cursor: crosshair; }
+.nq-viewer[data-mode="walk"] { cursor: grab; }
+.nq-viewer[data-mode="walk"]:active { cursor: grabbing; }
+.nq-viewer[data-walk="look"] { cursor: none; }
+.nq-viewer[data-walk="intro"], .nq-viewer[data-gliding="1"] { cursor: default; }
+.nq-viewer[data-mode="walk"][data-comment="1"] { cursor: crosshair; }
+.nq-viewer canvas { display: block; outline: none; }
+
+/* frozen previous frame while a new version swaps in */
+.nq-xfade { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 5; pointer-events: none; }
+
+.nq-layer {
+  /* zones: the app's floating chrome sits 16 px in (12 px under 1024); its top row is ~44 px tall */
+  --nq-edge: 16px;
+  --nq-top: 72px;
+  position: absolute; inset: 0; pointer-events: none; z-index: 30;
+}
+.nq-glass {
+  background: rgb(24 24 27 / 0.58);
+  -webkit-backdrop-filter: blur(24px) saturate(1.6);
+  backdrop-filter: blur(24px) saturate(1.6);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.1), 0 8px 24px -12px rgb(0 0 0 / 0.35);
+  color: var(--nq-ink);
+}
+.nq-ui { pointer-events: auto; }
+.nq-mono { font-family: var(--font-mono, "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace); font-variant-numeric: tabular-nums; color: var(--nq-ink-2); }
+
+/* ── buttons ───────────────────────────── */
+.nq-btn {
+  appearance: none; border: 0; cursor: pointer; flex: none;
+  height: 32px; padding: 0 14px; border-radius: 999px;
+  font: 500 13px/1 var(--font-sans, "Geist", ui-sans-serif, system-ui, sans-serif);
+  color: #fff; background: var(--nq-accent);
+  transition: transform 120ms var(--nq-ease), background-color 160ms;
+}
+.nq-btn:hover { background: var(--nq-accent-press); }
+.nq-btn:active { transform: scale(0.97); }
+.nq-btn:focus-visible, .nq-icon:focus-visible, .nq-prompt-main:focus-visible, .nq-mini-which:focus-visible, .nq-pin:focus-visible {
+  outline: none; box-shadow: 0 0 0 2px var(--nq-hud), 0 0 0 4px var(--nq-hud-accent);
+}
+.nq-icon {
+  appearance: none; border: 0; cursor: pointer; flex: none; display: grid; place-items: center;
+  width: 24px; height: 24px; border-radius: 999px; padding: 0;
+  font: 600 12px/1 var(--font-sans, "Geist", ui-sans-serif, system-ui, sans-serif);
+  color: var(--nq-ink-2); background: rgb(255 255 255 / 0.08);
+  transition: color 160ms, background-color 160ms, transform 120ms var(--nq-ease);
+}
+.nq-icon:hover, .nq-icon[aria-expanded="true"] { color: var(--nq-ink); background: rgb(255 255 255 / 0.16); }
+.nq-icon:active { transform: scale(0.94); }
+.nq-kbd {
+  display: inline-grid; place-items: center; min-width: 20px; height: 20px; padding: 0 5px; margin: 0 1px; border-radius: 6px;
+  font: 500 11px/1 var(--font-mono, "Geist Mono", ui-monospace, Menlo, monospace); color: var(--nq-ink);
+  background: rgb(255 255 255 / 0.1); box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.12), inset 0 -1px 0 rgb(255 255 255 / 0.08);
+}
+
+/* ── build progress ───────────────────────────── */
+/*
+ * Opaque from its first frame: the entrance only moves it (translate/scale, which compose with the centring
+ * transform), so a stalled or unstarted animation still shows a legible card, never a ghost over an empty sky.
+ */
+.nq-build-card {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  width: min(340px, calc(100% - 32px)); box-sizing: border-box; padding: 18px 20px 16px; border-radius: 20px;
+  animation: nq-card-in 420ms var(--nq-ease);
+}
+.nq-build-card h3 { margin: 0 0 2px; font-size: 15px; font-weight: 600; letter-spacing: -0.01em; }
+.nq-build-card p { margin: 0; font-size: 13px; line-height: 18px; color: var(--nq-ink-2); min-height: 18px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.nq-bar { margin-top: 14px; height: 4px; border-radius: 99px; background: rgb(255 255 255 / 0.12); overflow: hidden; }
+.nq-bar > i { display: block; height: 100%; border-radius: inherit; background: var(--nq-hud-accent); transition: width 380ms var(--nq-ease); }
+.nq-build-meta { display: flex; justify-content: space-between; margin-top: 8px; font-size: 12px; color: var(--nq-ink-2); font-variant-numeric: tabular-nums; }
+.nq-chip-mock { position: absolute; right: 12px; bottom: 12px; padding: 5px 9px; border-radius: 8px; font-size: 11px; color: var(--nq-ink-2); }
+.nq-error { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(380px, calc(100% - 32px)); padding: 16px 18px; border-radius: 20px; font-size: 13px; }
+.nq-error b { display: block; margin-bottom: 4px; color: #ffb4a8; }
+
+/* ── top-centre slot: progress, comment mode, toasts ───────────────────────────── */
+.nq-slot {
+  position: absolute; left: 50%; top: var(--nq-top); transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px; max-width: calc(100% - 2 * var(--nq-edge));
+}
+.nq-pill {
+  display: inline-flex; align-items: center; gap: 8px; height: 32px; padding: 0 14px; border-radius: 999px;
+  font-size: 13px; font-weight: 500; white-space: nowrap; animation: nq-drop 320ms var(--nq-ease-sheet) both;
+}
+.nq-toast {
+  display: inline-flex; align-items: center; min-height: 36px; padding: 8px 16px; border-radius: 999px; max-width: 100%;
+  font-size: 13px; font-weight: 500; line-height: 1.35; text-align: center; color: #fff; background: rgb(17 17 19 / 0.92);
+  box-shadow: 0 8px 24px -10px rgb(0 0 0 / 0.4); animation: nq-drop 260ms var(--nq-ease-sheet) both;
+}
+.nq-dot { flex: none; width: 6px; height: 6px; border-radius: 50%; background: var(--nq-hud-accent); }
+.nq-breathe { flex: none; width: 6px; height: 6px; border-radius: 50%; background: var(--nq-hud-accent); animation: nq-breathe 1.6s ease-in-out infinite; }
+
+/* ── hover tooltip ───────────────────────────── */
+.nq-tip {
+  position: absolute; left: 0; top: 0; padding: 7px 10px; border-radius: 12px; max-width: 260px;
+  font-size: 13px; line-height: 1.25; white-space: nowrap; will-change: transform;
+  opacity: 0; transition: opacity 140ms ease;
+}
+.nq-tip[data-on="1"] { opacity: 1; }
+.nq-tip b { display: block; font-weight: 500; overflow: hidden; text-overflow: ellipsis; }
+.nq-tip span { display: block; font-size: 12px; color: var(--nq-ink-2); margin-top: 1px; }
+
+/* ── crosshair ───────────────────────────── */
+.nq-cross { position: absolute; left: 50%; top: 50%; width: 0; height: 0; transition: opacity 600ms var(--nq-ease); }
+.nq-cross i {
+  position: absolute; left: -2.5px; top: -2.5px; width: 5px; height: 5px; border-radius: 50%;
+  background: rgb(255 255 255 / 0.95); box-shadow: 0 0 0 1px rgb(0 0 0 / 0.28);
+}
+.nq-cross b {
+  position: absolute; left: -12px; top: -12px; width: 24px; height: 24px; border-radius: 50%;
+  border: 1.5px solid rgb(255 255 255 / 0.6); box-shadow: 0 0 0 1px rgb(0 0 0 / 0.12);
+  transition: transform 160ms var(--nq-ease), border-color 160ms, opacity 160ms;
+}
+.nq-cross[data-look="0"] b { opacity: 0; transform: scale(0.6); }
+.nq-cross[data-look="0"] i { opacity: 0.55; }
+.nq-cross[data-target="1"] b { transform: scale(0.84); border-color: rgb(255 255 255 / 0.95); }
+.nq-cross[data-comment="1"] i { background: var(--nq-hud-accent); }
+.nq-cross[data-comment="1"] b { border-color: var(--nq-hud-accent); opacity: 1; transform: scale(1); }
+.nq-viewer[data-gliding="1"] .nq-cross { opacity: 0; }
+.nq-target {
+  position: absolute; left: 50%; top: calc(50% + 22px); transform: translateX(-50%);
+  padding: 3px 9px; border-radius: 999px; font-size: 12px; font-weight: 500; white-space: nowrap;
+  background: rgb(17 17 19 / 0.45); color: rgb(255 255 255 / 0.92); transition: opacity 600ms var(--nq-ease);
+}
+
+/* ── centre prompt + coachmark ───────────────────────────── */
+.nq-prompt {
+  position: absolute; left: 50%; top: calc(50% + 40px); transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 10px; width: max-content; max-width: calc(100% - 32px);
+  transition: opacity 600ms var(--nq-ease);
+}
+.nq-prompt-main {
+  appearance: none; border: 0; cursor: pointer; display: inline-flex; align-items: center; gap: 10px;
+  height: 44px; padding: 0 18px 0 16px; border-radius: 999px;
+  font: 500 15px/1 var(--font-sans, "Geist", ui-sans-serif, system-ui, sans-serif);
+  animation: nq-rise 360ms var(--nq-ease) both; transition: transform 120ms var(--nq-ease), background-color 160ms;
+}
+.nq-prompt-main:hover:not(:disabled) { background: rgb(24 24 27 / 0.7); }
+.nq-prompt-main:active:not(:disabled) { transform: scale(0.97); }
+.nq-prompt-main:disabled { cursor: inherit; pointer-events: none; }
+.nq-prompt-main svg { color: var(--nq-ink-2); }
+.nq-coach {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 16px; padding: 9px 14px; border-radius: 14px;
+  font-size: 12px; color: var(--nq-ink-2); animation: nq-coach 4s var(--nq-ease) both;
+}
+.nq-coach > span { display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; }
+.nq-centre-chip {
+  position: absolute; left: 50%; top: calc(50% + 40px); transform: translateX(-50%);
+  display: flex; align-items: center; gap: 12px; width: max-content; max-width: calc(100% - 24px);
+  padding: 6px 6px 6px 14px; border-radius: 999px; font-size: 13px; line-height: 1.3; animation: nq-rise 300ms var(--nq-ease) both;
+}
+.nq-centre-chip[data-pinned="1"] { gap: 10px; padding: 9px 16px 9px 14px; font-weight: 500; pointer-events: none; }
+
+/* ── minimap (top-right, under the app's people capsule) ───────────────────────────── */
+.nq-mini {
+  position: absolute; right: var(--nq-edge); top: var(--nq-top); width: 168px; box-sizing: border-box;
+  padding: 8px 8px 7px; border-radius: 20px; animation: nq-fadein 300ms var(--nq-ease) both;
+  transition: opacity 600ms var(--nq-ease);
+}
+.nq-mini[data-help="1"] { visibility: hidden; }
+.nq-mini-head { display: flex; align-items: center; gap: 6px; margin: 0 0 7px; }
+/* which floor's map: plain text that steps through the maps (a preview), never a second floor stack */
+.nq-mini-which {
+  appearance: none; border: 0; background: transparent; cursor: pointer; display: inline-flex; align-items: center; gap: 5px;
+  height: 24px; padding: 0 6px; margin-left: -2px; border-radius: 8px;
+  font-family: inherit; font-size: 12px; font-weight: 500; line-height: 1; letter-spacing: 0.01em; color: var(--nq-ink-2); transition: color 160ms, background-color 160ms;
+}
+span.nq-mini-which { cursor: default; }
+button.nq-mini-which:hover { color: var(--nq-ink); background: rgb(255 255 255 / 0.08); }
+.nq-mini-which svg { opacity: 0.8; }
+.nq-mini-which[data-preview="1"] { color: var(--nq-hud-accent); }
+.nq-mini-preview { color: var(--nq-hud-accent); font-weight: 500; }
+.nq-mini-north { margin-left: auto; display: inline-flex; align-items: center; gap: 3px; font-size: 11px; font-weight: 500; color: var(--nq-ink-2); }
+.nq-mini-map { display: block; margin: 0 auto; cursor: pointer; overflow: visible; }
+.nq-mini-plot { fill: rgb(255 255 255 / 0.03); stroke: rgb(255 255 255 / 0.22); stroke-width: 0.35; stroke-dasharray: 1.2 1; }
+.nq-mini-road { stroke: rgb(255 255 255 / 0.4); stroke-width: 0.5; }
+.nq-mini-roofslab { fill: rgb(255 255 255 / 0.08); stroke: rgb(255 255 255 / 0.3); stroke-width: 0.3; }
+.nq-mini-room { fill: rgb(255 255 255 / 0.1); stroke: rgb(255 255 255 / 0.42); stroke-width: 0.3; transition: fill 160ms; }
+.nq-mini-room[data-kind="wet"] { fill: rgb(150 190 210 / 0.12); }
+.nq-mini-room[data-kind="out"] { fill: rgb(150 200 150 / 0.06); stroke: rgb(255 255 255 / 0.2); stroke-dasharray: 0.8 0.6; }
+.nq-mini-room[data-hover="1"] { fill: rgb(255 255 255 / 0.24); }
+.nq-mini-room[data-to="1"] { fill: rgb(125 147 255 / 0.22); stroke: var(--nq-hud-accent); }
+.nq-mini-room[data-here="1"] { fill: rgb(125 147 255 / 0.32); stroke: var(--nq-hud-accent); stroke-width: 0.5; }
+.nq-mini-door { fill: rgb(255 255 255 / 0.9); }
+.nq-mini-stair rect { fill: rgb(255 255 255 / 0.05); stroke: rgb(255 255 255 / 0.35); stroke-width: 0.25; }
+.nq-mini-stair line { stroke: rgb(255 255 255 / 0.3); stroke-width: 0.18; }
+.nq-mini-tank { fill: rgb(255 255 255 / 0.18); stroke: rgb(255 255 255 / 0.5); stroke-width: 0.3; }
+.nq-mini-solar { fill: none; stroke: rgb(255 255 255 / 0.35); stroke-width: 0.3; stroke-dasharray: 0.9 0.7; }
+.nq-mini-route {
+  fill: none; stroke: var(--nq-hud-accent); stroke-width: 0.75; stroke-linecap: round; stroke-linejoin: round;
+  stroke-dasharray: 1; stroke-dashoffset: 1; animation: nq-route 300ms var(--nq-ease) forwards;
+}
+.nq-mini-halo { fill: rgb(125 147 255 / 0.28); }
+.nq-mini-me { fill: #fff; stroke: var(--nq-hud-accent); stroke-width: 0.4; stroke-linejoin: round; }
+.nq-mini-caption { display: flex; justify-content: space-between; gap: 8px; margin: 6px 2px 0; font-size: 12px; color: var(--nq-ink-2); min-height: 16px; }
+.nq-mini-caption b { font-weight: 500; color: var(--nq-ink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.nq-mini-caption span { white-space: nowrap; }
+
+/* ── ? help card (takes the minimap's place) ───────────────────────────── */
+.nq-help {
+  position: absolute; right: var(--nq-edge); top: var(--nq-top); width: 264px; box-sizing: border-box;
+  padding: 12px 14px 14px; border-radius: 20px; animation: nq-drop 260ms var(--nq-ease-sheet) both;
+}
+.nq-help-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+.nq-help-head b { font-size: 13px; font-weight: 600; }
+.nq-help dl { display: grid; grid-template-columns: auto 1fr; gap: 8px 16px; margin: 0; font-size: 12px; align-items: center; }
+.nq-help dt { color: var(--nq-ink-2); white-space: nowrap; }
+.nq-help dd { margin: 0; text-align: right; color: var(--nq-ink); white-space: nowrap; }
+
+/*
+ * The HUD steps back while you stand still (DESIGN: after 2.5 s idle only the crosshair and the room pill remain).
+ * The controller never marks idle while the pointer is on the minimap or the help card is open. The app's chrome
+ * follows through `:root[data-nq-walk-idle]`: anything it marks `data-nq-recede`, and the shell's floating rows over
+ * the view (the pointer-events-none siblings of the <main> that holds the viewer). Hovered or focused chrome stays.
+ * A House kept mounted but hidden behind another view (data-active="0") never makes that view's chrome recede.
+ */
+.nq-viewer[data-idle="1"] .nq-mini,
+.nq-viewer[data-idle="1"] .nq-target,
+.nq-viewer[data-idle="1"] .nq-prompt { opacity: 0; pointer-events: none; }
+[data-nq-recede], main:has(.nq-viewer[data-mode="walk"]:not([data-active="0"])) ~ .pointer-events-none { transition: opacity 600ms var(--ease-out, cubic-bezier(0.22, 1, 0.36, 1)); }
+:root[data-nq-walk-idle] [data-nq-recede]:not(:hover):not(:focus-within),
+:root[data-nq-walk-idle] main:has(.nq-viewer[data-mode="walk"]:not([data-active="0"])) ~ .pointer-events-none:not(:hover):not(:focus-within) { opacity: 0; }
+
+/* ── touch ───────────────────────────── */
+.nq-touch-zone { position: absolute; bottom: 0; top: 30%; touch-action: none; pointer-events: auto; }
+.nq-joy { position: absolute; width: 104px; height: 104px; margin: -52px 0 0 -52px; border-radius: 50%; border: 1.5px solid rgb(255 255 255 / 0.35); background: rgb(0 0 0 / 0.16); }
+.nq-joy i { position: absolute; left: 50%; top: 50%; width: 44px; height: 44px; margin: -22px 0 0 -22px; border-radius: 50%; background: rgb(255 255 255 / 0.85); }
+/* the joystick at rest (no thumb on it): a faint ring low on the left, above the app's dock */
+.nq-joy-rest {
+  left: max(84px, calc(var(--nq-edge) + 52px)); top: auto; bottom: calc(var(--dock-h, 96px) + 36px); margin: 0 0 0 -52px;
+  opacity: 0.3; pointer-events: none; animation: nq-joy-rest 400ms var(--nq-ease); transition: opacity 600ms var(--nq-ease);
+}
+@keyframes nq-joy-rest { from { opacity: 0; } }
+.nq-touch-pin {
+  position: absolute; right: var(--nq-edge); top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 50%;
+  border: 0; display: grid; place-items: center; pointer-events: auto; cursor: pointer;
+}
+.nq-touch-pin:active { transform: translateY(-50%) scale(0.94); }
+
+/* ── comment pins: a 24 px teardrop whose tip is the anchor ───────────────────────────── */
+/* One DOM layer over the canvas; each wrap is moved to its pin's projected anchor every rendered frame. */
+.nq-pins { position: absolute; inset: 0; overflow: hidden; pointer-events: none; isolation: isolate; }
+.nq-pin-wrap { position: absolute; left: 0; top: 0; width: 0; height: 0; pointer-events: none; will-change: transform; }
+.nq-pin {
+  --pin: #0d7c72;
+  position: absolute; left: 0; top: 0; width: 24px; height: 29px; padding: 0; margin: 0; border: 0; background: none;
+  transform: translate(-50%, -100%); transform-origin: 50% 100%; pointer-events: auto; cursor: pointer; appearance: none;
+  transition: opacity 220ms ease, transform 220ms var(--nq-ease);
+}
+.nq-pin-drop {
+  position: absolute; left: 0; top: 0; width: 24px; height: 24px; display: grid; place-items: center;
+  border-radius: 50% 50% 50% 0; transform: rotate(-45deg); background: var(--pin);
+  box-shadow: 0 0 0 2px #fff, 0 4px 12px -2px rgb(0 0 0 / 0.4);
+  transition: box-shadow 160ms;
+}
+.nq-pin-n {
+  transform: rotate(45deg); color: #fff; font: 600 12px/1 var(--font-sans, "Geist", ui-sans-serif, system-ui, sans-serif);
+  font-variant-numeric: tabular-nums;
+}
+.nq-pin:hover { transform: translate(-50%, -100%) scale(1.08); }
+.nq-pin[data-selected="1"] .nq-pin-drop { box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--nq-accent), 0 4px 12px -2px rgb(0 0 0 / 0.4); }
+.nq-pin[data-status="resolved"] .nq-pin-drop, .nq-pin[data-status="rejected"] .nq-pin-drop { filter: saturate(0.35) brightness(1.05); }
+.nq-pin[data-status="resolved"], .nq-pin[data-status="rejected"] { opacity: 0.78; }
+.nq-pin[data-occluded="1"] { opacity: 0.32; }
+.nq-viewer[data-mode="walk"] .nq-pin[data-occluded="1"] { opacity: 0; pointer-events: none; }
+.nq-pin[data-hidden="1"] { opacity: 0; pointer-events: none; }
+.nq-pin[data-draft="1"] { animation: nq-pin-drop 320ms var(--nq-ease) both; }
+.nq-pin[data-draft="1"] .nq-pin-drop { animation: nq-ripple 1.6s ease-out infinite; }
+.nq-pin[data-flash="1"] .nq-pin-drop { animation: nq-ripple 0.9s ease-out 2; }
+.nq-pin-tip {
+  position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%) translateY(4px); width: max-content; max-width: 240px;
+  padding: 8px 10px; border-radius: 12px; background: rgb(24 24 27 / 0.9); color: #fff;
+  font: 400 12px/1.4 var(--font-sans, "Geist", ui-sans-serif, system-ui, sans-serif);
+  text-align: left; white-space: normal; opacity: 0; pointer-events: none; transition: opacity 160ms ease, transform 160ms var(--nq-ease);
+}
+.nq-pin-tip b { display: block; font-weight: 500; margin-bottom: 2px; }
+.nq-pin-tip i { display: block; font-style: normal; color: var(--nq-ink-2); margin-top: 3px; }
+.nq-pin:hover .nq-pin-tip, .nq-pin:focus-visible .nq-pin-tip { opacity: 1; transform: translateX(-50%) translateY(0); }
+.nq-viewer[data-walk="look"] .nq-pin-tip { display: none; }
+
+@keyframes nq-card-in { from { translate: 0 10px; scale: 0.98; } }
+@keyframes nq-fadein { from { opacity: 0; transform: translateY(-4px); } }
+@keyframes nq-drop { from { opacity: 0; transform: translateY(-6px); } }
+@keyframes nq-rise { from { opacity: 0; transform: translate(-50%, 8px); } }
+.nq-prompt-main { animation-name: nq-rise-plain; }
+@keyframes nq-rise-plain { from { opacity: 0; transform: translateY(8px); } }
+@keyframes nq-coach { 0% { opacity: 0; transform: translateY(6px); } 7% { opacity: 1; transform: none; } 88% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes nq-breathe { 50% { opacity: 0.35; transform: scale(0.8); } }
+@keyframes nq-route { to { stroke-dashoffset: 0; } }
+@keyframes nq-pin-drop { 0% { opacity: 0; transform: translate(-50%, calc(-100% - 8px)) scale(0.6); } 60% { opacity: 1; transform: translate(-50%, -100%) scale(1.08); } 100% { transform: translate(-50%, -100%) scale(1); } }
+@keyframes nq-ripple {
+  0% { box-shadow: 0 0 0 2px #fff, 0 0 0 2px color-mix(in srgb, var(--pin) 60%, transparent), 0 4px 12px -2px rgb(0 0 0 / 0.4); }
+  100% { box-shadow: 0 0 0 2px #fff, 0 0 0 16px transparent, 0 4px 12px -2px rgb(0 0 0 / 0.4); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nq-viewer * { animation-duration: 1ms !important; transition-duration: 1ms !important; }
+  .nq-coach { animation: none; }
+}
+
+/* zones follow the viewer's own width (it is often a full-bleed panel, sometimes not) */
+@container nqviewer (max-width: 1023px) {
+  .nq-layer { --nq-edge: 12px; }
+}
+/* phone: the app's top row is 52 px plus a full-width view switch; no minimap */
+@container nqviewer (max-width: 767px) {
+  .nq-layer { --nq-top: 116px; }
+  .nq-mini, .nq-help { display: none; }
+  .nq-touch-pin { right: 12px; }
+  /*
+   * Build / error cards: under the top chrome (--chrome-top, published by the app's shell) and the status pill that
+   * sits there, centred between 64 px gutters so they clear the app's floor stack (12 px in, 44 px wide) on the left.
+   */
+  .nq-build-card, .nq-error {
+    top: calc(var(--chrome-top, var(--nq-top)) + 72px); left: 64px; right: 64px;
+    width: auto; max-width: 340px; margin-inline: auto; transform: none;
+  }
+}

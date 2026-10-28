@@ -1,0 +1,63 @@
+{
+ "basement": false,
+ "preferences": [
+  "elderly mother who cannot climb stairs",
+  "mother's bedroom with attached bath on ground floor",
+  "drawing room near gate with guest entry",
+  "open kitchen",
+  "master bedroom with walk-in dressing",
+  "5 kW solar panels"
+ ],
+ "city": "Lahore",
+ "floors": [
+  {
+   "level": "ground",
+   "rooms": [
+    "drawing",
+    "dining",
+    "lounge",
+    "kitchen",
+    "bedroom:1",
+    "bath:1",
+    "powder:1"
+   ]
+  },
+  {
+   "level": "first",
+   "rooms": [
+    "master_bedroom:1",
+    "dressing:1",
+    "bedroom:2",
+    "bath:3",
+    "lounge:1",
+    "balcony:1"
+   ]
+  }
+ ],
+ "style": "Modern Contemporary",
+ "scheme": "Wapda Town",
+ "water_tank": "concrete",
+ "bathrooms": 5,
+ "plot": {
+  "depth_ft": 65.0,
+  "corner": false,
+  "area_marla": 10.1,
+  "width_ft": 35.0
+ },
+ "storeys": 2,
+ "budget": "standard",
+ "style_notes": "white plaster and wood accents",
+ "solar": "panels",
+ "authority": "LDA",
+ "spaces": [
+  "car_porch:2",
+  "drawing",
+  "dining",
+  "tv_lounge",
+  "kitchen",
+  "roof_terrace"
+ ],
+ "bedrooms": 4,
+ "facing": "S",
+ "auto_filled": []
+}

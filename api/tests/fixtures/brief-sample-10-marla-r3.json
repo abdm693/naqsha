@@ -1,0 +1,55 @@
+{
+ "plot": {
+  "area_marla": 10.1,
+  "width_ft": 35.0,
+  "corner": false,
+  "depth_ft": 65.0
+ },
+ "auto_filled": [],
+ "bathrooms": 4,
+ "spaces": [
+  "drawing",
+  "tv_lounge",
+  "kitchen",
+  "dirty_kitchen",
+  "car_porch:1",
+  "lawn"
+ ],
+ "solar": "ready",
+ "authority": "LDA",
+ "preferences": [
+  "parents' bedroom on the ground floor",
+  "open kitchen",
+  "separate dirty kitchen",
+  "attached baths"
+ ],
+ "storeys": 2,
+ "bedrooms": 4,
+ "scheme": "Johar Town",
+ "city": "Lahore",
+ "water_tank": "plastic",
+ "style": "Modern Contemporary",
+ "facing": "N",
+ "corner_stated": true,
+ "floors": [
+  {
+   "rooms": [
+    "drawing",
+    "lounge",
+    "kitchen",
+    "dirty_kitchen",
+    "bedroom:1",
+    "bath:1"
+   ],
+   "level": "ground"
+  },
+  {
+   "rooms": [
+    "bedroom:3",
+    "bath:3"
+   ],
+   "level": "first"
+  }
+ ],
+ "basement": false
+}

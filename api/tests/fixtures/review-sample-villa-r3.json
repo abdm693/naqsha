@@ -1,0 +1,58 @@
+[
+ {
+  "severity": "major",
+  "rooms": [
+   "g_prayer",
+   "g_dirty_kitchen",
+   "g_kitchen"
+  ],
+  "problem": "The Dirty Kitchen is completely disconnected from the Main Kitchen on the opposite side of the house, and its only indoor access is directly through the Prayer Room, ruining the sanctity of the prayer space and making daily cooking impractical.",
+  "fix": "Swap the Main Kitchen (12 x 10.5 ft) with the Prayer Room and Dirty Kitchen zone, or swap the Prayer Room (9.5 x 10.5 ft) with the Main Kitchen so the Main Kitchen and Dirty Kitchen sit side-by-side on the right side and the Prayer Room sits quietly on the left."
+ },
+ {
+  "severity": "major",
+  "rooms": [
+   "g_veranda",
+   "g_drawing",
+   "g_lobby"
+  ],
+  "problem": "The Entrance Lobby has no direct exterior door; family members and guests arriving from the Entrance Veranda must walk through the formal Drawing Room to enter the house, and the only other entry is directly into the Family TV Lounge from the Car Porch.",
+  "fix": "Shift the Drawing Room 4 ft to the left into the Entrance Veranda so the Entrance Lobby can project forward or have a direct 4 ft wide main entrance door opening onto the Entrance Veranda beside the Drawing Room."
+ },
+ {
+  "severity": "major",
+  "rooms": [
+   "g_corr",
+   "g_rear_corr",
+   "g_prayer"
+  ],
+  "problem": "The Central Passage (10 x 10.5 ft), Bedroom Hall (10 x 12 ft), and Prayer Room (9.5 x 10.5 ft) are landlocked in the core of the ground floor with no windows, creating a dark, stuffy 22.5 ft long internal spine that wastes 225 sq ft on pure circulation.",
+  "fix": "Reduce the width of the Central Passage and Bedroom Hall from 10 ft to 5 ft, giving the extra 5 ft of width to the Family TV Lounge and Parents Bedroom, and add ventilators or a skylight shaft above the passage."
+ },
+ {
+  "severity": "minor",
+  "rooms": [
+   "f_bath3",
+   "f_bed3"
+  ],
+  "problem": "Bath 3 is an awkward 6 x 18 ft tunnel along the right wall, wasting half its length as a corridor.",
+  "fix": "Divide the 6 x 18 ft strip into a 6 x 8 ft walk-in dressing room at the front and a 6 x 10 ft bathroom at the back, with the bedroom door entering the dressing room first."
+ },
+ {
+  "severity": "minor",
+  "rooms": [
+   "g_servant",
+   "g_rear"
+  ],
+  "problem": "The Servant Quarter (12 x 10 ft) at the back has no bathroom anywhere on the ground floor, meaning staff have no toilet facilities.",
+  "fix": "Carve a 4.5 x 6 ft servant bath out of the back-left corner of the Servant Quarter or in the Rear Service Yard against the Servant Quarter wall."
+ },
+ {
+  "severity": "minor",
+  "rooms": [
+   "f_corr"
+  ],
+  "problem": "The Upper Passage is 12 x 22.5 ft (270 sq ft), which is the size of a large room wasted as a corridor to serve just one rear bedroom and terraces.",
+  "fix": "Convert the front 12 x 12 ft portion of the Upper Passage into an open study or sitting alcove for the family, leaving a 5 ft passage to the Rear Bedroom."
+ }
+]

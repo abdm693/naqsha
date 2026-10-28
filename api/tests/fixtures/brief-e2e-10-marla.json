@@ -1,0 +1,59 @@
+{
+ "auto_filled": [],
+ "budget": "standard",
+ "scheme": "Johar Town",
+ "city": "Lahore",
+ "solar": "panels",
+ "style": "Minimalist",
+ "facing": "N",
+ "bedrooms": 4,
+ "spaces": [
+  "drawing",
+  "dining",
+  "tv_lounge",
+  "kitchen",
+  "car_porch:2"
+ ],
+ "water_tank": "concrete",
+ "bathrooms": 5,
+ "basement": false,
+ "storeys": 2,
+ "preferences": [
+  "parents' bedroom on the ground floor (parents cannot climb stairs)",
+  "drawing room near the gate",
+  "front balcony"
+ ],
+ "plot": {
+  "width_ft": 35.0,
+  "area_marla": 10.1,
+  "corner": false,
+  "depth_ft": 65.0
+ },
+ "authority": "LDA",
+ "style_notes": "Modern minimal style, white and grey with wood accents",
+ "floors": [
+  {
+   "rooms": [
+    "drawing",
+    "dining",
+    "tv_lounge",
+    "kitchen",
+    "bedroom:1",
+    "bath:1",
+    "powder"
+   ],
+   "level": "ground"
+  },
+  {
+   "rooms": [
+    "master_bedroom:1",
+    "bedroom:2",
+    "bath:3",
+    "dressing:1",
+    "lounge",
+    "balcony"
+   ],
+   "level": "first"
+  }
+ ]
+}

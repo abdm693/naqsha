@@ -1,0 +1,1508 @@
+{
+ "schema": "lda_rules",
+ "schema_version": "1.0.0",
+ "compiled_on": "2026-10-16",
+ "jurisdiction": {
+  "authority": "Lahore Development Authority (LDA)",
+  "instrument": "LDA Building & Zoning Regulations 2019 (Notification No. LDA/C&I/3798 dated 11-09-2019), as amended",
+  "text_version_used": "v2026 = LDA consolidated PDF '09-02-2026-amended-building-regulations-2019-with-amendment.pdf' (PDF created 2026-02-09) published on lda.gop.pk",
+  "applies_to": "Single-family residential buildings (houses), not apartment buildings, inside LDA's jurisdiction: LDA schemes and LDA-approved private housing schemes ('approved_scheme'), plus established built-up and predominantly open areas",
+  "not_covered": [
+   "DHA Lahore (own DHA Construction & Development Regulations)",
+   "Cantonment Board areas",
+   "Walled City / Shahalam Gate scheme and other special-control areas (LDA B&ZR 3.10, 1.2.4)",
+   "Areas of other development authorities (RDA, FDA, MDA, GDA, etc.)",
+   "Apartment buildings (more than two dwelling units sharing a common stair/lift) - see LDA B&ZR 2.5"
+  ],
+  "pending_changes": "LDA Governing Body approved further amendments to the B&ZR 2019 on 2026-08-19; their text was not found. Re-check lda.gop.pk/downloads before relying on this file.",
+  "routing": {
+   "lda_controlled_lahore": "use this ruleset",
+   "dha_lahore": "DHA Construction & Development Regulations (consolidated Aug 2026) - see markdown section 12.5",
+   "bahria_town_lahore": "Bahria Town Design Wing SOP (not published) - see markdown section 12.6",
+   "cantonments": "Cantonment Board bylaws - not researched",
+   "rda_fda_gda": "LDA B&ZR 2019 as of 2020-01-28 adopted with minor amendments: same as the 'history.v2020' values here (e.g. 4 storeys for >= 10 marla)",
+   "mda": "MDA B&ZR 2020 (own version) - see markdown section 12.2",
+   "outside_development_authorities": "local government building bye-laws under the Punjab Local Government Act 2025 - not compiled",
+   "kasur_sheikhupura_nankana": "LDA jurisdiction unsettled - verify the controlling body"
+  }
+ },
+ "status_legend": {
+  "VERIFIED": "read directly from an official document (LDA PDF/website, government page)",
+  "SECONDARY": "property portal, news report or blog",
+  "DERIVED": "computed from VERIFIED rules, not itself a rule",
+  "DRAFT": "official draft, not in force"
+ },
+ "units": {
+  "length": "ft",
+  "area": "sq_ft",
+  "marla_sqft_lahore": 225,
+  "marla_sqm_lahore": 20.91,
+  "marla_sqft_other_punjab_districts_per_lda_text": 272,
+  "marla_sqft_other_punjab_common_value": 272.25,
+  "kanal_in_marla": 20,
+  "kanal_sqft_lahore": 4500,
+  "acre_sqft": 43560,
+  "far_encoding": "FAR 1:2.4 is stored as max_far = 2.4 (total covered area including basement / plot area)",
+  "source": "S1 clause 1.1 (definitions of Marlas, Kanal, Acre)",
+  "status": "VERIFIED",
+  "marla_sqft_by_regulator": {
+   "LDA_Lahore_District": 225,
+   "LDA_other_districts": 272,
+   "DHA_Lahore": 225,
+   "FDA_Faisalabad_District": 225,
+   "FDA_other_districts": 272.25,
+   "GDA": 272,
+   "MDA_urban": 270,
+   "MDA_rural": 272.25,
+   "PDA_PHS_Rules_2021_and_PPHS_Rules_2022": {
+    "Lahore_district": 225,
+    "other_districts": 272
+   },
+   "revenue_tradition": 272.25,
+   "status": "VERIFIED from each instrument, except revenue_tradition (SECONDARY)",
+   "note": "Convert the plot area using the definition of the body that controls the plot. FDA is internally inconsistent (its acre clause implies 272.25)."
+  }
+ },
+ "sources": {
+  "S1": {
+   "title": "LDA Building & Zoning Regulations 2019 - consolidated 'amended building regulations 2019 with amendment' (running header still says 'amendments approved till 28-01-2020')",
+   "date": "2026-02-09",
+   "url": "https://lda.gop.pk/downloads/file/09-02-2026-amended-building-regulations-2019-with-amendment.pdf",
+   "status": "VERIFIED"
+  },
+  "S2": {
+   "title": "LDA Building & Zoning Regulations 2019 'with all amendments approved till 28-01-2020' (third-party mirror of LDA text)",
+   "date": "2020-02-13",
+   "url": "https://khalidzafar.com/wp-content/files_mf/1685711737LDAAmendedBuildingRegulations2019.pdf",
+   "status": "VERIFIED"
+  },
+  "S3": {
+   "title": "LDA Office Order No. LDA/DC&I/725 (Authority meeting 5th/2022, 14-10-2022) amending clauses 2.5, 3.1, 3.11, 5.1.4, 5.2.2(c), Appendix C",
+   "date": "2022-10-28",
+   "url": "https://lda.gop.pk/downloads/file/1.Amendments%20in%20LDA%20Building%20%26%20Zoning%20Regulations-2019.pdf",
+   "status": "VERIFIED"
+  },
+  "S4": {
+   "title": "Draft Amendments in LDA Building and Zoning Regulations 2019 (committee recommendations)",
+   "date": "2021-07-14",
+   "url": "https://lda.gop.pk/downloads/file/5.DRAFT%20AMENDMENTS%20IN%20LDA%20BUILDING%20AND%20ZONING%20REGULATIONS%202019.pdf",
+   "status": "DRAFT"
+  },
+  "S5": {
+   "title": "LDA Building Regulations - existing (2007) vs proposed amendments table",
+   "date": "2014-05-09",
+   "url": "https://lda.gop.pk/downloads/file/17.LDA%20Building%20Regulations.pdf",
+   "status": "VERIFIED"
+  },
+  "N1": {
+   "title": "The Nation - New formula approved for buildings height in Lahore",
+   "date": "2025-11-28",
+   "url": "https://www.nation.com.pk/28-Nov-2025/new-formula-approved-buildings-height-lahore",
+   "status": "SECONDARY"
+  },
+  "N2": {
+   "title": "Zameen News - LDA bans commercial use of residential plots",
+   "date": "2025-05-02",
+   "url": "https://www.zameen.com/news/lda-bans-commercial-use-of-residential-plots.html",
+   "status": "SECONDARY"
+  },
+  "N6": {
+   "title": "APP - LDA governing body approves budget 2026-27 and amendments to B&ZR 2019",
+   "date": "2026-08-19",
+   "url": "https://www.app.com.pk/punjab/lda-governing-body-approves-rs-88-613bln-budget-for-2026-27/",
+   "status": "SECONDARY"
+  }
+ },
+ "band_semantics": "Bands are selected by the plot's area in Lahore marla (225 sq ft) - LDA tables speak of 'plot size/zone' (category). A plot whose area is >= min_marla (or > if min_inclusive=false) and < max_marla (or <= if max_inclusive=true) falls in the band. max_marla null = no upper limit.",
+ "zones": {
+  "approved_scheme": {
+   "description": "LDA schemes and LDA-approved (public/private) housing schemes. Clauses 2.2.1-2.2.6.",
+   "bands": [
+    {
+     "id": "AS-1",
+     "label": "Less than 5 marla",
+     "plot_band": {
+      "min_marla": 0,
+      "max_marla": 5,
+      "min_inclusive": true,
+      "max_inclusive": false
+     },
+     "setbacks_ft": {
+      "front": 5,
+      "rear": 5,
+      "side": 0,
+      "side_count": 0,
+      "side_note": "not required"
+     },
+     "max_coverage_pct": 80,
+     "max_far": 2.4,
+     "max_height_ft": 38,
+     "max_storeys": 3,
+     "max_storeys_excludes_basement": true,
+     "basement_allowed": true,
+     "basement_counts_in_far": true,
+     "parking_required": false,
+     "min_room_sizes": {
+      "habitable_room": {
+       "min_area_sqft": 100,
+       "min_width_ft": 8
+      },
+      "kitchen": {
+       "min_area_sqft": 50,
+       "min_width_ft": 6
+      },
+      "toilet_bath": {
+       "min_area_sqft": null,
+       "min_width_ft": null,
+       "min_external_opening_sqft": 2
+      }
+     },
+     "ceiling_height_ft_min": 9.5,
+     "window_area_pct_min": 8,
+     "stair_width_ft_min": 3.5,
+     "parapet_height_ft": {
+      "min": 2.75,
+      "max": null
+     },
+     "mumty_allowed": true,
+     "mumty_max_height_ft": 9.5,
+     "sunshade_max_projection_ft": {
+      "front": 1.5,
+      "rear": 1.5,
+      "side": null
+     },
+     "corner_splay_ft": 5,
+     "car_porch_in_side_space": false,
+     "history": {
+      "v2020": {
+       "max_storeys": 3
+      }
+     },
+     "status": "VERIFIED",
+     "source": "S1 2.2.1, 2.2.2, 2.2.3, 5.1.1(e), 5.1.8, 5.2.1, 5.2.2, 5.3.1, 6.4.1, definitions (Building Height)"
+    },
+    {
+     "id": "AS-2",
+     "label": "5 marla and above but less than 10 marla",
+     "plot_band": {
+      "min_marla": 5,
+      "max_marla": 10,
+      "min_inclusive": true,
+      "max_inclusive": false
+     },
+     "setbacks_ft": {
+      "front": 5,
+      "rear": 5,
+      "side": 0,
+      "side_count": 0,
+      "side_note": "not required"
+     },
+     "max_coverage_pct": 75,
+     "max_far": 2.3,
+     "max_height_ft": 38,
+     "max_storeys": 3,
+     "max_storeys_excludes_basement": true,
+     "basement_allowed": true,
+     "basement_counts_in_far": true,
+     "parking_required": false,
+     "min_room_sizes": {
+      "habitable_room": {
+       "min_area_sqft": 100,
+       "min_width_ft": 8
+      },
+      "kitchen": {
+       "min_area_sqft": 50,
+       "min_width_ft": 6
+      },
+      "toilet_bath": {
+       "min_area_sqft": null,
+       "min_width_ft": null,
+       "min_external_opening_sqft": 2
+      }
+     },
+     "ceiling_height_ft_min": 9.5,
+     "window_area_pct_min": 8,
+     "stair_width_ft_min": 3.5,
+     "parapet_height_ft": {
+      "min": 2.75,
+      "max": null
+     },
+     "mumty_allowed": true,
+     "mumty_max_height_ft": 9.5,
+     "sunshade_max_projection_ft": {
+      "front": 1.5,
+      "rear": 1.5,
+      "side": null
+     },
+     "corner_splay_ft": 5,
+     "car_porch_in_side_space": false,
+     "history": {
+      "v2020": {
+       "max_storeys": 3
+      }
+     },
+     "status": "VERIFIED",
+     "source": "S1 2.2.1, 2.2.3, 5.1.1(e), 5.1.8 and global rules"
+    },
+    {
+     "id": "AS-3",
+     "label": "10 marla and above but less than 1 kanal",
+     "plot_band": {
+      "min_marla": 10,
+      "max_marla": 20,
+      "min_inclusive": true,
+      "max_inclusive": false
+     },
+     "setbacks_ft": {
+      "front": 10,
+      "rear": 7,
+      "side": 5,
+      "side_count": 1,
+      "side_note": "5 ft on one side"
+     },
+     "max_coverage_pct": 70,
+     "max_far": 2.8,
+     "max_height_ft": 45,
+     "max_storeys": 3,
+     "max_storeys_excludes_basement": true,
+     "basement_allowed": true,
+     "basement_counts_in_far": true,
+     "parking_required": false,
+     "min_room_sizes": {
+      "habitable_room": {
+       "min_area_sqft": 100,
+       "min_width_ft": 8
+      },
+      "kitchen": {
+       "min_area_sqft": 50,
+       "min_width_ft": 6
+      },
+      "toilet_bath": {
+       "min_area_sqft": null,
+       "min_width_ft": null,
+       "min_external_opening_sqft": 2
+      }
+     },
+     "ceiling_height_ft_min": 9.5,
+     "window_area_pct_min": 8,
+     "stair_width_ft_min": 3.5,
+     "parapet_height_ft": {
+      "min": 2.75,
+      "max": null
+     },
+     "mumty_allowed": true,
+     "mumty_max_height_ft": 9.5,
+     "sunshade_max_projection_ft": {
+      "front": 3,
+      "rear": 1.5,
+      "side": 1.5
+     },
+     "corner_splay_ft": {
+      "plot_exactly_10_marla": 5,
+      "plot_above_10_marla": 10
+     },
+     "car_porch_in_side_space": true,
+     "room_over_porch_allowed": true,
+     "structural_vetting_required_if_height_above_ft": 38,
+     "history": {
+      "v2020": {
+       "max_storeys": 4
+      }
+     },
+     "status": "VERIFIED",
+     "source": "S1 2.1.4, 2.2.1, 2.2.3, 5.1.1(e), 5.1.8 and global rules; v2020 from S2 2.2.3"
+    },
+    {
+     "id": "AS-4",
+     "label": "1 kanal to 30 marla",
+     "plot_band": {
+      "min_marla": 20,
+      "max_marla": 30,
+      "min_inclusive": true,
+      "max_inclusive": true
+     },
+     "setbacks_ft": {
+      "front": 10,
+      "rear": 7,
+      "side": 5,
+      "side_count": 1,
+      "side_note": "5 ft on one side"
+     },
+     "max_coverage_pct": 65,
+     "max_far": 2.6,
+     "max_height_ft": 45,
+     "max_storeys": 3,
+     "max_storeys_excludes_basement": true,
+     "basement_allowed": true,
+     "basement_counts_in_far": true,
+     "parking_required": false,
+     "min_room_sizes": {
+      "habitable_room": {
+       "min_area_sqft": 100,
+       "min_width_ft": 8
+      },
+      "kitchen": {
+       "min_area_sqft": 50,
+       "min_width_ft": 6
+      },
+      "toilet_bath": {
+       "min_area_sqft": null,
+       "min_width_ft": null,
+       "min_external_opening_sqft": 2
+      }
+     },
+     "ceiling_height_ft_min": 9.5,
+     "window_area_pct_min": 8,
+     "stair_width_ft_min": 3.5,
+     "parapet_height_ft": {
+      "min": 2.75,
+      "max": null
+     },
+     "mumty_allowed": true,
+     "mumty_max_height_ft": 9.5,
+     "sunshade_max_projection_ft": {
+      "front": 3,
+      "rear": 1.5,
+      "side": 1.5
+     },
+     "corner_splay_ft": 10,
+     "car_porch_in_side_space": true,
+     "room_over_porch_allowed": true,
+     "structural_vetting_required_if_height_above_ft": 38,
+     "greywater_treatment_plant_required": true,
+     "history": {
+      "v2020": {
+       "max_storeys": 4
+      }
+     },
+     "status": "VERIFIED",
+     "source": "S1 2.1.4, 2.2.1, 2.2.3, 2.7(iv), 5.1.1(e), 5.1.8 and global rules; v2020 from S2"
+    },
+    {
+     "id": "AS-5",
+     "label": "Above 30 marla but less than 2 kanal",
+     "plot_band": {
+      "min_marla": 30,
+      "max_marla": 40,
+      "min_inclusive": false,
+      "max_inclusive": false
+     },
+     "setbacks_ft": {
+      "front": 10,
+      "rear": 7,
+      "side": 5,
+      "side_count": 2,
+      "side_note": "5 ft on both sides"
+     },
+     "max_coverage_pct": 60,
+     "max_far": 2.4,
+     "max_height_ft": 45,
+     "max_storeys": 3,
+     "max_storeys_excludes_basement": true,
+     "basement_allowed": true,
+     "basement_counts_in_far": true,
+     "parking_required": false,
+     "min_room_sizes": {
+      "habitable_room": {
+       "min_area_sqft": 100,
+       "min_width_ft": 8
+      },
+      "kitchen": {
+       "min_area_sqft": 50,
+       "min_width_ft": 6
+      },
+      "toilet_bath": {
+       "min_area_sqft": null,
+       "min_width_ft": null,
+       "min_external_opening_sqft": 2
+      }
+     },
+     "ceiling_height_ft_min": 9.5,
+     "window_area_pct_min": 8,
+     "stair_width_ft_min": 3.5,
+     "parapet_height_ft": {
+      "min": 2.75,
+      "max": null
+     },
+     "mumty_allowed": true,
+     "mumty_max_height_ft": 9.5,
+     "sunshade_max_projection_ft": {
+      "front": 3,
+      "rear": 1.5,
+      "side": 1.5
+     },
+     "corner_splay_ft": 10,
+     "car_porch_in_side_space": true,
+     "room_over_porch_allowed": true,
+     "structural_vetting_required_if_height_above_ft": 38,
+     "greywater_treatment_plant_required": true,
+     "history": {
+      "v2020": {
+       "max_storeys": 4
+      }
+     },
+     "status": "VERIFIED",
+     "source": "S1 2.1.4, 2.2.1, 2.2.3, 2.7(iv) and global rules; v2020 from S2"
+    },
+    {
+     "id": "AS-6",
+     "label": "2 kanal up to less than 4 kanal",
+     "plot_band": {
+      "min_marla": 40,
+      "max_marla": 80,
+      "min_inclusive": true,
+      "max_inclusive": false
+     },
+     "setbacks_ft": {
+      "front": 20,
+      "rear": 10,
+      "side": 10,
+      "side_count": 2,
+      "side_note": "10 ft on both sides"
+     },
+     "max_coverage_pct": 55,
+     "max_far": 2.2,
+     "max_height_ft": 45,
+     "max_storeys": 3,
+     "max_storeys_excludes_basement": true,
+     "basement_allowed": true,
+     "basement_counts_in_far": true,
+     "parking_required": false,
+     "min_room_sizes": {
+      "habitable_room": {
+       "min_area_sqft": 100,
+       "min_width_ft": 8
+      },
+      "kitchen": {
+       "min_area_sqft": 50,
+       "min_width_ft": 6
+      },
+      "toilet_bath": {
+       "min_area_sqft": null,
+       "min_width_ft": null,
+       "min_external_opening_sqft": 2
+      }
+     },
+     "ceiling_height_ft_min": 9.5,
+     "window_area_pct_min": 8,
+     "stair_width_ft_min": 3.5,
+     "parapet_height_ft": {
+      "min": 2.75,
+      "max": null
+     },
+     "mumty_allowed": true,
+     "mumty_max_height_ft": 9.5,
+     "sunshade_max_projection_ft": {
+      "front": 3,
+      "rear": 3,
+      "side": 3
+     },
+     "corner_splay_ft": 10,
+     "car_porch_in_side_space": true,
+     "room_over_porch_allowed": "unclear - S1 2.1.4 grants it where a 5 ft side space is required",
+     "structural_vetting_required_if_height_above_ft": 38,
+     "greywater_treatment_plant_required": true,
+     "history": {
+      "v2020": {
+       "band": "2 kanal & above",
+       "setbacks_ft": {
+        "front": 20,
+        "rear": 10,
+        "side": 10,
+        "side_count": 2
+       },
+       "max_storeys": 4
+      }
+     },
+     "status": "VERIFIED",
+     "source": "S1 2.2.1 (band split added after 2020), 2.2.3, 2.7(iv) and global rules; v2020 from S2"
+    },
+    {
+     "id": "AS-7",
+     "label": "4 kanal and above",
+     "plot_band": {
+      "min_marla": 80,
+      "max_marla": null,
+      "min_inclusive": true,
+      "max_inclusive": false
+     },
+     "setbacks_ft": {
+      "front": 20,
+      "rear": 13,
+      "side": 13,
+      "side_count": 2,
+      "side_note": "13 ft on both sides"
+     },
+     "max_coverage_pct": 55,
+     "max_far": 2.2,
+     "max_height_ft": 45,
+     "max_storeys": 3,
+     "max_storeys_excludes_basement": true,
+     "basement_allowed": true,
+     "basement_counts_in_far": true,
+     "parking_required": false,
+     "min_room_sizes": {
+      "habitable_room": {
+       "min_area_sqft": 100,
+       "min_width_ft": 8
+      },
+      "kitchen": {
+       "min_area_sqft": 50,
+       "min_width_ft": 6
+      },
+      "toilet_bath": {
+       "min_area_sqft": null,
+       "min_width_ft": null,
+       "min_external_opening_sqft": 2
+      }
+     },
+     "ceiling_height_ft_min": 9.5,
+     "window_area_pct_min": 8,
+     "stair_width_ft_min": 3.5,
+     "parapet_height_ft": {
+      "min": 2.75,
+      "max": null
+     },
+     "mumty_allowed": true,
+     "mumty_max_height_ft": 9.5,
+     "sunshade_max_projection_ft": {
+      "front": 3,
+      "rear": 3,
+      "side": 3
+     },
+     "corner_splay_ft": 10,
+     "car_porch_in_side_space": true,
+     "room_over_porch_allowed": "unclear - S1 2.1.4 grants it where a 5 ft side space is required",
+     "structural_vetting_required_if_height_above_ft": 38,
+     "greywater_treatment_plant_required": true,
+     "history": {
+      "v2020": {
+       "band": "2 kanal & above",
+       "setbacks_ft": {
+        "front": 20,
+        "rear": 10,
+        "side": 10,
+        "side_count": 2
+       },
+       "max_storeys": 4
+      }
+     },
+     "status": "VERIFIED",
+     "source": "S1 2.2.1, 2.2.3, 2.7(iv) and global rules; v2020 from S2"
+    }
+   ]
+  },
+  "established_built_up_area": {
+   "description": "Old unplanned areas where most buildings have existed for >= 25 years. Clauses 2.1.1-2.1.5.",
+   "row_up_to_25_ft": {
+    "front_building_line": "as established by existing buildings",
+    "rear_and_side": "use the setback table for ROW > 25 ft below",
+    "max_height_ft": 38,
+    "max_storeys": "not stated in 2.1; 2.7.1(a) caps all residential plans at 3 storeys",
+    "coverage_far_bands": [
+     {
+      "plot_band": {
+       "min_marla": 0,
+       "max_marla": 5,
+       "min_inclusive": true,
+       "max_inclusive": false
+      },
+      "max_coverage_pct": 85,
+      "max_far": 2.0
+     },
+     {
+      "plot_band": {
+       "min_marla": 5,
+       "max_marla": 10,
+       "min_inclusive": true,
+       "max_inclusive": false
+      },
+      "max_coverage_pct": 80,
+      "max_far": 1.6
+     },
+     {
+      "plot_band": {
+       "min_marla": 10,
+       "max_marla": 20,
+       "min_inclusive": true,
+       "max_inclusive": false
+      },
+      "max_coverage_pct": 70,
+      "max_far": 1.5
+     },
+     {
+      "plot_band": {
+       "min_marla": 20,
+       "max_marla": 40,
+       "min_inclusive": true,
+       "max_inclusive": false
+      },
+      "max_coverage_pct": 65,
+      "max_far": 1.4
+     },
+     {
+      "plot_band": {
+       "min_marla": 40,
+       "max_marla": null,
+       "min_inclusive": true,
+       "max_inclusive": false
+      },
+      "max_coverage_pct": 60,
+      "max_far": 1.3
+     }
+    ],
+    "status": "VERIFIED",
+    "source": "S1 2.1.1(a), 2.1.2(a), 2.1.3"
+   },
+   "row_over_25_ft": {
+    "setback_bands": [
+     {
+      "plot_band": {
+       "min_marla": 0,
+       "max_marla": 5,
+       "min_inclusive": true,
+       "max_inclusive": false
+      },
+      "setbacks_ft": {
+       "front": 5,
+       "rear": 0,
+       "side": 0,
+       "side_count": 0
+      }
+     },
+     {
+      "plot_band": {
+       "min_marla": 5,
+       "max_marla": 10,
+       "min_inclusive": true,
+       "max_inclusive": false
+      },
+      "setbacks_ft": {
+       "front": 5,
+       "rear": 5,
+       "side": 0,
+       "side_count": 0
+      }
+     },
+     {
+      "plot_band": {
+       "min_marla": 10,
+       "max_marla": 30,
+       "min_inclusive": true,
+       "max_inclusive": true
+      },
+      "setbacks_ft": {
+       "front": 10,
+       "rear": 7,
+       "side": 5,
+       "side_count": 1
+      }
+     },
+     {
+      "plot_band": {
+       "min_marla": 30,
+       "max_marla": 40,
+       "min_inclusive": false,
+       "max_inclusive": false
+      },
+      "setbacks_ft": {
+       "front": 10,
+       "rear": 7,
+       "side": 5,
+       "side_count": 2
+      }
+     },
+     {
+      "plot_band": {
+       "min_marla": 40,
+       "max_marla": null,
+       "min_inclusive": true,
+       "max_inclusive": false
+      },
+      "setbacks_ft": {
+       "front": 20,
+       "rear": 10,
+       "side": 10,
+       "side_count": 2
+      }
+     }
+    ],
+    "height_coverage_far_storeys": "same as approved_scheme bands",
+    "status": "VERIFIED",
+    "source": "S1 2.1.1(b), 2.1.2(b), 2.1.3"
+   }
+  },
+  "predominantly_open_area": {
+   "description": "Unplanned/undeveloped or agricultural/vacant areas. Clause 2.3.",
+   "front_building_line": "same as approved_scheme band",
+   "rear_side_by_frontage": [
+    {
+     "frontage_ft": {
+      "min": 0,
+      "max": 30,
+      "min_inclusive": true,
+      "max_inclusive": false
+     },
+     "rear_ft": 5,
+     "side_ft": 0,
+     "side_count": 0
+    },
+    {
+     "frontage_ft": {
+      "min": 30,
+      "max": 50,
+      "min_inclusive": true,
+      "max_inclusive": true
+     },
+     "rear_ft": 5,
+     "side_ft": 5,
+     "side_count": 2
+    },
+    {
+     "frontage_ft": {
+      "min": 50,
+      "max": 70,
+      "min_inclusive": false,
+      "max_inclusive": true
+     },
+     "rear_ft": 10,
+     "side_ft": 5,
+     "side_count": 2
+    },
+    {
+     "frontage_ft": {
+      "min": 70,
+      "max": null,
+      "min_inclusive": false,
+      "max_inclusive": false
+     },
+     "rear_ft": 10,
+     "side_ft": 10,
+     "side_count": 2
+    }
+   ],
+   "height_coverage_far_storeys": "same as approved_scheme bands",
+   "status": "VERIFIED",
+   "source": "S1 2.3.1-2.3.6"
+  }
+ },
+ "global_rules": {
+  "height_measurement": {
+   "from": "crown of the road",
+   "to": "top of the parapet wall",
+   "excluded_structures": [
+    "chimney stacks",
+    "lift heads",
+    "water tanks",
+    "stair case / mumty (max 9 ft 6 in)"
+   ],
+   "excluded_subject_to": "Civil Aviation Authority criteria",
+   "status": "VERIFIED",
+   "source": "S1 definition 'Building Height' (v2020 wording excluded 'stair case and water tower etc.' with no mumty height cap)"
+  },
+  "height_zone_for_residential_plots": {
+   "zone": "Low Rise",
+   "zone_cap_ft": 48,
+   "status": "VERIFIED",
+   "source": "S1 11.2(1) item 5"
+  },
+  "max_storeys_all_residential_plans": {
+   "value": 3,
+   "status": "VERIFIED",
+   "source": "S1 2.7.1(a) 'No Building Plan shall be approved more than 3 storeys.'"
+  },
+  "storey_clear_height_ft_min": {
+   "value": 9.5,
+   "measured": "finished floor level to underside of roof slab",
+   "excludes": "basement",
+   "status": "VERIFIED",
+   "source": "S1 2.1.2, 2.2.2(b)"
+  },
+  "floor_height_ft_max": {
+   "value": 20,
+   "with_mezzanine": 24,
+   "mezzanine_max_pct_of_floor_area": 30,
+   "mezzanine_floors_max": 1,
+   "note": "'depending on usage and structural stability'; overall height cap still applies",
+   "status": "VERIFIED",
+   "source": "S1 2.7(xi)"
+  },
+  "non_habitable_rooms_with_inter_floor": {
+   "room_clear_height_ft_min": 7.5,
+   "inter_floor_clear_height_ft_min": 5.5,
+   "applies_to": [
+    "bath rooms",
+    "stores",
+    "kitchens",
+    "pantries",
+    "passages",
+    "garages"
+   ],
+   "inter_floor_in_habitable_rooms_allowed": false,
+   "status": "VERIFIED",
+   "source": "S1 5.2.2(a)(iv)-(v)"
+  },
+  "parapet": {
+   "min_height_ft": 2.75,
+   "max_height_ft": null,
+   "note": "Only parapet rule in the regulations; it sits inside clause 5.2.2(b) 'Shops'. Parapet top is the height-measurement point, so it counts toward max_height_ft.",
+   "status": "VERIFIED",
+   "source": "S1 5.2.2(b)(iii)"
+  },
+  "mumty": {
+   "allowed": true,
+   "max_height_ft": 9.5,
+   "max_area_sqft": null,
+   "excluded_from_building_height": true,
+   "status": "VERIFIED",
+   "source": "S1 definition 'Building Height'"
+  },
+  "roof_water_tank": {
+   "required_for_plots_marla_min": 3,
+   "excluded_from_building_height": true,
+   "max_height_ft": null,
+   "status": "VERIFIED",
+   "source": "S1 2.7(viii), 5.6.1, definition 'Building Height'"
+  },
+  "basement": {
+   "allowed_for_houses": true,
+   "plot_size_restriction": null,
+   "max_count": null,
+   "counts_in_far": true,
+   "excluded_from_storey_count": true,
+   "room_height_ft_min": 8,
+   "min_area_sqft": 100,
+   "emergency_exit_required_for_houses": false,
+   "sewer_gradient_min": "1:40 gravity, else pumping",
+   "must_leave_mandatory_open_spaces_if_used_for_non_parking": true,
+   "parking_basement_clearance_from_plot_line_ft_without_piling": 4,
+   "parking_basement_full_plot_allowed_with_rcc_piling_all_four_sides": true,
+   "basement_roof_in_mandatory_spaces_max_above_road_crown_in": 6,
+   "ramp_start_min_distance_from_plot_line_ft": 10,
+   "ramp_max_slope": "1:5",
+   "ramp_transition_min_length_ft": 8,
+   "ramp_transition_max_slope": "1:10",
+   "rear_entry_chamfer_ft": [
+    6,
+    6
+   ],
+   "rcc_piling_required_if_depth_below_road_ft_exceeds": 12,
+   "separate_first_phase_basement_plan_if_row_ft_min": 60,
+   "parking_floor_height_ft_min": 8,
+   "foundations_may_not_intrude_into_adjoining_property": true,
+   "status": "VERIFIED",
+   "source": "S1 2.2.3 note (a), 2.7(iii), 5.2.1, 5.7.2, 5.7.6, 6.3.5"
+  },
+  "car_porch": {
+   "max_length_ft": 20,
+   "location": "side space",
+   "corner_plot": "along longer side",
+   "room_over_porch": "allowed, equal to porch area, where a min 5 ft side space is required",
+   "status": "VERIFIED",
+   "source": "S1 2.1.4 (applied by 2.2.4 and 2.3.4)"
+  },
+  "parking": {
+   "required_for_houses": false,
+   "stall_ft": [
+    8,
+    16
+   ],
+   "drive_lane_one_way_ft": 10,
+   "drive_lane_two_way_ft": 18,
+   "ramp_gradient": "1:10 (up to 1:5 with 8 ft transitions at half gradient)",
+   "status": "VERIFIED",
+   "source": "S1 2.2.3, 5.7.3"
+  },
+  "boundary_wall": {
+   "max_height_ft": 7,
+   "measured_from": "plinth level",
+   "front_vs_side_different": false,
+   "approval_and_fee_required": true,
+   "allowed_in_right_of_way": false,
+   "barbed_wire_on_walls_abutting_public_streets": false,
+   "status": "VERIFIED",
+   "source": "S1 5.1.1(b), 5.1.10, 6.2.2"
+  },
+  "site_grading": {
+   "earth_fill_outward_gradient_pct": 4,
+   "from": "edge of road berm",
+   "to": "5 ft from property line",
+   "ramp_in_right_of_way_allowed": false,
+   "status": "VERIFIED",
+   "source": "S1 5.1.1(c)-(d)"
+  },
+  "projections": {
+   "window_sill_max_in": 2.5,
+   "sunshade_max_ft_if_open_space_ge_10ft": 3,
+   "sunshade_max_ft_if_open_space_lt_10ft_or_none": 1.5,
+   "sunshade_min_clear_height_above_plinth_ft": 7,
+   "bay_window_porch_roof_extension_beyond_building_face_allowed": false,
+   "balcony_into_mandatory_open_space_allowed": false,
+   "pergola_in_mandatory_open_space_allowed": false,
+   "status": "VERIFIED",
+   "source": "S1 5.1.8, 5.1.9, definition 'Sun-Shade'"
+  },
+  "habitability": {
+   "habitable_room_min_area_sqft": 100,
+   "habitable_room_min_width_ft": 8,
+   "kitchen_min_area_sqft": 50,
+   "kitchen_min_width_ft": 6,
+   "habitable_room_ceiling_height_ft_min": 9.5,
+   "toilet_min_area_sqft": null,
+   "corridor_min_width_ft": null,
+   "min_wc_and_bath_per_dwelling": 1,
+   "extra_wc_bath_if_bedrooms_gt": 3,
+   "extra_wc_bath_rule": "per Building Code of Pakistan / NRM",
+   "window_glazed_area_pct_of_floor_min": 8,
+   "window_openable_fraction_of_glazing_min": 0.5,
+   "wc_bath_external_opening_sqft_min_each": 2,
+   "mechanical_ventilation_exempts_lighting_rules": true,
+   "rear_corner_toilet": {
+    "max_area_sqft": 40,
+    "max_height_ft": 8,
+    "location": "rear corner towards the dead wall, integral part of main building"
+   },
+   "status": "VERIFIED",
+   "source": "S1 2.1.5, 5.2.2(a), 5.3.1, 5.3.2, 5.3.3 note, 5.6.3"
+  },
+  "air_wells": [
+   {
+    "building_storeys_max": 2,
+    "min_area_sqft": 50,
+    "min_width_ft": 6
+   },
+   {
+    "building_storeys_min": 3,
+    "building_storeys_max": 7,
+    "min_area_sqft": 100,
+    "min_width_ft": 8
+   },
+   {
+    "building_storeys_min": 8,
+    "min_area_sqft": 200,
+    "min_width_ft": 10
+   }
+  ],
+  "air_wells_rules": {
+   "roofing_allowed": "only fibre glass or similar",
+   "floor": "impervious and drained",
+   "access_at_bottom": true,
+   "status": "VERIFIED",
+   "source": "S1 5.3.3"
+  },
+  "stairs": {
+   "min_clear_width_ft_up_to_3_storeys": 3.5,
+   "min_clear_width_ft_above_3_storeys": 4,
+   "riser_max_in": 7.5,
+   "tread_min_in": 10,
+   "max_risers_per_flight": 15,
+   "landing_min_depth_ft": 3.5,
+   "winders_allowed_in_houses": true,
+   "handrail_height_in": null,
+   "guard_railing_height_in": null,
+   "status": "VERIFIED",
+   "source": "S1 6.4.1"
+  },
+  "structure": {
+   "pillar_construction_allowed": false,
+   "concealed_columns_allowed": true,
+   "concealed_columns_condition": "for strengthening, keeping in view bearing capacity of soil",
+   "structural_stability_certificate_and_vetted_drawings_if_height_above_ft": 38,
+   "fire_resistance_if_more_than_single_storey": {
+    "walls_min": "9 in solid brick or 3.5 in RCC or 4 in solid concrete block",
+    "floors_roof_min": "3.5 in RCC"
+   },
+   "history": {
+    "v2020": "pillars allowed in 3-storey houses and compulsory for 4+ storeys, max 15 x 15 in, max 20 ft span"
+   },
+   "status": "VERIFIED",
+   "source": "S1 2.7(i), 2.2.3 note (b), 5.4.1; v2020 S2 2.7(i)"
+  },
+  "lifts_required_for_houses": {
+   "value": false,
+   "status": "VERIFIED",
+   "source": "S1 6.4.2(a)"
+  },
+  "disabled_ramp_required_for_houses": {
+   "value": false,
+   "status": "VERIFIED",
+   "source": "S1 5.2.3"
+  },
+  "energy": {
+   "insulate_outer_walls_roofs_windows": true,
+   "insulate_sun_facing_walls": true,
+   "status": "VERIFIED",
+   "source": "S1 2.7(ix)-(x)"
+  },
+  "septic_tank_required": {
+   "value": true,
+   "may_sit_in_mandatory_open_space": true,
+   "condition": "no roofed building attached",
+   "status": "VERIFIED",
+   "source": "S1 5.6.2(d), 2.1.1(c)"
+  },
+  "rainwater_harvesting": {
+   "storage_tank_required_from_marla": 5,
+   "storage_tank_location": "above ground level",
+   "roof_drain_direct_to_sewer_or_street_allowed": false,
+   "overflow_to_sewer_or_street_allowed_below_marla": 15,
+   "recharge_well_or_pit_required_from_marla": 15,
+   "first_flush_minutes_to_lawn": 10,
+   "invert_well_required_above_marla": 5,
+   "status": "VERIFIED",
+   "source": "S1 2.7(vii), 5.6.6"
+  },
+  "greywater": {
+   "treatment_plant_required_from_marla": 20,
+   "status": "VERIFIED",
+   "source": "S1 2.7(iv) 'Grey water treatment plant is mandatory for plot size 1-Kanal and above'",
+   "conflict": {
+    "value_from_marla_exclusive": 10,
+    "text": "greywater tanks for buildings on plots larger than 10 marla",
+    "status": "SECONDARY",
+    "source": "N2"
+   }
+  },
+  "home_office_max_pct_floor_area": {
+   "value": 25,
+   "conditions": "resident professional with degree + council registration; formal permission; Land Use Rules prevail",
+   "status": "VERIFIED",
+   "source": "S1 2.4"
+  },
+  "apartment_building_threshold": {
+   "dwelling_units_sharing_common_stair_or_lift_gt": 2,
+   "consequence": "treated as Apartment Building (clause 2.5); v2026 Low Rise apartments need min 2 kanal plot and min 40 ft road",
+   "status": "VERIFIED",
+   "source": "S1 definitions, 2.5"
+  },
+  "subdivision": {
+   "min_parent_plot_marla": 40,
+   "min_resultant_plot_marla": 20,
+   "min_resultant_frontage_ft": 35,
+   "front_building_line": "of original plot",
+   "other_spaces": "per resultant plot",
+   "status": "VERIFIED",
+   "source": "S1 5.1.4"
+  },
+  "amalgamation": {
+   "rule": "regulations of the resultant plot size apply",
+   "status": "VERIFIED",
+   "source": "S1 2.2.3 note (c), 5.1.3"
+  },
+  "farm_house": {
+   "min_area_kanal": 4,
+   "max_storeys": 2,
+   "max_height_ft": 30,
+   "basements_max": 1,
+   "max_coverage_pct": 30,
+   "coverage_cap_area": "30% of 40 kanal for land above 40 kanal",
+   "setbacks": "as 2-kanal-and-above band of 2.2.1 (ambiguous after the 4-kanal split)",
+   "status": "VERIFIED",
+   "source": "S1 2.2.6"
+  }
+ },
+ "lookup_tables": {
+  "underground_water_tank_min": [
+   {
+    "label": "5 marla",
+    "plot_band": {
+     "min_marla": 0,
+     "max_marla": 5,
+     "max_inclusive": true
+    },
+    "dims_ft": [
+     3,
+     3,
+     2
+    ],
+    "volume_cft": 18,
+    "gallons": null
+   },
+   {
+    "label": "up to 7 marla",
+    "plot_band": {
+     "min_marla": 5,
+     "max_marla": 7,
+     "min_inclusive": false,
+     "max_inclusive": true
+    },
+    "dims_ft": [
+     6,
+     4,
+     2.5
+    ],
+    "volume_cft": 60,
+    "gallons": 400
+   },
+   {
+    "label": "7 marla to 1 kanal",
+    "plot_band": {
+     "min_marla": 7,
+     "max_marla": 20,
+     "min_inclusive": false,
+     "max_inclusive": true
+    },
+    "dims_ft": [
+     10,
+     5,
+     2.5
+    ],
+    "volume_cft": 124,
+    "gallons": 800
+   },
+   {
+    "label": "above 1 kanal",
+    "plot_band": {
+     "min_marla": 20,
+     "max_marla": null,
+     "min_inclusive": false
+    },
+    "dims_ft": [
+     10,
+     5,
+     4
+    ],
+    "volume_cft": 200,
+    "gallons": 1200
+   }
+  ],
+  "overhead_water_tank_min": [
+   {
+    "label": "up to 7 marla",
+    "plot_band": {
+     "min_marla": 0,
+     "max_marla": 7,
+     "max_inclusive": true
+    },
+    "dims_ft": [
+     3,
+     4,
+     2.5
+    ],
+    "volume_cft": 30,
+    "gallons": 200
+   },
+   {
+    "label": "7 marla to 1 kanal",
+    "plot_band": {
+     "min_marla": 7,
+     "max_marla": 20,
+     "min_inclusive": false,
+     "max_inclusive": true
+    },
+    "dims_ft": [
+     5,
+     5,
+     2.5
+    ],
+    "volume_cft": 62,
+    "gallons": 400
+   },
+   {
+    "label": "above 1 kanal",
+    "plot_band": {
+     "min_marla": 20,
+     "max_marla": null,
+     "min_inclusive": false
+    },
+    "dims_ft": [
+     5,
+     5,
+     4
+    ],
+    "volume_cft": 100,
+    "gallons": 600
+   }
+  ],
+  "water_tank_notes": "Table header says 'plot size up to 3 storey'. Band edges at exactly 5/7/20 marla are ambiguous in the source; tanks are mandatory for all residential buildings of 3 marla and above (S1 2.7(viii), 5.6.1).",
+  "septic_tank_min": [
+   {
+    "label": "less than 1 kanal",
+    "plot_band": {
+     "min_marla": 0,
+     "max_marla": 20,
+     "max_inclusive": false
+    },
+    "depth_ft": 4.25,
+    "length_ft": 8,
+    "width_ft": 4
+   },
+   {
+    "label": "1 kanal to 2 kanal",
+    "plot_band": {
+     "min_marla": 20,
+     "max_marla": 40,
+     "max_inclusive": true
+    },
+    "depth_ft": 4.25,
+    "length_ft": 9,
+    "width_ft": 4.5
+   },
+   {
+    "label": "above 2 kanal",
+    "plot_band": {
+     "min_marla": 40,
+     "max_marla": null,
+     "min_inclusive": false
+    },
+    "depth_ft": 4.25,
+    "length_ft": 10,
+    "width_ft": 5
+   }
+  ],
+  "rainwater_storage_tank_gallons": [
+   {
+    "min_marla": 5,
+    "max_marla": 6.9,
+    "gallons": 300
+   },
+   {
+    "min_marla": 7.0,
+    "max_marla": 9,
+    "gallons": 450
+   },
+   {
+    "min_marla": 10,
+    "max_marla": 10,
+    "gallons": 500
+   },
+   {
+    "min_marla": 10.1,
+    "max_marla": 15,
+    "gallons": 600
+   },
+   {
+    "min_marla": 15.1,
+    "max_marla": 20,
+    "max_inclusive": false,
+    "gallons": 800
+   },
+   {
+    "min_marla": 20,
+    "max_marla": 20,
+    "gallons": 1000
+   },
+   {
+    "min_marla": 22,
+    "max_marla": 40,
+    "gallons": 1700
+   },
+   {
+    "min_marla": 42,
+    "max_marla": 60,
+    "gallons": 2500
+   },
+   {
+    "min_marla": 62,
+    "max_marla": 80,
+    "gallons": 3400
+   },
+   {
+    "min_marla": 82,
+    "max_marla": 100,
+    "gallons": 4000
+   },
+   {
+    "min_marla": 102,
+    "max_marla": 120,
+    "gallons": 5000
+   },
+   {
+    "min_marla": 122,
+    "max_marla": 140,
+    "gallons": 6000
+   },
+   {
+    "min_marla": 142,
+    "max_marla": 160,
+    "gallons": 6800
+   }
+  ],
+  "rainwater_notes": "Source bands are written as 05-6.9 marla, 7.0-09 marla, 10 marla, 10.1-15 marla, 15.1 marla-<1 kanal, 1 kanal, 1.1-2 kanal, 2.1-3 kanal ... 7.1-8 kanal (1.1 kanal = 22 marla). Gaps between bands (e.g. 9-10 marla) exist in the source; round up to the next band.",
+  "trees_min": [
+   {
+    "plot_band": {
+     "min_marla": 5,
+     "max_marla": 10,
+     "max_inclusive": false
+    },
+    "trees": 1
+   },
+   {
+    "plot_band": {
+     "min_marla": 10,
+     "max_marla": 20,
+     "max_inclusive": false
+    },
+    "trees": 2
+   },
+   {
+    "plot_band": {
+     "min_marla": 20,
+     "max_marla": 40,
+     "max_inclusive": false
+    },
+    "trees": 3
+   },
+   {
+    "plot_band": {
+     "min_marla": 40,
+     "max_marla": null
+    },
+    "trees": 4
+   }
+  ],
+  "corner_splay": [
+   {
+    "plot_band": {
+     "min_marla": 0,
+     "max_marla": 10,
+     "max_inclusive": true
+    },
+    "splay_ft_each_side": 5
+   },
+   {
+    "plot_band": {
+     "min_marla": 10,
+     "max_marla": null,
+     "min_inclusive": false
+    },
+    "splay_ft_each_side": 10
+   }
+  ],
+  "approval_authority": [
+   {
+    "plot_band": {
+     "min_marla": 0,
+     "max_marla": 7,
+     "max_inclusive": true
+    },
+    "sanction": "Assistant Director (Town Planning)",
+    "completion_certificate": "Deputy Director (Town Planning)"
+   },
+   {
+    "plot_band": {
+     "min_marla": 7,
+     "max_marla": 20,
+     "min_inclusive": false,
+     "max_inclusive": true
+    },
+    "sanction": "Deputy Director (Town Planning)",
+    "completion_certificate": "Director (Town Planning)"
+   },
+   {
+    "plot_band": {
+     "min_marla": 20,
+     "max_marla": null,
+     "min_inclusive": false
+    },
+    "sanction": "Director (Town Planning)",
+    "completion_certificate": "Director (Town Planning)"
+   }
+  ],
+  "min_completed_floor_area_for_phase_1_completion_certificate_sqft": [
+   {
+    "plot_marla": 3,
+    "sqft": 250
+   },
+   {
+    "plot_marla": 5,
+    "sqft": 300
+   },
+   {
+    "plot_marla": 7,
+    "sqft": 350
+   },
+   {
+    "plot_marla": 10,
+    "sqft": 375
+   },
+   {
+    "plot_marla": 12,
+    "sqft": 450
+   },
+   {
+    "plot_marla": 20,
+    "sqft": 750
+   },
+   {
+    "plot_marla": 40,
+    "sqft": 1250,
+    "applies_to": "2 kanal and above"
+   }
+  ],
+  "fees_residential_v2026_pkr": {
+   "plan_scrutiny_first_or_revised_per_sqft_covered": 15,
+   "plan_revival_per_sqft_covered": 5,
+   "addition_alteration_per_sqft_covered": 7.5,
+   "gate_and_boundary_wall_per_marla": 1000,
+   "malba_material_stacking_per_sqft": 10,
+   "building_plan_processing_departmental": 10000,
+   "completion_certificate_processing": 10000,
+   "change_of_side_space_up_to_1_kanal": 50000,
+   "change_of_side_space_above_1_kanal": 100000,
+   "history_v2020": {
+    "plan_scrutiny_per_sqft": 5,
+    "plan_revival_per_sqft": 2,
+    "gate_and_boundary_wall_per_marla": 200,
+    "malba_per_sqft": 2
+   },
+   "status": "VERIFIED",
+   "source": "S1 Appendix C (v2020: S2 Appendix C)"
+  },
+  "approval_timeline_days": {
+   "approved_scheme": 21,
+   "controlled_area": 30,
+   "deemed_start_allowed_if_late": true,
+   "deemed_start_conditions": [
+    "scrutiny fee paid",
+    "penalty paid for existing deviations",
+    "affidavit to build per submitted plan"
+   ],
+   "conflicting_clause": "10.4.1 still says 45 days",
+   "status": "VERIFIED",
+   "source": "S1 10.13, 10.4.1"
+  },
+  "plan_validity": {
+   "rule": "auto-revoked at expiry of the plot's building period or 3 years from sanction, whichever is first; fresh sanction if plot vacant; revalidation if partly built",
+   "status": "VERIFIED",
+   "source": "S1 10.7.1"
+  }
+ },
+ "requested_category_map": {
+  "up_to_3_marla": {
+   "lda_band": "AS-1",
+   "notes": "Same zoning as 3-5 marla. Water tanks mandatory from 3 marla; phase-1 completion min 250 sq ft (3 marla)."
+  },
+  "3_to_5_marla": {
+   "lda_band": "AS-1",
+   "notes": "Exactly 5 marla falls in AS-2."
+  },
+  "5_to_7_marla": {
+   "lda_band": "AS-2",
+   "notes": "Sanction by Assistant Director up to 7 marla; rainwater tank 300 gal (5-6.9 marla)."
+  },
+  "7_to_10_marla": {
+   "lda_band": "AS-2",
+   "notes": "Sanction by Deputy Director above 7 marla; larger water tanks above 7 marla; rainwater tank 450 gal (7-9 marla)."
+  },
+  "10_marla_to_1_kanal": {
+   "lda_band": "AS-3",
+   "notes": "Side space (5 ft, one side) starts at 10 marla; height cap rises to 45 ft."
+  },
+  "1_to_2_kanal": {
+   "lda_band": [
+    "AS-4",
+    "AS-5"
+   ],
+   "notes": "Split at 30 marla: one side space up to 30 marla, both sides above."
+  },
+  "above_2_kanal": {
+   "lda_band": [
+    "AS-6",
+    "AS-7"
+   ],
+   "notes": "Split at 4 kanal (rear/side 10 ft vs 13 ft)."
+  }
+ }
+}

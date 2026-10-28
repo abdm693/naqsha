@@ -1,0 +1,18 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "api",
+      "runtimeExecutable": "zsh",
+      "runtimeArgs": ["scripts/dev-api.sh"],
+      "port": 8080
+    },
+    {
+      "name": "web",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["vite", "--port", "5173", "--strictPort"],
+      "cwd": "web",
+      "port": 5173
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+**/node_modules
+**/.venv
+**/__pycache__
+web/dist
+.git
+.playwright-mcp
+docs
+.env
+.env.*
+submission
+.claude

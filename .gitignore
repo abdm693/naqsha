@@ -1,0 +1,72 @@
+# Secrets / local env
+.env
+.env.*
+!.env.example
+*.pem
+*-key.json
+service-account*.json
+application_default_credentials.json
+
+# Claude Code local overrides
+.claude/settings.local.json
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+*.egg-info/
+dist/
+build/
+
+# Node
+node_modules/
+.next/
+.turbo/
+coverage/
+
+# OS / editors
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Playwright MCP output
+.playwright-mcp/
+
+# App build outputs
+web/dist/
+api/.venv/
+*.tsbuildinfo
+
+# Agent worktrees
+.claude/worktrees/
+
+# narrator voice recordings (personal biometric audio) stay local
+submission/video/voice/
+
+# Submission media: the final video is hosted on Google Drive (link in submission/SUBMISSION.md);
+# footage, renders, audio and HyperFrames caches are too large for git
+submission/**/*.mp4
+submission/**/*.mov
+submission/**/*.wav
+submission/**/*.mp3
+submission/**/*.m4a
+submission/video/v2-backup/
+submission/video/hyperframes/node_modules/
+submission/video/hyperframes/.hyperframes/
+submission/video/hyperframes/.thumbnails/
+submission/video/hyperframes/.waveform-cache/
+submission/video/hyperframes/assets/footage/
+submission/video/hyperframes/assets/music/
+submission/video/hyperframes/assets/voice/
+submission/video/__pycache__/
+submission/**/critique*.md
+
+# capture tooling output
+submission/capture/node_modules/
+submission/capture/out/
+submission/video/node_modules/

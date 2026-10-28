@@ -1,0 +1,35 @@
+{
+ "spaces": [
+  "drawing",
+  "tv_lounge",
+  "kitchen",
+  "dirty_kitchen",
+  "kitchenette_first_floor",
+  "tv_lounge_first_floor",
+  "car_porch:2",
+  "laundry",
+  "powder_room",
+  "double_height_lounge",
+  "prayer"
+ ],
+ "bathrooms": 6,
+ "facing": "N",
+ "scheme": "Johar Town",
+ "plot": {
+  "corner": false,
+  "area_marla": 10.1,
+  "width_ft": 35.0,
+  "depth_ft": 65.0
+ },
+ "storeys": 2,
+ "style": "Modern Contemporary",
+ "bedrooms": 5,
+ "basement": false,
+ "auto_filled": [
+  "bathrooms"
+ ],
+ "notes": "Ground floor: 2 beds (parents + guest room), drawing room near entrance. First floor: 3 beds, family lounge, kitchenette, small prayer room. Double-height TV lounge. Non-corner plot. Solar provision on roof, concrete overhead water tank.",
+ "city": "Lahore",
+ "budget": "premium",
+ "authority": "LDA"
+}

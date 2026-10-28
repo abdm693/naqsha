@@ -1,0 +1,64 @@
+{
+ "bedrooms": 4,
+ "budget": "economy",
+ "storeys": 2,
+ "floors": [
+  {
+   "level": "ground",
+   "rooms": [
+    "car_porch:1",
+    "drawing",
+    "dining",
+    "lounge",
+    "kitchen",
+    "bedroom:1",
+    "bath:1",
+    "powder"
+   ]
+  },
+  {
+   "level": "first",
+   "rooms": [
+    "master_bedroom:1",
+    "dressing:1",
+    "bath:1",
+    "bedroom:2",
+    "bath:2",
+    "lounge",
+    "balcony"
+   ]
+  }
+ ],
+ "auto_filled": [],
+ "bathrooms": 5,
+ "facing": "N",
+ "plot": {
+  "width_ft": 35.0,
+  "depth_ft": 65.0,
+  "area_marla": 10.1,
+  "corner": false
+ },
+ "solar": "ready",
+ "basement": false,
+ "style": "Minimalist",
+ "preferences": [
+  "father uses a walking stick",
+  "father's bedroom on ground floor",
+  "drawing room near the gate with separate guest entry",
+  "stair going all the way up to roof with mumty",
+  "space for 5 kW solar panels",
+  "porch for 1 car plus motorbike"
+ ],
+ "city": "Lahore",
+ "spaces": [
+  "car_porch:1",
+  "drawing",
+  "dining",
+  "tv_lounge",
+  "kitchen",
+  "roof_terrace"
+ ],
+ "authority": "LDA",
+ "scheme": "Johar Town",
+ "water_tank": "concrete"
+}

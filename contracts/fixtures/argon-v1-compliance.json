@@ -1,0 +1,513 @@
+{
+ "authority": "LDA",
+ "band": "10 marla and above but less than 1 kanal",
+ "ok": true,
+ "checks": [
+  {
+   "id": "setback.front",
+   "title": "Front setback (building line)",
+   "status": "pass",
+   "message": "Front open space 10\u2032 (minimum 10\u2032).",
+   "value": 10,
+   "limit": 10.0,
+   "rule_ref": "LDA B&ZR 2019 (consolidated 09-02-2026)",
+   "element_ids": []
+  },
+  {
+   "id": "setback.rear",
+   "title": "Rear setback",
+   "status": "pass",
+   "message": "Rear open space 7\u2032 (minimum 7\u2032).",
+   "value": 7,
+   "limit": 7.0,
+   "rule_ref": "LDA B&ZR 2019 (consolidated 09-02-2026)",
+   "element_ids": []
+  },
+  {
+   "id": "setback.side",
+   "title": "Side space",
+   "status": "pass",
+   "message": "1 side space(s) of 5\u2032 required; 1 provided.",
+   "value": 1,
+   "limit": 1,
+   "rule_ref": "LDA B&ZR 2019 (consolidated 09-02-2026)",
+   "element_ids": []
+  },
+  {
+   "id": "setback.envelope",
+   "title": "Building within setbacks",
+   "status": "pass",
+   "message": "All rooms, porches and balconies sit inside the building line.",
+   "value": null,
+   "limit": null,
+   "rule_ref": "LDA B&ZR 2019 (consolidated 09-02-2026)",
+   "element_ids": []
+  },
+  {
+   "id": "coverage",
+   "title": "Ground coverage",
+   "status": "pass",
+   "message": "Covered 1,440 sq ft = 63.3% of the plot (max 70%).",
+   "value": 63.3,
+   "limit": 70.0,
+   "rule_ref": "LDA B&ZR 2019 (consolidated 09-02-2026)",
+   "element_ids": []
+  },
+  {
+   "id": "far",
+   "title": "Floor area ratio",
+   "status": "pass",
+   "message": "Total floor area 2,565 sq ft \u2192 FAR 1:1.13 (max 1:2.8).",
+   "value": 1.13,
+   "limit": 2.8,
+   "rule_ref": "LDA B&ZR 2019 (consolidated 09-02-2026)",
+   "element_ids": []
+  },
+  {
+   "id": "height",
+   "title": "Building height",
+   "status": "pass",
+   "message": "Top of parapet at 27\u2032 above road crown (max 45\u2032).",
+   "value": 27.0,
+   "limit": 45.0,
+   "rule_ref": "LDA B&ZR 2019 (consolidated 09-02-2026)",
+   "element_ids": []
+  },
+  {
+   "id": "storeys",
+   "title": "Number of storeys",
+   "status": "pass",
+   "message": "2 storey(s) above ground (max 3, basement excluded).",
+   "value": 2,
+   "limit": 3,
+   "rule_ref": "LDA B&ZR 2019 (consolidated 09-02-2026) \u00a72.7.1(a)",
+   "element_ids": []
+  },
+  {
+   "id": "mumty",
+   "title": "Mumty (stair tower) height",
+   "status": "pass",
+   "message": "Mumty 9\u20326\u2033 (max 9\u20326\u2033, excluded from building height).",
+   "value": 9.5,
+   "limit": 9.5,
+   "rule_ref": "LDA B&ZR 2019 (consolidated 09-02-2026)",
+   "element_ids": []
+  },
+  {
+   "id": "parapet",
+   "title": "Roof parapet",
+   "status": "pass",
+   "message": "Parapet 3\u20326\u2033 (minimum 2\u20329\u2033 for safety).",
+   "value": 3.5,
+   "limit": 2.75,
+   "rule_ref": "LDA B&ZR 2019 (consolidated 09-02-2026)",
+   "element_ids": []
+  },
+  {
+   "id": "boundary_wall",
+   "title": "Boundary wall height",
+   "status": "pass",
+   "message": "Tallest boundary wall 7\u2032 (max 7\u2032 above plinth).",
+   "value": 7.0,
+   "limit": 7,
+   "rule_ref": "LDA B&ZR 2019 (consolidated 09-02-2026)",
+   "element_ids": []
+  },
+  {
+   "id": "room.size:g_drawing",
+   "title": "Drawing Room size",
+   "status": "pass",
+   "message": "Drawing Room is 15\u2032\u00d716\u2032 = 240 sq ft (min 100 sq ft, 8\u2032 wide).",
+   "value": 240,
+   "limit": 100,
+   "rule_ref": "LDA B&ZR 2019 (consolidated 09-02-2026)",
+   "element_ids": [
+    "g_drawing"
+   ]
+  },
+  {
+   "id": "room.light:g_drawing",
+   "title": "Drawing Room daylight",
+   "status": "pass",
+   "message": "Glazing 54 sq ft vs 19 sq ft needed (8% of floor area).",
+   "value": 54.0,
+   "limit": 19.2,
+   "rule_ref": "LDA B&ZR 2019 (consolidated 09-02-2026)",
+   "element_ids": [
+    "g_drawing"
+   ]
+  },
+  {
+   "id": "room.size:g_lounge",
+   "title": "TV Lounge size",
+   "status": "pass",
+   "message": "TV Lounge is 22\u2032\u00d710\u2032 = 220 sq ft (min 100 sq ft, 8\u2032 wide).",
+   "value": 220,
+   "limit": 100,
+   "rule_ref": "LDA B&ZR 2019 (consolidated 09-02-2026)",
+   "element_ids": [
+    "g_lounge"
+   ]
+  },
+  {
+   "id": "room.light:g_lounge",
+   "title": "TV Lounge daylight",
+   "status": "pass",
+   "message": "Glazing 30 sq ft vs 18 sq ft needed (8% of floor area).",
+   "value": 30.0,
+   "limit": 17.6,
+   "rule_ref": "LDA B&ZR 2019 (consolidated 09-02-2026)",
+   "element_ids": [
+    "g_lounge"
+   ]
+  },
+  {
+   "id": "room.size:g_dining",
+   "title": "Dining Room size",
+   "status": "pass",
+   "message": "Dining Room is 22\u2032\u00d710\u2032 = 220 sq ft (min 100 sq ft, 8\u2032 wide).",
+   "value": 220,
+   "limit": 100,
+   "rule_ref": "LDA B&ZR 2019 (consolidated 09-02-2026)",
+   "element_ids": [
+    "g_dining"
+   ]
+  },
+  {
+   "id": "room.light:g_dining",
+   "title": "Dining Room daylight",
+   "status": "pass",
+   "message": "Glazing 42 sq ft vs 18 sq ft needed (8% of floor area).",
+   "value": 42.0,
+   "limit": 17.6,
+   "rule_ref": "LDA B&ZR 2019 (consolidated 09-02-2026)",
+   "element_ids": [
+    "g_dining"
+   ]
+  },
+  {
+   "id": "room.size:g_dirty_kitchen",
+   "title": "Dirty Kitchen size",
+   "status": "pass",
+   "message": "Dirty Kitchen is 72 sq ft (min 50 sq ft, 6\u2032 wide).",
+   "value": 72,
+   "limit": 50,
+   "rule_ref": "LDA B&ZR 2019 (consolidated 09-02-2026)",
+   "element_ids": [
+    "g_dirty_kitchen"
+   ]
+  },
+  {
+   "id": "room.light:g_dirty_kitchen",
+   "title": "Dirty Kitchen daylight",
+   "status": "pass",
+   "message": "Glazing 14 sq ft vs 6 sq ft needed (8% of floor area).",
+   "value": 14.0,
+   "limit": 5.8,
+   "rule_ref": "LDA B&ZR 2019 (consolidated 09-02-2026)",
+   "element_ids": [
+    "g_dirty_kitchen"
+   ]
+  },
+  {
+   "id": "room.size:g_kitchen",
+   "title": "Kitchen size",
+   "status": "pass",
+   "message": "Kitchen is 96 sq ft (min 50 sq ft, 6\u2032 wide).",
+   "value": 96,
+   "limit": 50,
+   "rule_ref": "LDA B&ZR 2019 (consolidated 09-02-2026)",
+   "element_ids": [
+    "g_kitchen"
+   ]
+  },
+  {
+   "id": "room.light:g_kitchen",
+   "title": "Kitchen daylight",
+   "status": "pass",
+   "message": "Glazing 20 sq ft vs 8 sq ft needed (8% of floor area).",
+   "value": 20.0,
+   "limit": 7.7,
+   "rule_ref": "LDA B&ZR 2019 (consolidated 09-02-2026)",
+   "element_ids": [
+    "g_kitchen"
+   ]
+  },
+  {
+   "id": "room.size:g_guest",
+   "title": "Guest Bedroom size",
+   "status": "pass",
+   "message": "Guest Bedroom is 10\u2032\u00d712\u2032 = 120 sq ft (min 100 sq ft, 8\u2032 wide).",
+   "value": 120,
+   "limit": 100,
+   "rule_ref": "LDA B&ZR 2019 (consolidated 09-02-2026)",
+   "element_ids": [
+    "g_guest"
+   ]
+  },
+  {
+   "id": "room.light:g_guest",
+   "title": "Guest Bedroom daylight",
+   "status": "pass",
+   "message": "Glazing 30 sq ft vs 10 sq ft needed (8% of floor area).",
+   "value": 30.0,
+   "limit": 9.6,
+   "rule_ref": "LDA B&ZR 2019 (consolidated 09-02-2026)",
+   "element_ids": [
+    "g_guest"
+   ]
+  },
+  {
+   "id": "room.vent:g_powder",
+   "title": "Powder Room ventilation",
+   "status": "pass",
+   "message": "Has an external opening \u2265 2 sq ft.",
+   "value": 5.0,
+   "limit": 2,
+   "rule_ref": "LDA B&ZR 2019 (consolidated 09-02-2026)",
+   "element_ids": [
+    "g_powder"
+   ]
+  },
+  {
+   "id": "room.vent:g_guest_bath",
+   "title": "Guest Bath ventilation",
+   "status": "pass",
+   "message": "Has an external opening \u2265 2 sq ft.",
+   "value": 5.0,
+   "limit": 2,
+   "rule_ref": "LDA B&ZR 2019 (consolidated 09-02-2026)",
+   "element_ids": [
+    "g_guest_bath"
+   ]
+  },
+  {
+   "id": "room.size:f_master",
+   "title": "Master Bedroom size",
+   "status": "pass",
+   "message": "Master Bedroom is 15\u2032\u00d716\u2032 = 240 sq ft (min 100 sq ft, 8\u2032 wide).",
+   "value": 240,
+   "limit": 100,
+   "rule_ref": "LDA B&ZR 2019 (consolidated 09-02-2026)",
+   "element_ids": [
+    "f_master"
+   ]
+  },
+  {
+   "id": "room.light:f_master",
+   "title": "Master Bedroom daylight",
+   "status": "pass",
+   "message": "Glazing 70 sq ft vs 19 sq ft needed (8% of floor area).",
+   "value": 70.0,
+   "limit": 19.2,
+   "rule_ref": "LDA B&ZR 2019 (consolidated 09-02-2026)",
+   "element_ids": [
+    "f_master"
+   ]
+  },
+  {
+   "id": "room.size:f_bed2",
+   "title": "Bedroom 2 size",
+   "status": "pass",
+   "message": "Bedroom 2 is 10\u2032\u00d711\u2032 = 110 sq ft (min 100 sq ft, 8\u2032 wide).",
+   "value": 110,
+   "limit": 100,
+   "rule_ref": "LDA B&ZR 2019 (consolidated 09-02-2026)",
+   "element_ids": [
+    "f_bed2"
+   ]
+  },
+  {
+   "id": "room.light:f_bed2",
+   "title": "Bedroom 2 daylight",
+   "status": "pass",
+   "message": "Glazing 45 sq ft vs 9 sq ft needed (8% of floor area).",
+   "value": 45.0,
+   "limit": 8.8,
+   "rule_ref": "LDA B&ZR 2019 (consolidated 09-02-2026)",
+   "element_ids": [
+    "f_bed2"
+   ]
+  },
+  {
+   "id": "room.vent:f_bath2",
+   "title": "Bath 2 ventilation",
+   "status": "pass",
+   "message": "Has an external opening \u2265 2 sq ft.",
+   "value": 5.0,
+   "limit": 2,
+   "rule_ref": "LDA B&ZR 2019 (consolidated 09-02-2026)",
+   "element_ids": [
+    "f_bath2"
+   ]
+  },
+  {
+   "id": "room.vent:f_master_bath",
+   "title": "Master Bath ventilation",
+   "status": "pass",
+   "message": "Has an external opening \u2265 2 sq ft.",
+   "value": 5.0,
+   "limit": 2,
+   "rule_ref": "LDA B&ZR 2019 (consolidated 09-02-2026)",
+   "element_ids": [
+    "f_master_bath"
+   ]
+  },
+  {
+   "id": "room.size:f_lounge",
+   "title": "Family Lounge size",
+   "status": "pass",
+   "message": "Family Lounge is 22\u2032\u00d713\u2032 = 286 sq ft (min 100 sq ft, 8\u2032 wide).",
+   "value": 286,
+   "limit": 100,
+   "rule_ref": "LDA B&ZR 2019 (consolidated 09-02-2026)",
+   "element_ids": [
+    "f_lounge"
+   ]
+  },
+  {
+   "id": "room.light:f_lounge",
+   "title": "Family Lounge daylight",
+   "status": "pass",
+   "message": "Glazing 30 sq ft vs 23 sq ft needed (8% of floor area).",
+   "value": 30.0,
+   "limit": 22.9,
+   "rule_ref": "LDA B&ZR 2019 (consolidated 09-02-2026)",
+   "element_ids": [
+    "f_lounge"
+   ]
+  },
+  {
+   "id": "room.vent:f_bath3",
+   "title": "Bath 3 ventilation",
+   "status": "pass",
+   "message": "Has an external opening \u2265 2 sq ft.",
+   "value": 5.0,
+   "limit": 2,
+   "rule_ref": "LDA B&ZR 2019 (consolidated 09-02-2026)",
+   "element_ids": [
+    "f_bath3"
+   ]
+  },
+  {
+   "id": "room.size:f_bed3",
+   "title": "Bedroom 3 size",
+   "status": "pass",
+   "message": "Bedroom 3 is 9\u2032\u00d714\u2032 = 126 sq ft (min 100 sq ft, 8\u2032 wide).",
+   "value": 126,
+   "limit": 100,
+   "rule_ref": "LDA B&ZR 2019 (consolidated 09-02-2026)",
+   "element_ids": [
+    "f_bed3"
+   ]
+  },
+  {
+   "id": "room.light:f_bed3",
+   "title": "Bedroom 3 daylight",
+   "status": "pass",
+   "message": "Glazing 25 sq ft vs 10 sq ft needed (8% of floor area).",
+   "value": 25.0,
+   "limit": 10.1,
+   "rule_ref": "LDA B&ZR 2019 (consolidated 09-02-2026)",
+   "element_ids": [
+    "f_bed3"
+   ]
+  },
+  {
+   "id": "room.size:f_bed4",
+   "title": "Bedroom 4 size",
+   "status": "pass",
+   "message": "Bedroom 4 is 9\u2032\u00d714\u2032 = 126 sq ft (min 100 sq ft, 8\u2032 wide).",
+   "value": 126,
+   "limit": 100,
+   "rule_ref": "LDA B&ZR 2019 (consolidated 09-02-2026)",
+   "element_ids": [
+    "f_bed4"
+   ]
+  },
+  {
+   "id": "room.light:f_bed4",
+   "title": "Bedroom 4 daylight",
+   "status": "pass",
+   "message": "Glazing 25 sq ft vs 10 sq ft needed (8% of floor area).",
+   "value": 25.0,
+   "limit": 10.1,
+   "rule_ref": "LDA B&ZR 2019 (consolidated 09-02-2026)",
+   "element_ids": [
+    "f_bed4"
+   ]
+  },
+  {
+   "id": "room.vent:f_bath4",
+   "title": "Bath 4 ventilation",
+   "status": "pass",
+   "message": "Has an external opening \u2265 2 sq ft.",
+   "value": 5.0,
+   "limit": 2,
+   "rule_ref": "LDA B&ZR 2019 (consolidated 09-02-2026)",
+   "element_ids": [
+    "f_bath4"
+   ]
+  },
+  {
+   "id": "stair:stair_g_f",
+   "title": "Staircase",
+   "status": "pass",
+   "message": "2 flight(s), 19 risers of 6.95\u2033 (10/flight), treads 10\u2033, width 3\u20326\u2033 (LDA: width \u2265 3\u20326\u2033, riser \u2264 7\u00bd\u2033, tread \u2265 10\u2033, \u2264 15 risers per flight).",
+   "value": 10,
+   "limit": 15,
+   "rule_ref": "LDA B&ZR 2019 (consolidated 09-02-2026)",
+   "element_ids": [
+    "stair_g_f"
+   ]
+  },
+  {
+   "id": "stair:stair_f_r",
+   "title": "Staircase",
+   "status": "pass",
+   "message": "2 flight(s), 19 risers of 6.95\u2033 (10/flight), treads 10\u2033, width 3\u20326\u2033 (LDA: width \u2265 3\u20326\u2033, riser \u2264 7\u00bd\u2033, tread \u2265 10\u2033, \u2264 15 risers per flight).",
+   "value": 10,
+   "limit": 15,
+   "rule_ref": "LDA B&ZR 2019 (consolidated 09-02-2026)",
+   "element_ids": [
+    "stair_f_r"
+   ]
+  },
+  {
+   "id": "services.water_tank",
+   "title": "Overhead water tank",
+   "status": "pass",
+   "message": "Overhead water tank on the roof.",
+   "value": null,
+   "limit": null,
+   "rule_ref": "LDA B&ZR 2019 (consolidated 09-02-2026)",
+   "element_ids": []
+  }
+ ],
+ "envelope": {
+  "setbacks_ft": {
+   "front": 10.0,
+   "rear": 7.0,
+   "left": 0.0,
+   "right": 5.0
+  },
+  "max_coverage_pct": 70.0,
+  "max_height_ft": 45.0,
+  "max_storeys": 3,
+  "buildable_rect": {
+   "x": 0.0,
+   "y": 10.0,
+   "w": 30.0,
+   "d": 48.0
+  }
+ },
+ "metrics": {
+  "plot_area_sqft": 2275.0,
+  "covered_area_sqft": 1440.0,
+  "coverage_pct": 63.3,
+  "total_floor_area_sqft": 2565.0,
+  "far": 1.13,
+  "height_ft": 27.0,
+  "storeys": 2
+ }
+}

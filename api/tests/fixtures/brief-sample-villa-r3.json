@@ -1,0 +1,61 @@
+{
+ "plot": {
+  "corner": false,
+  "width_ft": 50.0,
+  "area_marla": 20.0,
+  "depth_ft": 90.0
+ },
+ "solar": "panels",
+ "bathrooms": 5,
+ "spaces": [
+  "drawing",
+  "dining",
+  "tv_lounge",
+  "kitchen",
+  "dirty_kitchen",
+  "prayer",
+  "servant_quarter",
+  "car_porch:2",
+  "roof_terrace"
+ ],
+ "auto_filled": [],
+ "authority": "LDA",
+ "preferences": [],
+ "storeys": 2,
+ "bedrooms": 5,
+ "city": "Lahore",
+ "water_tank": "concrete",
+ "style": "Spanish",
+ "facing": "S",
+ "floors": [
+  {
+   "rooms": [
+    "drawing",
+    "dining",
+    "lounge",
+    "kitchen",
+    "dirty_kitchen",
+    "prayer",
+    "servant_quarter",
+    "bedroom:2",
+    "bath:2"
+   ],
+   "level": "ground"
+  },
+  {
+   "rooms": [
+    "bedroom:3",
+    "bath:3"
+   ],
+   "level": "first"
+  },
+  {
+   "rooms": [
+    "terrace"
+   ],
+   "level": "roof"
+  }
+ ],
+ "basement": false,
+ "corner_stated": true
+}

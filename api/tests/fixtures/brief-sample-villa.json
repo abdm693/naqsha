@@ -1,0 +1,54 @@
+{
+ "water_tank": "concrete",
+ "storeys": 2,
+ "city": "Lahore",
+ "bathrooms": 5,
+ "auto_filled": [],
+ "bedrooms": 5,
+ "authority": "LDA",
+ "floors": [
+  {
+   "rooms": [
+    "drawing",
+    "dining",
+    "lounge",
+    "kitchen",
+    "dirty_kitchen",
+    "prayer",
+    "servant_quarter",
+    "bedroom:2",
+    "bath:2"
+   ],
+   "level": "ground"
+  },
+  {
+   "rooms": [
+    "bedroom:3",
+    "bath:3"
+   ],
+   "level": "first"
+  }
+ ],
+ "plot": {
+  "width_ft": 50.0,
+  "corner": false,
+  "area_marla": 20.0,
+  "depth_ft": 90.0
+ },
+ "facing": "S",
+ "basement": false,
+ "solar": "panels",
+ "style": "Spanish",
+ "preferences": [],
+ "spaces": [
+  "drawing",
+  "dining",
+  "tv_lounge",
+  "kitchen",
+  "dirty_kitchen",
+  "prayer",
+  "servant_quarter",
+  "car_porch:2",
+  "roof_terrace"
+ ]
+}

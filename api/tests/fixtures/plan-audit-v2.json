@@ -1,0 +1,1431 @@
+{
+ "openings": [
+  {
+   "height_ft": 8,
+   "id": "g_main_door",
+   "width_ft": 4,
+   "type": "main_door",
+   "level": "ground",
+   "between": [
+    "g_lounge",
+    "g_porch"
+   ],
+   "at": [
+    13.5,
+    26.0
+   ]
+  },
+  {
+   "height_ft": 7.5,
+   "id": "g_drawing_porch_door",
+   "width_ft": 3.5,
+   "type": "door",
+   "level": "ground",
+   "between": [
+    "g_drawing",
+    "g_porch"
+   ],
+   "at": [
+    16.0,
+    21.0
+   ]
+  },
+  {
+   "height_ft": 7.5,
+   "id": "g_drawing_lounge_door",
+   "width_ft": 4,
+   "type": "double_door",
+   "level": "ground",
+   "between": [
+    "g_drawing",
+    "g_lounge"
+   ],
+   "at": [
+    19.0,
+    26.0
+   ]
+  },
+  {
+   "sill_ft": 2,
+   "type": "window",
+   "width_ft": 8,
+   "height_ft": 5.5,
+   "id": "g_drawing_w1",
+   "level": "ground",
+   "between": [
+    "g_drawing",
+    "exterior"
+   ],
+   "at": [
+    23.0,
+    10.0
+   ]
+  },
+  {
+   "sill_ft": 2.5,
+   "type": "window",
+   "width_ft": 5,
+   "height_ft": 5,
+   "id": "g_drawing_w2",
+   "level": "ground",
+   "between": [
+    "g_drawing",
+    "g_side"
+   ],
+   "at": [
+    30.0,
+    18.0
+   ]
+  },
+  {
+   "sill_ft": 1,
+   "type": "window",
+   "width_ft": 3,
+   "height_ft": 7,
+   "id": "g_lounge_w_porch",
+   "level": "ground",
+   "between": [
+    "g_lounge",
+    "g_porch"
+   ],
+   "at": [
+    9.5,
+    26.0
+   ]
+  },
+  {
+   "height_ft": 7,
+   "id": "g_laundry_door",
+   "width_ft": 2.5,
+   "type": "door",
+   "level": "ground",
+   "between": [
+    "g_laundry",
+    "g_lounge_ext"
+   ],
+   "at": [
+    5.0,
+    41.5
+   ]
+  },
+  {
+   "height_ft": 7,
+   "id": "g_dirty_kitchen_door",
+   "width_ft": 2.5,
+   "type": "door",
+   "level": "ground",
+   "between": [
+    "g_dirty_kitchen",
+    "g_kit_passage"
+   ],
+   "at": [
+    24.0,
+    30.0
+   ]
+  },
+  {
+   "sill_ft": 3.5,
+   "type": "window",
+   "width_ft": 3,
+   "height_ft": 3.5,
+   "id": "g_dirty_kitchen_w",
+   "level": "ground",
+   "between": [
+    "g_dirty_kitchen",
+    "g_side"
+   ],
+   "at": [
+    30.0,
+    28.5
+   ]
+  },
+  {
+   "height_ft": 7,
+   "id": "g_dirty_kitchen_ext_door",
+   "width_ft": 2.5,
+   "type": "door",
+   "level": "ground",
+   "between": [
+    "g_dirty_kitchen",
+    "g_side"
+   ],
+   "at": [
+    30.0,
+    32.5
+   ]
+  },
+  {
+   "height_ft": 7,
+   "id": "g_kitchen_door",
+   "width_ft": 3,
+   "type": "door",
+   "level": "ground",
+   "between": [
+    "g_kitchen",
+    "g_lounge_ext"
+   ],
+   "at": [
+    22.0,
+    40.0
+   ]
+  },
+  {
+   "height_ft": 7,
+   "id": "g_kitchen_dk_door",
+   "width_ft": 2.5,
+   "type": "door",
+   "level": "ground",
+   "between": [
+    "g_kitchen",
+    "g_dirty_kitchen"
+   ],
+   "at": [
+    27.0,
+    34.5
+   ]
+  },
+  {
+   "sill_ft": 3.5,
+   "type": "window",
+   "width_ft": 4,
+   "height_ft": 3.5,
+   "id": "g_kitchen_w",
+   "level": "ground",
+   "between": [
+    "g_kitchen",
+    "g_side"
+   ],
+   "at": [
+    30.0,
+    39.0
+   ]
+  },
+  {
+   "height_ft": 7,
+   "id": "g_bed1_door",
+   "width_ft": 3,
+   "type": "door",
+   "level": "ground",
+   "between": [
+    "g_bed1",
+    "g_lounge_ext"
+   ],
+   "at": [
+    8.0,
+    44.0
+   ]
+  },
+  {
+   "sill_ft": 2.5,
+   "type": "window",
+   "width_ft": 6,
+   "height_ft": 5,
+   "id": "g_bed1_w",
+   "level": "ground",
+   "between": [
+    "g_bed1",
+    "g_rear"
+   ],
+   "at": [
+    5.5,
+    58.0
+   ]
+  },
+  {
+   "height_ft": 7,
+   "id": "g_bath1_door",
+   "width_ft": 2.5,
+   "type": "door",
+   "level": "ground",
+   "between": [
+    "g_bath1",
+    "g_bed1"
+   ],
+   "at": [
+    11.0,
+    53.5
+   ]
+  },
+  {
+   "sill_ft": 6,
+   "type": "ventilator",
+   "width_ft": 2,
+   "height_ft": 1.5,
+   "id": "g_bath1_v",
+   "level": "ground",
+   "between": [
+    "g_bath1",
+    "g_rear"
+   ],
+   "at": [
+    13.0,
+    58.0
+   ]
+  },
+  {
+   "height_ft": 7,
+   "id": "g_powder_door",
+   "width_ft": 2.5,
+   "type": "door",
+   "level": "ground",
+   "between": [
+    "g_powder",
+    "g_rear_lobby"
+   ],
+   "at": [
+    17.0,
+    49.0
+   ]
+  },
+  {
+   "sill_ft": 6,
+   "type": "ventilator",
+   "width_ft": 2,
+   "height_ft": 1.5,
+   "id": "g_powder_v",
+   "level": "ground",
+   "between": [
+    "g_powder",
+    "g_rear"
+   ],
+   "at": [
+    17.0,
+    58.0
+   ]
+  },
+  {
+   "height_ft": 7,
+   "id": "g_guest_door",
+   "width_ft": 3,
+   "type": "door",
+   "level": "ground",
+   "between": [
+    "g_guest",
+    "g_lounge_ext"
+   ],
+   "at": [
+    20.5,
+    44.0
+   ]
+  },
+  {
+   "sill_ft": 2.5,
+   "type": "window",
+   "width_ft": 5,
+   "height_ft": 4.5,
+   "id": "g_guest_w",
+   "level": "ground",
+   "between": [
+    "g_guest",
+    "g_side"
+   ],
+   "at": [
+    30.0,
+    49.0
+   ]
+  },
+  {
+   "height_ft": 7,
+   "id": "g_guest_bath_door",
+   "width_ft": 2.5,
+   "type": "door",
+   "level": "ground",
+   "between": [
+    "g_guest_bath",
+    "g_guest"
+   ],
+   "at": [
+    24.5,
+    54.0
+   ]
+  },
+  {
+   "sill_ft": 6,
+   "type": "ventilator",
+   "width_ft": 2,
+   "height_ft": 1.5,
+   "id": "g_guest_bath_v1",
+   "level": "ground",
+   "between": [
+    "g_guest_bath",
+    "g_side"
+   ],
+   "at": [
+    30.0,
+    56.0
+   ]
+  },
+  {
+   "sill_ft": 6,
+   "type": "ventilator",
+   "width_ft": 2.5,
+   "height_ft": 1.5,
+   "id": "g_guest_bath_v2",
+   "level": "ground",
+   "between": [
+    "g_guest_bath",
+    "g_rear"
+   ],
+   "at": [
+    24.5,
+    58.0
+   ]
+  },
+  {
+   "sill_ft": 0,
+   "type": "sliding_door",
+   "width_ft": 6,
+   "height_ft": 7.5,
+   "id": "f_bed3_slide",
+   "level": "first",
+   "between": [
+    "f_bed3",
+    "f_balcony"
+   ],
+   "at": [
+    5.5,
+    15.0
+   ]
+  },
+  {
+   "height_ft": 7,
+   "id": "f_bed3_door",
+   "width_ft": 3,
+   "type": "door",
+   "level": "first",
+   "between": [
+    "f_bed3",
+    "f_lobby_front"
+   ],
+   "at": [
+    11.0,
+    23.5
+   ]
+  },
+  {
+   "height_ft": 7,
+   "id": "f_bath3_door",
+   "width_ft": 2.5,
+   "type": "door",
+   "level": "first",
+   "between": [
+    "f_bath3",
+    "f_bed3"
+   ],
+   "at": [
+    11.0,
+    18.0
+   ]
+  },
+  {
+   "sill_ft": 6,
+   "type": "ventilator",
+   "width_ft": 2,
+   "height_ft": 1.5,
+   "id": "f_bath3_v",
+   "level": "first",
+   "between": [
+    "f_bath3",
+    "f_balcony"
+   ],
+   "at": [
+    13.5,
+    15.0
+   ]
+  },
+  {
+   "sill_ft": 1.5,
+   "type": "window",
+   "width_ft": 8,
+   "height_ft": 6,
+   "id": "f_master_w1",
+   "level": "first",
+   "between": [
+    "f_master",
+    "exterior"
+   ],
+   "at": [
+    23.0,
+    10.0
+   ]
+  },
+  {
+   "sill_ft": 2.5,
+   "type": "window",
+   "width_ft": 5,
+   "height_ft": 5,
+   "id": "f_master_w2",
+   "level": "first",
+   "between": [
+    "f_master",
+    "exterior"
+   ],
+   "at": [
+    30.0,
+    15.5
+   ]
+  },
+  {
+   "height_ft": 7,
+   "id": "f_master_dress_door",
+   "width_ft": 3,
+   "type": "door",
+   "level": "first",
+   "between": [
+    "f_master_dress",
+    "f_lobby_front"
+   ],
+   "at": [
+    16.0,
+    23.5
+   ]
+  },
+  {
+   "height_ft": 7,
+   "id": "f_master_arch",
+   "width_ft": 3,
+   "type": "arch",
+   "level": "first",
+   "between": [
+    "f_master",
+    "f_master_dress"
+   ],
+   "at": [
+    19.5,
+    21.0
+   ]
+  },
+  {
+   "height_ft": 7,
+   "id": "f_master_bath_door",
+   "width_ft": 2.5,
+   "type": "door",
+   "level": "first",
+   "between": [
+    "f_master_bath",
+    "f_master"
+   ],
+   "at": [
+    26.5,
+    21.0
+   ]
+  },
+  {
+   "sill_ft": 6,
+   "type": "ventilator",
+   "width_ft": 2.5,
+   "height_ft": 1.5,
+   "id": "f_master_bath_v",
+   "level": "first",
+   "between": [
+    "f_master_bath",
+    "exterior"
+   ],
+   "at": [
+    30.0,
+    23.5
+   ]
+  },
+  {
+   "height_ft": 7,
+   "id": "f_prayer_door",
+   "width_ft": 3,
+   "type": "door",
+   "level": "first",
+   "between": [
+    "f_prayer",
+    "f_bridge"
+   ],
+   "at": [
+    16.0,
+    28.0
+   ]
+  },
+  {
+   "height_ft": 7,
+   "id": "f_prayer_arch",
+   "width_ft": 3.5,
+   "type": "arch",
+   "level": "first",
+   "between": [
+    "f_prayer",
+    "f_lounge"
+   ],
+   "at": [
+    20.0,
+    34.0
+   ]
+  },
+  {
+   "sill_ft": 2.5,
+   "type": "window",
+   "width_ft": 4,
+   "height_ft": 4.5,
+   "id": "f_prayer_w",
+   "level": "first",
+   "between": [
+    "f_prayer",
+    "exterior"
+   ],
+   "at": [
+    30.0,
+    30.0
+   ]
+  },
+  {
+   "sill_ft": 2.5,
+   "type": "window",
+   "width_ft": 6,
+   "height_ft": 5,
+   "id": "f_lounge_w",
+   "level": "first",
+   "between": [
+    "f_lounge",
+    "exterior"
+   ],
+   "at": [
+    30.0,
+    38.0
+   ]
+  },
+  {
+   "sill_ft": 3.5,
+   "type": "window",
+   "width_ft": 4,
+   "height_ft": 3.5,
+   "id": "f_kitchenette_w",
+   "level": "first",
+   "between": [
+    "f_kitchenette",
+    "exterior"
+   ],
+   "at": [
+    30.0,
+    45.5
+   ]
+  },
+  {
+   "height_ft": 7,
+   "id": "f_bed4_door",
+   "width_ft": 3,
+   "type": "door",
+   "level": "first",
+   "between": [
+    "f_bed4",
+    "f_lounge_west"
+   ],
+   "at": [
+    4.5,
+    45.0
+   ]
+  },
+  {
+   "sill_ft": 2.5,
+   "type": "window",
+   "width_ft": 5,
+   "height_ft": 5,
+   "id": "f_bed4_w",
+   "level": "first",
+   "between": [
+    "f_bed4",
+    "exterior"
+   ],
+   "at": [
+    4.5,
+    58.0
+   ]
+  },
+  {
+   "height_ft": 7,
+   "id": "f_bath4_door",
+   "width_ft": 2.5,
+   "type": "door",
+   "level": "first",
+   "between": [
+    "f_bath4",
+    "f_bed4"
+   ],
+   "at": [
+    9.0,
+    53.5
+   ]
+  },
+  {
+   "sill_ft": 6,
+   "type": "ventilator",
+   "width_ft": 2,
+   "height_ft": 1.5,
+   "id": "f_bath4_v",
+   "level": "first",
+   "between": [
+    "f_bath4",
+    "exterior"
+   ],
+   "at": [
+    11.0,
+    58.0
+   ]
+  },
+  {
+   "height_ft": 7,
+   "id": "f_bed5_door",
+   "width_ft": 3,
+   "type": "door",
+   "level": "first",
+   "between": [
+    "f_bed5",
+    "f_kit_lobby"
+   ],
+   "at": [
+    19.5,
+    49.0
+   ]
+  },
+  {
+   "sill_ft": 2.5,
+   "type": "window",
+   "width_ft": 5,
+   "height_ft": 4.5,
+   "id": "f_bed5_w",
+   "level": "first",
+   "between": [
+    "f_bed5",
+    "exterior"
+   ],
+   "at": [
+    30.0,
+    53.5
+   ]
+  },
+  {
+   "height_ft": 7,
+   "id": "f_bath5_door",
+   "width_ft": 2.5,
+   "type": "door",
+   "level": "first",
+   "between": [
+    "f_bath5",
+    "f_bed5"
+   ],
+   "at": [
+    17.0,
+    53.5
+   ]
+  },
+  {
+   "sill_ft": 6,
+   "type": "ventilator",
+   "width_ft": 2,
+   "height_ft": 1.5,
+   "id": "f_bath5_v",
+   "level": "first",
+   "between": [
+    "f_bath5",
+    "exterior"
+   ],
+   "at": [
+    15.0,
+    58.0
+   ]
+  }
+ ],
+ "roof": {
+  "mumty": {
+   "door_side": "right",
+   "rect": {
+    "y": 26,
+    "d": 13,
+    "w": 8,
+    "x": 0
+   },
+   "height_ft": 9.5
+  },
+  "water_tank": {
+   "rect": {
+    "y": 28,
+    "d": 7,
+    "w": 7,
+    "x": 16
+   },
+   "height_ft": 5.5
+  },
+  "parapet_ft": 3.5
+ },
+ "schema": "naqsha.plan/1",
+ "levels": [
+  {
+   "id": "ground",
+   "name": "Ground Floor",
+   "index": 0,
+   "slab_ft": 0.5,
+   "elevation_ft": 1.5,
+   "height_ft": 11
+  },
+  {
+   "id": "first",
+   "name": "First Floor",
+   "index": 1,
+   "slab_ft": 0.5,
+   "elevation_ft": 12.5,
+   "height_ft": 11
+  },
+  {
+   "id": "roof",
+   "name": "Roof",
+   "index": 2,
+   "slab_ft": 0.5,
+   "elevation_ft": 23.5,
+   "height_ft": 3.5
+  }
+ ],
+ "stairs": [
+  {
+   "from_level": "ground",
+   "start": "+y",
+   "width_ft": 3.5,
+   "kind": "dogleg",
+   "id": "stair_g_f",
+   "tread_in": 10,
+   "to_level": "first",
+   "rect": {
+    "y": 26.5,
+    "d": 12,
+    "w": 7.25,
+    "x": 0.5
+   },
+   "riser_in": 6.95
+  },
+  {
+   "from_level": "first",
+   "start": "+y",
+   "width_ft": 3.5,
+   "kind": "dogleg",
+   "id": "stair_f_r",
+   "tread_in": 10,
+   "to_level": "roof",
+   "rect": {
+    "y": 26.5,
+    "d": 12,
+    "w": 7.25,
+    "x": 0.5
+   },
+   "riser_in": 6.95
+  }
+ ],
+ "style": {
+  "name": "Modern Contemporary",
+  "summary": "Matched to the concept image: a clean white double-storey volume framed by a bold outer portal, a full-height dark grey slate stone feature pier separating the left car porch/terrace bay from the right living bay, vertical warm teak timber louvers screening the upper master suite, warm wood soffit panels, frameless glass balcony balustrades, and roof solar panels.",
+  "materials": [
+   "smooth white elastomeric plaster",
+   "dark grey split-face slate stone cladding",
+   "vertical teak wood louvers and timber soffits",
+   "matte black aluminium window frames",
+   "frameless tempered glass railings",
+   "charcoal flamed granite driveway pavers"
+  ],
+  "palette": [
+   "#f5f3ef",
+   "#4f5459",
+   "#a86b38",
+   "#1e2022",
+   "#d8d2c7"
+  ]
+ },
+ "notes": [
+  "Setbacks strictly follow LDA 10-marla regulations: 10 ft front, 7 ft rear, and 5 ft right-hand side open space, yielding a 30x48 ft buildable footprint (1,440 sq ft ground coverage = 63.3% \u2264 70%).",
+  "Front massing directly reflects the chosen concept image: a 16 ft wide two-car porch on the left topped by a deep glass-railed terrace balcony, and the drawing room and louvered master bedroom on the right.",
+  "Ground floor houses two bedrooms at the quiet rear (Parents and Guest rooms with attached baths), a front drawing room accessible from the porch, a main kitchen + dirty kitchen on the right side gallery, and a central double-height TV lounge.",
+  "First floor accommodates three bedrooms with attached baths, an upper family lounge overlooking the double-height space via a gallery bridge, an exterior-daylit kitchenette, and a full-size 14x8 ft prayer room along the right open space.",
+  "Every bathroom and powder room has direct natural ventilation to the exterior open spaces, and the flat roof slab provides ample area for solar panel arrays alongside the 9.5 ft mumty and concrete overhead water tank."
+ ],
+ "site": {
+  "facing": "N",
+  "boundary_wall": {
+   "rear_height_ft": 7,
+   "side_height_ft": 7,
+   "front_height_ft": 5
+  },
+  "plot": {
+   "corner": false,
+   "area_marla": 10.1,
+   "width_ft": 35.0,
+   "depth_ft": 65.0
+  },
+  "gates": [
+   {
+    "id": "gate_car",
+    "width_ft": 15,
+    "kind": "sliding",
+    "at": [
+     8,
+     0
+    ]
+   },
+   {
+    "id": "gate_ped",
+    "width_ft": 4,
+    "kind": "pedestrian",
+    "at": [
+     18,
+     0
+    ]
+   }
+  ],
+  "scheme": "Johar Town",
+  "setbacks_ft": {
+   "rear": 7,
+   "right": 5,
+   "left": 0,
+   "front": 10
+  },
+  "city": "Lahore",
+  "authority": "LDA",
+  "road_width_ft": 40
+ },
+ "rooms": [
+  {
+   "id": "g_driveway",
+   "name": "Driveway",
+   "type": "driveway",
+   "floor_finish": "paving",
+   "rect": {
+    "y": 0.0,
+    "d": 10.0,
+    "w": 16.0,
+    "x": 0.0
+   },
+   "level": "ground"
+  },
+  {
+   "id": "g_lawn",
+   "name": "Front Lawn",
+   "type": "lawn",
+   "floor_finish": "grass",
+   "rect": {
+    "y": 0.0,
+    "d": 10.0,
+    "w": 19.0,
+    "x": 16.0
+   },
+   "level": "ground"
+  },
+  {
+   "id": "g_side",
+   "name": "Side Open Space",
+   "type": "open_space",
+   "floor_finish": "paving",
+   "rect": {
+    "y": 10.0,
+    "d": 48.0,
+    "w": 5.0,
+    "x": 30.0
+   },
+   "level": "ground"
+  },
+  {
+   "id": "g_rear",
+   "name": "Rear Open Space",
+   "type": "open_space",
+   "floor_finish": "paving",
+   "rect": {
+    "y": 58.0,
+    "d": 7.0,
+    "w": 35.0,
+    "x": 0.0
+   },
+   "level": "ground"
+  },
+  {
+   "id": "g_porch",
+   "name": "Car Porch (2 Cars)",
+   "type": "porch",
+   "floor_finish": "paving",
+   "rect": {
+    "y": 10.0,
+    "d": 16.0,
+    "w": 16.0,
+    "x": 0.0
+   },
+   "level": "ground"
+  },
+  {
+   "id": "g_drawing",
+   "name": "Drawing Room",
+   "type": "drawing",
+   "floor_finish": "marble",
+   "rect": {
+    "y": 10.0,
+    "d": 16.0,
+    "w": 14.0,
+    "x": 16.0
+   },
+   "level": "ground"
+  },
+  {
+   "open_to": [
+    "g_lounge"
+   ],
+   "id": "g_stair",
+   "name": "Stair Hall",
+   "type": "stair",
+   "floor_finish": "marble",
+   "rect": {
+    "y": 26.0,
+    "d": 13.0,
+    "w": 8.0,
+    "x": 0.0
+   },
+   "level": "ground"
+  },
+  {
+   "id": "g_laundry",
+   "name": "Laundry",
+   "type": "laundry",
+   "floor_finish": "ceramic_tile",
+   "rect": {
+    "y": 39.0,
+    "d": 5.0,
+    "w": 5.0,
+    "x": 0.0
+   },
+   "level": "ground"
+  },
+  {
+   "id": "g_dirty_kitchen",
+   "name": "Dirty Kitchen",
+   "type": "dirty_kitchen",
+   "floor_finish": "porcelain_tile",
+   "rect": {
+    "y": 26.0,
+    "d": 8.5,
+    "w": 6.0,
+    "x": 24.0
+   },
+   "level": "ground"
+  },
+  {
+   "id": "g_kitchen",
+   "name": "Main Kitchen",
+   "type": "kitchen",
+   "floor_finish": "porcelain_tile",
+   "rect": {
+    "y": 34.5,
+    "d": 9.5,
+    "w": 8.0,
+    "x": 22.0
+   },
+   "level": "ground"
+  },
+  {
+   "open_to": [
+    "g_stair",
+    "g_lounge_ext",
+    "g_kit_passage"
+   ],
+   "type": "lounge",
+   "id": "g_lounge",
+   "name": "Double-Height TV Lounge",
+   "floor_finish": "marble",
+   "rect": {
+    "y": 26.0,
+    "d": 13.0,
+    "w": 14.0,
+    "x": 8.0
+   },
+   "ceiling_height_ft": 21.5,
+   "level": "ground"
+  },
+  {
+   "open_to": [
+    "g_lounge"
+   ],
+   "id": "g_kit_passage",
+   "name": "Kitchen Passage",
+   "type": "corridor",
+   "floor_finish": "marble",
+   "rect": {
+    "y": 26.0,
+    "d": 8.5,
+    "w": 2.0,
+    "x": 22.0
+   },
+   "level": "ground"
+  },
+  {
+   "open_to": [
+    "g_lounge",
+    "g_rear_lobby"
+   ],
+   "id": "g_lounge_ext",
+   "name": "Lounge Lobby",
+   "type": "lobby",
+   "floor_finish": "marble",
+   "rect": {
+    "y": 39.0,
+    "d": 5.0,
+    "w": 17.0,
+    "x": 5.0
+   },
+   "level": "ground"
+  },
+  {
+   "id": "g_bed1",
+   "name": "Parents Bedroom",
+   "type": "bedroom",
+   "floor_finish": "wood",
+   "rect": {
+    "y": 44.0,
+    "d": 14.0,
+    "w": 11.0,
+    "x": 0.0
+   },
+   "level": "ground"
+  },
+  {
+   "open_to": [
+    "g_lounge_ext"
+   ],
+   "id": "g_rear_lobby",
+   "name": "Rear Vestibule",
+   "type": "lobby",
+   "floor_finish": "marble",
+   "rect": {
+    "y": 44.0,
+    "d": 5.0,
+    "w": 8.0,
+    "x": 11.0
+   },
+   "level": "ground"
+  },
+  {
+   "id": "g_bath1",
+   "name": "Parents Bath",
+   "type": "bath",
+   "floor_finish": "ceramic_tile",
+   "rect": {
+    "y": 49.0,
+    "d": 9.0,
+    "w": 4.0,
+    "x": 11.0
+   },
+   "level": "ground"
+  },
+  {
+   "id": "g_powder",
+   "name": "Powder Room",
+   "type": "powder",
+   "floor_finish": "ceramic_tile",
+   "rect": {
+    "y": 49.0,
+    "d": 9.0,
+    "w": 4.0,
+    "x": 15.0
+   },
+   "level": "ground"
+  },
+  {
+   "id": "g_guest",
+   "name": "Guest Bedroom",
+   "type": "guest_bedroom",
+   "floor_finish": "wood",
+   "rect": {
+    "y": 44.0,
+    "d": 10.0,
+    "w": 11.0,
+    "x": 19.0
+   },
+   "level": "ground"
+  },
+  {
+   "id": "g_guest_bath",
+   "name": "Guest Bath",
+   "type": "bath",
+   "floor_finish": "ceramic_tile",
+   "rect": {
+    "y": 54.0,
+    "d": 4.0,
+    "w": 11.0,
+    "x": 19.0
+   },
+   "level": "ground"
+  },
+  {
+   "id": "f_balcony",
+   "name": "Front Terrace Balcony",
+   "type": "balcony",
+   "floor_finish": "porcelain_tile",
+   "rect": {
+    "y": 10.0,
+    "d": 5.0,
+    "w": 16.0,
+    "x": 0.0
+   },
+   "level": "first"
+  },
+  {
+   "id": "f_bed3",
+   "name": "Bedroom 3",
+   "type": "bedroom",
+   "floor_finish": "wood",
+   "rect": {
+    "y": 15.0,
+    "d": 11.0,
+    "w": 11.0,
+    "x": 0.0
+   },
+   "level": "first"
+  },
+  {
+   "id": "f_bath3",
+   "name": "Bath 3",
+   "type": "bath",
+   "floor_finish": "ceramic_tile",
+   "rect": {
+    "y": 15.0,
+    "d": 6.0,
+    "w": 5.0,
+    "x": 11.0
+   },
+   "level": "first"
+  },
+  {
+   "open_to": [
+    "f_bridge"
+   ],
+   "id": "f_lobby_front",
+   "name": "Front Passage",
+   "type": "corridor",
+   "floor_finish": "marble",
+   "rect": {
+    "y": 21.0,
+    "d": 5.0,
+    "w": 5.0,
+    "x": 11.0
+   },
+   "level": "first"
+  },
+  {
+   "id": "f_master",
+   "name": "Master Bedroom",
+   "type": "master_bedroom",
+   "floor_finish": "wood",
+   "rect": {
+    "y": 10.0,
+    "d": 11.0,
+    "w": 14.0,
+    "x": 16.0
+   },
+   "level": "first"
+  },
+  {
+   "id": "f_master_dress",
+   "name": "Master Dressing",
+   "type": "dressing",
+   "floor_finish": "wood",
+   "rect": {
+    "y": 21.0,
+    "d": 5.0,
+    "w": 7.0,
+    "x": 16.0
+   },
+   "level": "first"
+  },
+  {
+   "id": "f_master_bath",
+   "name": "Master Bath",
+   "type": "bath",
+   "floor_finish": "marble",
+   "rect": {
+    "y": 21.0,
+    "d": 5.0,
+    "w": 7.0,
+    "x": 23.0
+   },
+   "level": "first"
+  },
+  {
+   "open_to": [
+    "f_bridge"
+   ],
+   "id": "f_stair",
+   "name": "Stair Hall",
+   "type": "stair",
+   "floor_finish": "marble",
+   "rect": {
+    "y": 26.0,
+    "d": 13.0,
+    "w": 8.0,
+    "x": 0.0
+   },
+   "level": "first"
+  },
+  {
+   "open_to": [
+    "f_stair",
+    "f_lobby_front"
+   ],
+   "id": "f_bridge",
+   "name": "Gallery Bridge",
+   "type": "corridor",
+   "floor_finish": "marble",
+   "rect": {
+    "y": 26.0,
+    "d": 4.0,
+    "w": 8.0,
+    "x": 8.0
+   },
+   "level": "first"
+  },
+  {
+   "id": "f_prayer",
+   "name": "Prayer Room",
+   "type": "prayer",
+   "floor_finish": "marble",
+   "rect": {
+    "y": 26.0,
+    "d": 8.0,
+    "w": 14.0,
+    "x": 16.0
+   },
+   "level": "first"
+  },
+  {
+   "open_to": [
+    "f_lounge_hall",
+    "f_kit_lobby"
+   ],
+   "id": "f_lounge",
+   "name": "Upper Family Lounge",
+   "type": "lounge",
+   "floor_finish": "marble",
+   "rect": {
+    "y": 34.0,
+    "d": 8.5,
+    "w": 14.0,
+    "x": 16.0
+   },
+   "level": "first"
+  },
+  {
+   "open_to": [
+    "f_lounge_hall"
+   ],
+   "id": "f_lounge_west",
+   "name": "West Upper Lobby",
+   "type": "lobby",
+   "floor_finish": "marble",
+   "rect": {
+    "y": 39.0,
+    "d": 6.0,
+    "w": 9.0,
+    "x": 0.0
+   },
+   "level": "first"
+  },
+  {
+   "open_to": [
+    "f_lounge",
+    "f_lounge_west",
+    "f_kit_lobby"
+   ],
+   "id": "f_lounge_hall",
+   "name": "Upper Hall",
+   "type": "lobby",
+   "floor_finish": "marble",
+   "rect": {
+    "y": 39.0,
+    "d": 10.0,
+    "w": 7.0,
+    "x": 9.0
+   },
+   "level": "first"
+  },
+  {
+   "open_to": [
+    "f_lounge",
+    "f_lounge_hall",
+    "f_kitchenette"
+   ],
+   "id": "f_kit_lobby",
+   "name": "Kitchenette Hall",
+   "type": "lobby",
+   "floor_finish": "marble",
+   "rect": {
+    "y": 42.5,
+    "d": 6.5,
+    "w": 6.0,
+    "x": 16.0
+   },
+   "level": "first"
+  },
+  {
+   "open_to": [
+    "f_kit_lobby"
+   ],
+   "id": "f_kitchenette",
+   "name": "Kitchenette",
+   "type": "kitchen",
+   "floor_finish": "porcelain_tile",
+   "rect": {
+    "y": 42.5,
+    "d": 6.5,
+    "w": 8.0,
+    "x": 22.0
+   },
+   "level": "first"
+  },
+  {
+   "id": "f_bed4",
+   "name": "Bedroom 4",
+   "type": "bedroom",
+   "floor_finish": "wood",
+   "rect": {
+    "y": 45.0,
+    "d": 13.0,
+    "w": 9.0,
+    "x": 0.0
+   },
+   "level": "first"
+  },
+  {
+   "id": "f_bath4",
+   "name": "Bath 4",
+   "type": "bath",
+   "floor_finish": "ceramic_tile",
+   "rect": {
+    "y": 49.0,
+    "d": 9.0,
+    "w": 4.0,
+    "x": 9.0
+   },
+   "level": "first"
+  },
+  {
+   "id": "f_bath5",
+   "name": "Bath 5",
+   "type": "bath",
+   "floor_finish": "ceramic_tile",
+   "rect": {
+    "y": 49.0,
+    "d": 9.0,
+    "w": 4.0,
+    "x": 13.0
+   },
+   "level": "first"
+  },
+  {
+   "id": "f_bed5",
+   "name": "Bedroom 5",
+   "type": "bedroom",
+   "floor_finish": "wood",
+   "rect": {
+    "y": 49.0,
+    "d": 9.0,
+    "w": 13.0,
+    "x": 17.0
+   },
+   "level": "first"
+  }
+ ],
+ "units": "ft"
+}

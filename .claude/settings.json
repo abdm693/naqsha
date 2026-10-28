@@ -1,0 +1,10 @@
+{
+  "env": {
+    "GOOGLE_CLOUD_PROJECT": "naqsha-nebius-424e",
+    "GOOGLE_CLOUD_LOCATION": "global",
+    "GOOGLE_GENAI_USE_VERTEXAI": "TRUE",
+    "GCP_REGION": "us-central1",
+    "GOOGLE_GENAI_USE_ENTERPRISE": "TRUE",
+    "CLOUDSDK_ACTIVE_CONFIG_NAME": "naqsha-nebius"
+  }
+}

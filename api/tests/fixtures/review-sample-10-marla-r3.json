@@ -1,0 +1,30 @@
+[
+ {
+  "severity": "major",
+  "rooms": [
+   "g_kitchen",
+   "g_dirty_kitchen"
+  ],
+  "problem": "Placing the Open Kitchen and Dirty Kitchen side-by-side makes both rooms 6 ft wide by 15.25 ft deep—long, narrow tunnels where a 2 ft counter leaves barely 3.5 ft of passage and no room for two people to pass or open appliances.",
+  "fix": "Divide the 12 x 15.25 ft kitchen zone front-to-back instead of left-to-right: place a 12 x 6.5 ft Dirty Kitchen at the back against the Rear Space and a 12 x 8.75 ft Open Kitchen in front opening to the TV Lounge & Dining, connected by a 3 ft door."
+ },
+ {
+  "severity": "minor",
+  "rooms": [
+   "f_bath2",
+   "g_drawing"
+  ],
+  "problem": "Bath 2 sits directly over the front-left corner of the Drawing Room, meaning soil and waste pipes will run through the formal guest ceiling and risk visible leaks.",
+  "fix": "Move Bath 2 to the back of Bedroom 2 against the Stair Hall wall so its plumbing drops down outside the main Drawing Room ceiling."
+ },
+ {
+  "severity": "minor",
+  "rooms": [
+   "g_drawing",
+   "g_lounge",
+   "g_parents"
+  ],
+  "problem": "There is no powder room on the ground floor, so Drawing Room guests must walk through the family TV Lounge and into the Parents' Bedroom to use a bathroom.",
+  "fix": "Tuck a 4 x 5 ft powder room under the high flight and landing of the Stair Hall, opening discreetly near the Drawing Room door."
+ }
+]
