@@ -110,17 +110,20 @@ async def _first_concept_url(project: dict) -> str | None:
     return cs[0]["url"] if cs else None
 
 
-MATCH_ASK = """Image 1 is the exterior concept the family chose. Image 2 is the 3D model built for them, seen from the road.
+MATCH_ASK = """The first image is the exterior concept the family chose (a photograph-like render). The other images are the 3D
+model built for them, from the road and from the street corner. The 3D model is a simplified real-time model with flat
+materials: judge whether each element EXISTS in the right place with roughly the right material and colour, never its
+photographic realism, texture detail or lighting. Look at every model image before calling anything missing; an element
+seen in any of them counts. Ignore the neighbouring houses, the street and the sky in all images.
 Check the 3D model against the concept, feature by feature, using this list of the concept's features:
 {features}
-For each feature say whether the 3D model has it: "present" (clearly there, right place, material and colour close),
-"partial" (there but wrong in place, size, material or colour) or "missing". Judge the model on what it shows; a 3D model
-is simpler than a photo, so judge shape, place, material and colour, not photographic realism.
+For each feature say whether the 3D model has it: "present" (there, in about the right place, material and colour close),
+"partial" (there but clearly different in place, size, material or colour) or "missing" (not in any model image).
 Return JSON: {{"features": [{{"id": "F1", "status": "present" | "partial" | "missing", "note": "<what differs, one short
 sentence>"}}], "summary": "<one sentence>"}}"""
 
 
-async def match(project: dict, version: dict, capture: tuple[bytes, str]) -> dict:
+async def match(project: dict, version: dict, capture: tuple[bytes, str], extra: list[tuple[bytes, str]] | None = None) -> dict:
     """Compare the 3D model's front view with the concept: {score, features: [{id, what, status, note}], summary}."""
     c = next((c for c in project.get("concepts") or [] if c["id"] == project.get("selected_concept_id")), None)
     if not c:
@@ -131,9 +134,11 @@ async def match(project: dict, version: dict, capture: tuple[bytes, str]) -> dic
         return {"score": None, "features": [], "summary": "The concept couldn't be read."}
     feats = spec.get("features") or []
     listing = "\n".join(f"- {f['id']}: {f['what']} ({f.get('where', '')}; {f.get('material', '')} {f.get('colour', '')})" for f in feats)
-    text = await llm.generate_text(config.MODEL_VISION, [
-        types.Part.from_bytes(data=ref[0], mime_type=ref[1]), types.Part.from_bytes(data=capture[0], mime_type=capture[1]),
-        MATCH_ASK.format(features=listing)], max_tokens=4000, json_mode=True, thinking=False)
+    shots = [capture] + list(extra or [])
+    text = await llm.generate_text(config.MODEL_VISION, [types.Part.from_bytes(data=ref[0], mime_type=ref[1])]
+                                   + [types.Part.from_bytes(data=d, mime_type=m) for d, m in shots]
+                                   + [MATCH_ASK.format(features=listing)], max_tokens=4000, json_mode=True, thinking=False,
+                                   temperature=0)
     out = llm.parse_json(text)
     by = {str(f.get("id")): f for f in out.get("features") or [] if isinstance(f, dict)}
     rows = []
@@ -154,6 +159,9 @@ Output format: plain text, one or more sections, each exactly:
 // @section <name> [facade]
 <JavaScript statements using `s` (the HouseSDK) and `THREE`>
 // @end
+The rooms, storeys, porch, stair tower and roof come from the plan and are built by the structure section: never redraw
+them here. Add what sits ON them: cladding, colour, fins, screens, railings, canopies, frames, lights, gate and wall
+finishes. When you replace a section, keep everything in it that already matched and change only what the list names.
 Reuse an existing section's name to replace it, or use a new facade_<part> name to add one. The first line of each section is
 a comment naming the features it builds (e.g. `// builds F2, F5`). Only use APIs in the SDK reference. Keep each section under
 about 60 lines. Never use fetch, XMLHttpRequest, WebSocket, import(), eval, Function, document, window or storage."""

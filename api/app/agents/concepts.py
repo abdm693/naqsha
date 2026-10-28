@@ -415,6 +415,8 @@ lighting (wall lights, LED strips); planting and paving.
 Return JSON: {"summary": "<two sentences: the overall look>", "palette": {"<name>": "#hex"},
 "features": [{"id": "F1", "what": "<the element>", "where": "<floor and position>", "material": "<material>",
 "colour": "#hex", "importance": "high" | "medium" | "low"}]}
+Only THIS house and its own plot (its boundary wall, gate, porch, lawn and driveway): never the neighbouring houses, the
+street, poles, wires, trees outside the plot, the sky or people.
 List 12 to 20 features, the ones that define the look first."""
 
 

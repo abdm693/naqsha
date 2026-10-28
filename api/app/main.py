@@ -739,6 +739,8 @@ async def version_views(pid: str, vid: str, body: ViewsBody, me: Identity = Depe
 
 class MatchBody(BaseModel):
     image_data_url: str
+    # more captures of the model (e.g. the street corner), so a feature hidden from the front still counts
+    extra_image_data_urls: list[str] | None = None
     refit: bool = True
 
 
@@ -751,15 +753,30 @@ async def version_match(pid: str, vid: str, body: MatchBody, me: Identity = Depe
     if not v:
         raise HTTPException(404, "version not found")
     capture = blobs.decode_data_url(body.image_data_url)
+    extra = [blobs.decode_data_url(u) for u in (body.extra_image_data_urls or [])[:2]]
 
     async def gen():
         yield "stage", {"stage": "match", "message": "Comparing the 3D model with the concept, feature by feature…"}
-        res = await views.match(p, v, capture)
+        res = await views.match(p, v, capture, extra)
         yield "match", {"match": res}
         fresh = await db.get_version(pid, vid) or v
-        history = (fresh.get("concept_match") or {}).get("history") or []
+        prev = fresh.get("concept_match") or {}
+        history = prev.get("history") or []
         history.append({"score": res.get("score"), "at": res.get("checked_at")})
         stored = {**res, "history": history[-6:]}
+        before = prev.get("pre_refit")
+        if not body.refit and before and (res.get("score") or 0) < (before.get("score") or 0):
+            # the rebuilt facade matches the concept less well: put the earlier one back (a refit only ever helps)
+            await db.patch_version(pid, vid, sections=before["sections"])
+            for i, sec in enumerate(before["sections"]):
+                if sec.get("layer") == "facade":
+                    yield "section", {"section": sec, "index": i}
+            kept = {**before["match"], "history": stored["history"],
+                    "reverted": {"score": res.get("score"), "at": res.get("checked_at")}}
+            await db.patch_version(pid, vid, concept_match=kept)
+            yield "match", {"match": kept}
+            yield "done", {"match": kept, "refit_sections": [], "reverted": True}
+            return
         new_secs: list[dict] = []
         if body.refit and res.get("features") and any(f["status"] != "present" and f.get("importance") != "low" for f in res["features"]):
             yield "stage", {"stage": "match", "message": "Rebuilding the facade features that don't match yet…"}
@@ -768,6 +785,8 @@ async def version_match(pid: str, vid: str, body: MatchBody, me: Identity = Depe
             except Exception:
                 logging.exception("refit failed for %s/%s", pid, vid)
             if new_secs:
+                stored["pre_refit"] = {"score": res.get("score"), "sections": fresh["sections"],
+                                       "match": {k: val for k, val in stored.items() if k != "pre_refit"}}
                 merged = reviser.merge_sections(fresh["sections"], new_secs, [])
                 await db.patch_version(pid, vid, sections=merged)
                 for sec in new_secs:

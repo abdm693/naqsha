@@ -1,0 +1,15 @@
+[
+ {"id": "vo01", "text": "Most families in Pakistan build a house once. The plan goes back and forth with a draftsman for weeks, and nobody checks the bylaws until the authority sends it back."},
+ {"id": "vo02", "text": "Naqsha designs the home with them. Every agent in it runs on NVIDIA Nemotron, served by Nebius Token Factory."},
+ {"id": "vo03", "text": "This family has a ten marla plot in Islamabad. They describe it in one message, and a setup agent on Nemotron 3 Super fills in the brief."},
+ {"id": "vo04", "text": "Naqsha ships with Lahore's rules. For Islamabad, it searched the web with Tavily, found the CDA's own regulations, and Nemotron 3 Ultra turned them into a rule pack, with every number linked to its source."},
+ {"id": "vo05", "text": "A family that already has a drawing can upload a photo of it. Nemotron's vision model reads every room, and the design keeps their layout."},
+ {"id": "vo06", "text": "Four exteriors come back, and the family picks one."},
+ {"id": "vo07", "text": "Then the architect agent gets to work. Nemotron 3 Ultra drafts three floor plans at once, a rules engine scores them, and a fixer agent repairs the best one through tool calls, trying each edit against the rules before it keeps it."},
+ {"id": "vo08", "text": "It writes the 3D model as code, from a checklist of every feature in the chosen concept."},
+ {"id": "vo09", "text": "The vision model compares the model with the concept, and anything missing goes back to be rebuilt."},
+ {"id": "vo10", "text": "Photos come from the model itself: from the road, the corner, the garden and the air. Every angle shows the same house."},
+ {"id": "vo11", "text": "Then the family walks through it, room by room, before the first brick."},
+ {"id": "vo12", "text": "Nemotron does all of the thinking. Ultra plans, fixes and writes the code, Super runs the conversation, and the vision model reads drawings and checks the build."},
+ {"id": "vo13", "text": "Naqsha. Open source, built on Nemotron and Nebius."}
+]

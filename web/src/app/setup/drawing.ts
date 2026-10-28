@@ -88,7 +88,11 @@ export async function importDrawing(pid: string, files: File[]): Promise<Project
   try {
     const images = await Promise.all(picked.map(shrink));
     const p = await api.uploadDrawing(pid, images);
-    if (useProject.getState().pid === pid) useProject.setState({ project: p });
+    if (useProject.getState().pid === pid) {
+      // the server adds a chat message about the drawing; show it in place of the stale question
+      const messages = await api.getMessages(pid).catch(() => null);
+      useProject.setState(messages ? { project: p, messages } : { project: p });
+    }
     if (p.imported) {
       const skipped = sheets.length > MAX_SHEETS ? `I looked at the first ${MAX_SHEETS} sheets.` : undefined;
       toast.success(readLine(p.imported), skipped);

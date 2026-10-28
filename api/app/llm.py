@@ -190,9 +190,11 @@ async def guarded_stream(model: str, contents, config_=None, **kw) -> AsyncItera
 
 
 async def generate_text(model: str, contents, system: str | None = None, max_tokens: int = 16384, json_mode: bool = False,
-                        thinking: bool = True) -> str:
+                        thinking: bool = True, temperature: float | None = None) -> str:
     """One completion's text (non-streaming)."""
     req = _request(model, contents, None, system=system, max_tokens=max_tokens, json_mode=json_mode, thinking=thinking)
+    if temperature is not None:
+        req["temperature"] = temperature
     resp = await _create(req)
     return resp.choices[0].message.content or ""
 

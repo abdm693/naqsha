@@ -54,11 +54,13 @@ interface PhotoJob {
 }
 
 interface MatchJob {
-  status: "capturing" | "checking" | "refitting" | "done" | "error";
+  status: "capturing" | "checking" | "refitting" | "rechecking" | "done" | "error";
   message?: string;
   match?: ConceptMatch;
   /** Sections rewritten so far by the refit. */
   refit: string[];
+  /** The rebuilt facade was checked again (the match is the new score). */
+  rechecked?: boolean;
   error?: string;
 }
 
@@ -76,7 +78,7 @@ const patchMatch = (vid: string, patch: Partial<MatchJob> | ((j: MatchJob) => Pa
 };
 
 const photosRunning = (j?: PhotoJob) => !!j && (j.status === "capturing" || j.status === "drawing");
-const matchRunning = (j?: MatchJob) => !!j && (j.status === "capturing" || j.status === "checking" || j.status === "refitting");
+const matchRunning = (j?: MatchJob) => !!j && (j.status === "capturing" || j.status === "checking" || j.status === "refitting" || j.status === "rechecking");
 
 /** Patch the cached version (the House view shows it, so the viewer rebuilds what changed). */
 function patchVersion(vid: string, patch: (v: Version) => Partial<Version>) {
@@ -118,21 +120,29 @@ export async function makePhotos(pid: string, vid: string, viewer: () => ViewerH
 }
 
 /**
- * Compare the model's front view with the concept; with refit, rebuild the facade features that are missing. Resolves
- * with the sections the refit rewrote (empty when nothing changed), or null when the check didn't run.
+ * Compare the model (front and street-corner captures) with the concept; with refit, rebuild the facade features that
+ * are missing, wait for the viewer to rebuild them and check once more without refit, so the score shown is the rebuilt
+ * house's. Resolves with the sections the refit rewrote (empty when nothing changed), or null when the check didn't run.
  */
 export async function checkConcept(pid: string, vid: string, viewer: () => ViewerHandle | null, opts?: { quiet?: boolean }): Promise<string[] | null> {
   if (matchRunning(useJobs.getState().match[vid])) return null;
   const prev = useJobs.getState().match[vid];
   useJobs.setState((s) => ({ match: { ...s.match, [vid]: { status: "capturing", refit: [], match: prev?.match, message: "Looking at the house from the road…" } } }));
-  try {
+
+  /** Capture front + corner (after any rebuild has finished) and run one check. Resolves with the rewritten sections. */
+  const pass = async (refit: boolean): Promise<string[]> => {
     const v = viewer();
-    const [front] = v ? await v.captureAngles(["front"]) : [];
+    const caps = v ? await v.captureAngles(["front", "corner"]) : [];
+    const front = caps.find((c) => c.angle === "front");
     if (!front) throw new Error("The 3D view isn't ready yet.");
-    patchMatch(vid, { status: "checking", message: "Comparing the model with the concept…" });
+    const extra = caps.filter((c) => c.angle !== "front").map((c) => c.image);
+    if (refit) patchMatch(vid, { status: "checking", message: "Comparing the model with the concept…" });
     let seenMatch = false;
-    await api.matchConcept(pid, vid, { image_data_url: front.image, refit: true }, {
-      stage: ({ message }) => patchMatch(vid, { message: plainStage(message, seenMatch), ...(seenMatch ? { status: "refitting" } : {}) }),
+    let rewritten: string[] = [];
+    await api.matchConcept(pid, vid, { image_data_url: front.image, ...(extra.length ? { extra_image_data_urls: extra } : {}), refit }, {
+      stage: ({ message }) => {
+        if (refit) patchMatch(vid, { message: plainStage(message, seenMatch), ...(seenMatch ? { status: "refitting" } : {}) });
+      },
       match: ({ match }) => {
         seenMatch = true;
         patchMatch(vid, { match });
@@ -147,14 +157,26 @@ export async function checkConcept(pid: string, vid: string, viewer: () => Viewe
         patchMatch(vid, (j) => ({ refit: j.refit.includes(section.name) ? j.refit : [...j.refit, section.name] }));
       },
       done: (d) => {
-        const m = (d as { match?: ConceptMatch }).match;
+        const { match: m, refit_sections } = d as { match?: ConceptMatch; refit_sections?: string[] };
         if (m) {
           patchMatch(vid, { match: m });
           patchVersion(vid, () => ({ concept_match: m }));
         }
+        if (Array.isArray(refit_sections)) rewritten = refit_sections;
       },
     });
-    const refit = useJobs.getState().match[vid]?.refit ?? [];
+    return rewritten.length ? rewritten : refit ? useJobs.getState().match[vid]?.refit ?? [] : [];
+  };
+
+  try {
+    const refit = await pass(true);
+    if (refit.length) {
+      // captureAngles waits for the viewer to finish rebuilding the rewritten sections before it captures
+      patchMatch(vid, { status: "rechecking", message: "Checking the rebuilt facade…" });
+      await refetchVersion(pid, vid);
+      await pass(false);
+      patchMatch(vid, { rechecked: true });
+    }
     patchMatch(vid, { status: "done", message: undefined });
     await refetchVersion(pid, vid);
     return refit;
@@ -491,8 +513,14 @@ export function ConceptMatchChip({
             <p className="text-[13.5px] font-medium">
               {typeof score === "number" ? `${Math.round(score)}% of the concept is in the model` : busy ? "Checking…" : "Not checked yet"}
             </p>
-            {typeof before === "number" && typeof score === "number" && before !== score && (
-              <p className="text-[12px] text-hud-ink-2">{score > before ? "Up" : "Down"} from {Math.round(before)}% at the last check</p>
+            {match?.reverted ? (
+              <p className="text-[12px] text-hud-ink-2">
+                The rebuilt facade scored {Math.round(match.reverted.score ?? 0)}%, so the earlier facade was kept.
+              </p>
+            ) : typeof before === "number" && typeof score === "number" && before !== score && (
+              <p className="text-[12px] text-hud-ink-2">
+                {score > before ? "Up" : "Down"} from {Math.round(before)}% {job?.rechecked && job.status === "done" ? "before the facade was rebuilt" : "at the last check"}
+              </p>
             )}
             {match?.summary && <p className="mt-0.5 text-[12.5px] leading-snug text-hud-ink-2">{match.summary}</p>}
           </div>
@@ -518,7 +546,7 @@ export function ConceptMatchChip({
         )}
         {refit.length > 0 && !busy && (
           <p className="mt-1 border-t border-white/10 px-1 pt-2 text-[12.5px] text-hud-ink-2">
-            Rebuilt {rebuiltPhrase(refit, plan)} to bring the model closer to the concept. Check again for the new score.
+            Rebuilt {rebuiltPhrase(refit, plan)} to bring the model closer to the concept.{job?.rechecked ? "" : " Check again for the new score."}
           </p>
         )}
         {canEdit && (

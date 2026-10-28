@@ -126,8 +126,8 @@ export interface Api {
   saveThumbnail(pid: string, vid: string, imageDataUrl: string): Promise<{ url: string }>;
   /** Photographs from several angles, each made from a capture of the 3D model (events: view, view.failed, done). */
   views(pid: string, vid: string, body: { shots: { angle: string; label?: string; image_data_url: string }[] }, handlers: SSEHandlers, opts?: StreamOptions): Promise<void>;
-  /** Compare the 3D model's front view with the concept; with refit, rebuild missing facade features (events: stage, match, section, done). */
-  matchConcept(pid: string, vid: string, body: { image_data_url: string; refit?: boolean }, handlers: SSEHandlers, opts?: StreamOptions): Promise<void>;
+  /** Compare the 3D model's front view (plus up to 2 more captures) with the concept; with refit, rebuild missing facade features (events: stage, match, section, done). */
+  matchConcept(pid: string, vid: string, body: { image_data_url: string; extra_image_data_urls?: string[]; refit?: boolean }, handlers: SSEHandlers, opts?: StreamOptions): Promise<void>;
   /** Start from the family's own floor plan drawing (data URLs, one per sheet). */
   uploadDrawing(pid: string, images: string[]): Promise<Project>;
 

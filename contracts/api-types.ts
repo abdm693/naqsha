@@ -103,6 +103,8 @@ export interface ConceptMatch {
   checked_at?: string;
   history?: { score: number | null; at?: string }[];
   refit?: { sections: string[]; at: string };
+  /** The rebuilt facade scored lower, so the earlier facade (and its score) was kept. */
+  reverted?: { score: number | null; at?: string };
 }
 
 /** The family's own drawing, read room by room (Nemotron VL) and used as the starting layout. */
