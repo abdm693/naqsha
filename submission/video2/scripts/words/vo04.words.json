@@ -1,182 +1,176 @@
 [
  {
   "text": "This",
-  "start": 0.19,
-  "end": 0.38,
+  "start": 0.21,
+  "end": 0.3,
   "id": "w0"
  },
  {
   "text": "plot",
-  "start": 0.38,
-  "end": 0.76,
+  "start": 0.3,
+  "end": 0.6,
   "id": "w1"
  },
  {
   "text": "is",
-  "start": 0.76,
-  "end": 0.92,
+  "start": 0.6,
+  "end": 0.74,
   "id": "w2"
  },
  {
   "text": "in",
-  "start": 0.96,
-  "end": 1.09,
+  "start": 0.75,
+  "end": 0.9,
   "id": "w3"
  },
  {
   "text": "Islamabad,",
-  "start": 1.14,
-  "end": 2.11,
+  "start": 0.9,
+  "end": 1.72,
   "id": "w4"
  },
  {
   "text": "so",
-  "start": 2.11,
-  "end": 2.23,
+  "start": 1.78,
+  "end": 1.84,
   "id": "w5"
  },
  {
-  "text": "the",
-  "start": 2.23,
-  "end": 2.41,
+  "text": "it",
+  "start": 1.84,
+  "end": 1.96,
   "id": "w6"
  },
  {
-  "text": "agent",
-  "start": 2.41,
-  "end": 2.72,
+  "text": "looked",
+  "start": 1.96,
+  "end": 2.28,
   "id": "w7"
  },
  {
-  "text": "looked",
-  "start": 2.72,
-  "end": 2.95,
+  "text": "up",
+  "start": 2.39,
+  "end": 2.48,
   "id": "w8"
  },
  {
-  "text": "up",
-  "start": 2.95,
-  "end": 3.01,
+  "text": "the",
+  "start": 2.48,
+  "end": 2.64,
   "id": "w9"
  },
  {
-  "text": "the",
-  "start": 3.14,
-  "end": 3.28,
+  "text": "CDA's",
+  "start": 2.64,
+  "end": 3.12,
   "id": "w10"
  },
  {
-  "text": "CDA's",
-  "start": 3.28,
-  "end": 3.86,
+  "text": "building",
+  "start": 3.22,
+  "end": 3.44,
   "id": "w11"
  },
  {
-  "text": "building",
-  "start": 3.99,
-  "end": 4.24,
+  "text": "rules",
+  "start": 3.44,
+  "end": 3.68,
   "id": "w12"
  },
  {
-  "text": "rules",
-  "start": 4.24,
-  "end": 4.56,
+  "text": "with",
+  "start": 3.68,
+  "end": 3.84,
   "id": "w13"
  },
  {
-  "text": "with",
-  "start": 4.56,
-  "end": 4.84,
+  "text": "Taveli,",
+  "start": 3.84,
+  "end": 4.56,
   "id": "w14"
  },
  {
-  "text": "Taveli",
-  "start": 4.84,
-  "end": 5.36,
+  "text": "and",
+  "start": 4.56,
+  "end": 4.77,
   "id": "w15"
  },
  {
-  "text": "and",
-  "start": 5.54,
-  "end": 5.56,
+  "text": "NemoTron",
+  "start": 4.77,
+  "end": 5.28,
   "id": "w16"
  },
  {
-  "text": "NemoTron",
-  "start": 5.56,
-  "end": 6.07,
+  "text": "3",
+  "start": 5.28,
+  "end": 5.48,
   "id": "w17"
  },
  {
-  "text": "3",
-  "start": 6.07,
-  "end": 6.27,
+  "text": "Ultra",
+  "start": 5.48,
+  "end": 5.81,
   "id": "w18"
  },
  {
-  "text": "Ultra",
-  "start": 6.27,
-  "end": 6.58,
+  "text": "turned",
+  "start": 5.81,
+  "end": 6.06,
   "id": "w19"
  },
  {
-  "text": "turned",
-  "start": 6.66,
-  "end": 6.99,
+  "text": "them",
+  "start": 6.34,
+  "end": 6.48,
   "id": "w20"
  },
  {
-  "text": "them",
-  "start": 6.99,
-  "end": 7.09,
+  "text": "into",
+  "start": 6.48,
+  "end": 6.75,
   "id": "w21"
  },
  {
-  "text": "into",
-  "start": 7.32,
-  "end": 7.51,
+  "text": "a",
+  "start": 6.75,
+  "end": 6.81,
   "id": "w22"
  },
  {
-  "text": "a",
-  "start": 7.51,
-  "end": 7.52,
+  "text": "rule",
+  "start": 6.81,
+  "end": 7.08,
   "id": "w23"
  },
  {
-  "text": "rule",
-  "start": 7.57,
-  "end": 7.83,
+  "text": "pack",
+  "start": 7.08,
+  "end": 7.35,
   "id": "w24"
  },
  {
-  "text": "pack",
-  "start": 7.83,
-  "end": 8.16,
+  "text": "that",
+  "start": 7.35,
+  "end": 7.62,
   "id": "w25"
  },
  {
-  "text": "that",
-  "start": 8.16,
-  "end": 8.37,
+  "text": "cites",
+  "start": 7.62,
+  "end": 7.94,
   "id": "w26"
  },
  {
-  "text": "cites",
-  "start": 8.5,
-  "end": 8.65,
+  "text": "its",
+  "start": 7.95,
+  "end": 8.15,
   "id": "w27"
  },
  {
-  "text": "its",
-  "start": 8.8,
-  "end": 8.88,
-  "id": "w28"
- },
- {
   "text": "sources.",
-  "start": 8.88,
-  "end": 9.52,
-  "id": "w29"
+  "start": 8.15,
+  "end": 8.85,
+  "id": "w28"
  }
 ]

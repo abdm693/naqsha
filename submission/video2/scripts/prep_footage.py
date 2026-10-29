@@ -9,10 +9,13 @@ CFG = json.loads((HERE / "footage.json").read_text())
 SRC = (HERE / CFG["capture_dir"]).resolve()
 OUT = ROOT / "assets/footage"
 OUT.mkdir(parents=True, exist_ok=True)
-for flow in ("full", "drawing"):
+for flow in ("full", "drawing", "collab", "client"):
+    if flow not in CFG:
+        continue
     name = CFG[flow]
     src, mp4, js = SRC / f"{name}.webm", OUT / f"{name}.mp4", OUT / f"{name}.json"
-    shutil.copyfile(SRC / f"{name}.json", js)
+    if (SRC / f"{name}.json").exists():  # the client recording has no step log; its marks live in footage.json
+        shutil.copyfile(SRC / f"{name}.json", js)
     if mp4.exists() and mp4.stat().st_mtime > src.stat().st_mtime:
         print("up to date:", mp4.name); continue
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(src), "-vf", "fps=30", "-c:v", "libx264", "-crf", "17",

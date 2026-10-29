@@ -49,7 +49,7 @@
 #ft-rules .steps .sp { display:flex; align-items:center; gap:10px; height:56px; padding:0 20px 0 12px; border-radius:999px; border:2px solid #DADAD4; background:#FFFFFF; color:#6E6E73; font-size:30px; font-weight:600; white-space:nowrap; box-shadow:0 10px 26px -14px rgba(17,17,19,.45); }
 #ft-rules .steps .sp-n { display:flex; align-items:center; justify-content:center; width:32px; height:32px; border-radius:50%; background:rgba(17,17,19,.08); font-family:"Geist Mono", monospace; font-size:28px; }
 </style>
-<div id="ft-rules" data-composition-id="ft-rules" data-width="1920" data-height="1080" data-duration="10.446">
+<div id="ft-rules" data-composition-id="ft-rules" data-width="1920" data-height="1080" data-duration="9.53">
   <div class="topbar">
     <div class="chip" id="ft-rules-chip"><span class="dot" id="ft-rules-live"></span><span>LIVE</span><span class="muted">· real product</span></div>
     <div class="bslot"><div class="badge sl" id="ft-rules-b0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2"/><path d="M9 2h6"/></svg><span>slowed 0.6×</span></div></div>
@@ -58,7 +58,7 @@
   </div>
   <div class="win" id="ft-rules-win">
     <div class="cam" id="ft-rules-cam" data-layout-allow-overflow>
-      <video id="ft-rules-v0" src="assets/footage/full-022242.mp4" data-start="0.0" data-duration="10.446" data-media-start="36.26" data-track-index="0" data-hf-media-start-basis="local" muted playsinline data-playback-rate="0.58685" class="vid"></video>
+      <video id="ft-rules-v0" src="assets/footage/full-022242.mp4" data-start="0.0" data-duration="9.53" data-media-start="36.755" data-track-index="0" data-hf-media-start-basis="local" muted playsinline data-playback-rate="0.59131" class="vid"></video>
       <div class="ring" id="ft-rules-o0" style="left:1404px;top:162px;width:290px;height:56px;border-color:#2747F5;"></div><div class="ring" id="ft-rules-o1" style="left:1306px;top:636px;width:386px;height:184px;border-color:#2747F5;"></div><div class="ring" id="ft-rules-o2" style="left:1306px;top:824px;width:386px;height:140px;border-color:#2747F5;"></div>
     </div>
     <div class="flow" id="ft-rules-o3" style="left:36px;bottom:36px;"><div class="c-tag">CDA rules · Islamabad</div><div class="fl-row"><span class="fl-chip" id="ft-rules-o3-i0">Tavily search + extract</span><span class="fl-ar" id="ft-rules-o3-a1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span><span class="fl-chip" id="ft-rules-o3-i1">Nemotron 3 Ultra</span><span class="fl-ar" id="ft-rules-o3-a2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span><span class="fl-chip last" id="ft-rules-o3-i2">cited rule pack</span></div></div>
@@ -69,26 +69,26 @@
 const tl = gsap.timeline({ paused: true });
 tl.fromTo("#ft-rules-win", {scale:1.03}, {scale:1, duration:0.6, ease:"power3.out"}, 0);
 tl.fromTo("#ft-rules-chap", {opacity:0, x:20}, {opacity:1, x:0, duration:0.35, ease:"power3.out"}, 0.15);
-tl.fromTo("#ft-rules-live", {opacity:1}, {opacity:0.35, duration:0.6, repeat:16, yoyo:true, ease:"sine.inOut"}, 0);
+tl.fromTo("#ft-rules-live", {opacity:1}, {opacity:0.35, duration:0.6, repeat:14, yoyo:true, ease:"sine.inOut"}, 0);
 const cam = document.getElementById("ft-rules-cam");
 tl.set(cam, {x:-1996.8, y:0.0, scale:1.90667, transformOrigin:"0 0"}, 0);
 tl.set(cam, {x:-1996.8, y:0.0, scale:1.90667}, 0.0);
-tl.to(cam, {x:-1580.8, y:-816.4, scale:1.69, duration:0.75, ease:"power2.inOut"}, 3.23);
-tl.to(cam, {x:-1996.8, y:-1123.2, scale:1.90667, duration:0.6, ease:"power2.inOut"}, 8.35);
+tl.to(cam, {x:-1580.8, y:-816.4, scale:1.69, duration:0.75, ease:"power2.inOut"}, 2.54);
+tl.to(cam, {x:-1996.8, y:-1123.2, scale:1.90667, duration:0.6, ease:"power2.inOut"}, 7.42);
 tl.fromTo("#ft-rules-b0", {opacity:0, y:10}, {opacity:1, y:0, duration:0.2, ease:"power3.out"}, 0.0);
 tl.fromTo("#ft-rules-o0", {opacity:0, scale:1.08}, {opacity:1, scale:1, duration:0.32, ease:"power3.out"}, 0.15);
-tl.to("#ft-rules-o0", {opacity:0, duration:0.18}, 3.0);
-tl.fromTo("#ft-rules-o1", {opacity:0, scale:1.08}, {opacity:1, scale:1, duration:0.32, ease:"power3.out"}, 3.83);
-tl.to("#ft-rules-o1", {opacity:0, duration:0.18}, 8.120000000000001);
-tl.fromTo("#ft-rules-o2", {opacity:0, scale:1.08}, {opacity:1, scale:1, duration:0.32, ease:"power3.out"}, 8.9);
-tl.to("#ft-rules-o2", {opacity:0, duration:0.18}, 10.216000000000001);
-tl.fromTo("#ft-rules-o3", {opacity:0, y:22}, {opacity:1, y:0, duration:0.35, ease:"power3.out"}, 5.19);
-tl.fromTo("#ft-rules-o3-i0", {opacity:0, x:-14}, {opacity:1, x:0, duration:0.3, ease:"power2.out"}, 5.340000000000001);
-tl.fromTo("#ft-rules-o3-i1", {opacity:0, x:-14}, {opacity:1, x:0, duration:0.3, ease:"power2.out"}, 5.790000000000001);
-tl.fromTo("#ft-rules-o3-a1", {opacity:0, x:-8}, {opacity:1, x:0, duration:0.25, ease:"power2.out"}, 5.640000000000001);
-tl.fromTo("#ft-rules-o3-i2", {opacity:0, x:-14}, {opacity:1, x:0, duration:0.3, ease:"power2.out"}, 6.240000000000001);
-tl.fromTo("#ft-rules-o3-a2", {opacity:0, x:-8}, {opacity:1, x:0, duration:0.25, ease:"power2.out"}, 6.090000000000001);
-tl.to("#ft-rules-o3", {opacity:0, y:12, duration:0.2, ease:"power2.in"}, 10.196000000000002);
+tl.to("#ft-rules-o0", {opacity:0, duration:0.18}, 2.31);
+tl.fromTo("#ft-rules-o1", {opacity:0, scale:1.08}, {opacity:1, scale:1, duration:0.32, ease:"power3.out"}, 3.14);
+tl.to("#ft-rules-o1", {opacity:0, duration:0.18}, 7.19);
+tl.fromTo("#ft-rules-o2", {opacity:0, scale:1.08}, {opacity:1, scale:1, duration:0.32, ease:"power3.out"}, 7.97);
+tl.to("#ft-rules-o2", {opacity:0, duration:0.18}, 9.3);
+tl.fromTo("#ft-rules-o3", {opacity:0, y:22}, {opacity:1, y:0, duration:0.35, ease:"power3.out"}, 4.15);
+tl.fromTo("#ft-rules-o3-i0", {opacity:0, x:-14}, {opacity:1, x:0, duration:0.3, ease:"power2.out"}, 4.300000000000001);
+tl.fromTo("#ft-rules-o3-i1", {opacity:0, x:-14}, {opacity:1, x:0, duration:0.3, ease:"power2.out"}, 4.750000000000001);
+tl.fromTo("#ft-rules-o3-a1", {opacity:0, x:-8}, {opacity:1, x:0, duration:0.25, ease:"power2.out"}, 4.6000000000000005);
+tl.fromTo("#ft-rules-o3-i2", {opacity:0, x:-14}, {opacity:1, x:0, duration:0.3, ease:"power2.out"}, 5.200000000000001);
+tl.fromTo("#ft-rules-o3-a2", {opacity:0, x:-8}, {opacity:1, x:0, duration:0.25, ease:"power2.out"}, 5.050000000000001);
+tl.to("#ft-rules-o3", {opacity:0, y:12, duration:0.2, ease:"power2.in"}, 9.280000000000001);
 window.__timelines["ft-rules"] = tl;
 })();
 </script>

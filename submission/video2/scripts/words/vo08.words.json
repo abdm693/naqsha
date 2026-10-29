@@ -1,170 +1,146 @@
 [
  {
   "text": "Then,",
-  "start": 0.18,
-  "end": 0.42,
+  "start": 0.01,
+  "end": 0.37,
   "id": "w0"
  },
  {
   "text": "Ultra",
-  "start": 0.42,
-  "end": 0.77,
+  "start": 0.37,
+  "end": 0.69,
   "id": "w1"
  },
  {
   "text": "writes",
-  "start": 0.77,
-  "end": 1.19,
+  "start": 0.69,
+  "end": 1.07,
   "id": "w2"
  },
  {
   "text": "the",
-  "start": 1.19,
-  "end": 1.39,
+  "start": 1.07,
+  "end": 1.26,
   "id": "w3"
  },
  {
   "text": "house",
-  "start": 1.4,
-  "end": 1.75,
+  "start": 1.26,
+  "end": 1.58,
   "id": "w4"
  },
  {
   "text": "in",
-  "start": 1.75,
-  "end": 1.89,
+  "start": 1.58,
+  "end": 1.66,
   "id": "w5"
  },
  {
   "text": "3D",
-  "start": 1.89,
-  "end": 2.22,
+  "start": 1.71,
+  "end": 2,
   "id": "w6"
  },
  {
   "text": "as",
-  "start": 2.22,
-  "end": 2.39,
+  "start": 2,
+  "end": 2.25,
   "id": "w7"
  },
  {
-  "text": "code,",
-  "start": 2.39,
-  "end": 2.91,
+  "text": "code",
+  "start": 2.26,
+  "end": 2.61,
   "id": "w8"
  },
  {
-  "text": "section",
-  "start": 3.02,
-  "end": 3.46,
+  "text": "from",
+  "start": 2.94,
+  "end": 3.08,
   "id": "w9"
  },
  {
-  "text": "by",
-  "start": 3.46,
-  "end": 3.62,
+  "text": "a",
+  "start": 3.08,
+  "end": 3.12,
   "id": "w10"
  },
  {
-  "text": "section,",
-  "start": 3.62,
-  "end": 4.29,
+  "text": "checklist",
+  "start": 3.12,
+  "end": 3.49,
   "id": "w11"
  },
  {
-  "text": "from",
-  "start": 4.32,
-  "end": 4.48,
+  "text": "of",
+  "start": 3.54,
+  "end": 3.62,
   "id": "w12"
  },
  {
-  "text": "a",
-  "start": 4.48,
-  "end": 4.56,
+  "text": "every",
+  "start": 3.86,
+  "end": 4.26,
   "id": "w13"
  },
  {
-  "text": "checklist",
-  "start": 4.56,
-  "end": 4.94,
+  "text": "feature",
+  "start": 4.36,
+  "end": 4.56,
   "id": "w14"
  },
  {
-  "text": "of",
-  "start": 4.98,
-  "end": 5.05,
+  "text": "in",
+  "start": 4.56,
+  "end": 4.68,
   "id": "w15"
  },
  {
-  "text": "every",
-  "start": 5.26,
-  "end": 5.5,
+  "text": "the",
+  "start": 4.68,
+  "end": 4.73,
   "id": "w16"
  },
  {
-  "text": "feature",
-  "start": 5.68,
-  "end": 5.96,
+  "text": "concept",
+  "start": 4.73,
+  "end": 5.2,
   "id": "w17"
  },
  {
-  "text": "in",
-  "start": 6.02,
-  "end": 6.14,
+  "text": "and",
+  "start": 5.41,
+  "end": 5.45,
   "id": "w18"
  },
  {
-  "text": "the",
-  "start": 6.14,
-  "end": 6.35,
+  "text": "your",
+  "start": 5.66,
+  "end": 5.84,
   "id": "w19"
  },
  {
-  "text": "concept.",
-  "start": 6.35,
-  "end": 7.07,
+  "text": "browser",
+  "start": 5.84,
+  "end": 6.29,
   "id": "w20"
  },
  {
-  "text": "Your",
-  "start": 7.26,
-  "end": 7.28,
+  "text": "builds",
+  "start": 6.29,
+  "end": 6.67,
   "id": "w21"
  },
  {
-  "text": "browser",
-  "start": 7.28,
-  "end": 7.64,
+  "text": "it",
+  "start": 6.67,
+  "end": 6.79,
   "id": "w22"
  },
  {
-  "text": "builds",
-  "start": 7.64,
-  "end": 7.95,
+  "text": "live.",
+  "start": 6.79,
+  "end": 7.08,
   "id": "w23"
- },
- {
-  "text": "it",
-  "start": 7.95,
-  "end": 8.05,
-  "id": "w24"
- },
- {
-  "text": "as",
-  "start": 8.05,
-  "end": 8.15,
-  "id": "w25"
- },
- {
-  "text": "it",
-  "start": 8.15,
-  "end": 8.25,
-  "id": "w26"
- },
- {
-  "text": "arrives.",
-  "start": 8.25,
-  "end": 8.8,
-  "id": "w27"
  }
 ]

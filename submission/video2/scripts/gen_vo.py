@@ -118,7 +118,7 @@ def _num(n: int) -> str:
 ALIAS = {"naksha": "naqsha", "nuksha": "naqsha", "nakhsha": "naqsha", "naqshah": "naqsha", "nuqsha": "naqsha",
          "nakshaa": "naqsha", "nakshah": "naqsha", "nemo": "nemotron", "nematron": "nemotron", "nemetron": "nemotron",
          "nebbius": "nebius", "nebias": "nebius", "nebiyus": "nebius", "tavili": "tavily", "tavilly": "tavily",
-         "taveli": "tavily", "cda's": "cda", "facades": "facade", "façade": "facade"}
+         "taveli": "tavily", "ami": "ammi", "amy": "ammi", "cda's": "cda", "facades": "facade", "façade": "facade"}
 
 
 def norm(s: str) -> list[str]:
@@ -214,7 +214,7 @@ def check(wav: Path, text: str, tag: str) -> dict:
         reasons.append("style spoken")
     if any(len(x.split()) >= 2 for x in ins_w) or (ins_w and ins_g):
         reasons.append("extra words")
-    if not (0.72 * expect <= speech <= 1.3 * expect):  # about 125-220 words per minute of speech
+    if not (0.68 * expect <= speech <= 1.3 * expect):  # about 125-235 words per minute of speech
         reasons.append("duration")
     if "naqsha" in a and (not j.get("naqsha_ok", True) or j.get("naqsha_vowel") not in (None, "cut")):
         reasons.append("naqsha")

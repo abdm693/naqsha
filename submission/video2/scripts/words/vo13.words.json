@@ -1,140 +1,224 @@
 [
  {
-  "text": "Families",
-  "start": 0.22,
-  "end": 0.59,
+  "text": "Press",
+  "start": 0.2,
+  "end": 0.45,
   "id": "w0"
  },
  {
-  "text": "see",
-  "start": 0.59,
-  "end": 0.78,
+  "text": "revise.",
+  "start": 0.45,
+  "end": 1.13,
   "id": "w1"
  },
  {
-  "text": "their",
-  "start": 0.82,
-  "end": 1.18,
+  "text": "A",
+  "start": 1.16,
+  "end": 1.17,
   "id": "w2"
  },
  {
-  "text": "home",
-  "start": 1.18,
-  "end": 1.48,
+  "text": "revision",
+  "start": 1.17,
+  "end": 1.54,
   "id": "w3"
  },
  {
-  "text": "before",
-  "start": 1.48,
-  "end": 1.86,
+  "text": "agent",
+  "start": 1.54,
+  "end": 1.77,
   "id": "w4"
  },
  {
-  "text": "they",
-  "start": 1.86,
-  "end": 2.11,
+  "text": "on",
+  "start": 1.77,
+  "end": 1.86,
   "id": "w5"
  },
  {
-  "text": "build",
-  "start": 2.11,
-  "end": 2.36,
+  "text": "Nimutron",
+  "start": 1.92,
+  "end": 2.44,
   "id": "w6"
  },
  {
-  "text": "it,",
-  "start": 2.41,
-  "end": 2.56,
+  "text": "3",
+  "start": 2.44,
+  "end": 2.65,
   "id": "w7"
  },
  {
-  "text": "and",
-  "start": 2.57,
-  "end": 2.71,
+  "text": "Ultra",
+  "start": 2.65,
+  "end": 3.04,
   "id": "w8"
  },
  {
-  "text": "architects",
-  "start": 2.92,
-  "end": 3.26,
+  "text": "with",
+  "start": 3.04,
+  "end": 3.3,
   "id": "w9"
  },
  {
-  "text": "bring",
-  "start": 3.26,
-  "end": 3.53,
+  "text": "9",
+  "start": 3.36,
+  "end": 3.63,
   "id": "w10"
  },
  {
-  "text": "a",
-  "start": 3.53,
-  "end": 3.57,
+  "text": "tools",
+  "start": 3.63,
+  "end": 3.98,
   "id": "w11"
  },
  {
-  "text": "checked",
-  "start": 3.61,
-  "end": 4,
+  "text": "reads",
+  "start": 4.07,
+  "end": 4.41,
   "id": "w12"
  },
  {
-  "text": "design",
-  "start": 4,
-  "end": 4.36,
+  "text": "each",
+  "start": 4.58,
+  "end": 4.78,
   "id": "w13"
  },
  {
-  "text": "to",
-  "start": 4.36,
-  "end": 4.46,
+  "text": "note,",
+  "start": 4.83,
+  "end": 5.12,
   "id": "w14"
  },
  {
-  "text": "the",
-  "start": 4.46,
-  "end": 4.57,
+  "text": "edits",
+  "start": 5.13,
+  "end": 5.44,
   "id": "w15"
  },
  {
-  "text": "first",
-  "start": 4.62,
-  "end": 4.87,
+  "text": "the",
+  "start": 5.46,
+  "end": 5.63,
   "id": "w16"
  },
  {
-  "text": "meeting.",
-  "start": 4.91,
-  "end": 5.44,
+  "text": "plan",
+  "start": 5.63,
+  "end": 5.82,
   "id": "w17"
  },
  {
-  "text": "Nakhsha,",
-  "start": 5.45,
-  "end": 6.8,
+  "text": "and",
+  "start": 5.86,
+  "end": 6.06,
   "id": "w18"
  },
  {
-  "text": "open-source,",
-  "start": 6.8,
-  "end": 7.6,
+  "text": "runs",
+  "start": 6.28,
+  "end": 6.32,
   "id": "w19"
  },
  {
-  "text": "built",
-  "start": 7.6,
-  "end": 7.81,
+  "text": "every",
+  "start": 6.32,
+  "end": 6.64,
   "id": "w20"
  },
  {
-  "text": "on",
-  "start": 7.9,
-  "end": 8.02,
+  "text": "check",
+  "start": 6.64,
+  "end": 6.94,
   "id": "w21"
  },
  {
-  "text": "NemoTron.",
-  "start": 8.16,
-  "end": 8.64,
+  "text": "again.",
+  "start": 6.97,
+  "end": 7.52,
   "id": "w22"
+ },
+ {
+  "text": "The",
+  "start": 7.52,
+  "end": 7.69,
+  "id": "w23"
+ },
+ {
+  "text": "window",
+  "start": 7.69,
+  "end": 7.94,
+  "id": "w24"
+ },
+ {
+  "text": "gets",
+  "start": 8.05,
+  "end": 8.26,
+  "id": "w25"
+ },
+ {
+  "text": "wider",
+  "start": 8.26,
+  "end": 8.56,
+  "id": "w26"
+ },
+ {
+  "text": "and",
+  "start": 8.56,
+  "end": 8.72,
+  "id": "w27"
+ },
+ {
+  "text": "the",
+  "start": 8.72,
+  "end": 8.8,
+  "id": "w28"
+ },
+ {
+  "text": "kitchen",
+  "start": 9,
+  "end": 9.16,
+  "id": "w29"
+ },
+ {
+  "text": "gets",
+  "start": 9.21,
+  "end": 9.43,
+  "id": "w30"
+ },
+ {
+  "text": "an",
+  "start": 9.43,
+  "end": 9.5,
+  "id": "w31"
+ },
+ {
+  "text": "island",
+  "start": 9.55,
+  "end": 9.88,
+  "id": "w32"
+ },
+ {
+  "text": "and",
+  "start": 9.96,
+  "end": 10.05,
+  "id": "w33"
+ },
+ {
+  "text": "a",
+  "start": 10.05,
+  "end": 10.1,
+  "id": "w34"
+ },
+ {
+  "text": "longer",
+  "start": 10.1,
+  "end": 10.44,
+  "id": "w35"
+ },
+ {
+  "text": "counter.",
+  "start": 10.44,
+  "end": 10.88,
+  "id": "w36"
  }
 ]

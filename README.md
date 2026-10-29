@@ -44,8 +44,8 @@ Every text and vision model call runs on **Nebius Token Factory** (OpenAI-compat
 | Agent / step | Model on Token Factory | How |
 |---|---|---|
 | Setup agent (brief chat, rule research tool) | `nvidia/nemotron-3-super-120b-a12b` | Google ADK agent via LiteLLM, 6 tools, reasoning off for fast turns |
-| Plan drafts (×3 in parallel) | `nvidia/Nemotron-3-Ultra-550b-a55b` | JSON mode, reasoning off (~25 s per draft) |
-| Plan fixer agent | `nvidia/Nemotron-3-Ultra-550b-a55b` | native tool calling with reasoning on: `get_elements`, `check_edits`, `apply_edits`, `finish` |
+| Plan drafts (×4 in parallel, adapted from a proven layout) | `nvidia/Nemotron-3-Ultra-550b-a55b` | JSON mode, reasoning off (~25 s per draft) |
+| Two plan fixer agents in parallel | `nvidia/Nemotron-3-Ultra-550b-a55b` | native tool calling with reasoning on: `get_elements`, `check_edits`, `apply_edits`, `finish` |
 | Rule pack from web pages | `nvidia/Nemotron-3-Ultra-550b-a55b` | reads Tavily search + extract results, writes cited rule bands |
 | 3D model as code (`design.js`) | `nvidia/Nemotron-3-Ultra-550b-a55b` | streamed sections, built live in the browser |
 | Reading uploaded drawings | `nvidia/Nemotron-3.5-Super-VL` | room-by-room transcription with boxes on the sheet |
@@ -65,7 +65,7 @@ Cloud Run · FastAPI (serves the SPA and the API)
   ├─ Setup agent ........ Google ADK + LiteLLM → Nemotron 3 Super (Token Factory); tools incl. research_local_rules
   ├─ Rule research ...... Tavily search + extract → Nemotron 3 Ultra → cited rule pack → rules engine
   ├─ Drawing import ..... Nemotron 3.5 Super VL reads sheets → layout in plot feet → brief
-  ├─ Architect .......... Nemotron 3 Ultra: 3 drafts ⟶ rules engine ⟶ fixer agent (tool calls) ⟶ VL self-review
+  ├─ Architect .......... Nemotron 3 Ultra: 4 drafts ⟶ rules engine ⟶ 2 fixer agents (tool calls) ⟶ VL self-review
   │                        ⟶ concept feature checklist ⟶ streamed design.js
   ├─ Match + photos ..... Nemotron VL feature match ⟶ Ultra refits facade sections; image model renders 3D captures
   ├─ Reviser ............ Google ADK + LiteLLM → Nemotron 3 Ultra, 9 tools

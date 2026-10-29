@@ -34,7 +34,8 @@ WX, WY, WW, WH = 128, 118, 1664, 936
 K = WW / 1920
 CARD_DUR = 1.9
 
-CLIP = {"full": f"{CFG['full']}.mp4", "drawing": f"{CFG['drawing']}.mp4", "tl_wait": "tl_wait.mp4", "tl_plan": "tl_plan.mp4"}
+CLIP = {"full": f"{CFG['full']}.mp4", "drawing": f"{CFG['drawing']}.mp4", "collab": f"{CFG['collab']}.mp4",
+        "client": f"{CFG['client']}.mp4", "tl_wait": "tl_wait.mp4", "tl_plan": "tl_plan.mp4", "tl_revise": "tl_revise.mp4"}
 
 
 # =====================================================================================================
@@ -70,6 +71,28 @@ def FX(name, fallback):
         return _EXTRA[name]
     print(f"note: mark '{name}' not set in footage.json for {CFG['full']}; using {fallback:.2f}")
     return fallback
+
+
+_COLLAB = _steps(CFG["collab"])
+
+
+def C(name):
+    """Source second of a named step in the collaboration run (owner), or of an extra mark for it in footage.json."""
+    for k, v in _COLLAB.items():
+        if k == name or k.startswith(name + ":"):
+            return v
+    extra = CFG.get("marks", {}).get(CFG["collab"], {})
+    if name in extra:
+        return extra[name]
+    raise SystemExit(f"step '{name}' missing from {CFG['collab']}.json and footage.json marks")
+
+
+def CL(name):
+    """A mark in the client's recording (it has no step log; marks live in footage.json)."""
+    extra = CFG.get("marks", {}).get(CFG["client"], {})
+    if name not in extra:
+        raise SystemExit(f"mark '{name}' missing for {CFG['client']} in footage.json")
+    return extra[name]
 
 
 def D(name):
@@ -296,39 +319,51 @@ def steps_marks(*pairs):
     return list(pairs)
 
 
+# --- 0 Cold open: the finished house, cut on the music's beat ---------------------------------------------------
+BEAT = 60 / 110.3                                   # the Lyria bed's tempo
+sc = Scene("ft-cold", 0.0, "The finished house")
+co1 = sc.seg("full", F("photo enlarged") + 0.3, F("photo enlarged") + 0.3 + 2 * BEAT, 1.0)      # the front photo
+co2 = sc.seg("full", F("night") + 0.4, F("night") + 0.4 + 2 * BEAT * 1.6, 1.6)                 # the night orbit
+co3 = sc.seg("full", F("walk") + 8.0, F("walk") + 8.0 + 3 * BEAT * 1.3, 1.3)                    # walking the lounge
+for s_, (z0, z1) in zip((co1, co2, co3), ((1.04, 1.14), (1.08, 1.2), (1.0, 1.12))):
+    sc.cam(s_["t"], z0, 960, 520)
+    sc.cam(s_["t"] + 0.02, z1, 960, 520, d=s_["dur"] - 0.05, ease="none")
+vo("vo00", 0.25)
+S.append(sc)
+CO_END = round(sc.cursor, 3)
+COLD_CUTS = (co2["t"], co3["t"])
+
 # --- 1 Hook + 2 title (motion graphics) ------------------------------------------------------------------------
-vo("vo01", 0.9)
-HOOK_END = round(vo_end("vo01") + 1.9, 3)
-MG["mg-hook"] = dict(start=0.0, end=HOOK_END, cues=dict(
-    l1=at("vo01", "Most") - 0.05, l2=at("vo01", "The plan") - 0.1, weeks=at("vo01", "weeks") - 0.1,
-    l4=at("vo01", "nobody") - 0.1, stamp=at("vo01", "sends it back") - 0.05))
+HOOK_START = round(CO_END - 0.05, 3)
+vo("vo01", HOOK_START + 0.35)
+HOOK_END = round(vo_end("vo01") + 0.75, 3)
+MG["mg-hook"] = dict(start=HOOK_START, end=HOOK_END, cues=dict(
+    l1=at("vo01", "most") - 0.1, l2=at("vo01", "The plan") - 0.1, weeks=at("vo01", "weeks") - 0.1,
+    l4=at("vo01", "one setback") - 0.1, stamp=at("vo01", "returned") - 0.05, room=at("vo01", "until") - 0.15))
 TITLE = HOOK_END - 0.1
-vo("vo02", TITLE + 0.4)
-TITLE_END = round(vo_end("vo02") + 1.5, 3)
+vo("vo02", TITLE + 0.35)
+TITLE_END = round(vo_end("vo02") + 0.5, 3)
 MG["mg-title"] = dict(start=TITLE, end=TITLE_END, cues=dict(
     tag=at("vo02", "agentic") - 0.35, nemotron=at("vo02", "NVIDIA Nemotron") - 0.05, nebius=at("vo02", "Nebius") - 0.1))
-t = card(TITLE_END - 0.25, "01", "Describe the home once", "Setup agent · Nemotron 3 Super")
 
 # --- 3 Setup agent ------------------------------------------------------------------------------------------------
-sc = Scene("ft-setup", t - 0.2, "01 · Setup agent")
+sc = Scene("ft-setup", TITLE_END - 0.2, "01 · Setup agent")
 T0 = sc.start
-vo("vo03", T0 + 0.25)
-s1 = sc.seg("full", F("workspace"), F("sent") + 0.3, 2.0)
+vo("vo03", T0 + 0.2)
+s1 = sc.seg("full", F("workspace"), F("sent") + 0.3, 2.6)
 brief_src = F("rules box") - 0.35            # the brief and the rule box land together, just before this step mark
-pop_at = max(sc.cursor + 1.6, at("vo03", "the brief") - 0.15)   # the brief pops in on "...turns it into the brief"
+pop_at = max(sc.cursor + 1.4, at("vo03", "the brief") - 0.15)   # the brief pops in on "...fills in the brief"
 d_wait = round(round((pop_at - sc.cursor) * 30) / 30, 3)
 TL["tl_wait"] = {"src": CLIP["full"], "segs": [[round(F("sent") + 0.3, 3), round(brief_src, 3), d_wait]]}
 s2 = sc.seg("tl_wait", 0.0, d_wait, 1.0, badge=fmt_rate((brief_src - F("sent") - 0.3) / d_wait))
-s3 = sc.seg("full", brief_src, brief_src + 1.4, 1.0)
+s3 = sc.seg("full", brief_src, brief_src + max(1.2, vo_end("vo03") + 0.2 - sc.cursor), 1.0)
 sc.cam(T0, 1.95, 712, 290)
 sc.cam(T0 + 0.02, 2.05, 712, 300, d=s1["dur"] - 0.05, ease="none")
 sc.cam(s2["t"], 1.0, 960, 540)
-sc.cam(s2["t"] + 0.05, 1.45, 560, 330, d=0.6)
-sc.cam(s2["t"] + s2["dur"] * 0.45, 1.7, 1500, 330, d=0.7)   # on the empty brief, so the pop lands in frame
+sc.cam(s2["t"] + 0.05, 1.7, 1500, 330, d=0.5)   # on the empty brief, so the pop lands in frame
 sc.clock(s2["t"], sc.cursor, [(s2["t"], 0.0), (s3["t"], brief_src - F("sent") - 0.3)], fmt="sec", label="brief + rules")
-sc.lower(s2["t"] + 0.1, sc.cursor - 0.1, "Setup agent · Nemotron 3 Super",
-         "a Google ADK agent with tools fills in the brief")
-sc.ring(s3["t"] + 0.9, sc.cursor - 0.05, 1306, 120, 384, 250)
+sc.lower(s2["t"] + 0.05, sc.cursor - 0.1, "Setup agent · Nemotron 3 Super", "a Google ADK agent with tools fills in the brief")
+sc.ring(s3["t"] + 0.5, sc.cursor - 0.05, 1306, 120, 384, 250)
 S.append(sc)
 SFX_TYPING = (s1["t"], s1["dur"])
 BRIEF_POP = s3["t"] + 0.05
@@ -336,10 +371,9 @@ BRIEF_POP = s3["t"] + 0.05
 # --- 4 City rules, researched -----------------------------------------------------------------------------------------
 sc = Scene("ft-rules", sc.cursor, "02 · City rules")
 T0 = sc.start
-vo("vo04", max(vo_end("vo03") + 0.45, T0 + 0.2))
-r_a, r_b = brief_src + 1.4, F("decide for me") - 0.25
-r_dur = vo_end("vo04") + 0.45 - T0
-s4 = sc.seg("full", r_a, r_b, dur=r_dur)
+vo("vo04", max(vo_end("vo03") + 0.3, T0 + 0.15))
+r_a, r_b = s3["b"], F("decide for me") - 0.25
+s4 = sc.seg("full", r_a, r_b, dur=vo_end("vo04") + 0.3 - T0)
 sc.cam(T0, 2.2, 1500, 190)
 sc.cam(at("vo04", "CDA's") - 0.25, 1.95, 1497, 760, d=0.75)
 sc.cam(at("vo04", "cites") - 0.35, 2.2, 1497, 890, d=0.6)
@@ -349,45 +383,42 @@ sc.ring(at("vo04", "cites") + 0.2, sc.cursor - 0.05, 1306, 824, 386, 140)
 sc.flow(at("vo04", "Tavily") - 0.2, sc.cursor - 0.05, ["Tavily search + extract", "Nemotron 3 Ultra", "cited rule pack"],
         tag="CDA rules · Islamabad")
 S.append(sc)
-t = card(sc.cursor - 0.25, "03", "Or start from your drawing", "Nemotron 3.5 Super VL")
 
 # --- 5 Drawing upload ------------------------------------------------------------------------------------------------
-sc = Scene("ft-drawing", t - 0.2, "03 · Your drawing")
+sc = Scene("ft-drawing", sc.cursor, "03 · Your drawing")
 T0 = sc.start
-vo("vo05", T0 + 0.2)
-d1 = sc.seg("drawing", D("uploaded") - 0.2, D("read") + 4.4, 1.0)
+vo("vo05", max(vo_end("vo04") + 0.35, T0 + 0.2))
+d1 = sc.seg("drawing", D("uploaded") - 0.2, D("read") + max(2.4, vo_end("vo05") + 0.6 - T0 - (D("read") - D("uploaded") + 0.2)), 1.0)
 t_read = sc.at_src(d1, D("read"))
 sc.cam(T0, 2.3, 1010, 700)
-sc.cam(t_read + 0.15, 1.0, 960, 540, d=0.5)
-sc.cam(t_read + 0.75, 1.45, 1180, 640, d=0.7)
-sc.clock(T0, t_read + 1.0, [(sc.at_src(d1, D("uploaded")), 0.0), (t_read, D("read") - D("uploaded"))], fmt="sec", label="reading")
-sc.lower(T0 + 0.3, t_read - 0.1, "Nemotron 3.5 Super VL", "reads the uploaded plan, room by room", tag="Vision model at work")
-sc.ring(t_read + 1.3, sc.cursor - 0.05, 690, 836, 600, 126)
-sc.callout(t_read + 0.3, sc.cursor - 0.05, f"Read {NUM['rooms_read']} rooms on {NUM['floors_read']} floors",
+sc.cam(t_read + 0.1, 1.45, 1180, 640, d=0.6)
+sc.clock(T0, t_read + 0.8, [(sc.at_src(d1, D("uploaded")), 0.0), (t_read, D("read") - D("uploaded"))], fmt="sec", label="reading")
+sc.lower(T0 + 0.25, t_read - 0.1, "Nemotron 3.5 Super VL", "reads the uploaded plan, room by room", tag="Vision model at work")
+sc.ring(t_read + 0.7, sc.cursor - 0.05, 690, 836, 600, 126)
+sc.callout(t_read + 0.2, sc.cursor - 0.05, f"Read {NUM['rooms_read']} rooms on {NUM['floors_read']} floors",
            "the design keeps the family’s layout", anchor="tl")
 S.append(sc)
 
 # --- 6 Concepts ------------------------------------------------------------------------------------------------------
 sc = Scene("ft-concepts", sc.cursor, "04 · Concepts")
 T0 = sc.start
+vo("vo06", max(vo_end("vo05") + 0.35, T0 + 0.1))
 c_end = F("plan view") - 0.12
-c1 = sc.seg("full", F("concepts view"), c_end - 4.5, dur=3.6)
-c2 = sc.seg("full", c_end - 4.5, c_end, 1.0)
-# "...and Nemotron 3 Ultra starts work as the architect" lands as the concepts scene hands over to the diagram
-vo("vo06", max(vo_end("vo05") + 0.5, T0 + 0.15, sc.cursor + 0.3 - W("vo06", "Nemotron 3 Ultra")))
+c2_d = max(2.4, vo_end("vo06") + 0.15 - T0 - 2.6)
+c1 = sc.seg("full", F("concepts view"), c_end - c2_d, dur=2.6)
+c2 = sc.seg("full", c_end - c2_d, c_end, 1.0)
 sc.cam(T0, 1.0, 960, 540)
 sc.cam(c2["t"], 1.05, 960, 520)
-sc.cam(c2["t"] + 0.05, 1.18, 900, 430, d=c2["dur"] - 0.1, ease="none")
-sc.clock(T0, sc.cursor, [(T0, 0.0), (c2["t"], c_end - 4.5 - F("concepts view")), (sc.cursor, c_end - F("concepts view"))])
-sc.lower(T0 + 0.25, c2["t"] - 0.05, "Gemini image model", "four exterior concepts, drawn from the brief", tag="Images")
+sc.cam(c2["t"] + 0.05, 1.16, 900, 430, d=c2["dur"] - 0.1, ease="none")
+sc.clock(T0, sc.cursor, [(T0, 0.0), (c2["t"], c_end - c2_d - F("concepts view")), (sc.cursor, c_end - F("concepts view"))])
+sc.lower(T0 + 0.2, c2["t"] - 0.05, "Gemini image model", "four exterior concepts, drawn from the brief", tag="Images")
 sc.ring(c2["t"] + 0.2, sc.cursor - 0.05, 336, 148, 430, 30)
-sc.callout(c2["t"] + 0.25, sc.cursor - 0.05, "Decide for me", "Naqsha picks the strongest concept and starts the plan",
-           anchor="br")
+sc.callout(at("vo06", "Pick one") - 0.1, sc.cursor - 0.05, "Decide for me", "Naqsha picks the strongest concept", anchor="br")
 S.append(sc)
 
 # --- 7 How Nemotron 3 Ultra designs a home (MG) -------------------------------------------------------------------------
-NEMO_START = round(min(sc.cursor - 0.25, at("vo06", "Nemotron 3 Ultra") - 0.3), 3)  # the concept scene ends under the wipe
-vo("vo07", vo_end("vo06") + 0.3)
+NEMO_START = round(sc.cursor - 0.25, 3)
+vo("vo07", NEMO_START + 0.45)
 NEMO_END = round(at("vo07", "testing") - 0.1, 3)
 MG["mg-nemotron"] = dict(start=NEMO_START, end=NEMO_END, cues=dict(
     draft=at("vo07", "drafts") - 0.1, check=at("vo07", "rules engine") - 0.1, fix=at("vo07", "fixer") - 0.1))
@@ -396,18 +427,16 @@ MG["mg-nemotron"] = dict(start=NEMO_START, end=NEMO_END, cues=dict(
 pv, hv = F("plan view"), F("house view")
 FIXED = FX("all checks pass", hv - 90.0)   # the status card turns to "Fixed 34 → … → 0" and the pill to "0 to fix"
 CODE3D = FX("3d code", FIXED + 5.0)         # "Building the 3D model…": Ultra streams the 3D code until the house view
-pA = (pv + 1.0, pv + 24.0, 1.0)                               # reading the brief, "Laying out the floors (4 drafts in parallel)"
+pA = (pv + 1.0, pv + 24.0, 0.8)                               # reading the brief, "Laying out the floors (4 drafts in parallel)"
 sc = Scene("ft-design", NEMO_END, "05 · Architect agent")
 T0 = sc.start
-LDA_STAT = at("vo07", "All") - 0.1
-ZERO_AT = LDA_STAT + 0.45                                     # the countdown reaches 0 under "All 34 bylaw checks pass"
-fix_end = vo_end("vo07") + 3.0                                # then real time on "Fixed 34 → … → 0" with the stat
+ZERO_AT = at("vo07", "zero") + 0.05                           # "…fixed down to zero": the countdown lands on 0
+fix_end = vo_end("vo07") + 0.8                                # then real time on "Fixed 34 → … → 0" with the stat
 pB = (pv + 24.0, FIXED + 0.5, round(round((ZERO_AT - T0 - pA[2]) * 30) / 30, 3))
-vo("vo08", fix_end - 0.05)
-# "Then Ultra writes the house in 3D as code" over the real run streaming its parts (pC) ->
-# "section by section, from a checklist of every feature in the concept" on the code graphic (MG) ->
-# "Your browser builds it as it arrives" on the house assembling.
-pC_dur = round(round(max(2.0, at("vo08", "section by section") - 0.15 - fix_end) * 30) / 30, 3)
+vo("vo08", fix_end - 0.1)
+# "Then Ultra writes the house in 3D as code," over the real run streaming its parts (pC) ->
+# "from a checklist of every feature in the concept," on the code graphic (MG) -> "and your browser builds it live".
+pC_dur = round(round(max(1.8, at("vo08", "from a checklist") - 0.15 - fix_end) * 30) / 30, 3)
 pC = (CODE3D, hv - 0.05, pC_dur)
 TL["tl_plan"] = {"src": CLIP["full"], "segs": [[round(a, 3), round(b, 3), d] for a, b, d in (pA, pB, pC)]}
 p1 = sc.seg("tl_plan", 0.0, pA[2], 1.0, badge=fmt_rate((pA[1] - pA[0]) / pA[2]))
@@ -415,13 +444,14 @@ p2 = sc.seg("tl_plan", pA[2], pA[2] + pB[2], 1.0, badge=fmt_rate((pB[1] - pB[0])
 p2h = sc.seg("full", FIXED + 0.5, FIXED + 0.5 + max(0.8, fix_end - sc.cursor), 1.0)
 tB = p2["t"]
 sc.cam(T0, 2.3, 960, 230)                                   # the status card: "Laying out the floors (4 drafts…)"
-sc.cam(T0 + 0.05, 2.5, 960, 200, d=1.0)                      # then "Fixing 34 → 22 → 15 → 7 → 3 → 0"
+sc.cam(T0 + 0.05, 2.5, 960, 200, d=0.8)                      # then "Fixing 34 → 22 → 15 → 7 → 3 → 0"
 sc.clock(T0, sc.cursor, [(T0, pA[0] - pv), (tB, pB[0] - pv), (p2h["t"], pB[1] - pv), (sc.cursor, p2h["b"] - pv)])
 sc.steps(T0 + 0.05, sc.cursor, [(T0, {0}, 0), (tB, {2}, 2)])
-sc.lower(T0 + 0.15, tB + 2.4, "Two fixer agents · Nemotron 3 Ultra", "check_edits, then apply_edits · the better plan wins",
+sc.lower(T0 + 0.1, p2h["t"] - 0.1, "Two fixer agents · Nemotron 3 Ultra", "check_edits, then apply_edits · the better plan wins",
          width=1100)
 sc.ring(p2h["t"] - 0.1, sc.cursor - 0.05, 734, 146, 452, 96)
-sc.stat(p2h["t"] + 0.05, sc.cursor - 0.05, f"{NUM['lda_pass']}/{NUM['lda_total']}", "bylaw checks pass", anchor="tr")
+LDA_STAT = max(p2h["t"] + 0.05, at("vo07", "All") - 0.1)
+sc.stat(LDA_STAT, sc.cursor - 0.05, f"{NUM['lda_pass']}/{NUM['lda_total']}", "bylaw checks pass", anchor="tr")
 S.append(sc)
 
 sc = Scene("ft-build", sc.cursor, "06 · 3D as code")
@@ -434,128 +464,200 @@ sc.lower(T0 + 0.1, sc.cursor - 0.05, "Ultra streams the 3D code", "parts arrive 
 S.append(sc)
 
 CODE_START = round(sc.cursor - 0.2, 3)
-CODE_END = round(max(CODE_START + 3.4, at("vo08", "Your browser") - 0.3), 3)
-MG["mg-code"] = dict(start=CODE_START, end=CODE_END, cues=dict(list=at("vo08", "from a checklist") - 0.1))
+CODE_END = round(max(CODE_START + 3.4, at("vo08", "and your browser") - 0.25), 3)
+MG["mg-code"] = dict(start=CODE_START, end=CODE_END, cues=dict(list=max(CODE_START + 0.5, at("vo08", "from a checklist") - 0.1)))
 
 sc = Scene("ft-house", CODE_END - 0.2, "06 · 3D as code")
 T0 = sc.start
-b_end = hv + 10.3
 HV_SHOWN = hv + 2.4   # the 3D canvas needs ~2.3 s after the route change before the house replaces the plan
-p4 = sc.seg("full", HV_SHOWN, b_end, dur=max(7.4, vo_end("vo08") + 2.6 - sc.cursor))
+h_dur = max(4.0, vo_end("vo08") + 0.7 - T0)
+b_end = HV_SHOWN + h_dur * 1.25
+p4 = sc.seg("full", HV_SHOWN, b_end, dur=h_dur)
 sc.cam(T0, 1.0, 960, 540)
 sc.cam(T0 + 0.05, 1.3, 1000, 560, d=p4["dur"] - 0.1, ease="power1.inOut")
 sc.clock(T0, sc.cursor, [(T0, HV_SHOWN - pv), (sc.cursor, b_end - pv)])
 sc.steps(T0, sc.cursor, [(T0, {3}, 3)])
-sc.callout(T0 + 0.3, sc.cursor - 0.05, "Built in your browser", "each section appears as it arrives", anchor="bl")
+sc.callout(at("vo08", "and your browser") - 0.05, sc.cursor - 0.05, "Built in your browser", "each section appears as it arrives",
+           anchor="bl")
 S.append(sc)
 HOUSE_UP = p4["t"] + p4["dur"] * 0.6
 
 # --- 9 Match: the 3D model against the concept ------------------------------------------------------------------------
 sc = Scene("ft-match", sc.cursor, "07 · Concept match")
 T0 = sc.start
-vo("vo09", max(vo_end("vo08") + 0.5, T0 + 0.2))
+vo("vo09", max(vo_end("vo08") + 0.35, T0 + 0.15))
 m_a, m_b = b_end, F("match score") - 0.4
-m_dur = max((m_b - m_a) / 10.0, at("vo09", "Here") - 0.15 - T0)
-e1 = sc.seg("full", m_a, m_b, dur=m_dur)
-e2 = sc.seg("full", m_b, F("match popover") + 4.6, dur=max(3.0, vo_end("vo09") + 2.7 - sc.cursor))
+MATCH_STAT = at("vo09", f"from {NUM['match_before']}") - 0.1
+e1 = sc.seg("full", m_a, m_b, dur=max((m_b - m_a) / 10.0, MATCH_STAT - 0.3 - T0))
+e2 = sc.seg("full", m_b, F("match popover") + 4.0, dur=max(2.6, vo_end("vo09") + 0.9 - sc.cursor))
 pop_t = sc.at_src(e2, F("match popover"))
 sc.cam(T0, 1.3, 760, 640)
 sc.cam(T0 + 0.02, 1.36, 760, 650, d=e1["dur"] - 0.05, ease="none")
-sc.cam(pop_t - 0.1, 2.4, 200, 300, d=0.6)
+sc.cam(pop_t - 0.1, 2.4, 200, 300, d=0.5)
 sc.clock(T0, e2["t"], [(T0, m_a - pv), (e2["t"], m_b - pv)])
 sc.steps(T0, pop_t - 0.1, [(T0, {4}, 4)])
-sc.lower(T0 + 0.15, e2["t"] - 0.05, "Nemotron 3.5 Super VL · match check",
-         "compares the 3D model with the concept, feature by feature, and the facade is rebuilt where it differs",
+sc.lower(T0 + 0.1, e2["t"] - 0.05, "Nemotron 3.5 Super VL · match check",
+         "checks the 3D model against the concept",
          tag="Vision model at work", width=1000, anchor="br")
-sc.ring(pop_t + 0.45, sc.cursor - 0.05, 124, 216, 250, 74)
-sc.stat(at("vo09", f"{NUM['match_before']}") - 0.15, sc.cursor - 0.05, f"{NUM['match_before']}% → {NUM['match_after']}%",
+sc.ring(pop_t + 0.35, sc.cursor - 0.05, 124, 216, 250, 74)
+sc.stat(MATCH_STAT, sc.cursor - 0.05, f"{NUM['match_before']}% → {NUM['match_after']}%",
         "of the concept is in the 3D model", anchor="br")
 S.append(sc)
-MATCH_STAT = at("vo09", f"{NUM['match_before']}") - 0.15
-t = card(sc.cursor - 0.25, "08", "Photos from every angle", "Gemini image model · from 3D captures")
 
-# --- 10 Photos from every angle ----------------------------------------------------------------------------------------
-sc = Scene("ft-photos", t - 0.2, "08 · Photos")
+# --- 10 Photos from every angle, then night ---------------------------------------------------------------------------
+sc = Scene("ft-photos", sc.cursor, "08 · Photos")
 T0 = sc.start
-vo("vo10", T0 + 0.2)
-g1 = sc.seg("full", F("photos panel") + 0.3, F("photos done") + 2.0, 5.0)
-g2 = sc.seg("full", F("photo enlarged") - 0.15, F("photo 4") + 2.3, 1.3)
+vo("vo10", max(vo_end("vo09") + 0.3, T0 + 0.15))
+g1 = sc.seg("full", F("photos panel") + 0.3, F("photos done") + 1.0, 10.0)
+NIGHT_AT = at("vo10", "At night") - 0.2
+g2_src = (F("photo enlarged") - 0.1, F("photo 3") - 0.1)        # Front, then Street corner
+g2 = sc.seg("full", g2_src[0], g2_src[1], dur=max((g2_src[1] - g2_src[0]) / 10.0, 1.6, NIGHT_AT - sc.cursor))
 sc.cam(T0, 1.27, 960, 470)
 sc.cam(g2["t"], 1.0, 960, 540)
 sc.cam(g2["t"] + 0.02, 1.08, 960, 520, d=g2["dur"] - 0.05, ease="none")
-sc.clock(T0, g2["t"], [(T0, 0.3), (g2["t"], F("photos done") + 2.0 - F("photos panel"))], fmt="mmss", label="photos")
-sc.lower(T0 + 0.2, g1["t"] + g1["dur"] - 0.1, "Gemini image model", "each capture of the 3D model becomes a photo",
-         tag="Images")
-names = ["Front", "Street corner", "Garden", "Aerial"]
-marks_ = [F("photo enlarged"), F("photo 2"), F("photo 3"), F("photo 4")]
-for k, (nm, m0) in enumerate(zip(names, marks_)):
-    a_ = sc.at_src(g2, m0) + 0.12
-    b_ = sc.at_src(g2, marks_[k + 1]) - 0.05 if k < 3 else sc.cursor - 0.05
-    sc.callout(a_, b_, nm, "same house, same materials" if k == 1 else "", anchor="bl")
+sc.lower(T0 + 0.1, g1["t"] + g1["dur"] - 0.05, "Gemini image model", "each capture of the 3D model becomes a photo", tag="Images")
+for k, (nm, m0, m1) in enumerate((("Front", F("photo enlarged"), F("photo 2")), ("Street corner", F("photo 2"), F("photo 3")))):
+    a_ = max(g2["t"], sc.at_src(g2, m0)) + 0.08
+    b_ = min(sc.cursor, sc.at_src(g2, m1)) - 0.05
+    if b_ - a_ > 0.5:
+        sc.callout(a_, b_, nm, anchor="bl")
 S.append(sc)
 PHOTOS_DONE = sc.at_src(g1, F("photos done"))
 
-# --- 11 Night, then walk through ------------------------------------------------------------------------------------------
 sc = Scene("ft-night", sc.cursor, "09 · Night")
 T0 = sc.start
-n1 = sc.seg("full", F("night") + 0.3, min(F("night") + 4.6, F("day again") - 0.2), 1.15)
+n1 = sc.seg("full", F("night") + 0.3, min(F("night") + 4.6, F("day again") - 0.2), dur=max(2.6, vo_end("vo10") + 0.5 - T0))
 sc.cam(T0, 1.06, 960, 520)
 sc.cam(T0 + 0.02, 1.16, 960, 500, d=n1["dur"] - 0.05, ease="none")
-sc.callout(T0 + 0.25, sc.cursor - 0.05, "Night: every room lit from inside", anchor="bl")
+sc.callout(T0 + 0.15, sc.cursor - 0.05, "Night: every room lit from inside", anchor="bl")
 S.append(sc)
 NIGHT_T = T0
-# "See it at night, then walk through it…": "walk" lands on the first step through the door
-vo("vo11", max(vo_end("vo10") + 0.5, T0 + 0.25, sc.cursor + 0.15 - W("vo11", "walk")))
 
+# --- 11 Walk through ------------------------------------------------------------------------------------------------------
 sc = Scene("ft-walk", sc.cursor, "10 · Walk-through")
 T0 = sc.start
-w1 = sc.seg("full", F("walk") + 1.2, min(F("walked") - 3.5, FULL_LEN - 0.2), 1.0)   # the last seconds face a wardrobe
+vo("vo11", max(vo_end("vo10") + 0.3, T0 + 0.1))
+w_dur = max(5.4, vo_end("vo11") + 1.6 - T0)
+w1 = sc.seg("full", F("walk") + 1.2, F("walk") + 1.2 + w_dur * 1.5, 1.5)
 sc.cam(T0, 1.0, 960, 540)
 sc.cam(T0 + 0.02, 1.08, 960, 540, d=w1["dur"] - 0.05, ease="none")
-sc.callout(T0 + 0.3, sc.cursor - 0.1, "First-person walk", "in the browser, room by room", anchor="bl")
+sc.callout(T0 + 0.25, sc.cursor - 0.1, "First-person walk", "in the browser, room by room", anchor="bl")
+S.append(sc)
+t = card(sc.cursor - 0.25, "11", "Comments become revisions", "revision agent · Nemotron 3 Ultra")
+
+# --- 12 Comments, client link, live note ------------------------------------------------------------------------------------
+sc = Scene("ft-collab", t - 0.2, "11 · Comments")
+T0 = sc.start
+vo("vo12", T0 + 0.2)
+k1 = sc.seg("collab", C("comment mode"), C("owner pinned") + 1.9, dur=max(2.6, at("vo12", "Share a link") - 0.15 - T0))
+k2 = sc.seg("collab", C("owner pinned") + 2.5, C("client link on") + 2.4, dur=max(2.4, at("vo12", "Here") - 0.15 - sc.cursor))
+k3 = sc.seg("client", CL("card open"), CL("posted") + 0.6, dur=max(2.6, at("vo12", "and her note") - 0.1 - sc.cursor))
+k4 = sc.seg("collab", C("owner sees client note") - 0.5, C("owner sees client note") + 1.9,
+            dur=max(1.8, vo_end("vo12") + 0.35 - sc.cursor))
+pin_t = sc.at_src(k1, C("owner pinned"))
+sc.cam(T0, 1.0, 960, 540)
+sc.cam(sc.at_src(k1, C("pin placed")) - 0.15, 1.85, 960, 545, d=0.4)
+sc.cam(pin_t + 0.05, 1.25, 1200, 380, d=0.4)
+sc.cam(k2["t"], 1.9, 960, 330)
+sc.cam(k3["t"], 1.0, 960, 540)
+sc.cam(k3["t"] + 0.5, 1.75, 1080, 700, d=0.5)
+sc.cam(k4["t"], 1.55, 1420, 290)
+sc.callout(sc.at_src(k1, C("pin placed")) - 0.1, pin_t + 0.3, "Pinned to the exact spot", "with a snapshot of the view",
+           anchor="tl")
+sc.ring(k2["t"] + 0.2, k2["t"] + k2["dur"] - 0.05, 728, 220, 464, 124)
+sc.callout(k2["t"] + 0.25, k2["t"] + k2["dur"] - 0.05, "Client link", "anyone with it can view and comment, no account", anchor="bl")
+sc.ring(k3["t"] + 0.05, k3["t"] + 0.55, 16, 15, 295, 50)
+sc.lower(k3["t"] + 0.1, k3["t"] + k3["dur"] - 0.1, "Client view · second browser", "she gives her name once, then comments",
+         tag="Shared link")
+sc.ring(k4["t"] + 0.3, sc.cursor - 0.05, 1650, 22, 148, 40)
+sc.callout(k4["t"] + 0.35, sc.cursor - 0.05, "Arrives for the owner, live", "Ammi · Client: “Can the kitchen be bigger?”",
+           anchor="bl", width=1100)
+S.append(sc)
+CLIENT_POST = sc.at_src(k3, CL("posted"))
+NOTE_LIVE = sc.at_src(k4, C("owner sees client note"))
+
+# --- 13 Revise with both notes (ADK revision agent) --------------------------------------------------------------------------
+sc = Scene("ft-revise", sc.cursor, "12 · Revise")
+T0 = sc.start
+vo("vo13", max(vo_end("vo12") + 0.3, T0 + 0.1))
+r1 = sc.seg("collab", C("revise started") - 1.8, C("revise started"), 1.0)
+rv_d = round(round(max(3.0, at("vo13", "The window") - 0.2 - sc.cursor) * 30) / 30, 3)
+TL["tl_revise"] = {"src": CLIP["collab"], "segs": [[round(C("revise started"), 3), round(C("v2 ready") + 0.2, 3), rv_d]]}
+r2 = sc.seg("tl_revise", 0.0, rv_d, 1.0, badge=fmt_rate((C("v2 ready") + 0.2 - C("revise started")) / rv_d))
+r3 = sc.seg("collab", C("v2 ready") + 0.2, C("v2 ready") + 0.2 + max(3.0, vo_end("vo13") + 1.3 - sc.cursor), 1.0)
+sc.cam(T0, 1.55, 1500, 560)
+sc.cam(r2["t"], 1.45, 600, 470, d=0.4)
+sc.cam(r3["t"], 2.3, 235, 955, d=0.4)
+sc.ring(T0 + 0.1, r1["t"] + r1["dur"] - 0.05, 1632, 1010, 258, 44)
+sc.callout(T0 + 0.1, r1["t"] + r1["dur"] - 0.05, "Revise with 2 comments", "the owner’s note and Ammi’s", anchor="bl")
+sc.clock(r2["t"], r3["t"] + 0.6, [(r2["t"], 0.0), (r3["t"], C("v2 ready") + 0.2 - C("revise started"))])
+sc.lower(r2["t"] + 0.05, r2["t"] + r2["dur"] - 0.05, "Revision agent · Nemotron 3 Ultra",
+         "Google ADK · 9 tools · edits the plan, then runs every check again", width=1150)
+sc.ring(r3["t"] + 0.35, sc.cursor - 0.05, 40, 922, 372, 112)
+sc.callout(r3["t"] + 0.3, sc.cursor - 0.05, "Version 2", "still 34/34 bylaw checks", anchor="tr", tone="pass")
+S.append(sc)
+V2_T = r3["t"]
+
+# --- 14 Typed change (the same agent) -------------------------------------------------------------------------------------
+sc = Scene("ft-ask", sc.cursor, "13 · Typed change")
+T0 = sc.start
+vo("vo14", max(vo_end("vo13") + 0.3, T0 + 0.1))
+a1 = sc.seg("collab", C("answers read") + 0.05, C("typed change sent") + 0.1, 1.0)
+a2 = sc.seg("collab", C("typed change sent") + 0.1, C("v3 ready"), 10.0)
+a3 = sc.seg("collab", C("v3 ready"), C("v3 ready") + max(2.8, vo_end("vo14") + 1.3 - sc.cursor), 1.0)
+sc.cam(T0, 2.3, 1100, 1000)
+sc.cam(a2["t"], 2.3, 960, 200, d=0.4)
+sc.cam(a3["t"], 2.3, 235, 955, d=0.4)
+sc.callout(T0 + 0.05, a2["t"] + 0.9, "Typed change", "“Make the drawing room a bit wider.”", anchor="tl")
+sc.ring(a2["t"] + 0.5, a2["t"] + a2["dur"] - 0.05, 708, 80, 506, 62)
+sc.ring(a3["t"] + 0.3, sc.cursor - 0.05, 40, 922, 372, 112)
+sc.callout(a3["t"] + 0.25, sc.cursor - 0.05, "Version 3", "checked again: 34/34", anchor="tr", tone="pass")
 S.append(sc)
 
-# --- 12 Architecture (MG) --------------------------------------------------------------------------------------------------
+# --- 15 Architecture (MG) --------------------------------------------------------------------------------------------------
 ARCH_START = round(sc.cursor - 0.25, 3)
-vo("vo12", ARCH_START + 0.55)
-ARCH_END = round(vo_end("vo12") + 3.2, 3)
+vo("vo15", ARCH_START + 0.45)
+ARCH_END = round(vo_end("vo15") + 0.7, 3)
 MG["mg-arch"] = dict(start=ARCH_START, end=ARCH_END, cues=dict(
-    ultra=at("vo12", "Ultra") - 0.1, super=at("vo12", "Super runs") - 0.1, vl=at("vo12", "The vision") - 0.1,
-    nebius=at("vo12", "All of it") - 0.05))
+    ultra=at("vo15", "Ultra") - 0.1, super=at("vo15", "Super runs") - 0.1, vl=at("vo15", "The vision") - 0.1,
+    nebius=at("vo15", "All of it") - 0.05))
 
-# --- Outro: who it is for -> 13 end card ---------------------------------------------------------------------------------
+# --- Outro: who it is for -> end card ---------------------------------------------------------------------------------
 sc = Scene("ft-outro", ARCH_END - 0.25, "Who it’s for")
 T0 = sc.start
-vo("vo13", T0 + 0.8)
-END_START = round(at("vo13", "Naqsha") - 0.3, 3)
+vo("vo16", T0 + 0.35)
+END_START = round(at("vo16", "Naqsha") - 0.3, 3)
 need = END_START + 0.25 - T0                       # outro length up to the end card
-o2_d, o3_d = 2.3, 2.3
-o1_d = max(1.9, need - o2_d - o3_d)
-o1 = sc.seg("full", F("walk") - 0.1 - o1_d, F("walk") - 0.1, 1.0)   # the house from above, after the orbit
+o2_d, o3_d = 2.1, 2.1
+o1_d = max(1.6, need - o2_d - o3_d)
+o1 = sc.seg("full", F("walk") - 0.1 - min(o1_d, 2.2), F("walk") - 0.1, dur=o1_d)   # the house from above, after the orbit
 o2 = sc.seg("full", F("photo 2") + 0.1, F("photo 2") + 0.1 + o2_d, 1.0)  # street corner photo
 o3 = sc.seg("full", F("photo 3") + 0.1, F("photo 3") + 0.1 + max(0.6, need - o1_d - o2_d), 1.0)  # garden photo
 for s in (o1, o2, o3):
     sc.cam(s["t"], 1.0, 960, 540)
     sc.cam(s["t"] + 0.02, 1.06, 960, 540, d=s["dur"] - 0.05, ease="none")
-sc.callout(at("vo13", "Families") - 0.1, at("vo13", "architects") - 0.2, "For families", "see the home before you build it")
-sc.callout(at("vo13", "architects") - 0.1, sc.cursor - 0.05, "For architects", "a checked design for the first meeting")
+sc.callout(at("vo16", "Families") - 0.1, at("vo16", "architects") - 0.2, "For families", "see the home before you build it")
+sc.callout(at("vo16", "architects") - 0.1, sc.cursor - 0.05, "For architects", "a checked design for the first meeting")
 S.append(sc)
 
-TOTAL = round(vo_end("vo13") + 4.6, 2)
-MG["mg-end"] = dict(start=END_START, end=TOTAL, cues=dict(open=at("vo13", "Open source") - 0.05))
+TOTAL = round(vo_end("vo16") + 2.6, 2)
+MG["mg-end"] = dict(start=END_START, end=TOTAL, cues=dict(open=at("vo16", "open source") - 0.05))
 
 # Music: the Lyria bed, re-fitted (scripts/fit_bed.py)
 BED_PLAN = {"total": TOTAL, "pieces": [
-    {"name": "hook", "at": 0.0, "until": HOOK_END, "src": round(16.45 - HOOK_END, 3), "fin": 0.4, "fout": 0.05},
+    {"name": "cold", "at": 0.0, "until": CO_END, "src": 16.45, "fin": 0.05, "fout": 0.2},
+    {"name": "hook", "at": CO_END, "until": HOOK_END, "src": round(16.45 - (HOOK_END - CO_END), 3), "fin": 0.3, "fout": 0.05},
     {"name": "main", "at": HOOK_END, "until": ARCH_START, "src": 16.45, "fin": 0.05},
     {"name": "break", "at": ARCH_START, "until": END_START - 0.2, "src": 193.64},
-    {"name": "finale", "at": END_START - 0.2, "until": TOTAL - 2.8, "src": 213.33, "fout": 2.8},
+    {"name": "finale", "at": END_START - 0.2, "until": TOTAL - 2.4, "src": 213.33, "fout": 2.4},
 ]}
 
 # Sound design (global start, file, volume)
 SFX = [
+    (COLD_CUTS[0] - 0.12, "whoosh-short.mp3", 0.24), (COLD_CUTS[1] - 0.12, "whoosh-short.mp3", 0.24),
+    (CO_END - 0.3, "whoosh-cinematic.mp3", 0.35),                          # cold open -> hook
     (MG["mg-hook"]["cues"]["stamp"] + 0.2, "impact-bass-1.mp3", 0.5),     # REJECTED stamp
-    (HOOK_END - 0.3, "impact-bass-2.mp3", 0.45),                           # title hit
+    (HOOK_END - 0.25, "impact-bass-2.mp3", 0.55),                         # title hit
     (SFX_TYPING[0] + 0.1, "typing.mp3", 0.16),
     (BRIEF_POP, "pop.mp3", 0.28),
     (NEMO_START - 0.05, "whoosh.mp3", 0.3),
@@ -564,6 +666,9 @@ SFX = [
     (END_START - 0.05, "whoosh.mp3", 0.3),
     (HOUSE_UP, "sparkle.mp3", 0.2),
     (PHOTOS_DONE, "sparkle.mp3", 0.2),
+    (CLIENT_POST, "click-soft.mp3", 0.3),
+    (NOTE_LIVE, "ping.mp3", 0.3),
+    (V2_T, "chime.mp3", 0.22),
 ] + [(c[0] - 0.05, "whoosh-short.mp3", 0.3) for c in CARDS]
 for sc_ in S:
     for o in sc_.over:

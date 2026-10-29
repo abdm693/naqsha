@@ -1,146 +1,134 @@
 [
  {
   "text": "Already",
-  "start": 0.12,
-  "end": 0.34,
+  "start": 0.2,
+  "end": 0.4,
   "id": "w0"
  },
  {
   "text": "have",
-  "start": 0.34,
-  "end": 0.53,
+  "start": 0.4,
+  "end": 0.62,
   "id": "w1"
  },
  {
   "text": "a",
-  "start": 0.53,
-  "end": 0.57,
+  "start": 0.62,
+  "end": 0.67,
   "id": "w2"
  },
  {
   "text": "plan",
-  "start": 0.57,
-  "end": 0.76,
+  "start": 0.67,
+  "end": 0.89,
   "id": "w3"
  },
  {
   "text": "from",
-  "start": 0.76,
-  "end": 0.91,
+  "start": 0.89,
+  "end": 1.06,
   "id": "w4"
  },
  {
   "text": "your",
-  "start": 0.98,
-  "end": 1.14,
+  "start": 1.15,
+  "end": 1.33,
   "id": "w5"
  },
  {
   "text": "architect?",
-  "start": 1.14,
-  "end": 1.59,
+  "start": 1.33,
+  "end": 1.89,
   "id": "w6"
  },
  {
   "text": "Upload",
-  "start": 1.92,
-  "end": 2.24,
+  "start": 2.16,
+  "end": 2.46,
   "id": "w7"
  },
  {
   "text": "a",
-  "start": 2.33,
-  "end": 2.34,
+  "start": 2.53,
+  "end": 2.59,
   "id": "w8"
  },
  {
-  "text": "photo",
-  "start": 2.34,
-  "end": 2.76,
+  "text": "photo.",
+  "start": 2.59,
+  "end": 3.04,
   "id": "w9"
- },
- {
-  "text": "of",
-  "start": 2.76,
-  "end": 2.85,
-  "id": "w10"
- },
- {
-  "text": "it.",
-  "start": 2.94,
-  "end": 3.12,
-  "id": "w11"
  },
  {
   "text": "NemoTron's",
   "start": 3.24,
-  "end": 3.87,
-  "id": "w12"
+  "end": 3.74,
+  "id": "w10"
  },
  {
   "text": "vision",
-  "start": 3.87,
-  "end": 4.33,
-  "id": "w13"
+  "start": 3.74,
+  "end": 4.1,
+  "id": "w11"
  },
  {
   "text": "model",
-  "start": 4.33,
-  "end": 4.69,
-  "id": "w14"
+  "start": 4.19,
+  "end": 4.53,
+  "id": "w12"
  },
  {
   "text": "reads",
-  "start": 4.69,
-  "end": 5.09,
-  "id": "w15"
+  "start": 4.53,
+  "end": 4.79,
+  "id": "w13"
  },
  {
   "text": "every",
-  "start": 5.09,
-  "end": 5.47,
-  "id": "w16"
+  "start": 4.9,
+  "end": 5.24,
+  "id": "w14"
  },
  {
   "text": "room",
-  "start": 5.47,
-  "end": 5.84,
-  "id": "w17"
+  "start": 5.3,
+  "end": 5.6,
+  "id": "w15"
  },
  {
   "text": "and",
-  "start": 5.84,
-  "end": 5.97,
-  "id": "w18"
+  "start": 5.6,
+  "end": 5.76,
+  "id": "w16"
  },
  {
   "text": "the",
-  "start": 6.06,
-  "end": 6.17,
-  "id": "w19"
+  "start": 5.76,
+  "end": 5.81,
+  "id": "w17"
  },
  {
   "text": "design",
-  "start": 6.38,
-  "end": 6.53,
-  "id": "w20"
+  "start": 6.24,
+  "end": 6.29,
+  "id": "w18"
  },
  {
   "text": "keeps",
-  "start": 6.53,
-  "end": 6.74,
-  "id": "w21"
+  "start": 6.29,
+  "end": 6.51,
+  "id": "w19"
  },
  {
   "text": "your",
-  "start": 6.84,
-  "end": 7.05,
-  "id": "w22"
+  "start": 6.61,
+  "end": 6.8,
+  "id": "w20"
  },
  {
   "text": "layout.",
-  "start": 7.05,
-  "end": 7.44,
-  "id": "w23"
+  "start": 6.81,
+  "end": 7.2,
+  "id": "w21"
  }
 ]

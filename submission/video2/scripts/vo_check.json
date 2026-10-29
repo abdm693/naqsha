@@ -1,10 +1,10 @@
 {
- "vo01": {
-  "id": "vo01",
-  "text": "Most families in Pakistan build a house only once. The plan goes back and forth for weeks, and nobody checks the bylaws until the authority sends it back.",
+ "vo00": {
+  "id": "vo00",
+  "text": "Ten minutes ago, this house was one message.",
   "accepted_take": 1,
   "pass": true,
-  "duration": 9.28,
+  "duration": 3.12,
   "takes": [
    {
     "extra_spoken": [],
@@ -13,31 +13,157 @@
     "naqsha_vowel": null,
     "naqsha_ok": true,
     "artefacts": [],
-    "delivery": "Natural Pakistani-accented English with a clear, steady narrative pace.",
-    "whisper": "Most families in Pakistan build a house only once, the plan goes back and forth for weeks, and nobody checks the bylaws until the authority sends it back.",
-    "blind": "Most families in Pakistan build a house only once. The plan goes back and forth for weeks, and nobody checks the bylaws until the authority sends it back.",
+    "delivery": "Clear South Asian accent with calm, steady pacing and clean delivery.",
+    "whisper": "10 minutes ago, this house was one message.",
+    "blind": "10 minutes ago, this house was one mess.",
     "missed": [],
     "inserted_whisper": [],
     "inserted_gemini": [],
     "style_hit": [],
-    "speech_s": 9.19,
-    "expect_s": 10.5,
+    "speech_s": 2.45,
+    "expect_s": 3.0,
     "similarity": 1.0,
     "reasons": [],
     "pass": true,
     "take": 1,
+    "raw": "vo00.take1.wav",
+    "secs": 3.12,
+    "said": "Ten minutes ago, this house was one message."
+   }
+  ]
+ },
+ "vo01": {
+  "id": "vo01",
+  "text": "In Pakistan, most families build a home only once. The plan goes back and forth for weeks, one setback mistake gets it returned by the authority, and until it's built, nobody can walk through the rooms.",
+  "accepted_take": 4,
+  "pass": true,
+  "duration": 11.636,
+  "takes": [
+   {
+    "extra_spoken": [
+     "silly"
+    ],
+    "style_direction_spoken": false,
+    "naqsha_said": null,
+    "naqsha_vowel": null,
+    "naqsha_ok": true,
+    "artefacts": [],
+    "delivery": "Engaging Pakistani English accent with clear articulation and natural, upbeat pacing.",
+    "whisper": "In Pakistan, most families build a home only once. The plan goes back and forth for weeks, one silly mistake gets it returned by the authority, and until it's built, nobody can walk through the rooms.",
+    "blind": "In Pakistan, most families build a home only once. The plan goes back and forth for weeks, one silly mistake gets it returned by the authority, and until it's built, nobody can walk through the rooms.",
+    "missed": [
+     "setback"
+    ],
+    "inserted_whisper": [],
+    "inserted_gemini": [],
+    "style_hit": [],
+    "speech_s": 10.54,
+    "expect_s": 13.5,
+    "similarity": 0.9722,
+    "reasons": [
+     "missed words"
+    ],
+    "pass": false,
+    "take": 1,
     "raw": "vo01.take1.wav",
-    "secs": 9.28,
-    "said": "Most families in Pakistan build a house only once. The plan goes back and forth for weeks, and nobody checks the bylaws until the authority sends it back."
+    "secs": 11.08,
+    "said": "In Pakistan, most families build a home only once. The plan goes back and forth for weeks, one setback mistake gets it returned by the authority, and until it's built, nobody can walk through the rooms."
+   },
+   {
+    "extra_spoken": [
+     "submission"
+    ],
+    "style_direction_spoken": false,
+    "naqsha_said": null,
+    "naqsha_vowel": null,
+    "naqsha_ok": true,
+    "artefacts": [],
+    "delivery": "Pakistani English accent with clear, conversational pacing and engaging energy.",
+    "whisper": "In Pakistan, most families build a home only once. The plan goes back and forth for weeks. One submission mistake gets it returned by the authority. And until it's built, nobody can walk through the rooms.",
+    "blind": "In Pakistan, most families build a home only once. The plan goes back and forth for weeks. One submission mistake gets it returned by the authority. And until it's built, nobody can walk through the rooms.",
+    "missed": [
+     "setback"
+    ],
+    "inserted_whisper": [],
+    "inserted_gemini": [],
+    "style_hit": [],
+    "speech_s": 10.79,
+    "expect_s": 13.5,
+    "similarity": 0.9722,
+    "reasons": [
+     "missed words"
+    ],
+    "pass": false,
+    "take": 2,
+    "raw": "vo01.take2.wav",
+    "secs": 11.12,
+    "said": "In Pakistan, most families build a home only once. The plan goes back and forth for weeks, one setback mistake gets it returned by the authority, and until it's built, nobody can walk through the rooms."
+   },
+   {
+    "extra_spoken": [
+     "sip"
+    ],
+    "style_direction_spoken": false,
+    "naqsha_said": null,
+    "naqsha_vowel": null,
+    "naqsha_ok": true,
+    "artefacts": [
+     "misread 'setback' as 'sip'"
+    ],
+    "delivery": "Pakistani-accented English, clear and naturally paced with good conversational energy.",
+    "whisper": "In Pakistan, most families build a home only once. The plan goes back and forth for weeks, one sip mistake gets it returned by the authority, and until it's built, nobody can walk through the rooms.",
+    "blind": "In Pakistan, most families build a home only once. The plan goes back and forth for weeks, one simple mistake gets it returned by the authority, and until it's built, nobody can walk through the rooms.",
+    "missed": [
+     "setback"
+    ],
+    "inserted_whisper": [],
+    "inserted_gemini": [],
+    "style_hit": [],
+    "speech_s": 11.13,
+    "expect_s": 13.5,
+    "similarity": 0.9722,
+    "reasons": [
+     "missed words",
+     "artefacts"
+    ],
+    "pass": false,
+    "take": 3,
+    "raw": "vo01.take3.wav",
+    "secs": 11.48,
+    "said": "In Pakistan, most families build a home only once. The plan goes back and forth for weeks, one setback mistake gets it returned by the authority, and until it's built, nobody can walk through the rooms."
+   },
+   {
+    "extra_spoken": [],
+    "style_direction_spoken": false,
+    "naqsha_said": null,
+    "naqsha_vowel": null,
+    "naqsha_ok": true,
+    "artefacts": [],
+    "delivery": "Engaging Pakistani English accent with clear articulation and steady, natural pacing.",
+    "whisper": "In Pakistan, most families build a home only once. The plan goes back and forth for weeks, one setback mistake gets it returned by the authority. And until it's built, nobody can walk through the rooms.",
+    "blind": "In Pakistan, most families build a home only once. The plan goes back and forth for weeks. One set back mistake gets it returned by the authority. And until it's built, nobody can walk through the rooms.",
+    "missed": [],
+    "inserted_whisper": [],
+    "inserted_gemini": [],
+    "style_hit": [],
+    "speech_s": 11.22,
+    "expect_s": 13.5,
+    "similarity": 1.0,
+    "reasons": [],
+    "pass": true,
+    "take": 4,
+    "raw": "vo01.take4.wav",
+    "secs": 11.72,
+    "said": "In Pakistan, most families build a home only once. The plan goes back and forth for weeks, one setback mistake gets it returned by the authority, and until it's built, nobody can walk through the rooms."
    }
   ]
  },
  "vo02": {
   "id": "vo02",
-  "text": "Naqsha is an agentic home design studio. Every agent in it runs on NVIDIA Nemotron, served by Nebius Token Factory.",
+  "text": "Naqsha is an agentic home design studio, and every agent in it runs on NVIDIA Nemotron, served by Nebius Token Factory.",
   "accepted_take": 1,
   "pass": true,
-  "duration": 7.62,
+  "duration": 7.333,
   "takes": [
    {
     "extra_spoken": [],
@@ -46,31 +172,31 @@
     "naqsha_vowel": "cut",
     "naqsha_ok": true,
     "artefacts": [],
-    "delivery": "Clear Pakistani tech founder delivery with good energy and moderate pace.",
-    "whisper": "Nakhsha is an agentic home design studio. Every agent in it runs on NVIDIA NemoTron, served by Nebia's Token Factory.",
-    "blind": "Naksha is an agentic home design studio. Every agent in it runs on NVIDIA Nemotron, served by Nebius Token Factory.",
+    "delivery": "Pakistani English accent, energetic and upbeat with a brisk pace.",
+    "whisper": "Naksha is an agentic home design studio and every agent in it runs on NVIDIA NemoTron served by Nebbier's Token Factory.",
+    "blind": "Naksha is an agentic home design studio, and every agent in it runs on NVIDIA Nemotron, served by Nebius Token Factory.",
     "missed": [],
     "inserted_whisper": [],
     "inserted_gemini": [],
     "style_hit": [],
-    "speech_s": 7.28,
-    "expect_s": 7.5,
-    "similarity": 0.95,
+    "speech_s": 6.99,
+    "expect_s": 7.88,
+    "similarity": 0.9524,
     "reasons": [],
     "pass": true,
     "take": 1,
     "raw": "vo02.take1.wav",
-    "secs": 7.84,
-    "said": "Naqsha is an agentic home design studio. Every agent in it runs on NVIDIA Nemotron, served by Nebius Token Factory."
+    "secs": 7.36,
+    "said": "Naqsha is an agentic home design studio, and every agent in it runs on NVIDIA Nemotron, served by Nebius Token Factory."
    }
   ]
  },
  "vo03": {
   "id": "vo03",
-  "text": "You start with one message about your plot and your family. A setup agent on Nemotron 3 Super turns it into the brief.",
-  "accepted_take": 1,
+  "text": "One message about your plot and your family, and a setup agent on Nemotron 3 Super fills in the brief, floor by floor.",
+  "accepted_take": 2,
   "pass": true,
-  "duration": 6.88,
+  "duration": 6.795,
   "takes": [
    {
     "extra_spoken": [],
@@ -79,31 +205,60 @@
     "naqsha_vowel": null,
     "naqsha_ok": true,
     "artefacts": [],
-    "delivery": "Pakistani-accented English, clear and professional conversational pace.",
-    "whisper": "You start with one message about your plot and your family. A setup agent on NemoTron 3 Super turns it into the brief.",
-    "blind": "You start with one message about your plot and your family. A setup agent on Nemotron 3 Super turns it into the brief",
+    "delivery": "Clear Pakistani English accent, confident delivery with steady and natural pacing.",
+    "whisper": "One message about your plot and your family and a setup agent on NemoTron 3 Super fills in the brief, flow by flow.",
+    "blind": "One message about your plot and your family, and a setup agent on Nemotron-3 Super fills in the brief, flow by flow.",
+    "missed": [
+     "floor",
+     "floor"
+    ],
+    "inserted_whisper": [],
+    "inserted_gemini": [],
+    "style_hit": [],
+    "speech_s": 6.7,
+    "expect_s": 8.62,
+    "similarity": 0.913,
+    "reasons": [
+     "missed words"
+    ],
+    "pass": false,
+    "take": 1,
+    "raw": "vo03.take1.wav",
+    "secs": 7.0,
+    "said": "One message about your plot and your family, and a setup agent on Nemotron 3 Super fills in the brief, floor by floor."
+   },
+   {
+    "extra_spoken": [],
+    "style_direction_spoken": false,
+    "naqsha_said": null,
+    "naqsha_vowel": null,
+    "naqsha_ok": true,
+    "artefacts": [],
+    "delivery": "South Asian accent, enthusiastic and clear conversational pace.",
+    "whisper": "One message about your plot and your family, and a setup agent on NemoTron 3 Super, fills in the brief, floor by floor.",
+    "blind": "One message about your plot and your family, and I set up agent on Nemotron 3 Super, fills in the brief floor by floor.",
     "missed": [],
     "inserted_whisper": [],
     "inserted_gemini": [],
     "style_hit": [],
-    "speech_s": 6.57,
+    "speech_s": 6.3,
     "expect_s": 8.62,
     "similarity": 1.0,
     "reasons": [],
     "pass": true,
-    "take": 1,
-    "raw": "vo03.take1.wav",
-    "secs": 6.88,
-    "said": "You start with one message about your plot and your family. A setup agent on Nemotron 3 Super turns it into the brief."
+    "take": 2,
+    "raw": "vo03.take2.wav",
+    "secs": 6.84,
+    "said": "One message about your plot and your family, and a setup agent on Nemotron 3 Super fills in the brief, floor by floor."
    }
   ]
  },
  "vo04": {
   "id": "vo04",
-  "text": "This plot is in Islamabad, so the agent looked up the CDA's building rules with Tavily, and Nemotron 3 Ultra turned them into a rule pack that cites its sources.",
-  "accepted_take": 2,
+  "text": "This plot is in Islamabad, so it looked up the CDA's building rules with Tavily, and Nemotron 3 Ultra turned them into a rule pack that cites its sources.",
+  "accepted_take": 4,
   "pass": true,
-  "duration": 9.796,
+  "duration": 9.08,
   "takes": [
    {
     "extra_spoken": [],
@@ -112,24 +267,24 @@
     "naqsha_vowel": null,
     "naqsha_ok": true,
     "artefacts": [],
-    "delivery": "Engaging Pakistani accent with clear, natural tech-founder energy and pacing.",
-    "whisper": "This plot is in Islamabad, so the agent looked up the CDS building rules with Taveli and Nemutron 3 Ultra turned them into a rule pack that cites its sources.",
-    "blind": "This plot is in Islamabad, so the agent looked up the CDA's building rules with Tavily, and Nemotron 3 Ultra turned them into a rule pack that cites its sources,",
+    "delivery": "Clear Pakistani accent with an energetic, conversational tech founder tone and steady pacing.",
+    "whisper": "This plot is in Islamabad, so it looked up the CDA's building rules with Taveli and Nimutran 3 Ultra turned them into a rule pack that cites its sources.",
+    "blind": "This plot is in Islamabad, so I looked up the CDA's building rules with Tavily, and Nemotron-3 Ultra turned them into a rule pack that cites its sources.",
     "missed": [],
     "inserted_whisper": [],
     "inserted_gemini": [],
     "style_hit": [],
-    "speech_s": 8.07,
-    "expect_s": 11.62,
-    "similarity": 0.918,
+    "speech_s": 8.08,
+    "expect_s": 11.25,
+    "similarity": 0.9667,
     "reasons": [
      "duration"
     ],
     "pass": false,
     "take": 1,
     "raw": "vo04.take1.wav",
-    "secs": 8.72,
-    "said": "This plot is in Islamabad, so the agent looked up the CDA's building rules with Tavily, and Nemotron 3 Ultra turned them into a rule pack that cites its sources."
+    "secs": 8.48,
+    "said": "This plot is in Islamabad, so it looked up the CDA's building rules with Tavily, and Nemotron 3 Ultra turned them into a rule pack that cites its sources."
    },
    {
     "extra_spoken": [],
@@ -138,31 +293,85 @@
     "naqsha_vowel": null,
     "naqsha_ok": true,
     "artefacts": [],
-    "delivery": "Clear Pakistani accent with a natural, engaging tech-explainer pace.",
-    "whisper": "This plot is in Islamabad, so the agent looked up the CDA's building rules with Tawili and NemoTron 3 Ultra turned them into a rule pack that cites its sources.",
-    "blind": "This plot is in Islamabad, so the agent looked up the CDA's building rules with Tavily, and Nemotron 3 Ultra turned them into a rule pack that cites its sources.",
+    "delivery": "Engaging South Asian English accent with enthusiastic, natural pacing.",
+    "whisper": "The plot is in Islamabad, so it looked up the serious building rules with Taveli and NemoTron 3 Ultra turned them into a rule pack that cites its sources.",
+    "blind": "This plot is in Islamabad, so it looked up the CDA's building rules with Tavily, and Nemotron-3 Ultra turned them into a rule pack that cites its sources.",
     "missed": [],
     "inserted_whisper": [],
     "inserted_gemini": [],
     "style_hit": [],
-    "speech_s": 9.16,
-    "expect_s": 11.62,
-    "similarity": 0.9677,
-    "reasons": [],
-    "pass": true,
+    "speech_s": 7.97,
+    "expect_s": 11.25,
+    "similarity": 0.9153,
+    "reasons": [
+     "duration"
+    ],
+    "pass": false,
     "take": 2,
     "raw": "vo04.take2.wav",
-    "secs": 10.04,
-    "said": "This plot is in Islamabad, so the agent looked up the CDA's building rules with Tavily, and Nemotron 3 Ultra turned them into a rule pack that cites its sources."
+    "secs": 8.68,
+    "said": "This plot is in Islamabad, so it looked up the CDA's building rules with Tavily, and Nemotron 3 Ultra turned them into a rule pack that cites its sources."
+   },
+   {
+    "extra_spoken": [],
+    "style_direction_spoken": false,
+    "naqsha_said": null,
+    "naqsha_vowel": null,
+    "naqsha_ok": true,
+    "artefacts": [],
+    "delivery": "Clear Pakistani English accent with energetic delivery and natural pacing.",
+    "whisper": "This plot is in Islamabad, so it looked up the CDA's building rules with Taveli and Nimutron 3 Ultra turned them into a rule pack that cites its sources.",
+    "blind": "This plot is in Islamabad, so it looked up the CDA's building rules with Tavily, and Nemotron 3 Ultra turned them into a rule pack that cites its sources.",
+    "missed": [],
+    "inserted_whisper": [],
+    "inserted_gemini": [],
+    "style_hit": [],
+    "speech_s": 7.95,
+    "expect_s": 11.25,
+    "similarity": 0.9667,
+    "reasons": [
+     "duration"
+    ],
+    "pass": false,
+    "take": 3,
+    "raw": "vo04.take3.wav",
+    "secs": 8.32,
+    "said": "This plot is in Islamabad, so it looked up the CDA's building rules with Tavily, and Nemotron 3 Ultra turned them into a rule pack that cites its sources."
+   },
+   {
+    "extra_spoken": [
+     "uh"
+    ],
+    "style_direction_spoken": false,
+    "naqsha_said": null,
+    "naqsha_vowel": null,
+    "naqsha_ok": true,
+    "artefacts": [],
+    "delivery": "Engaging South Asian accent with natural conversational pacing and clear tone.",
+    "whisper": "This plot is in Islamabad, so it looked up the CDA's building rules with Taveli, and NemoTron 3 Ultra turned them into a rule pack that cites its sources.",
+    "blind": "This plot is in Islamabad, so it looked up the CDA's building rules with Tavily, and Nemotron 3 Ultra turned them into a rule pack that cites its sources.",
+    "missed": [],
+    "inserted_whisper": [],
+    "inserted_gemini": [],
+    "style_hit": [],
+    "speech_s": 8.75,
+    "expect_s": 11.25,
+    "similarity": 1.0,
+    "reasons": [],
+    "pass": true,
+    "take": 4,
+    "raw": "vo04.take4.wav",
+    "secs": 9.08,
+    "said": "This plot is in Islamabad, so it looked up the CDA's building rules with Tavily, and Nemotron 3 Ultra turned them into a rule pack that cites its sources."
    }
   ]
  },
  "vo05": {
   "id": "vo05",
-  "text": "Already have a plan from your architect? Upload a photo of it. Nemotron's vision model reads every room, and the design keeps your layout.",
+  "text": "Already have a plan from your architect? Upload a photo. Nemotron's vision model reads every room, and the design keeps your layout.",
   "accepted_take": 1,
   "pass": true,
-  "duration": 7.593,
+  "duration": 7.32,
   "takes": [
    {
     "extra_spoken": [],
@@ -171,64 +380,64 @@
     "naqsha_vowel": null,
     "naqsha_ok": true,
     "artefacts": [],
-    "delivery": "South Asian accent, enthusiastic and energetic tech founder delivery with good clarity.",
-    "whisper": "Already have a plan from your architect? Upload a photo of it! NemoTron's vision model reads every room and the design keeps your layout.",
-    "blind": "Already have a plan from your architect? Upload a photo of it. Neomotron's vision model reads every room, and the design keeps your layout.",
+    "delivery": "Clear Pakistani accent with confident energy and a brisk, engaging pace.",
+    "whisper": "Already have a plan from your architect? Upload a photo. NemoTron's vision model reads every room and the design keeps your layout.",
+    "blind": "Already have a plan from your architect, upload a photo. Nemotron's vision model reads every room, and the design keeps your layout.",
     "missed": [],
     "inserted_whisper": [],
     "inserted_gemini": [],
     "style_hit": [],
-    "speech_s": 7.37,
-    "expect_s": 9.0,
+    "speech_s": 7.0,
+    "expect_s": 8.25,
     "similarity": 1.0,
     "reasons": [],
     "pass": true,
     "take": 1,
     "raw": "vo05.take1.wav",
-    "secs": 7.68,
-    "said": "Already have a plan from your architect? Upload a photo of it. Nemotron's vision model reads every room, and the design keeps your layout."
+    "secs": 7.32,
+    "said": "Already have a plan from your architect? Upload a photo. Nemotron's vision model reads every room, and the design keeps your layout."
    }
   ]
  },
  "vo06": {
   "id": "vo06",
-  "text": "Four exterior concepts come back in under a minute. Pick one, or let Naqsha choose, and Nemotron 3 Ultra starts work as the architect.",
+  "text": "Four exterior concepts come back in under a minute. Pick one, or let Naqsha choose.",
   "accepted_take": 1,
   "pass": true,
-  "duration": 8.235,
+  "duration": 5.634,
   "takes": [
    {
     "extra_spoken": [],
     "style_direction_spoken": false,
-    "naqsha_said": "NUK-shah",
+    "naqsha_said": "NUK-sha",
     "naqsha_vowel": "cut",
     "naqsha_ok": true,
     "artefacts": [],
-    "delivery": "Youthful South Asian accent, brisk and confident pace with clear articulation.",
-    "whisper": "Four exterior concepts come back in under a minute. Pick one or let Naksa choose and NemoTran 3 Ultra starts work as the architect.",
-    "blind": "Four exterior concepts come back in under a minute. Pick one, or let Naksha choose, and Nemotron 3 Ultra starts work as the architect.",
+    "delivery": "Clear, youthful Pakistani accent with upbeat and natural pacing.",
+    "whisper": "Four exterior concepts come back in under a minute. Pick one or let nakshachus.",
+    "blind": "Four exterior concepts come back in under a minute. Pick one, or let Naksha choose.",
     "missed": [],
     "inserted_whisper": [],
     "inserted_gemini": [],
     "style_hit": [],
-    "speech_s": 7.83,
-    "expect_s": 9.0,
-    "similarity": 0.9167,
+    "speech_s": 5.02,
+    "expect_s": 5.62,
+    "similarity": 0.8966,
     "reasons": [],
     "pass": true,
     "take": 1,
     "raw": "vo06.take1.wav",
-    "secs": 8.24,
-    "said": "Four exterior concepts come back in under a minute. Pick one, or let Naqsha choose, and Nemotron 3 Ultra starts work as the architect."
+    "secs": 6.8,
+    "said": "Four exterior concepts come back in under a minute. Pick one, or let Naqsha choose."
    }
   ]
  },
  "vo07": {
   "id": "vo07",
-  "text": "It drafts four floor plans at once from a proven layout. A rules engine checks each against the bylaws, and two fixer agents repair the best ones with tool calls, testing every edit before they keep it. All 34 bylaw checks pass.",
+  "text": "Nemotron 3 Ultra drafts four floor plans at once from a proven layout. A rules engine checks each against the bylaws, and two fixer agents repair the best ones with tool calls, testing every edit before they keep it. 34 problems, fixed down to zero. All 34 bylaw checks pass.",
   "accepted_take": 1,
   "pass": true,
-  "duration": 12.895,
+  "duration": 16.675,
   "takes": [
    {
     "extra_spoken": [],
@@ -237,31 +446,31 @@
     "naqsha_vowel": null,
     "naqsha_ok": true,
     "artefacts": [],
-    "delivery": "Clear, youthful Pakistani accent with an energetic and well-paced tech founder delivery.",
-    "whisper": "It drafts 4 floor plans at once from a proven layout. A rules engine checks each against the bylaws and 2 fixer agents repair the best ones with tool calls, testing every edit before they keep it. All 34 bylaw checks pass.",
-    "blind": "It drafts four floor plans at once from a proven layout. A rules engine checks each against the bylaws and two fixer agents repair the best ones with tool calls, testing every edit before they keep it. All 34 bylaw checks pass.",
+    "delivery": "Pakistani/South Asian accent, confident and energetic delivery at a steady, natural pace.",
+    "whisper": "NemoTron 3 Ultra drafts four floor plans at once from a proven layout. A rules engine checks each against the bylaws and two fixer agents repair the best ones with tool calls, testing every edit before they keep it. 34 problems fixed down to zero. All 34 bylaw checks pass.",
+    "blind": "Nemotron-3 Ultra drafts four floor plans at once from a proven layout. A rules engine checks each against the bylaws, and two fixer agents repair the best ones with tool calls, testing every edit before they keep it. 34 problems fixed down to zero. All 34 bylaw checks pass.",
     "missed": [],
     "inserted_whisper": [],
     "inserted_gemini": [],
     "style_hit": [],
-    "speech_s": 12.67,
-    "expect_s": 16.12,
+    "speech_s": 16.47,
+    "expect_s": 19.5,
     "similarity": 1.0,
     "reasons": [],
     "pass": true,
     "take": 1,
     "raw": "vo07.take1.wav",
-    "secs": 12.92,
-    "said": "It drafts four floor plans at once from a proven layout. A rules engine checks each against the bylaws, and two fixer agents repair the best ones with tool calls, testing every edit before they keep it. All 34 bylaw checks pass."
+    "secs": 16.72,
+    "said": "Nemotron 3 Ultra drafts four floor plans at once from a proven layout. A rules engine checks each against the bylaws, and two fixer agents repair the best ones with tool calls, testing every edit before they keep it. 34 problems, fixed down to zero. All 34 bylaw checks pass."
    }
   ]
  },
  "vo08": {
   "id": "vo08",
-  "text": "Then Ultra writes the house in 3D as code, section by section, from a checklist of every feature in the concept. Your browser builds it as it arrives.",
+  "text": "Then Ultra writes the house in 3D as code, from a checklist of every feature in the concept, and your browser builds it live.",
   "accepted_take": 1,
   "pass": true,
-  "duration": 9.007,
+  "duration": 7.334,
   "takes": [
    {
     "extra_spoken": [],
@@ -270,97 +479,31 @@
     "naqsha_vowel": null,
     "naqsha_ok": true,
     "artefacts": [],
-    "delivery": "Engaging, crisp delivery with a subtle South Asian accent and steady pace.",
-    "whisper": "Then, Ultra writes the house in 3D as code, section by section, from a checklist of every feature in the concept. Your browser builds it as it arrives.",
-    "blind": "Then Ultra writes the house in 3D as code section by section from a checklist of every feature in the concept. Your browser builds it as it arrives.",
+    "delivery": "Engaged and natural South Asian tech founder delivery with clear articulation and steady pacing.",
+    "whisper": "Then, Ultra writes the house in 3D as code, from a checklist of every feature in the concept, and your browser builds it live.",
+    "blind": "Then Ultra writes the house in 3D as code from a checklist of every feature in the concept, and your browser builds it live.",
     "missed": [],
     "inserted_whisper": [],
     "inserted_gemini": [],
     "style_hit": [],
-    "speech_s": 8.62,
-    "expect_s": 10.88,
-    "similarity": 1.0,
-    "reasons": [],
-    "pass": true,
-    "take": 1,
-    "raw": "vo08.take1.wav",
-    "secs": 9.12,
-    "said": "Then Ultra writes the house in 3D as code, section by section, from a checklist of every feature in the concept. Your browser builds it as it arrives."
-   }
-  ]
- },
- "vo09": {
-  "id": "vo09",
-  "text": "The vision model compares the 3D model with the concept, and the parts of the facade that don't match are rebuilt. Here, the match went from 86 to 93 percent.",
-  "accepted_take": 1,
-  "pass": true,
-  "duration": 9.667,
-  "takes": [
-   {
-    "extra_spoken": [],
-    "style_direction_spoken": false,
-    "naqsha_said": null,
-    "naqsha_vowel": null,
-    "naqsha_ok": true,
-    "artefacts": [],
-    "delivery": "Engaged and articulate delivery with a clear Pakistani tech founder accent and steady pace.",
-    "whisper": "The vision model compares the 3D model with the concept and the parts of the facade that don't match are rebuilt. Here, the match went from 86 to 93%.",
-    "blind": "the vision model compares the 3D model with a concept and the parts of the facade that don't match are rebuilt. Here, the match went from 86 to 93%.",
-    "missed": [],
-    "inserted_whisper": [],
-    "inserted_gemini": [],
-    "style_hit": [],
-    "speech_s": 9.42,
-    "expect_s": 12.38,
-    "similarity": 1.0,
-    "reasons": [],
-    "pass": true,
-    "take": 1,
-    "raw": "vo09.take1.wav",
-    "secs": 9.72,
-    "said": "The vision model compares the 3D model with the concept, and the parts of the facade that don't match are rebuilt. Here, the match went from 86 to 93 percent."
-   }
-  ]
- },
- "vo10": {
-  "id": "vo10",
-  "text": "Photos come straight from the 3D model: from the road, the street corner, the garden and the air. Every angle shows the same house.",
-  "accepted_take": 1,
-  "pass": true,
-  "duration": 7.707,
-  "takes": [
-   {
-    "extra_spoken": [],
-    "style_direction_spoken": false,
-    "naqsha_said": null,
-    "naqsha_vowel": null,
-    "naqsha_ok": true,
-    "artefacts": [],
-    "delivery": "Clear South Asian accent, natural conversational pacing, and engaging delivery.",
-    "whisper": "Photos come straight from the 3D model, from the road, the street corner, the garden and the air. Every angle shows the same house.",
-    "blind": "Photos come straight from the 3D model, from the road, the street corner, the garden and the air. Every angle shows the same house,",
-    "missed": [],
-    "inserted_whisper": [],
-    "inserted_gemini": [],
-    "style_hit": [],
-    "speech_s": 7.37,
+    "speech_s": 7.15,
     "expect_s": 9.38,
     "similarity": 1.0,
     "reasons": [],
     "pass": true,
     "take": 1,
-    "raw": "vo10.take1.wav",
-    "secs": 7.72,
-    "said": "Photos come straight from the 3D model: from the road, the street corner, the garden and the air. Every angle shows the same house."
+    "raw": "vo08.take1.wav",
+    "secs": 7.36,
+    "said": "Then Ultra writes the house in 3D as code, from a checklist of every feature in the concept, and your browser builds it live."
    }
   ]
  },
- "vo11": {
-  "id": "vo11",
-  "text": "See it at night, then walk through it, room by room, before the first brick.",
-  "accepted_take": 2,
+ "vo09": {
+  "id": "vo09",
+  "text": "The vision model checks the model against the concept and rebuilds what's missing: from 86 to 93 percent.",
+  "accepted_take": 1,
   "pass": true,
-  "duration": 4.988,
+  "duration": 6.246,
   "takes": [
    {
     "extra_spoken": [],
@@ -368,27 +511,126 @@
     "naqsha_said": null,
     "naqsha_vowel": null,
     "naqsha_ok": true,
-    "artefacts": [
-     "abrupt cut-off at the end of the audio"
+    "artefacts": [],
+    "delivery": "Clear South Asian accent with energetic, confident pacing and natural tech-founder delivery.",
+    "whisper": "The vision model checks the model against the concept and rebuilds what's missing from 86% to 93%.",
+    "blind": "The vision model checks the model against the concept and rebuilds what's missing from 86 to 93%.",
+    "missed": [],
+    "inserted_whisper": [
+     "percent"
     ],
-    "delivery": "Pakistani English accent with a measured, deliberate pace and reflective tone.",
-    "whisper": "See it at night then walk through it room by room before the first brick",
-    "blind": "See it at night, then walk through it, room by room, before the first brick",
+    "inserted_gemini": [],
+    "style_hit": [],
+    "speech_s": 5.95,
+    "expect_s": 7.5,
+    "similarity": 0.9756,
+    "reasons": [],
+    "pass": true,
+    "take": 1,
+    "raw": "vo09.take1.wav",
+    "secs": 6.56,
+    "said": "The vision model checks the model against the concept and rebuilds what's missing: from 86 to 93 percent."
+   }
+  ]
+ },
+ "vo10": {
+  "id": "vo10",
+  "text": "Photos come straight from the 3D model, from every angle. At night, every room is lit.",
+  "accepted_take": 1,
+  "pass": true,
+  "duration": 5.244,
+  "takes": [
+   {
+    "extra_spoken": [],
+    "style_direction_spoken": false,
+    "naqsha_said": null,
+    "naqsha_vowel": null,
+    "naqsha_ok": true,
+    "artefacts": [],
+    "delivery": "Engaging South Asian English accent, energetic and well-paced.",
+    "whisper": "Photos come straight from the 3D model. From every angle. At night, every room is lit.",
+    "blind": "Photos come straight from the 3D model, from every angle. At night, every room is lit,",
     "missed": [],
     "inserted_whisper": [],
     "inserted_gemini": [],
     "style_hit": [],
-    "speech_s": 4.9,
-    "expect_s": 5.62,
+    "speech_s": 4.8,
+    "expect_s": 6.38,
+    "similarity": 1.0,
+    "reasons": [],
+    "pass": true,
+    "take": 1,
+    "raw": "vo10.take1.wav",
+    "secs": 5.36,
+    "said": "Photos come straight from the 3D model, from every angle. At night, every room is lit."
+   }
+  ]
+ },
+ "vo11": {
+  "id": "vo11",
+  "text": "Then walk through it, room by room, before the first brick.",
+  "accepted_take": 1,
+  "pass": true,
+  "duration": 3.88,
+  "takes": [
+   {
+    "extra_spoken": [],
+    "style_direction_spoken": false,
+    "naqsha_said": null,
+    "naqsha_vowel": null,
+    "naqsha_ok": true,
+    "artefacts": [],
+    "delivery": "Clear South Asian accent, natural conversational pacing, calm and steady tone.",
+    "whisper": "then walk through it room by room before the first break.",
+    "blind": "then walk through it, room by room, before the first brick",
+    "missed": [],
+    "inserted_whisper": [],
+    "inserted_gemini": [],
+    "style_hit": [],
+    "speech_s": 3.39,
+    "expect_s": 4.12,
+    "similarity": 0.9091,
+    "reasons": [],
+    "pass": true,
+    "take": 1,
+    "raw": "vo11.take1.wav",
+    "secs": 3.88,
+    "said": "Then walk through it, room by room, before the first brick."
+   }
+  ]
+ },
+ "vo12": {
+  "id": "vo12",
+  "text": "Anyone can pin a note to the exact spot they mean. Share a link with your family, and they can comment without an account. Here, Ammi asks for a bigger kitchen, and her note reaches the owner right away.",
+  "accepted_take": 3,
+  "pass": true,
+  "duration": 11.571,
+  "takes": [
+   {
+    "extra_spoken": [],
+    "style_direction_spoken": false,
+    "naqsha_said": null,
+    "naqsha_vowel": null,
+    "naqsha_ok": true,
+    "artefacts": [],
+    "delivery": "Pakistani English accent, warm and upbeat tone, natural conversational pace.",
+    "whisper": "Anyone can pin a note to the exact spot they mean. Share a link with your family and they can comment without an account. Here, Ami asks for a bigger kitchen and her note reaches the owner right away.",
+    "blind": "Anyone can pin a note to the exact spot they mean. Share a link with your family and they can comment without an account. Here, Amy asks for a bigger kitchen and her note reaches the owner right away.",
+    "missed": [],
+    "inserted_whisper": [],
+    "inserted_gemini": [],
+    "style_hit": [],
+    "speech_s": 9.33,
+    "expect_s": 14.62,
     "similarity": 1.0,
     "reasons": [
-     "artefacts"
+     "duration"
     ],
     "pass": false,
     "take": 1,
-    "raw": "vo11.take1.wav",
-    "secs": 5.48,
-    "said": "See it at night, then walk through it, room by room, before the first brick."
+    "raw": "vo12.take1.wav",
+    "secs": 9.72,
+    "said": "Anyone can pin a note to the exact spot they mean. Share a link with your family, and they can comment without an account. Here, Ammi asks for a bigger kitchen, and her note reaches the owner right away."
    },
    {
     "extra_spoken": [],
@@ -397,31 +639,57 @@
     "naqsha_vowel": null,
     "naqsha_ok": true,
     "artefacts": [],
-    "delivery": "Measured, reflective delivery with a natural Pakistani accent and clear pacing.",
-    "whisper": "See it at night then walk through it room by room before the first brick.",
-    "blind": "see it at night. Then, walk through it room by room before the first brick",
+    "delivery": "Natural Pakistani accent with clear, engaging energy and smooth pacing.",
+    "whisper": "Anyone can pin a note to the exact spot they mean. Share a link with your family and they can comment without an account. Here, Ami asks for a bigger kitchen and her note reaches the owner right away.",
+    "blind": "Anyone can pin a note to the exact spot they mean. Share a link with your family and they can comment without an account. Here, Ami asks for a bigger kitchen, and her note reaches the owner right away.",
     "missed": [],
     "inserted_whisper": [],
     "inserted_gemini": [],
     "style_hit": [],
-    "speech_s": 4.53,
-    "expect_s": 5.62,
+    "speech_s": 9.55,
+    "expect_s": 14.62,
+    "similarity": 1.0,
+    "reasons": [
+     "duration"
+    ],
+    "pass": false,
+    "take": 2,
+    "raw": "vo12.take2.wav",
+    "secs": 10.0,
+    "said": "Anyone can pin a note to the exact spot they mean. Share a link with your family, and they can comment without an account. Here, Ammi asks for a bigger kitchen, and her note reaches the owner right away."
+   },
+   {
+    "extra_spoken": [],
+    "style_direction_spoken": false,
+    "naqsha_said": null,
+    "naqsha_vowel": null,
+    "naqsha_ok": true,
+    "artefacts": [],
+    "delivery": "Warm and conversational Pakistani English accent with clear, engaging pacing.",
+    "whisper": "Anyone can pin a note to the exact spot they mean. Share a link with your family and they can comment without an account. Here, Ami asks for a bigger kitchen and her note reaches the owner right away.",
+    "blind": "Anyone can pin a note to the exact spot they mean. Share a link with your family, and they can comment without an account. Here, Amy asks for a bigger kitchen, and her note reaches the owner right away.",
+    "missed": [],
+    "inserted_whisper": [],
+    "inserted_gemini": [],
+    "style_hit": [],
+    "speech_s": 10.98,
+    "expect_s": 14.62,
     "similarity": 1.0,
     "reasons": [],
     "pass": true,
-    "take": 2,
-    "raw": "vo11.take2.wav",
-    "secs": 5.2,
-    "said": "See it at night, then walk through it, room by room, before the first brick."
+    "take": 3,
+    "raw": "vo12.take3.wav",
+    "secs": 11.64,
+    "said": "Anyone can pin a note to the exact spot they mean. Share a link with your family, and they can comment without an account. Here, Ammi asks for a bigger kitchen, and her note reaches the owner right away."
    }
   ]
  },
- "vo12": {
-  "id": "vo12",
-  "text": "Ultra plans, fixes and writes the code. Super runs the conversation. The vision model reads drawings and checks the build. All of it on Nebius Token Factory.",
+ "vo13": {
+  "id": "vo13",
+  "text": "Press Revise. A revision agent on Nemotron 3 Ultra, with nine tools, reads each note, edits the plan, and runs every check again. The window gets wider, and the kitchen gets an island and a longer counter.",
   "accepted_take": 1,
   "pass": true,
-  "duration": 9.079,
+  "duration": 11.08,
   "takes": [
    {
     "extra_spoken": [],
@@ -430,31 +698,97 @@
     "naqsha_vowel": null,
     "naqsha_ok": true,
     "artefacts": [],
-    "delivery": "Engaging South Asian accent with brisk, confident pacing and crisp articulation.",
-    "whisper": "Ultra plans, fixes and writes the code, super runs the conversation, the vision model reads drawings and checks the build, all of it on Nebbier's Token Factory.",
-    "blind": "Ultra plans, fixes, and writes the code, Super runs the conversation, the vision model reads drawings, and checks the build, all of it on Nebius Token Factory.",
+    "delivery": "Youthful South Asian accent with energetic, confident tech-founder delivery and brisk pacing.",
+    "whisper": "Press revise. A revision agent on Nimutron 3 Ultra with 9 tools reads each note, edits the plan and runs every check again. The window gets wider and the kitchen gets an island and a longer counter.",
+    "blind": "Press revise. A revision agent on Nemotron-3 Ultra with nine tools reads each note, edits the plan, and runs every check again. The window gets wider, and the kitchen gets an island and a longer counter.",
     "missed": [],
     "inserted_whisper": [],
     "inserted_gemini": [],
     "style_hit": [],
-    "speech_s": 8.54,
-    "expect_s": 10.12,
-    "similarity": 0.963,
+    "speech_s": 10.68,
+    "expect_s": 13.88,
+    "similarity": 0.973,
     "reasons": [],
     "pass": true,
     "take": 1,
-    "raw": "vo12.take1.wav",
-    "secs": 9.08,
-    "said": "Ultra plans, fixes and writes the code. Super runs the conversation. The vision model reads drawings and checks the build. All of it on Nebius Token Factory."
+    "raw": "vo13.take1.wav",
+    "secs": 11.08,
+    "said": "Press Revise. A revision agent on Nemotron 3 Ultra, with nine tools, reads each note, edits the plan, and runs every check again. The window gets wider, and the kitchen gets an island and a longer counter."
    }
   ]
  },
- "vo13": {
-  "id": "vo13",
-  "text": "Families see their home before they build it, and architects bring a checked design to the first meeting. Naqsha. Open source, built on Nemotron.",
+ "vo14": {
+  "id": "vo14",
+  "text": "You can also just type a change, and it comes back as a new version, checked again.",
   "accepted_take": 1,
   "pass": true,
-  "duration": 8.64,
+  "duration": 5.2,
+  "takes": [
+   {
+    "extra_spoken": [],
+    "style_direction_spoken": false,
+    "naqsha_said": null,
+    "naqsha_vowel": null,
+    "naqsha_ok": true,
+    "artefacts": [],
+    "delivery": "Youthful Pakistani accent, clear and engaging with natural conversational pacing.",
+    "whisper": "You can also just type a change and it comes back as a new version checked again",
+    "blind": "You can also just type a change and it comes back as a new version. Check it again.",
+    "missed": [],
+    "inserted_whisper": [],
+    "inserted_gemini": [],
+    "style_hit": [],
+    "speech_s": 4.49,
+    "expect_s": 6.38,
+    "similarity": 1.0,
+    "reasons": [],
+    "pass": true,
+    "take": 1,
+    "raw": "vo14.take1.wav",
+    "secs": 5.2,
+    "said": "You can also just type a change, and it comes back as a new version, checked again."
+   }
+  ]
+ },
+ "vo15": {
+  "id": "vo15",
+  "text": "Ultra plans, fixes, writes the code and revises. Super runs the conversation. The vision model reads drawings and checks the build. All of it on Nebius Token Factory.",
+  "accepted_take": 1,
+  "pass": true,
+  "duration": 9.789,
+  "takes": [
+   {
+    "extra_spoken": [],
+    "style_direction_spoken": false,
+    "naqsha_said": null,
+    "naqsha_vowel": null,
+    "naqsha_ok": true,
+    "artefacts": [],
+    "delivery": "Clear South Asian accent with energetic, confident delivery and natural pacing.",
+    "whisper": "Ultra plans, fixes, writes the code, and revises. Super runs the conversation. The vision model reads drawings and checks the build, all of it on Nebia's Token Factory.",
+    "blind": "Ultra plans, fixes, writes the code and revises. Super runs the conversation. The vision model reads drawings and checks the build. All of it on Nebius Token Factory.",
+    "missed": [],
+    "inserted_whisper": [],
+    "inserted_gemini": [],
+    "style_hit": [],
+    "speech_s": 9.44,
+    "expect_s": 10.5,
+    "similarity": 0.9643,
+    "reasons": [],
+    "pass": true,
+    "take": 1,
+    "raw": "vo15.take1.wav",
+    "secs": 9.8,
+    "said": "Ultra plans, fixes, writes the code and revises. Super runs the conversation. The vision model reads drawings and checks the build. All of it on Nebius Token Factory."
+   }
+  ]
+ },
+ "vo16": {
+  "id": "vo16",
+  "text": "Families walk through their home before they build it, and architects bring a checked design to the first meeting. Naqsha is live today, and it's open source.",
+  "accepted_take": 1,
+  "pass": true,
+  "duration": 8.52,
   "takes": [
    {
     "extra_spoken": [],
@@ -463,22 +797,22 @@
     "naqsha_vowel": "cut",
     "naqsha_ok": true,
     "artefacts": [],
-    "delivery": "Natural Pakistani accent with a steady, confident pace and clear articulation.",
-    "whisper": "Families see their home before they build it, and architects bring a checked design to the first meeting. Naksa, open source, built on NemoTron.",
-    "blind": "Families see their home before they build it, and architects bring a checked design to the first meeting. Naksha, open source, built on Nymatron.",
+    "delivery": "Engaging South Asian English accent with steady pacing and warm, confident energy.",
+    "whisper": "Families walk through their home before they build it. And architects bring a Czech design to the first meeting. Nakhsha is live today and it's open source.",
+    "blind": "families walk through their home before they build it, and architects bring a checked design to the first meeting. Naksha is live today, and it's open source.",
     "missed": [],
     "inserted_whisper": [],
     "inserted_gemini": [],
     "style_hit": [],
-    "speech_s": 8.42,
-    "expect_s": 9.0,
-    "similarity": 0.9583,
+    "speech_s": 8.03,
+    "expect_s": 10.12,
+    "similarity": 0.963,
     "reasons": [],
     "pass": true,
     "take": 1,
-    "raw": "vo13.take1.wav",
-    "secs": 8.64,
-    "said": "Families see their home before they build it, and architects bring a checked design to the first meeting. Naqsha. Open source, built on Nemotron."
+    "raw": "vo16.take1.wav",
+    "secs": 8.52,
+    "said": "Families walk through their home before they build it, and architects bring a checked design to the first meeting. Naqsha is live today, and it's open source."
    }
   ]
  }

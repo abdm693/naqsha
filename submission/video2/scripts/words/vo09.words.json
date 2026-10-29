@@ -1,176 +1,104 @@
 [
  {
   "text": "The",
-  "start": 0.2,
-  "end": 0.27,
+  "start": 0.01,
+  "end": 0.19,
   "id": "w0"
  },
  {
   "text": "vision",
-  "start": 0.27,
-  "end": 0.61,
+  "start": 0.35,
+  "end": 0.57,
   "id": "w1"
  },
  {
   "text": "model",
-  "start": 0.61,
-  "end": 0.92,
+  "start": 0.57,
+  "end": 0.89,
   "id": "w2"
  },
  {
-  "text": "compares",
-  "start": 0.95,
-  "end": 1.5,
+  "text": "checks",
+  "start": 0.89,
+  "end": 1.27,
   "id": "w3"
  },
  {
   "text": "the",
-  "start": 1.5,
-  "end": 1.62,
+  "start": 1.27,
+  "end": 1.46,
   "id": "w4"
  },
  {
-  "text": "3D",
-  "start": 1.75,
-  "end": 1.96,
+  "text": "model",
+  "start": 1.46,
+  "end": 1.8,
   "id": "w5"
  },
  {
-  "text": "model",
-  "start": 1.96,
-  "end": 2.33,
+  "text": "against",
+  "start": 1.8,
+  "end": 2.12,
   "id": "w6"
  },
  {
-  "text": "with",
-  "start": 2.33,
-  "end": 2.5,
+  "text": "the",
+  "start": 2.12,
+  "end": 2.32,
   "id": "w7"
  },
  {
-  "text": "the",
-  "start": 2.5,
-  "end": 2.68,
+  "text": "concept",
+  "start": 2.32,
+  "end": 2.7,
   "id": "w8"
  },
  {
-  "text": "concept",
-  "start": 2.68,
-  "end": 3.05,
+  "text": "and",
+  "start": 2.8,
+  "end": 2.92,
   "id": "w9"
  },
  {
-  "text": "and",
-  "start": 3.12,
-  "end": 3.2,
+  "text": "rebuilds",
+  "start": 2.92,
+  "end": 3.35,
   "id": "w10"
  },
  {
-  "text": "the",
-  "start": 3.36,
-  "end": 3.58,
+  "text": "what's",
+  "start": 3.39,
+  "end": 3.6,
   "id": "w11"
  },
  {
-  "text": "parts",
-  "start": 3.58,
-  "end": 3.84,
+  "text": "missing",
+  "start": 3.6,
+  "end": 3.91,
   "id": "w12"
  },
  {
-  "text": "of",
-  "start": 3.93,
-  "end": 4,
+  "text": "from",
+  "start": 4.31,
+  "end": 4.42,
   "id": "w13"
  },
  {
-  "text": "the",
-  "start": 4,
-  "end": 4.08,
+  "text": "86%",
+  "start": 4.42,
+  "end": 4.96,
   "id": "w14"
  },
  {
-  "text": "facade",
-  "start": 4.08,
-  "end": 4.4,
+  "text": "to",
+  "start": 5,
+  "end": 5.15,
   "id": "w15"
  },
  {
-  "text": "that",
-  "start": 4.4,
-  "end": 4.59,
-  "id": "w16"
- },
- {
-  "text": "don't",
-  "start": 4.61,
-  "end": 4.96,
-  "id": "w17"
- },
- {
-  "text": "match",
-  "start": 4.96,
-  "end": 5.15,
-  "id": "w18"
- },
- {
-  "text": "are",
-  "start": 5.35,
-  "end": 5.55,
-  "id": "w19"
- },
- {
-  "text": "rebuilt.",
-  "start": 5.55,
-  "end": 6.12,
-  "id": "w20"
- },
- {
-  "text": "Here,",
-  "start": 6.39,
-  "end": 6.63,
-  "id": "w21"
- },
- {
-  "text": "the",
-  "start": 6.63,
-  "end": 6.89,
-  "id": "w22"
- },
- {
-  "text": "match",
-  "start": 6.89,
-  "end": 7.32,
-  "id": "w23"
- },
- {
-  "text": "went",
-  "start": 7.32,
-  "end": 7.64,
-  "id": "w24"
- },
- {
-  "text": "from",
-  "start": 7.7,
-  "end": 8,
-  "id": "w25"
- },
- {
-  "text": "86",
-  "start": 8,
-  "end": 8.52,
-  "id": "w26"
- },
- {
-  "text": "to",
-  "start": 8.52,
-  "end": 8.65,
-  "id": "w27"
- },
- {
   "text": "93%.",
-  "start": 8.75,
-  "end": 9.6,
-  "id": "w28"
+  "start": 5.15,
+  "end": 5.96,
+  "id": "w16"
  }
 ]

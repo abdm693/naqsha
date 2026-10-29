@@ -29,6 +29,9 @@ Step names the build reads from the JSON logs (each `{"t": seconds, "what": name
   `match score` (also matches `match score: …`), `match popover`, `photos panel`, `photos done`, `photo enlarged`,
   `photo 2`, `photo 3`, `photo 4`, `night`, `day again`, `orbit`, `walk`, `walked`
 - drawing run: `uploaded`, `read`
+- collaboration run (`"collab"` in footage.json): `pin placed`, `owner pinned`, `client link on`, `owner sees client note`,
+  `revise started`, `answers read`, `typed change sent`; plus marks in footage.json: `comment mode`, `v2 ready`, `v3 ready`
+- client recording (`"client"`, no step log): marks `card open`, `posted` in footage.json
 
 Assumptions tied to the app, not to one recording (constants in build.py): the 3D canvas shows the house about 2.4 s
 after `house view` (`HV_SHOWN`); the outro's first shot is the 2.3 s before `walk`; the walk's last 3.5 s are cut;

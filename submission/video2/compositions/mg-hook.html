@@ -31,14 +31,22 @@
 #mg-hook .weeks { position:absolute; left:140px; bottom:110px; font-family:"Geist Mono", monospace; font-size:40px; color:#46464B; opacity:0; }
 #mg-hook .weeks b { color:#111113; font-weight:600; font-variant-numeric:tabular-nums; }
 #mg-hook .sweep { position:absolute; left:0; top:0; width:100%; height:100%; background:#2747F5; transform-origin:0 50%; transform:scaleX(0); }
+#mg-hook .room { position:absolute; left:1060px; top:190px; width:740px; height:640px; opacity:0; }
+#mg-hook .room svg { position:absolute; left:0; top:0; width:740px; height:560px; }
+#mg-hook .room path, #mg-hook .room rect { fill:none; stroke:#3A3A40; stroke-width:4; stroke-linecap:round; stroke-linejoin:round; }
+#mg-hook .room .dash { stroke-dasharray:14 12; stroke:#8E8E96; }
+#mg-hook .room .cob { stroke:#2747F5; stroke-width:5; }
+#mg-hook .room .rtag { position:absolute; left:0; top:584px; font-family:"Geist Mono", monospace; font-size:30px; color:#46464B; white-space:nowrap; }
+#mg-hook .close { position:absolute; left:140px; top:330px; width:860px; font-size:84px; font-weight:680; letter-spacing:-0.045em; line-height:1.04; opacity:0; }
+#mg-hook .close span { color:#2747F5; }
 </style>
-<div data-hf-id="hf-y5dk" id="mg-hook" data-composition-id="mg-hook" data-width="1920" data-height="1080" data-duration="12.08">
+<div data-hf-id="hf-y5dk" id="mg-hook" data-composition-id="mg-hook" data-width="1920" data-height="1080" data-duration="12.736">
   <div data-hf-id="hf-h0eq" class="bg" id="mg-hook-bg" data-layout-allow-overflow></div>
   <div data-hf-id="hf-nhsi" class="kicker" id="mg-hook-kicker">Pakistan · designing a home today</div>
   <div data-hf-id="hf-hwej" class="lines" id="mg-hook-lines">
-    <div data-hf-id="hf-dsct" class="line" id="mg-hook-l1">Most families build a house only once.</div>
+    <div data-hf-id="hf-dsct" class="line" id="mg-hook-l1">Most families build a home only once.</div>
     <div data-hf-id="hf-07lw" class="line soft2" id="mg-hook-l2">The plan goes back and forth for weeks.</div>
-    <div data-hf-id="hf-75ie" class="line red" id="mg-hook-l4">Nobody checks the bylaws until the authority sends it back.</div>
+    <div data-hf-id="hf-75ie" class="line red" id="mg-hook-l4">One setback mistake, and the authority sends it back.</div>
   </div>
   <div data-hf-id="hf-5x97" class="stage" id="mg-hook-stage" data-layout-allow-overlap data-layout-allow-occlusion>
     <div data-hf-id="hf-h0al" class="sheet" id="mg-hook-s3" data-layout-allow-occlusion style="transform:rotate(5deg)"><div data-hf-id="hf-rpfh" class="tag" data-layout-allow-occlusion>Draft 3 · week 4</div></div>
@@ -68,14 +76,27 @@
       <div data-hf-id="hf-yaul">Front setback 7′ (min 10′)</div>
     </div>
   </div>
+  <div class="room" id="mg-hook-room" data-layout-allow-overlap>
+    <svg viewBox="0 0 740 560">
+      <rect pathLength="1" x="10" y="10" width="720" height="540" />
+      <rect pathLength="1" x="230" y="150" width="280" height="230" />
+      <path pathLength="1" d="M10 10 L230 150 M730 10 L510 150 M10 550 L230 380 M730 550 L510 380" />
+      <rect class="cob" pathLength="1" x="290" y="190" width="160" height="110" />
+      <path class="cob" pathLength="1" d="M370 190 V300" />
+      <path pathLength="1" d="M90 520 L90 160 L170 210 L170 450" />
+      <path class="dash" pathLength="1" d="M300 470 h150 v-40 h-150 z M560 300 v120 M660 260 v200" />
+    </svg>
+    <div class="rtag" id="mg-hook-rtag">Inside: not seen until the walls go up</div>
+  </div>
+  <div class="close" id="mg-hook-close">Until it’s built, nobody can <span>walk through the rooms.</span></div>
   <div data-hf-id="hf-xhyh" class="weeks" id="mg-hook-weeks">elapsed: <b data-hf-id="hf-0sei" id="mg-hook-wk">week 1</b></div>
   <div data-hf-id="hf-e9j9" class="sweep" id="mg-hook-sweep"></div>
 </div>
 <script>
 (function(){
 // Cue times (seconds, local) are written by scripts/build.py from the voice-over word timings.
-const C = {"l1": 0.86, "l2": 4.13, "weeks": 5.9, "l4": 7.09, "stamp": 9.17};
-const D = 12.08;
+const C = {"l1": 1.43, "l2": 3.97, "weeks": 5.68, "l4": 6.29, "stamp": 7.68, "room": 9.54};
+const D = 12.736;
 const tl = gsap.timeline({ paused: true });
 const q = (s) => document.querySelectorAll("#mg-hook " + s);
 tl.fromTo("#mg-hook-bg", { x: 0, y: 0 }, { x: -50, y: -24, duration: D, ease: "none" }, 0);
@@ -104,8 +125,16 @@ tl.fromTo("#mg-hook-l4", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.
 tl.fromTo("#mg-hook-stamp", { opacity: 0, scale: 2.4, rotation: -18 }, { opacity: 1, scale: 1, rotation: -9, duration: 0.26, ease: "power4.in" }, C.stamp);
 tl.fromTo("#mg-hook-stage", { x: 0, y: 0 }, { keyframes: [{ x: -14, y: 8, duration: 0.05 }, { x: 10, y: -6, duration: 0.05 }, { x: -5, y: 3, duration: 0.05 }, { x: 0, y: 0, duration: 0.08 }], ease: "none" }, C.stamp + 0.26);
 tl.fromTo("#mg-hook-reason", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.stamp + 0.45);
+// beat 4: "and until it's built, nobody can walk through the rooms"
+tl.to(["#mg-hook-stage", "#mg-hook-lines", "#mg-hook-weeks"], { opacity: 0, x: -60, duration: 0.4, ease: "power2.in" }, C.room - 0.35);
+tl.fromTo("#mg-hook-room", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, C.room);
+q(".room [pathLength]").forEach((p, i) => {
+  tl.fromTo(p, { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.6, ease: "power1.inOut" }, C.room + 0.05 + i * 0.12);
+});
+tl.fromTo("#mg-hook-close", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, C.room + 0.1);
+tl.fromTo("#mg-hook-rtag", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, C.room + 0.8);
 // hand-off to the title: the cobalt sweep
-tl.to(["#mg-hook-stage", "#mg-hook-lines", "#mg-hook-weeks", "#mg-hook-kicker"], { opacity: 0, x: -70, duration: 0.4, ease: "power2.in" }, D - 0.75);
+tl.to(["#mg-hook-room", "#mg-hook-close", "#mg-hook-kicker"], { opacity: 0, x: -70, duration: 0.4, ease: "power2.in" }, D - 0.75);
 tl.fromTo("#mg-hook-sweep", { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: "power3.in" }, D - 0.42);
 window.__timelines["mg-hook"] = tl;
 })();

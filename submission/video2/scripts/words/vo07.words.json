@@ -1,254 +1,302 @@
 [
  {
-  "text": "It",
+  "text": "NemoTron",
   "start": 0.01,
-  "end": 0.17,
+  "end": 0.61,
   "id": "w0"
  },
  {
-  "text": "drafts",
-  "start": 0.29,
-  "end": 0.68,
+  "text": "3",
+  "start": 0.61,
+  "end": 0.85,
   "id": "w1"
  },
  {
-  "text": "4",
-  "start": 0.68,
-  "end": 0.89,
+  "text": "Ultra",
+  "start": 0.85,
+  "end": 1.22,
   "id": "w2"
  },
  {
-  "text": "floor",
-  "start": 1.05,
-  "end": 1.24,
+  "text": "drafts",
+  "start": 1.35,
+  "end": 1.72,
   "id": "w3"
  },
  {
-  "text": "plans",
-  "start": 1.39,
-  "end": 1.8,
+  "text": "four",
+  "start": 1.72,
+  "end": 1.88,
   "id": "w4"
  },
  {
-  "text": "at",
-  "start": 1.8,
-  "end": 1.97,
+  "text": "floor",
+  "start": 2.08,
+  "end": 2.44,
   "id": "w5"
  },
  {
-  "text": "once",
-  "start": 1.97,
-  "end": 2.33,
+  "text": "plans",
+  "start": 2.44,
+  "end": 2.88,
   "id": "w6"
  },
  {
-  "text": "from",
-  "start": 2.44,
-  "end": 2.58,
+  "text": "at",
+  "start": 2.88,
+  "end": 2.92,
   "id": "w7"
  },
  {
-  "text": "a",
-  "start": 2.58,
-  "end": 2.59,
+  "text": "once",
+  "start": 3.02,
+  "end": 3.32,
   "id": "w8"
  },
  {
-  "text": "proven",
-  "start": 2.69,
-  "end": 2.99,
+  "text": "from",
+  "start": 3.32,
+  "end": 3.56,
   "id": "w9"
  },
  {
-  "text": "layout.",
-  "start": 2.99,
+  "text": "a",
+  "start": 3.56,
   "end": 3.58,
   "id": "w10"
  },
  {
-  "text": "A",
-  "start": 3.59,
-  "end": 3.63,
+  "text": "proven",
+  "start": 3.69,
+  "end": 3.98,
   "id": "w11"
  },
  {
-  "text": "rules",
-  "start": 3.87,
-  "end": 3.94,
+  "text": "layout.",
+  "start": 3.98,
+  "end": 4.55,
   "id": "w12"
  },
  {
-  "text": "engine",
-  "start": 3.94,
-  "end": 4.26,
+  "text": "A",
+  "start": 4.56,
+  "end": 4.61,
   "id": "w13"
  },
  {
-  "text": "checks",
-  "start": 4.63,
-  "end": 4.66,
+  "text": "rules",
+  "start": 4.89,
+  "end": 4.9,
   "id": "w14"
  },
  {
-  "text": "each",
-  "start": 4.66,
-  "end": 4.81,
+  "text": "engine",
+  "start": 4.94,
+  "end": 5.3,
   "id": "w15"
  },
  {
-  "text": "against",
-  "start": 4.97,
-  "end": 5.33,
+  "text": "checks",
+  "start": 5.3,
+  "end": 5.67,
   "id": "w16"
  },
  {
-  "text": "the",
-  "start": 5.33,
-  "end": 5.51,
+  "text": "each",
+  "start": 5.67,
+  "end": 5.92,
   "id": "w17"
  },
  {
-  "text": "bylaws",
-  "start": 5.51,
-  "end": 5.91,
+  "text": "against",
+  "start": 5.92,
+  "end": 6.32,
   "id": "w18"
  },
  {
-  "text": "and",
-  "start": 6.02,
-  "end": 6.34,
+  "text": "the",
+  "start": 6.41,
+  "end": 6.48,
   "id": "w19"
  },
  {
-  "text": "2",
-  "start": 6.34,
-  "end": 6.4,
+  "text": "bylaws",
+  "start": 6.64,
+  "end": 6.96,
   "id": "w20"
  },
  {
-  "text": "fixer",
-  "start": 6.4,
-  "end": 6.72,
+  "text": "and",
+  "start": 6.96,
+  "end": 7.28,
   "id": "w21"
  },
  {
-  "text": "agents",
-  "start": 6.72,
-  "end": 6.88,
+  "text": "two",
+  "start": 7.28,
+  "end": 7.48,
   "id": "w22"
  },
  {
-  "text": "repair",
-  "start": 7.2,
-  "end": 7.42,
+  "text": "fixer",
+  "start": 7.48,
+  "end": 7.81,
   "id": "w23"
  },
  {
-  "text": "the",
-  "start": 7.42,
-  "end": 7.5,
+  "text": "agents",
+  "start": 7.81,
+  "end": 8.14,
   "id": "w24"
  },
  {
-  "text": "best",
-  "start": 7.53,
-  "end": 7.82,
+  "text": "repair",
+  "start": 8.25,
+  "end": 8.52,
   "id": "w25"
  },
  {
-  "text": "ones",
-  "start": 7.82,
-  "end": 8.1,
+  "text": "the",
+  "start": 8.52,
+  "end": 8.64,
   "id": "w26"
  },
  {
-  "text": "with",
-  "start": 8.1,
-  "end": 8.15,
+  "text": "best",
+  "start": 8.64,
+  "end": 8.83,
   "id": "w27"
  },
  {
-  "text": "tool",
-  "start": 8.15,
-  "end": 8.51,
+  "text": "ones",
+  "start": 8.83,
+  "end": 9.21,
   "id": "w28"
  },
  {
-  "text": "calls,",
-  "start": 8.51,
-  "end": 8.9,
+  "text": "with",
+  "start": 9.21,
+  "end": 9.43,
   "id": "w29"
  },
  {
-  "text": "testing",
-  "start": 9.05,
-  "end": 9.4,
+  "text": "tool",
+  "start": 9.58,
+  "end": 9.66,
   "id": "w30"
  },
  {
-  "text": "every",
-  "start": 9.4,
-  "end": 9.73,
+  "text": "calls,",
+  "start": 9.66,
+  "end": 10.06,
   "id": "w31"
  },
  {
-  "text": "edit",
-  "start": 9.73,
-  "end": 9.99,
+  "text": "testing",
+  "start": 10.06,
+  "end": 10.42,
   "id": "w32"
  },
  {
-  "text": "before",
-  "start": 9.99,
-  "end": 10.38,
+  "text": "every",
+  "start": 10.55,
+  "end": 10.76,
   "id": "w33"
  },
  {
-  "text": "they",
-  "start": 10.38,
-  "end": 10.5,
+  "text": "edit",
+  "start": 10.76,
+  "end": 10.96,
   "id": "w34"
  },
  {
-  "text": "keep",
-  "start": 10.66,
-  "end": 10.81,
+  "text": "before",
+  "start": 11.28,
+  "end": 11.34,
   "id": "w35"
  },
  {
-  "text": "it.",
-  "start": 10.91,
-  "end": 11.26,
+  "text": "they",
+  "start": 11.34,
+  "end": 11.47,
   "id": "w36"
  },
  {
-  "text": "All",
-  "start": 11.27,
-  "end": 11.43,
+  "text": "keep",
+  "start": 11.58,
+  "end": 11.8,
   "id": "w37"
  },
  {
-  "text": "34",
-  "start": 11.55,
-  "end": 11.77,
+  "text": "it.",
+  "start": 11.8,
+  "end": 12.12,
   "id": "w38"
  },
  {
-  "text": "bylaw",
-  "start": 11.77,
-  "end": 11.94,
+  "text": "34",
+  "start": 12.54,
+  "end": 12.69,
   "id": "w39"
  },
  {
-  "text": "checks",
-  "start": 12.1,
-  "end": 12.39,
+  "text": "problems",
+  "start": 12.69,
+  "end": 13.38,
   "id": "w40"
  },
  {
-  "text": "pass.",
-  "start": 12.39,
-  "end": 12.7,
+  "text": "fixed",
+  "start": 13.51,
+  "end": 13.85,
   "id": "w41"
+ },
+ {
+  "text": "down",
+  "start": 13.85,
+  "end": 14.04,
+  "id": "w42"
+ },
+ {
+  "text": "to",
+  "start": 14.24,
+  "end": 14.39,
+  "id": "w43"
+ },
+ {
+  "text": "zero.",
+  "start": 14.39,
+  "end": 15.04,
+  "id": "w44"
+ },
+ {
+  "text": "All",
+  "start": 15.05,
+  "end": 15.22,
+  "id": "w45"
+ },
+ {
+  "text": "34",
+  "start": 15.42,
+  "end": 15.57,
+  "id": "w46"
+ },
+ {
+  "text": "bylaw",
+  "start": 15.57,
+  "end": 15.86,
+  "id": "w47"
+ },
+ {
+  "text": "checks",
+  "start": 15.86,
+  "end": 16.21,
+  "id": "w48"
+ },
+ {
+  "text": "pass.",
+  "start": 16.21,
+  "end": 16.48,
+  "id": "w49"
  }
 ]

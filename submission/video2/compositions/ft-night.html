@@ -49,16 +49,16 @@
 #ft-night .steps .sp { display:flex; align-items:center; gap:10px; height:56px; padding:0 20px 0 12px; border-radius:999px; border:2px solid #DADAD4; background:#FFFFFF; color:#6E6E73; font-size:30px; font-weight:600; white-space:nowrap; box-shadow:0 10px 26px -14px rgba(17,17,19,.45); }
 #ft-night .steps .sp-n { display:flex; align-items:center; justify-content:center; width:32px; height:32px; border-radius:50%; background:rgba(17,17,19,.08); font-family:"Geist Mono", monospace; font-size:28px; }
 </style>
-<div id="ft-night" data-composition-id="ft-night" data-width="1920" data-height="1080" data-duration="3.739">
+<div id="ft-night" data-composition-id="ft-night" data-width="1920" data-height="1080" data-duration="2.6">
   <div class="topbar">
     <div class="chip" id="ft-night-chip"><span class="dot" id="ft-night-live"></span><span>LIVE</span><span class="muted">· real product</span></div>
-    <div class="bslot"><div class="badge" id="ft-night-b0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6l7 6-7 6V6z"/><path d="M13 6l7 6-7 6V6z"/></svg><span>sped up 1.1×</span></div></div>
+    <div class="bslot"><div class="badge" id="ft-night-b0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6l7 6-7 6V6z"/><path d="M13 6l7 6-7 6V6z"/></svg><span>sped up 1.7×</span></div></div>
     <div class="cslot"></div>
     <div class="chap" id="ft-night-chap">09 · Night</div>
   </div>
   <div class="win" id="ft-night-win">
     <div class="cam" id="ft-night-cam" data-layout-allow-overflow>
-      <video id="ft-night-v0" src="assets/footage/full-022242.mp4" data-start="0.0" data-duration="3.739" data-media-start="744.29" data-track-index="0" data-hf-media-start-basis="local" muted playsinline data-playback-rate="1.15" class="vid"></video>
+      <video id="ft-night-v0" src="assets/footage/full-022242.mp4" data-start="0.0" data-duration="2.6" data-media-start="744.29" data-track-index="0" data-hf-media-start-basis="local" muted playsinline data-playback-rate="1.65385" class="vid"></video>
       
     </div>
     <div class="callout t-ink" id="ft-night-o0" style="left:36px;bottom:36px;"><span class="cdot" style="background:#2747F5"></span><div><div class="c-text">Night: every room lit from inside</div></div></div>
@@ -69,14 +69,14 @@
 const tl = gsap.timeline({ paused: true });
 tl.fromTo("#ft-night-win", {scale:1.03}, {scale:1, duration:0.6, ease:"power3.out"}, 0);
 tl.fromTo("#ft-night-chap", {opacity:0, x:20}, {opacity:1, x:0, duration:0.35, ease:"power3.out"}, 0.15);
-tl.fromTo("#ft-night-live", {opacity:1}, {opacity:0.35, duration:0.6, repeat:5, yoyo:true, ease:"sine.inOut"}, 0);
+tl.fromTo("#ft-night-live", {opacity:1}, {opacity:0.35, duration:0.6, repeat:3, yoyo:true, ease:"sine.inOut"}, 0);
 const cam = document.getElementById("ft-night-cam");
 tl.set(cam, {x:-49.92, y:-9.71, scale:0.91867, transformOrigin:"0 0"}, 0);
 tl.set(cam, {x:-49.92, y:-9.71, scale:0.91867}, 0.0);
-tl.to(cam, {x:-133.12, y:-34.67, scale:1.00533, duration:3.6891304347826686, ease:"none"}, 0.02);
+tl.to(cam, {x:-133.12, y:-34.67, scale:1.00533, duration:2.5500000000000003, ease:"none"}, 0.02);
 tl.fromTo("#ft-night-b0", {opacity:0, y:10}, {opacity:1, y:0, duration:0.2, ease:"power3.out"}, 0.0);
-tl.fromTo("#ft-night-o0", {opacity:0, y:22, scale:0.96}, {opacity:1, y:0, scale:1, duration:0.38, ease:"back.out(1.6)"}, 0.25);
-tl.to("#ft-night-o0", {opacity:0, y:12, duration:0.2, ease:"power2.in"}, 3.489);
+tl.fromTo("#ft-night-o0", {opacity:0, y:22, scale:0.96}, {opacity:1, y:0, scale:1, duration:0.38, ease:"back.out(1.6)"}, 0.15);
+tl.to("#ft-night-o0", {opacity:0, y:12, duration:0.2, ease:"power2.in"}, 2.3499999999999996);
 window.__timelines["ft-night"] = tl;
 })();
 </script>
