@@ -459,7 +459,7 @@ async def revise(project: dict, version: dict, comments: list[dict], instruction
     report = base
     resolutions = {r["comment_id"]: r for r in rev.get("resolutions") or [] if r.get("comment_id")}
     if rev.get("plan_ops"):
-        yield "stage", {"stage": "compliance", "message": "Checking the changed layout against the LDA and livability rules…"}
+        yield "stage", {"stage": "compliance", "message": "Checking the changed layout against the bylaws and livability rules…"}
         candidate, _ = prepare(apply_ops(plan, rev["plan_ops"]), brief)
         cand_report = lda.check(candidate, brief)
         broken = new_failures(base, cand_report)

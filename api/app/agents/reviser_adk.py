@@ -132,7 +132,7 @@ class Workspace:
               ops: Operations: {"op": "upsert", "collection": "rooms"|"openings"|"stairs"|"levels", "item": {...full object with id}},
                    {"op": "remove", "collection": ..., "id": "..."} or {"op": "set", "path": "roof.parapet_ft", "value": ...}.
             """
-            ws.events.append(("stage", {"stage": "compliance", "message": "Checking the change against the LDA and livability rules…"}))
+            ws.events.append(("stage", {"stage": "compliance", "message": "Checking the change against the bylaws and livability rules…"}))
             _, rep, broken = ws._check(ops)
             had = {c["id"] for c in ws.base_report["checks"] if c["status"] != "pass"}
             softer = [c for c in rep["checks"] if c["status"] == "warn" and c["id"] not in had]
@@ -242,7 +242,10 @@ async def revise(project: dict, version: dict, comments: list[dict], instruction
     parts = await snapshot_parts(comments)
     env = lda.envelope(brief["plot"]["width_ft"], brief["plot"]["depth_ft"], brief.get("authority") or "LDA") if brief.get("plot") else {}
     env.pop("_band", None)
-    text = (f"LDA ENVELOPE: {json.dumps({k: env.get(k) for k in ('setbacks_ft', 'max_coverage_pct', 'max_height_ft', 'max_storeys', 'buildable_rect')})}\n"
+    auth = brief.get("authority") or "LDA"
+    name = (brief.get("rules_pack") or {}).get("name") or auth
+    text = (f"THE BYLAWS HERE ARE {name}'s ({auth}); when a rule blocks a request, name {auth}, never another authority.\n"
+            f"{auth} ENVELOPE: {json.dumps({k: env.get(k) for k in ('setbacks_ft', 'max_coverage_pct', 'max_height_ft', 'max_storeys', 'buildable_rect')})}\n"
             f"BRIEF: {json.dumps({k: brief.get(k) for k in ('storeys', 'bedrooms', 'floors', 'preferences', 'style', 'water_tank', 'solar') if brief.get(k)})}\n"
             f"ROOMS: {json.dumps([{k: r[k] for k in ('id', 'name', 'type', 'level', 'rect')} for r in ws.plan['rooms']], separators=(',', ':'))}\n"
             f"SECTIONS: {', '.join(s['name'] for s in ws.sections)}\n"

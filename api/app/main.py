@@ -21,7 +21,7 @@ from pydantic import BaseModel
 from starlette.middleware.gzip import GZipMiddleware
 
 from . import auth, busy, config, runs, sse
-from .agents import architect, concepts, importer, intake, jsfix, reviser, reviser_adk, views
+from .agents import architect, concepts, importer, intake, jsfix, research, reviser, reviser_adk, views
 from .auth import Identity
 from .compliance import lda
 from .store import blobs, db
@@ -132,6 +132,8 @@ async def access(pid: str, me: Identity, need: str = "view") -> tuple[dict, str]
         raise HTTPException(403, "Only the owner can do that." if need == "owner" else "You can view and comment on this home.")
     if role != "owner" and me.signed_in and any(m.get("email") == me.email and m.get("status") != "active" for m in p.get("members") or []):
         await db.resolve_invites(me.email, me.uid, me.name)
+    # a city with researched rules: load its rule pack on this instance before anything checks the plan
+    await research.ensure((p.get("brief") or {}).get("authority"))
     return p, role
 
 
@@ -395,6 +397,7 @@ async def _shared(token: str) -> dict:
     p = await db.find_by_share_token(token)
     if not p:
         raise HTTPException(404, "This link is no longer shared.")
+    await research.ensure((p.get("brief") or {}).get("authority"))
     return p
 
 
