@@ -29,11 +29,13 @@ Captured from the live app with Playwright (`submission/capture/capture.mjs`) on
 | ![Islamabad's CDA rules, researched on the web](docs/screens/rules.jpg) | ![Starting from an uploaded drawing](docs/screens/drawing.jpg) |
 | **Rules for your city.** One message about a plot in G-13 Islamabad; the CDA rules were looked up with Tavily and cited. | **Start from a drawing.** Nemotron VL read 27 rooms on 2 floors from two uploaded sheets. |
 | ![The fixer agent at work on the plan](docs/screens/plan.jpg) | ![Concepts drawn from the drawing](docs/screens/concepts.jpg) |
-| **Plan.** The fixer agent works down the failures, edit by edit ("Fixing 16 → 4"). | **Concepts.** Drawn from the family's own layout: porch on the right, drawing room front left. |
+| **Plan.** The plan that went on to pass all 34 bylaw checks, as the 3D build starts. | **Concepts.** Drawn from the family's own layout: porch on the right, drawing room front left. |
 | ![The 3D model checked against the concept](docs/screens/match.jpg) | ![Photos from four angles, made from the 3D model](docs/screens/photos.jpg) |
-| **Match.** 82% of the concept's features in the 3D model, up from 71% before the facade refit. | **Photos.** From the road, the street corner, the garden and the air, each made from the model. |
+| **Match.** 93% of the concept's features in the 3D model, up from 86% before the facade refit. | **Photos.** From the road, the street corner, the garden and the air, each made from the model. |
 | ![A photo from the street corner](docs/screens/photo-street.jpg) | ![Walking through the house](docs/screens/walk.jpg) |
 | **Street corner.** The image model keeps the model's geometry and camera. | **Walk.** First person, room by room, with a minimap. |
+| ![The house at night](docs/screens/night.jpg) | ![The 3D model from above](docs/screens/house.jpg) |
+| **Night.** Every room lit from inside. | **The model.** Stone base, timber slats, glass balcony, as in the concept. |
 
 ## How Nemotron and Nebius are used
 
