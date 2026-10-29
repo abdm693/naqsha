@@ -2,5 +2,12 @@
  "capture_dir": "../../capture/out",
  "full": "full-022242",
  "drawing": "drawing-200612",
- "_note": "Recording names (without extension) in capture_dir. After a new capture, put its names here and run prep_footage.py, then build.py."
+ "_note": "Recording names (without extension) in capture_dir. After a new capture, put its names here and run prep_footage.py, then build.py.",
+ "marks": {
+  "full-022242": {
+   "all checks pass": 557.6,
+   "3d code": 563.0
+  }
+ },
+ "_marks_note": "Optional moments inside a step, found by looking at the footage: 'all checks pass' = the frame where the plan's status card turns to 'Fixed … → 0'; '3d code' = when it says 'Building the 3D model…'. Without them build.py derives them from 'house view'."
 }

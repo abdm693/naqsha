@@ -1,80 +1,92 @@
 [
  {
-  "text": "and",
-  "start": 0.01,
-  "end": 0.02,
+  "text": "See",
+  "start": 0.14,
+  "end": 0.25,
   "id": "w0"
  },
  {
-  "text": "you",
-  "start": 0.22,
-  "end": 0.4,
+  "text": "it",
+  "start": 0.32,
+  "end": 0.42,
   "id": "w1"
  },
  {
-  "text": "can",
-  "start": 0.4,
-  "end": 0.6,
+  "text": "at",
+  "start": 0.42,
+  "end": 0.59,
   "id": "w2"
  },
  {
-  "text": "walk",
-  "start": 0.6,
-  "end": 0.86,
+  "text": "night,",
+  "start": 0.59,
+  "end": 1.04,
   "id": "w3"
  },
  {
-  "text": "through",
-  "start": 0.99,
-  "end": 1.24,
+  "text": "then",
+  "start": 1.31,
+  "end": 1.45,
   "id": "w4"
  },
  {
-  "text": "it",
-  "start": 1.43,
-  "end": 1.48,
+  "text": "walk",
+  "start": 1.45,
+  "end": 1.7,
   "id": "w5"
  },
  {
-  "text": "room",
-  "start": 1.48,
-  "end": 1.75,
+  "text": "through",
+  "start": 1.7,
+  "end": 2.14,
   "id": "w6"
  },
  {
-  "text": "by",
-  "start": 1.75,
-  "end": 1.88,
+  "text": "it,",
+  "start": 2.14,
+  "end": 2.33,
   "id": "w7"
  },
  {
   "text": "room",
-  "start": 1.88,
-  "end": 2.2,
+  "start": 2.48,
+  "end": 2.81,
   "id": "w8"
  },
  {
-  "text": "before",
-  "start": 2.2,
-  "end": 2.66,
+  "text": "by",
+  "start": 2.81,
+  "end": 2.99,
   "id": "w9"
  },
  {
-  "text": "the",
-  "start": 2.66,
-  "end": 2.72,
+  "text": "room,",
+  "start": 2.99,
+  "end": 3.45,
   "id": "w10"
  },
  {
-  "text": "first",
-  "start": 2.93,
-  "end": 3.27,
+  "text": "before",
+  "start": 3.49,
+  "end": 3.83,
   "id": "w11"
  },
  {
-  "text": "brick.",
-  "start": 3.27,
-  "end": 3.68,
+  "text": "the",
+  "start": 3.83,
+  "end": 3.96,
   "id": "w12"
+ },
+ {
+  "text": "first",
+  "start": 4.14,
+  "end": 4.31,
+  "id": "w13"
+ },
+ {
+  "text": "brick.",
+  "start": 4.31,
+  "end": 4.73,
+  "id": "w14"
  }
 ]

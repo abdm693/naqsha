@@ -1,176 +1,176 @@
 [
  {
   "text": "The",
-  "start": 0.02,
-  "end": 0.03,
+  "start": 0.2,
+  "end": 0.27,
   "id": "w0"
  },
  {
   "text": "vision",
-  "start": 0.25,
-  "end": 0.58,
+  "start": 0.27,
+  "end": 0.61,
   "id": "w1"
  },
  {
   "text": "model",
-  "start": 0.58,
-  "end": 0.9,
+  "start": 0.61,
+  "end": 0.92,
   "id": "w2"
  },
  {
   "text": "compares",
-  "start": 0.9,
-  "end": 1.39,
+  "start": 0.95,
+  "end": 1.5,
   "id": "w3"
  },
  {
   "text": "the",
-  "start": 1.47,
-  "end": 1.56,
+  "start": 1.5,
+  "end": 1.62,
   "id": "w4"
  },
  {
   "text": "3D",
-  "start": 1.68,
-  "end": 1.88,
+  "start": 1.75,
+  "end": 1.96,
   "id": "w5"
  },
  {
   "text": "model",
-  "start": 1.88,
-  "end": 2.2,
+  "start": 1.96,
+  "end": 2.33,
   "id": "w6"
  },
  {
   "text": "with",
-  "start": 2.2,
-  "end": 2.32,
+  "start": 2.33,
+  "end": 2.5,
   "id": "w7"
  },
  {
   "text": "the",
-  "start": 2.32,
-  "end": 2.5,
+  "start": 2.5,
+  "end": 2.68,
   "id": "w8"
  },
  {
   "text": "concept",
-  "start": 2.5,
-  "end": 2.78,
+  "start": 2.68,
+  "end": 3.05,
   "id": "w9"
  },
  {
   "text": "and",
-  "start": 2.96,
+  "start": 3.12,
   "end": 3.2,
   "id": "w10"
  },
  {
   "text": "the",
-  "start": 3.2,
-  "end": 3.38,
+  "start": 3.36,
+  "end": 3.58,
   "id": "w11"
  },
  {
   "text": "parts",
-  "start": 3.38,
-  "end": 3.86,
+  "start": 3.58,
+  "end": 3.84,
   "id": "w12"
  },
  {
   "text": "of",
-  "start": 3.86,
-  "end": 3.96,
+  "start": 3.93,
+  "end": 4,
   "id": "w13"
  },
  {
   "text": "the",
-  "start": 3.96,
-  "end": 4,
+  "start": 4,
+  "end": 4.08,
   "id": "w14"
  },
  {
   "text": "facade",
-  "start": 4,
+  "start": 4.08,
   "end": 4.4,
   "id": "w15"
  },
  {
   "text": "that",
   "start": 4.4,
-  "end": 4.6,
+  "end": 4.59,
   "id": "w16"
  },
  {
   "text": "don't",
-  "start": 4.6,
-  "end": 4.93,
+  "start": 4.61,
+  "end": 4.96,
   "id": "w17"
  },
  {
   "text": "match",
-  "start": 4.93,
-  "end": 5.17,
+  "start": 4.96,
+  "end": 5.15,
   "id": "w18"
  },
  {
   "text": "are",
-  "start": 5.44,
-  "end": 5.49,
+  "start": 5.35,
+  "end": 5.55,
   "id": "w19"
  },
  {
   "text": "rebuilt.",
-  "start": 5.49,
-  "end": 6,
+  "start": 5.55,
+  "end": 6.12,
   "id": "w20"
  },
  {
-  "text": "Here",
-  "start": 6.25,
-  "end": 6.31,
+  "text": "Here,",
+  "start": 6.39,
+  "end": 6.63,
   "id": "w21"
  },
  {
   "text": "the",
-  "start": 6.31,
-  "end": 6.54,
+  "start": 6.63,
+  "end": 6.89,
   "id": "w22"
  },
  {
   "text": "match",
-  "start": 6.54,
-  "end": 6.93,
+  "start": 6.89,
+  "end": 7.32,
   "id": "w23"
  },
  {
   "text": "went",
-  "start": 6.93,
-  "end": 7.24,
+  "start": 7.32,
+  "end": 7.64,
   "id": "w24"
  },
  {
   "text": "from",
-  "start": 7.24,
-  "end": 7.55,
+  "start": 7.7,
+  "end": 8,
   "id": "w25"
  },
  {
-  "text": "71",
-  "start": 7.55,
-  "end": 8.02,
+  "text": "86",
+  "start": 8,
+  "end": 8.52,
   "id": "w26"
  },
  {
   "text": "to",
-  "start": 8.02,
-  "end": 8.17,
+  "start": 8.52,
+  "end": 8.65,
   "id": "w27"
  },
  {
-  "text": "82%.",
-  "start": 8.17,
-  "end": 9,
+  "text": "93%.",
+  "start": 8.75,
+  "end": 9.6,
   "id": "w28"
  }
 ]

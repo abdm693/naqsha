@@ -52,7 +52,8 @@ os.environ.setdefault("GOOGLE_APPLICATION_CREDENTIALS",
 from google import genai  # noqa: E402
 from google.genai import types as T  # noqa: E402
 
-client = genai.Client(vertexai=True, project=PROJECT, location=LOCATION)
+client = genai.Client(vertexai=True, project=PROJECT, location=LOCATION,
+                      http_options=T.HttpOptions(timeout=180_000))  # ms; a stuck request once hung a run for 10+ min
 
 
 def lines() -> list[dict]:
@@ -70,7 +71,7 @@ def _retry(fn, what, tries=6):
         except Exception as e:  # rate limits / transient 5xx
             msg = str(e)
             if k == tries - 1 or not any(c in msg for c in ("429", "500", "502", "503", "504", "RESOURCE_EXHAUSTED",
-                                                              "UNAVAILABLE", "deadline", "timed out", "empty")):
+                                                              "UNAVAILABLE", "deadline", "timed out", "Timeout", "timeout", "empty")):
                 raise
             wait = 10 * (k + 1)
             print(f"  {what}: transient error ({type(e).__name__}: {msg[:80]}), retry in {wait}s", flush=True)

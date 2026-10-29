@@ -49,13 +49,27 @@ def _steps(name):
 
 
 _FULL, _DRAW = _steps(CFG["full"]), _steps(CFG["drawing"])
+# Moments inside a step that the capture script does not log (e.g. the frame where the fixers reach zero), found by
+# looking at the footage: scripts/footage.json "marks" -> {recording name: {mark name: seconds}}.
+_EXTRA = CFG.get("marks", {}).get(CFG["full"], {})
 
 
 def F(name):
-    """Source second of a named step in the full run."""
-    if name not in _FULL:
-        raise SystemExit(f"step '{name}' missing from {CFG['full']}.json (have: {list(_FULL)})")
-    return _FULL[name]
+    """Source second of a named step in the full run ("match score" also matches "match score: Matches …")."""
+    if name in _FULL:
+        return _FULL[name]
+    for k, v in _FULL.items():
+        if k.startswith(name + ":"):
+            return v
+    raise SystemExit(f"step '{name}' missing from {CFG['full']}.json (have: {list(_FULL)})")
+
+
+def FX(name, fallback):
+    """An extra mark from footage.json, else the fallback (a time derived from the named steps)."""
+    if name in _EXTRA:
+        return _EXTRA[name]
+    print(f"note: mark '{name}' not set in footage.json for {CFG['full']}; using {fallback:.2f}")
+    return fallback
 
 
 def D(name):
@@ -131,7 +145,7 @@ class Scene:
     def lower(self, a, b, title, sub="", tag="Agent at work", anchor="bl", width=None):
         self.over.append(dict(kind="lower", a=a, b=b, title=title, sub=sub, tag=tag, anchor=anchor, width=width))
 
-    def steps(self, a, b, marks, labels=("Draft ×3", "Check", "Fix", "Build", "Match")):
+    def steps(self, a, b, marks, labels=("Draft ×4", "Check", "Fix ×2", "Build", "Match")):
         """A pipeline strip; marks = [(t, set_of_active_indices, n_done_before)]."""
         self.over.append(dict(kind="steps", a=a, b=b, marks=marks, labels=labels))
 
@@ -179,6 +193,8 @@ def toks(s):
 
 
 LINES = {l["id"]: l["text"].format(**NUM) for l in json.loads((HERE / "vo_lines.json").read_text())}
+if NUM["lda_pass"] != NUM["lda_total"] and "All {lda_total}" in (HERE / "vo_lines.json").read_text():
+    raise SystemExit("vo07 says 'All {lda_total} bylaw checks pass' but lda_pass != lda_total: rewrite the line")
 _report = json.loads((HERE / "vo_check.json").read_text()) if (HERE / "vo_check.json").exists() else {}
 for _id, _t in LINES.items():
     if _report.get(_id, {}).get("text") != _t:
@@ -325,11 +341,11 @@ r_a, r_b = brief_src + 1.4, F("decide for me") - 0.25
 r_dur = vo_end("vo04") + 0.45 - T0
 s4 = sc.seg("full", r_a, r_b, dur=r_dur)
 sc.cam(T0, 2.2, 1500, 190)
-sc.cam(at("vo04", "CDA's") - 0.25, 1.95, 1497, 790, d=0.75)
-sc.cam(at("vo04", "cites") - 0.35, 2.35, 1497, 905, d=0.6)
+sc.cam(at("vo04", "CDA's") - 0.25, 1.95, 1497, 760, d=0.75)
+sc.cam(at("vo04", "cites") - 0.35, 2.2, 1497, 890, d=0.6)
 sc.ring(T0 + 0.15, at("vo04", "CDA's") - 0.3, 1404, 162, 290, 56)
-sc.ring(at("vo04", "CDA's") + 0.35, at("vo04", "cites") - 0.4, 1306, 678, 386, 186)
-sc.ring(at("vo04", "cites") + 0.2, sc.cursor - 0.05, 1306, 866, 386, 98)
+sc.ring(at("vo04", "CDA's") + 0.35, at("vo04", "cites") - 0.4, 1306, 636, 386, 184)
+sc.ring(at("vo04", "cites") + 0.2, sc.cursor - 0.05, 1306, 824, 386, 140)
 sc.flow(at("vo04", "Tavily") - 0.2, sc.cursor - 0.05, ["Tavily search + extract", "Nemotron 3 Ultra", "cited rule pack"],
         tag="CDA rules · Islamabad")
 S.append(sc)
@@ -376,33 +392,36 @@ NEMO_END = round(at("vo07", "testing") - 0.1, 3)
 MG["mg-nemotron"] = dict(start=NEMO_START, end=NEMO_END, cues=dict(
     draft=at("vo07", "drafts") - 0.1, check=at("vo07", "rules engine") - 0.1, fix=at("vo07", "fixer") - 0.1))
 
-# --- 8 Design run: plan + fixer (time-lapse) -> 3D written as code -> built in the browser ------------------------------
-BUILD_TAIL = 50.0          # last seconds of the plan view: Ultra streams the 3D code ("Building the 3D model ... parts")
+# --- 8 Design run: plan + two fixers (time-lapse) -> 3D written as code -> built in the browser ------------------------
 pv, hv = F("plan view"), F("house view")
-pA = (pv + 1.0, pv + 33.0, 1.5)                               # reading the brief, 3 drafts in parallel
+FIXED = FX("all checks pass", hv - 90.0)   # the status card turns to "Fixed 34 → … → 0" and the pill to "0 to fix"
+CODE3D = FX("3d code", FIXED + 5.0)         # "Building the 3D model…": Ultra streams the 3D code until the house view
+pA = (pv + 1.0, pv + 24.0, 1.0)                               # reading the brief, "Laying out the floors (4 drafts in parallel)"
 sc = Scene("ft-design", NEMO_END, "05 · Architect agent")
 T0 = sc.start
-fix_end = vo_end("vo07") + 2.6                                # the fixer's countdown, then a beat on the stat
-pB = (pv + 33.0, hv - BUILD_TAIL, round(round((fix_end - T0 - pA[2]) * 30) / 30, 3))
+LDA_STAT = at("vo07", "All") - 0.1
+ZERO_AT = LDA_STAT + 0.45                                     # the countdown reaches 0 under "All 34 bylaw checks pass"
+fix_end = vo_end("vo07") + 3.0                                # then real time on "Fixed 34 → … → 0" with the stat
+pB = (pv + 24.0, FIXED + 0.5, round(round((ZERO_AT - T0 - pA[2]) * 30) / 30, 3))
 vo("vo08", fix_end - 0.05)
 # "Then Ultra writes the house in 3D as code" over the real run streaming its parts (pC) ->
 # "section by section, from a checklist of every feature in the concept" on the code graphic (MG) ->
 # "Your browser builds it as it arrives" on the house assembling.
 pC_dur = round(round(max(2.0, at("vo08", "section by section") - 0.15 - fix_end) * 30) / 30, 3)
-pC = (hv - BUILD_TAIL, hv - 0.05, pC_dur)
+pC = (CODE3D, hv - 0.05, pC_dur)
 TL["tl_plan"] = {"src": CLIP["full"], "segs": [[round(a, 3), round(b, 3), d] for a, b, d in (pA, pB, pC)]}
 p1 = sc.seg("tl_plan", 0.0, pA[2], 1.0, badge=fmt_rate((pA[1] - pA[0]) / pA[2]))
 p2 = sc.seg("tl_plan", pA[2], pA[2] + pB[2], 1.0, badge=fmt_rate((pB[1] - pB[0]) / pB[2]))
+p2h = sc.seg("full", FIXED + 0.5, FIXED + 0.5 + max(0.8, fix_end - sc.cursor), 1.0)
 tB = p2["t"]
-sc.cam(T0, 1.0, 960, 540)
-sc.cam(tB, 1.45, 960, 430, d=0.5)
-sc.cam(tB + pB[2] * 0.4, 2.5, 985, 950, d=0.7)
-sc.clock(T0, sc.cursor, [(T0, pA[0] - pv), (tB, pB[0] - pv), (sc.cursor, pB[1] - pv)])
+sc.cam(T0, 2.3, 960, 230)                                   # the status card: "Laying out the floors (4 drafts…)"
+sc.cam(T0 + 0.05, 2.5, 960, 200, d=1.0)                      # then "Fixing 34 → 22 → 15 → 7 → 3 → 0"
+sc.clock(T0, sc.cursor, [(T0, pA[0] - pv), (tB, pB[0] - pv), (p2h["t"], pB[1] - pv), (sc.cursor, p2h["b"] - pv)])
 sc.steps(T0 + 0.05, sc.cursor, [(T0, {0}, 0), (tB, {2}, 2)])
-sc.lower(T0 + 0.15, tB + pB[2] * 0.4 + 0.2, "Fixer agent · Nemotron 3 Ultra", "check_edits, then apply_edits", width=1060)
-sc.ring(tB + pB[2] * 0.4 + 0.7, sc.cursor - 0.1, 735, 958, 505, 50)
-LDA_STAT = at("vo07", f"{NUM['lda_pass']} of") - 0.1
-sc.stat(LDA_STAT, sc.cursor - 0.05, f"{NUM['lda_pass']}/{NUM['lda_total']}", "bylaw checks pass", anchor="tr")
+sc.lower(T0 + 0.15, tB + 2.4, "Two fixer agents · Nemotron 3 Ultra", "check_edits, then apply_edits · the better plan wins",
+         width=1100)
+sc.ring(p2h["t"] - 0.1, sc.cursor - 0.05, 734, 146, 452, 96)
+sc.stat(p2h["t"] + 0.05, sc.cursor - 0.05, f"{NUM['lda_pass']}/{NUM['lda_total']}", "bylaw checks pass", anchor="tr")
 S.append(sc)
 
 sc = Scene("ft-build", sc.cursor, "06 · 3D as code")
@@ -421,7 +440,7 @@ MG["mg-code"] = dict(start=CODE_START, end=CODE_END, cues=dict(list=at("vo08", "
 sc = Scene("ft-house", CODE_END - 0.2, "06 · 3D as code")
 T0 = sc.start
 b_end = hv + 10.3
-HV_SHOWN = hv + 1.8   # the house view needs ~1.7 s after the route change before the 3D canvas replaces the plan
+HV_SHOWN = hv + 2.4   # the 3D canvas needs ~2.3 s after the route change before the house replaces the plan
 p4 = sc.seg("full", HV_SHOWN, b_end, dur=max(7.4, vo_end("vo08") + 2.6 - sc.cursor))
 sc.cam(T0, 1.0, 960, 540)
 sc.cam(T0 + 0.05, 1.3, 1000, 560, d=p4["dur"] - 0.1, ease="power1.inOut")
@@ -442,13 +461,13 @@ e2 = sc.seg("full", m_b, F("match popover") + 4.6, dur=max(3.0, vo_end("vo09") +
 pop_t = sc.at_src(e2, F("match popover"))
 sc.cam(T0, 1.3, 760, 640)
 sc.cam(T0 + 0.02, 1.36, 760, 650, d=e1["dur"] - 0.05, ease="none")
-sc.cam(pop_t - 0.1, 2.5, 200, 340, d=0.6)
+sc.cam(pop_t - 0.1, 2.4, 200, 300, d=0.6)
 sc.clock(T0, e2["t"], [(T0, m_a - pv), (e2["t"], m_b - pv)])
 sc.steps(T0, pop_t - 0.1, [(T0, {4}, 4)])
 sc.lower(T0 + 0.15, e2["t"] - 0.05, "Nemotron 3.5 Super VL · match check",
          "compares the 3D model with the concept, feature by feature, and the facade is rebuilt where it differs",
          tag="Vision model at work", width=1000, anchor="br")
-sc.ring(pop_t + 0.45, sc.cursor - 0.05, 126, 224, 244, 66)
+sc.ring(pop_t + 0.45, sc.cursor - 0.05, 124, 216, 250, 74)
 sc.stat(at("vo09", f"{NUM['match_before']}") - 0.15, sc.cursor - 0.05, f"{NUM['match_before']}% → {NUM['match_after']}%",
         "of the concept is in the 3D model", anchor="br")
 S.append(sc)
@@ -459,12 +478,12 @@ t = card(sc.cursor - 0.25, "08", "Photos from every angle", "Gemini image model 
 sc = Scene("ft-photos", t - 0.2, "08 · Photos")
 T0 = sc.start
 vo("vo10", T0 + 0.2)
-g1 = sc.seg("full", F("photos panel") + 0.3, F("photos done") + 3.4, 5.0)
+g1 = sc.seg("full", F("photos panel") + 0.3, F("photos done") + 2.0, 5.0)
 g2 = sc.seg("full", F("photo enlarged") - 0.15, F("photo 4") + 2.3, 1.3)
 sc.cam(T0, 1.27, 960, 470)
 sc.cam(g2["t"], 1.0, 960, 540)
 sc.cam(g2["t"] + 0.02, 1.08, 960, 520, d=g2["dur"] - 0.05, ease="none")
-sc.clock(T0, g2["t"], [(T0, 0.3), (g2["t"], F("photos done") + 3.4 - F("photos panel"))], fmt="mmss", label="photos")
+sc.clock(T0, g2["t"], [(T0, 0.3), (g2["t"], F("photos done") + 2.0 - F("photos panel"))], fmt="mmss", label="photos")
 sc.lower(T0 + 0.2, g1["t"] + g1["dur"] - 0.1, "Gemini image model", "each capture of the 3D model becomes a photo",
          tag="Images")
 names = ["Front", "Street corner", "Garden", "Aerial"]
@@ -476,11 +495,21 @@ for k, (nm, m0) in enumerate(zip(names, marks_)):
 S.append(sc)
 PHOTOS_DONE = sc.at_src(g1, F("photos done"))
 
-# --- 11 Walk through ----------------------------------------------------------------------------------------------------
-sc = Scene("ft-walk", sc.cursor, "09 · Walk-through")
+# --- 11 Night, then walk through ------------------------------------------------------------------------------------------
+sc = Scene("ft-night", sc.cursor, "09 · Night")
 T0 = sc.start
-vo("vo11", max(vo_end("vo10") + 0.5, T0 + 0.4))
-w1 = sc.seg("full", F("walk") + 1.2, min(F("walked") - 6.5, FULL_LEN - 0.2), 1.0)   # the last seconds face a fridge door
+n1 = sc.seg("full", F("night") + 0.3, min(F("night") + 4.6, F("day again") - 0.2), 1.15)
+sc.cam(T0, 1.06, 960, 520)
+sc.cam(T0 + 0.02, 1.16, 960, 500, d=n1["dur"] - 0.05, ease="none")
+sc.callout(T0 + 0.25, sc.cursor - 0.05, "Night: every room lit from inside", anchor="bl")
+S.append(sc)
+NIGHT_T = T0
+# "See it at night, then walk through it…": "walk" lands on the first step through the door
+vo("vo11", max(vo_end("vo10") + 0.5, T0 + 0.25, sc.cursor + 0.15 - W("vo11", "walk")))
+
+sc = Scene("ft-walk", sc.cursor, "10 · Walk-through")
+T0 = sc.start
+w1 = sc.seg("full", F("walk") + 1.2, min(F("walked") - 3.5, FULL_LEN - 0.2), 1.0)   # the last seconds face a wardrobe
 sc.cam(T0, 1.0, 960, 540)
 sc.cam(T0 + 0.02, 1.08, 960, 540, d=w1["dur"] - 0.05, ease="none")
 sc.callout(T0 + 0.3, sc.cursor - 0.1, "First-person walk", "in the browser, room by room", anchor="bl")
@@ -502,7 +531,7 @@ END_START = round(at("vo13", "Naqsha") - 0.3, 3)
 need = END_START + 0.25 - T0                       # outro length up to the end card
 o2_d, o3_d = 2.3, 2.3
 o1_d = max(1.9, need - o2_d - o3_d)
-o1 = sc.seg("full", F("orbit") - 0.85 - o1_d, F("orbit") - 0.85, 1.0)   # the drag swings across the facade
+o1 = sc.seg("full", F("walk") - 0.1 - o1_d, F("walk") - 0.1, 1.0)   # the house from above, after the orbit
 o2 = sc.seg("full", F("photo 2") + 0.1, F("photo 2") + 0.1 + o2_d, 1.0)  # street corner photo
 o3 = sc.seg("full", F("photo 3") + 0.1, F("photo 3") + 0.1 + max(0.6, need - o1_d - o2_d), 1.0)  # garden photo
 for s in (o1, o2, o3):
