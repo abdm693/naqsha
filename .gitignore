@@ -84,3 +84,7 @@ submission/video2/assets/music/
 submission/video2/assets/voice/raw/
 submission/video2/.hyperframes/
 submission/video2/node_modules/
+submission/video2/.thumbnails/
+submission/video2/.waveform-cache/
+**/.hyperframes/
+**/.thumbnails/
