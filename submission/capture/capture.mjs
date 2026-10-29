@@ -154,7 +154,7 @@ if (flow === "full") {
   await page.mouse.click(cb.x + cb.width * 0.52, cb.y + cb.height * 0.45);
   mark("pin placed");
   await pause(1.5);
-  const note = page.getByRole("textbox").last();
+  const note = page.locator('div.z-50 textarea, [role="dialog"] textarea').first();
   await typeSlowly(note, "Make this front window wider, please.");
   await pause(0.8);
   await page.getByRole("button", { name: "Pin it" }).click();
@@ -172,17 +172,24 @@ if (flow === "full") {
   const cctx = await browser.newContext({ viewport: { width: 1920, height: 1080 }, recordVideo: { dir: OUT, size: { width: 1920, height: 1080 } } });
   const client = await cctx.newPage();
   await client.goto(link);
+  await client.waitForFunction(() => document.body.innerText.includes("Assembling your home"), null, { timeout: 60_000 }).catch(() => {});
   await client.waitForFunction(() => !document.body.innerText.includes("Assembling your home"), null, { timeout: 4 * 60_000 }).catch(() => {});
   await client.waitForTimeout(3000);
   mark("client opened");
-  await client.getByRole("button", { name: /Click to pin/ }).first().click().catch(() => {});
-  await client.waitForTimeout(800);
   const ccb = await client.locator("canvas").first().boundingBox();
-  await client.mouse.click(ccb.x + ccb.width * 0.47, ccb.y + ccb.height * 0.58);
-  await client.waitForTimeout(1500);
-  const nameBox = client.getByRole("textbox").first();
+  const card = client.getByRole("dialog").locator("input").first();
+  for (const [fx, fy] of [[0.5, 0.5], [0.47, 0.58], [0.55, 0.42], [0.42, 0.5], [0.6, 0.55]]) {
+    await client.keyboard.press("c");
+    await client.waitForTimeout(700);
+    await client.mouse.click(ccb.x + ccb.width * fx, ccb.y + ccb.height * fy);
+    await client.waitForTimeout(1500);
+    if (await card.isVisible().catch(() => false)) break;
+    await client.keyboard.press("Escape");
+  }
+  await client.screenshot({ path: `${OUT}client-debug.png` }).catch(() => {});
+  const nameBox = client.getByRole("dialog").locator("input").first();
   await nameBox.click(); for (const ch of "Ammi") await client.keyboard.type(ch, { delay: 60 });
-  const cnote = client.getByRole("textbox").last();
+  const cnote = client.getByRole("dialog").locator("textarea").first();
   await cnote.click(); for (const ch of "Can the kitchen be bigger? I cook for the whole family.") await client.keyboard.type(ch, { delay: 30 });
   await client.waitForTimeout(800);
   await client.getByRole("button", { name: /^Post$/ }).click();
@@ -200,7 +207,7 @@ if (flow === "full") {
   mark("revise dialog");
   await page.getByRole("button", { name: /Revise with \d+ comments?/ }).last().click();
   mark("revise started");
-  await page.getByText(/See what changed/).first().waitFor({ timeout: 20 * 60_000 }).catch(() => mark("no see what changed"));
+  await page.getByText(/Version \d+ is ready|See what changed/).first().waitFor({ timeout: 20 * 60_000 }).catch(() => mark("no new version"));
   mark("revised");
   await pause(2);
   await page.getByText(/See what changed/).first().click().catch(() => {});
@@ -217,7 +224,7 @@ if (flow === "full") {
   await ask.press("Enter");
   mark("typed change sent");
   await page.waitForTimeout(5000);
-  await page.getByText(/See what changed/).first().waitFor({ timeout: 20 * 60_000 }).catch(() => {});
+  await page.getByText(/Version 3 is ready|See what changed/).first().waitFor({ timeout: 20 * 60_000 }).catch(() => {});
   mark("typed change done");
   await pause(6);
 } else if (flow === "sample") {
