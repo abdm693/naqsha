@@ -1,7 +1,6 @@
 # Naqsha · Nebius edition demo film
 
-HyperFrames project (hyperframes@0.8.214). Output: `renders/naqsha-nebius-demo.mp4`. See BRIEF.md, STORYBOARD.md and
-REVIEW.md.
+HyperFrames project (hyperframes@0.8.214). Output: `renders/naqsha-nebius-demo.mp4`. See STORYBOARD.md.
 
 ## Rebuild after swapping the footage
 
