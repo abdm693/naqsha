@@ -57,6 +57,25 @@ async function houseTour() {
   await pause(2);
   // orbit a little, then walk
   const box = await page.locator("canvas").first().boundingBox();
+  // night: every room lit from inside
+  await page.getByRole("button", { name: "View" }).first().click().catch(() => {});
+  await pause(0.8);
+  await page.getByRole("radio", { name: /Night/ }).first().click().catch(() => {});
+  await page.keyboard.press("Escape");
+  mark("night");
+  if (box) {
+    await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+    await page.mouse.down();
+    for (let i = 0; i < 60; i++) { await page.mouse.move(box.x + box.width / 2 + i * 6, box.y + box.height / 2); await pause(0.06); }
+    await page.mouse.up();
+  }
+  await pause(2);
+  await page.getByRole("button", { name: "View" }).first().click().catch(() => {});
+  await pause(0.6);
+  await page.getByRole("radio", { name: /Day/ }).first().click().catch(() => {});
+  await page.keyboard.press("Escape");
+  mark("day again");
+  await pause(1.5);
   if (box) {
     await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
     await page.mouse.down();

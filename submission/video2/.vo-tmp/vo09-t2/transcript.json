@@ -1,0 +1,176 @@
+[
+  {
+    "text": "The",
+    "start": 0.01,
+    "end": 0.19,
+    "id": "w0"
+  },
+  {
+    "text": "vision",
+    "start": 0.29,
+    "end": 0.57,
+    "id": "w1"
+  },
+  {
+    "text": "model",
+    "start": 0.57,
+    "end": 0.88,
+    "id": "w2"
+  },
+  {
+    "text": "compares",
+    "start": 0.88,
+    "end": 1.37,
+    "id": "w3"
+  },
+  {
+    "text": "the",
+    "start": 1.45,
+    "end": 1.6,
+    "id": "w4"
+  },
+  {
+    "text": "3D",
+    "start": 1.6,
+    "end": 1.86,
+    "id": "w5"
+  },
+  {
+    "text": "model",
+    "start": 1.86,
+    "end": 2.2,
+    "id": "w6"
+  },
+  {
+    "text": "with",
+    "start": 2.2,
+    "end": 2.32,
+    "id": "w7"
+  },
+  {
+    "text": "the",
+    "start": 2.32,
+    "end": 2.49,
+    "id": "w8"
+  },
+  {
+    "text": "concept",
+    "start": 2.49,
+    "end": 2.95,
+    "id": "w9"
+  },
+  {
+    "text": "and",
+    "start": 3.03,
+    "end": 3.2,
+    "id": "w10"
+  },
+  {
+    "text": "the",
+    "start": 3.3,
+    "end": 3.46,
+    "id": "w11"
+  },
+  {
+    "text": "parts",
+    "start": 3.53,
+    "end": 3.76,
+    "id": "w12"
+  },
+  {
+    "text": "of",
+    "start": 3.76,
+    "end": 3.8,
+    "id": "w13"
+  },
+  {
+    "text": "the",
+    "start": 3.8,
+    "end": 3.89,
+    "id": "w14"
+  },
+  {
+    "text": "facade",
+    "start": 3.99,
+    "end": 4.32,
+    "id": "w15"
+  },
+  {
+    "text": "that",
+    "start": 4.32,
+    "end": 4.52,
+    "id": "w16"
+  },
+  {
+    "text": "don't",
+    "start": 4.52,
+    "end": 4.78,
+    "id": "w17"
+  },
+  {
+    "text": "match",
+    "start": 4.78,
+    "end": 5.05,
+    "id": "w18"
+  },
+  {
+    "text": "are",
+    "start": 5.05,
+    "end": 5.21,
+    "id": "w19"
+  },
+  {
+    "text": "rebuilt.",
+    "start": 5.21,
+    "end": 6,
+    "id": "w20"
+  },
+  {
+    "text": "Here,",
+    "start": 6.01,
+    "end": 6.43,
+    "id": "w21"
+  },
+  {
+    "text": "the",
+    "start": 6.43,
+    "end": 6.64,
+    "id": "w22"
+  },
+  {
+    "text": "match",
+    "start": 6.64,
+    "end": 6.99,
+    "id": "w23"
+  },
+  {
+    "text": "went",
+    "start": 7.06,
+    "end": 7.29,
+    "id": "w24"
+  },
+  {
+    "text": "from",
+    "start": 7.29,
+    "end": 7.57,
+    "id": "w25"
+  },
+  {
+    "text": "71%",
+    "start": 7.6,
+    "end": 8.08,
+    "id": "w26"
+  },
+  {
+    "text": "to",
+    "start": 8.08,
+    "end": 8.22,
+    "id": "w27"
+  },
+  {
+    "text": "82%.",
+    "start": 8.22,
+    "end": 8.96,
+    "id": "w28"
+  }
+]

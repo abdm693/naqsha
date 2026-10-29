@@ -65,7 +65,7 @@ os.environ.setdefault("GOOGLE_CLOUD_LOCATION", LOCATION)
 # The plan fixer (agents/fixer.py): Nemotron edits the drafted plan with tools against the rules engine.
 MODEL_FIXER = os.environ.get("MODEL_FIXER", MODEL_ULTRA)
 FIXER_THINK = os.environ.get("FIXER_THINK", "1") not in ("0", "false", "no")
-FIX_BUDGET_S = float(os.environ.get("FIX_BUDGET_S", "420"))
-PLAN_DRAFTS = int(os.environ.get("PLAN_DRAFTS", "3"))   # quick drafts in parallel; the one with the fewest failures is fixed
+FIX_BUDGET_S = float(os.environ.get("FIX_BUDGET_S", "480"))
+PLAN_DRAFTS = int(os.environ.get("PLAN_DRAFTS", "4"))   # quick drafts in parallel; the one with the fewest failures is fixed
 REVIEW_MAX_ISSUES = int(os.environ.get("REVIEW_MAX_ISSUES", "4"))
 PARALLEL_FIXERS = int(os.environ.get("PARALLEL_FIXERS", "2"))  # fixer agents on the best drafts at once; the better plan wins

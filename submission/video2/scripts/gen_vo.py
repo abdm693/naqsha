@@ -41,9 +41,9 @@ REPORT = HERE / "vo_check.json"
 PROJECT, LOCATION = "naqsha-nebius-424e", "global"
 TTS_MODEL, JUDGE_MODEL, VOICE = "gemini-3.8-flash-tts", "gemini-3.8-flash", "hi-in-csagent-11"
 NOTE = ("(Voice: a young Pakistani tech founder from Lahore, modern educated Pakistani English accent, warm, lively, "
-        "conversational, a natural smile in the voice, brisk at about 160 words per minute.)")
+        "conversational, a natural smile in the voice, a medium-brisk pace of about 160 words per minute.)")
 STYLE_WORDS = ("voice", "pakistani", "tech founder", "accent", "words per minute", "smile", "lahore", "conversational",
-               "lively", "brisk")
+               "lively", "brisk", "pace")
 MAX_TRIES = 5
 PHONETIC = {"Naqsha": "Nuqsha"}  # used on the last two takes if the name keeps coming out wrong
 
@@ -121,7 +121,7 @@ ALIAS = {"naksha": "naqsha", "nuksha": "naqsha", "nakhsha": "naqsha", "naqshah":
 
 
 def norm(s: str) -> list[str]:
-    s = s.lower().replace("’", "'").replace("‘", "'").replace("façade", "facade")
+    s = s.lower().replace("’", "'").replace("‘", "'").replace("façade", "facade").replace("%", " percent")
     s = re.sub(r"\bnemo\s*tron\b", "nemotron", s)
     s = re.sub(r"\b3d\b", " three d ", s)
     s = re.sub(r"\bc\.?\s*d\.?\s*a\.?\b", " cda ", s)
@@ -213,7 +213,7 @@ def check(wav: Path, text: str, tag: str) -> dict:
         reasons.append("style spoken")
     if any(len(x.split()) >= 2 for x in ins_w) or (ins_w and ins_g):
         reasons.append("extra words")
-    if not (0.6 * expect <= speech <= 1.4 * expect):
+    if not (0.72 * expect <= speech <= 1.3 * expect):  # about 125-220 words per minute of speech
         reasons.append("duration")
     if "naqsha" in a and (not j.get("naqsha_ok", True) or j.get("naqsha_vowel") not in (None, "cut")):
         reasons.append("naqsha")

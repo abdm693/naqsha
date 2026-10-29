@@ -1,0 +1,164 @@
+[
+ {
+  "text": "Ultra",
+  "start": 0.3,
+  "end": 0.42,
+  "id": "w0"
+ },
+ {
+  "text": "plans,",
+  "start": 0.42,
+  "end": 1,
+  "id": "w1"
+ },
+ {
+  "text": "fixes",
+  "start": 1,
+  "end": 1.4,
+  "id": "w2"
+ },
+ {
+  "text": "and",
+  "start": 1.49,
+  "end": 1.67,
+  "id": "w3"
+ },
+ {
+  "text": "writes",
+  "start": 1.67,
+  "end": 2.08,
+  "id": "w4"
+ },
+ {
+  "text": "the",
+  "start": 2.17,
+  "end": 2.42,
+  "id": "w5"
+ },
+ {
+  "text": "code,",
+  "start": 2.42,
+  "end": 2.88,
+  "id": "w6"
+ },
+ {
+  "text": "super",
+  "start": 2.94,
+  "end": 3.12,
+  "id": "w7"
+ },
+ {
+  "text": "runs",
+  "start": 3.12,
+  "end": 3.32,
+  "id": "w8"
+ },
+ {
+  "text": "the",
+  "start": 3.32,
+  "end": 3.42,
+  "id": "w9"
+ },
+ {
+  "text": "conversation,",
+  "start": 3.47,
+  "end": 4.25,
+  "id": "w10"
+ },
+ {
+  "text": "the",
+  "start": 4.28,
+  "end": 4.4,
+  "id": "w11"
+ },
+ {
+  "text": "vision",
+  "start": 4.4,
+  "end": 4.68,
+  "id": "w12"
+ },
+ {
+  "text": "model",
+  "start": 4.68,
+  "end": 5,
+  "id": "w13"
+ },
+ {
+  "text": "reads",
+  "start": 5,
+  "end": 5.32,
+  "id": "w14"
+ },
+ {
+  "text": "drawings",
+  "start": 5.66,
+  "end": 5.84,
+  "id": "w15"
+ },
+ {
+  "text": "and",
+  "start": 5.88,
+  "end": 5.95,
+  "id": "w16"
+ },
+ {
+  "text": "checks",
+  "start": 6.02,
+  "end": 6.37,
+  "id": "w17"
+ },
+ {
+  "text": "the",
+  "start": 6.37,
+  "end": 6.54,
+  "id": "w18"
+ },
+ {
+  "text": "build,",
+  "start": 6.61,
+  "end": 6.98,
+  "id": "w19"
+ },
+ {
+  "text": "all",
+  "start": 6.98,
+  "end": 7.16,
+  "id": "w20"
+ },
+ {
+  "text": "of",
+  "start": 7.16,
+  "end": 7.25,
+  "id": "w21"
+ },
+ {
+  "text": "it",
+  "start": 7.28,
+  "end": 7.4,
+  "id": "w22"
+ },
+ {
+  "text": "on",
+  "start": 7.4,
+  "end": 7.44,
+  "id": "w23"
+ },
+ {
+  "text": "Nebbier's",
+  "start": 7.52,
+  "end": 7.99,
+  "id": "w24"
+ },
+ {
+  "text": "Token",
+  "start": 8.24,
+  "end": 8.36,
+  "id": "w25"
+ },
+ {
+  "text": "Factory.",
+  "start": 8.36,
+  "end": 8.84,
+  "id": "w26"
+ }
+]

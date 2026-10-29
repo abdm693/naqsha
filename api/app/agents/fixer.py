@@ -109,10 +109,14 @@ async def fix(plan: dict, brief: dict, prepare, budget_s: float | None = None, m
             resp = await asyncio.wait_for(llm.nebius().chat.completions.create(
                 model=config.MODEL_FIXER, messages=msgs, tools=TOOLS, tool_choice="auto", max_tokens=8192,
                 extra_body={"chat_template_kwargs": {"enable_thinking": config.FIXER_THINK}}),
-                timeout=max(20.0, budget_s - (time.monotonic() - t0)))
-        except Exception as e:
-            log.warning("fixer step %d failed: %s", steps, e)
-            break
+                timeout=min(150.0, max(20.0, budget_s - (time.monotonic() - t0))))
+        except Exception as e:  # a slow or failed call: try again while there is time (three in a row ends the run)
+            log.warning("fixer step %d failed: %r", steps, e)
+            state["errors"] = state.get("errors", 0) + 1
+            if state["errors"] >= 3:
+                break
+            continue
+        state["errors"] = 0
         m = resp.choices[0].message
         calls = m.tool_calls or []
         msgs.append({"role": "assistant", "content": m.content or "",

@@ -908,7 +908,9 @@ async def repair_section(project: dict, version: dict, name: str, error: str) ->
         raise ValueError(f"no section {name}")
     prompt = (f"HOUSE SDK REFERENCE:\n{_read(CONTRACTS / 'house-sdk.d.ts')}\n\nPLAN:\n{json.dumps(version['plan'])}\n\n"
               f"This design.js section failed in the browser with: {error}\n\n// @section {sec['name']} [{sec['layer']}]\n{sec['code']}// @end\n\n"
-              "Return the corrected section only, in the same // @section … // @end format.")
+              "The section runs on its own: declare every material, colour and helper it uses inside it. Use only APIs and "
+              "argument names that exist in the SDK reference. Return the corrected section only, in the same // @section … "
+              "// @end format.")
     text = await llm.generate_text(config.MODEL_ARCHITECT, prompt, system=BUILD_SYSTEM, max_tokens=16384)
     p = SectionStream()
     p.feed(text or "")

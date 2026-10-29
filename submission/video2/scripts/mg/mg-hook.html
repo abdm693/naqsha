@@ -79,11 +79,11 @@ const D = __DUR__;
 const tl = gsap.timeline({ paused: true });
 const q = (s) => document.querySelectorAll("#mg-hook " + s);
 tl.fromTo("#mg-hook-bg", { x: 0, y: 0 }, { x: -50, y: -24, duration: D, ease: "none" }, 0);
-tl.fromTo("#mg-hook-kicker", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.1);
+// frame 0 already shows the kicker, the blank sheet and the first pencil line (it is the thumbnail)
+tl.fromTo("#mg-hook-s1", { y: 12 }, { y: 0, duration: 0.8, ease: "power3.out" }, 0);
 // beat 1: the sketch draws itself; "Most families in Pakistan build a house only once."
-tl.fromTo("#mg-hook-s1", { opacity: 0, y: 40, rotation: -2 }, { opacity: 1, y: 0, rotation: 0, duration: 0.6, ease: "power3.out" }, 0.1);
 q(".pencil [pathLength]").forEach((p, i) => {
-  tl.fromTo(p, { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.6, ease: "power1.inOut" }, 0.3 + i * 0.17);
+  tl.fromTo(p, { strokeDasharray: 1, strokeDashoffset: i === 0 ? 0.55 : 1 }, { strokeDashoffset: 0, duration: 0.6, ease: "power1.inOut" }, 0.05 + i * 0.17);
 });
 tl.fromTo("#mg-hook-l1", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, C.l1);
 // beat 2: "The plan goes back and forth for weeks": drafts pile up, the week counter runs

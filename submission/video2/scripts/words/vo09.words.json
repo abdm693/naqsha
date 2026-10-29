@@ -1,0 +1,176 @@
+[
+ {
+  "text": "The",
+  "start": 0.02,
+  "end": 0.03,
+  "id": "w0"
+ },
+ {
+  "text": "vision",
+  "start": 0.25,
+  "end": 0.58,
+  "id": "w1"
+ },
+ {
+  "text": "model",
+  "start": 0.58,
+  "end": 0.9,
+  "id": "w2"
+ },
+ {
+  "text": "compares",
+  "start": 0.9,
+  "end": 1.39,
+  "id": "w3"
+ },
+ {
+  "text": "the",
+  "start": 1.47,
+  "end": 1.56,
+  "id": "w4"
+ },
+ {
+  "text": "3D",
+  "start": 1.68,
+  "end": 1.88,
+  "id": "w5"
+ },
+ {
+  "text": "model",
+  "start": 1.88,
+  "end": 2.2,
+  "id": "w6"
+ },
+ {
+  "text": "with",
+  "start": 2.2,
+  "end": 2.32,
+  "id": "w7"
+ },
+ {
+  "text": "the",
+  "start": 2.32,
+  "end": 2.5,
+  "id": "w8"
+ },
+ {
+  "text": "concept",
+  "start": 2.5,
+  "end": 2.78,
+  "id": "w9"
+ },
+ {
+  "text": "and",
+  "start": 2.96,
+  "end": 3.2,
+  "id": "w10"
+ },
+ {
+  "text": "the",
+  "start": 3.2,
+  "end": 3.38,
+  "id": "w11"
+ },
+ {
+  "text": "parts",
+  "start": 3.38,
+  "end": 3.86,
+  "id": "w12"
+ },
+ {
+  "text": "of",
+  "start": 3.86,
+  "end": 3.96,
+  "id": "w13"
+ },
+ {
+  "text": "the",
+  "start": 3.96,
+  "end": 4,
+  "id": "w14"
+ },
+ {
+  "text": "facade",
+  "start": 4,
+  "end": 4.4,
+  "id": "w15"
+ },
+ {
+  "text": "that",
+  "start": 4.4,
+  "end": 4.6,
+  "id": "w16"
+ },
+ {
+  "text": "don't",
+  "start": 4.6,
+  "end": 4.93,
+  "id": "w17"
+ },
+ {
+  "text": "match",
+  "start": 4.93,
+  "end": 5.17,
+  "id": "w18"
+ },
+ {
+  "text": "are",
+  "start": 5.44,
+  "end": 5.49,
+  "id": "w19"
+ },
+ {
+  "text": "rebuilt.",
+  "start": 5.49,
+  "end": 6,
+  "id": "w20"
+ },
+ {
+  "text": "Here",
+  "start": 6.25,
+  "end": 6.31,
+  "id": "w21"
+ },
+ {
+  "text": "the",
+  "start": 6.31,
+  "end": 6.54,
+  "id": "w22"
+ },
+ {
+  "text": "match",
+  "start": 6.54,
+  "end": 6.93,
+  "id": "w23"
+ },
+ {
+  "text": "went",
+  "start": 6.93,
+  "end": 7.24,
+  "id": "w24"
+ },
+ {
+  "text": "from",
+  "start": 7.24,
+  "end": 7.55,
+  "id": "w25"
+ },
+ {
+  "text": "71",
+  "start": 7.55,
+  "end": 8.02,
+  "id": "w26"
+ },
+ {
+  "text": "to",
+  "start": 8.02,
+  "end": 8.17,
+  "id": "w27"
+ },
+ {
+  "text": "82%.",
+  "start": 8.17,
+  "end": 9,
+  "id": "w28"
+ }
+]

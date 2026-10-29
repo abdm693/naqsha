@@ -1,0 +1,242 @@
+[
+  {
+    "text": "It",
+    "start": 0.01,
+    "end": 0.17,
+    "id": "w0"
+  },
+  {
+    "text": "drafts",
+    "start": 0.29,
+    "end": 0.68,
+    "id": "w1"
+  },
+  {
+    "text": "three",
+    "start": 0.68,
+    "end": 1.11,
+    "id": "w2"
+  },
+  {
+    "text": "flow",
+    "start": 1.11,
+    "end": 1.45,
+    "id": "w3"
+  },
+  {
+    "text": "plans",
+    "start": 1.45,
+    "end": 1.86,
+    "id": "w4"
+  },
+  {
+    "text": "at",
+    "start": 1.91,
+    "end": 2.05,
+    "id": "w5"
+  },
+  {
+    "text": "once.",
+    "start": 2.05,
+    "end": 2.46,
+    "id": "w6"
+  },
+  {
+    "text": "A",
+    "start": 2.47,
+    "end": 2.51,
+    "id": "w7"
+  },
+  {
+    "text": "rules",
+    "start": 2.74,
+    "end": 2.82,
+    "id": "w8"
+  },
+  {
+    "text": "engine",
+    "start": 2.82,
+    "end": 3.15,
+    "id": "w9"
+  },
+  {
+    "text": "checks",
+    "start": 3.27,
+    "end": 3.54,
+    "id": "w10"
+  },
+  {
+    "text": "each",
+    "start": 3.54,
+    "end": 3.7,
+    "id": "w11"
+  },
+  {
+    "text": "one",
+    "start": 3.8,
+    "end": 3.93,
+    "id": "w12"
+  },
+  {
+    "text": "against",
+    "start": 3.99,
+    "end": 4.43,
+    "id": "w13"
+  },
+  {
+    "text": "the",
+    "start": 4.43,
+    "end": 4.57,
+    "id": "w14"
+  },
+  {
+    "text": "bylaws",
+    "start": 4.59,
+    "end": 5,
+    "id": "w15"
+  },
+  {
+    "text": "and",
+    "start": 5,
+    "end": 5.2,
+    "id": "w16"
+  },
+  {
+    "text": "a",
+    "start": 5.2,
+    "end": 5.24,
+    "id": "w17"
+  },
+  {
+    "text": "fixer",
+    "start": 5.24,
+    "end": 5.63,
+    "id": "w18"
+  },
+  {
+    "text": "agent",
+    "start": 5.63,
+    "end": 5.97,
+    "id": "w19"
+  },
+  {
+    "text": "repairs",
+    "start": 6.08,
+    "end": 6.28,
+    "id": "w20"
+  },
+  {
+    "text": "the",
+    "start": 6.34,
+    "end": 6.42,
+    "id": "w21"
+  },
+  {
+    "text": "best",
+    "start": 6.42,
+    "end": 6.67,
+    "id": "w22"
+  },
+  {
+    "text": "plan",
+    "start": 6.67,
+    "end": 6.99,
+    "id": "w23"
+  },
+  {
+    "text": "with",
+    "start": 6.99,
+    "end": 7.12,
+    "id": "w24"
+  },
+  {
+    "text": "tool",
+    "start": 7.2,
+    "end": 7.39,
+    "id": "w25"
+  },
+  {
+    "text": "calls,",
+    "start": 7.51,
+    "end": 7.88,
+    "id": "w26"
+  },
+  {
+    "text": "testing",
+    "start": 7.88,
+    "end": 8.32,
+    "id": "w27"
+  },
+  {
+    "text": "every",
+    "start": 8.32,
+    "end": 8.63,
+    "id": "w28"
+  },
+  {
+    "text": "edit",
+    "start": 8.63,
+    "end": 8.88,
+    "id": "w29"
+  },
+  {
+    "text": "before",
+    "start": 8.88,
+    "end": 9.26,
+    "id": "w30"
+  },
+  {
+    "text": "it",
+    "start": 9.26,
+    "end": 9.38,
+    "id": "w31"
+  },
+  {
+    "text": "keeps",
+    "start": 9.38,
+    "end": 9.69,
+    "id": "w32"
+  },
+  {
+    "text": "it.",
+    "start": 9.69,
+    "end": 10.06,
+    "id": "w33"
+  },
+  {
+    "text": "34",
+    "start": 10.34,
+    "end": 10.45,
+    "id": "w34"
+  },
+  {
+    "text": "of",
+    "start": 10.45,
+    "end": 10.58,
+    "id": "w35"
+  },
+  {
+    "text": "34",
+    "start": 10.58,
+    "end": 10.92,
+    "id": "w36"
+  },
+  {
+    "text": "bylaw",
+    "start": 11.04,
+    "end": 11.29,
+    "id": "w37"
+  },
+  {
+    "text": "checks",
+    "start": 11.29,
+    "end": 11.68,
+    "id": "w38"
+  },
+  {
+    "text": "pass.",
+    "start": 11.68,
+    "end": 11.98,
+    "id": "w39"
+  }
+]

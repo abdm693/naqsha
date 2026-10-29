@@ -672,6 +672,8 @@ async def repair(pid: str, vid: str, body: RepairBody, me: Identity = Depends(au
     async def gen():
         fixed = await architect.repair_section(p, v, body.section, body.error)
         v["sections"] = [fixed if s["name"] == body.section else s for s in v["sections"]]
+        jsfix.share_declarations(v["sections"])
+        fixed = next(s for s in v["sections"] if s["name"] == body.section)
         await db.save_version(pid, v)
         idx = next(i for i, s in enumerate(v["sections"]) if s["name"] == body.section)
         yield "section", {"section": fixed, "index": idx}

@@ -1,0 +1,256 @@
+{
+  "ok": true,
+  "strict": false,
+  "browserSkipped": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "filesScanned": 21
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 1,
+    "findings": [
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 42.669,
+        "selector": "#mg-card2-edge",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": -16,
+          "top": 0,
+          "right": 0,
+          "bottom": 1080,
+          "width": 16,
+          "height": 1080
+        },
+        "containerSelector": "#host-mg-card2 > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "left": 16
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/mg-card2.html",
+        "bbox": {
+          "x": -16,
+          "y": 0,
+          "width": 16,
+          "height": 1080
+        },
+        "firstSeen": 42.669,
+        "lastSeen": 42.669,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          42.669
+        ]
+      }
+    ],
+    "duration": 153.61,
+    "samples": [
+      8.534,
+      25.602,
+      42.669,
+      59.737,
+      76.805,
+      93.873,
+      110.941,
+      128.008,
+      145.076
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 1,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      8.534,
+      42.669,
+      76.805,
+      110.941,
+      145.076
+    ],
+    "checked": 38,
+    "passed": 38
+  },
+  "craft": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 6,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Setup agent · Nemotron 3 Super\" (5 words) is on screen 1.27 s (±0.01 s), under its 1.50 s floor: hold it about 0.5 s + 0.3 s a word (2.00 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Setup agent · Nemotron 3 Super",
+        "selector": "#mg-card1-attr > span:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/mg-card1.html",
+        "bbox": {
+          "x": 235.36,
+          "y": 639.93,
+          "width": 649.36,
+          "height": 47.10000000000002
+        },
+        "time": 21.173,
+        "words": 5,
+        "seconds": 1.266,
+        "floorSeconds": 1.5
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Nemotron 3.5 Super VL\" (5 words) is on screen 1.27 s (±0.01 s), under its 1.50 s floor: hold it about 0.5 s + 0.3 s a word (2.00 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Nemotron 3.5 Super VL",
+        "selector": "#mg-card2-attr > span:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/mg-card2.html",
+        "bbox": {
+          "x": 235.12,
+          "y": 638.85,
+          "width": 455.5400000000001,
+          "height": 47.200000000000045
+        },
+        "time": 42.442,
+        "words": 5,
+        "seconds": 1.266,
+        "floorSeconds": 1.5
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"(, { room: }); s.furnish \"sofa\" \"g_lounge\"\" (6 words) is on screen 1.47 s (±0.01 s), under its 1.72 s floor: hold it about 0.5 s + 0.3 s a word (2.30 s here) before it leaves or changes; see references/motion.md.",
+        "text": "(, { room: }); s.furnish \"sofa\" \"g_lounge\"",
+        "selector": "div.code > div:nth-of-type(10)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/mg-code.html",
+        "bbox": {
+          "x": 854,
+          "y": 618.41,
+          "width": 768.03,
+          "height": 41
+        },
+        "time": 84.675,
+        "words": 6,
+        "seconds": 1.474,
+        "floorSeconds": 1.725
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"(, { room: }); s.furnish \"bed\" \"f_bed_1\"\" (7 words) is on screen 1.23 s (±0.01 s), under its 1.95 s floor: hold it about 0.5 s + 0.3 s a word (2.60 s here) before it leaves or changes; see references/motion.md.",
+        "text": "(, { room: }); s.furnish \"bed\" \"f_bed_1\"",
+        "selector": "div.code > div:nth-of-type(11)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/mg-code.html",
+        "bbox": {
+          "x": 854,
+          "y": 662.56,
+          "width": 729.6399999999999,
+          "height": 41
+        },
+        "time": 84.915,
+        "words": 7,
+        "seconds": 1.234,
+        "floorSeconds": 1.95
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"({ style: }); s.gate \"metal_slats\"\" (5 words) is on screen 0.74 s (±0.01 s), under its 1.50 s floor: hold it about 0.5 s + 0.3 s a word (2.00 s here) before it leaves or changes; see references/motion.md.",
+        "text": "({ style: }); s.gate \"metal_slats\"",
+        "selector": "div.code > div:nth-of-type(13)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/mg-code.html",
+        "bbox": {
+          "x": 854,
+          "y": 750.88,
+          "width": 633.6300000000001,
+          "height": 41
+        },
+        "time": 85.412,
+        "words": 5,
+        "seconds": 0.737,
+        "floorSeconds": 1.5
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Gemini image model · from 3D captures\" (6 words) is on screen 1.27 s (±0.01 s), under its 1.72 s floor: hold it about 0.5 s + 0.3 s a word (2.30 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Gemini image model · from 3D captures",
+        "selector": "#mg-card3-attr > span:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/mg-card3.html",
+        "bbox": {
+          "x": 238.76,
+          "y": 644.67,
+          "width": 793.3700000000001,
+          "height": 46.65999999999997
+        },
+        "time": 104.341,
+        "words": 6,
+        "seconds": 1.266,
+        "floorSeconds": 1.725
+      }
+    ],
+    "enabled": true,
+    "step": 0.2560000000000002,
+    "samples": 599
+  },
+  "audio": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  }
+}

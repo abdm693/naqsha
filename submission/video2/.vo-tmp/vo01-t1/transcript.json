@@ -1,13 +1,13 @@
 [
   {
     "text": "Most",
-    "start": 0.23,
-    "end": 0.26,
+    "start": 0.01,
+    "end": 0.03,
     "id": "w0"
   },
   {
     "text": "families",
-    "start": 0.26,
+    "start": 0.29,
     "end": 0.78,
     "id": "w1"
   },
@@ -26,145 +26,145 @@
   {
     "text": "build",
     "start": 1.44,
-    "end": 1.72,
+    "end": 1.85,
     "id": "w4"
   },
   {
     "text": "a",
-    "start": 1.72,
-    "end": 1.78,
+    "start": 1.85,
+    "end": 1.93,
     "id": "w5"
   },
   {
     "text": "house",
-    "start": 1.78,
-    "end": 2,
+    "start": 1.93,
+    "end": 2.14,
     "id": "w6"
   },
   {
     "text": "only",
-    "start": 2,
-    "end": 2.4,
+    "start": 2.22,
+    "end": 2.58,
     "id": "w7"
   },
   {
-    "text": "once.",
-    "start": 2.4,
-    "end": 2.84,
+    "text": "once,",
+    "start": 2.58,
+    "end": 3.17,
     "id": "w8"
   },
   {
-    "text": "The",
-    "start": 2.84,
-    "end": 3.07,
+    "text": "the",
+    "start": 3.33,
+    "end": 3.43,
     "id": "w9"
   },
   {
     "text": "plan",
-    "start": 3.07,
-    "end": 3.27,
+    "start": 3.43,
+    "end": 3.8,
     "id": "w10"
   },
   {
     "text": "goes",
-    "start": 3.41,
-    "end": 3.55,
+    "start": 3.8,
+    "end": 3.99,
     "id": "w11"
   },
   {
     "text": "back",
-    "start": 3.55,
-    "end": 3.81,
+    "start": 3.99,
+    "end": 4.32,
     "id": "w12"
   },
   {
     "text": "and",
-    "start": 3.81,
-    "end": 3.99,
+    "start": 4.32,
+    "end": 4.51,
     "id": "w13"
   },
   {
     "text": "forth",
-    "start": 4.07,
-    "end": 4.33,
+    "start": 4.51,
+    "end": 4.82,
     "id": "w14"
   },
   {
     "text": "for",
-    "start": 4.33,
-    "end": 4.56,
+    "start": 4.97,
+    "end": 5.1,
     "id": "w15"
   },
   {
-    "text": "weeks",
-    "start": 4.56,
-    "end": 5,
+    "text": "weeks,",
+    "start": 5.1,
+    "end": 5.87,
     "id": "w16"
   },
   {
     "text": "and",
-    "start": 5,
-    "end": 5.23,
+    "start": 5.93,
+    "end": 6.03,
     "id": "w17"
   },
   {
     "text": "nobody",
-    "start": 5.23,
-    "end": 5.48,
+    "start": 6.21,
+    "end": 6.44,
     "id": "w18"
   },
   {
     "text": "checks",
-    "start": 5.57,
-    "end": 5.8,
+    "start": 6.54,
+    "end": 6.82,
     "id": "w19"
   },
   {
     "text": "the",
-    "start": 5.8,
-    "end": 5.96,
+    "start": 6.82,
+    "end": 7,
     "id": "w20"
   },
   {
     "text": "bylaws",
-    "start": 5.96,
-    "end": 6.3,
+    "start": 7,
+    "end": 7.36,
     "id": "w21"
   },
   {
     "text": "until",
-    "start": 6.37,
-    "end": 6.55,
+    "start": 7.36,
+    "end": 7.66,
     "id": "w22"
   },
   {
     "text": "the",
-    "start": 6.56,
-    "end": 6.68,
+    "start": 7.66,
+    "end": 7.84,
     "id": "w23"
   },
   {
     "text": "authority",
-    "start": 6.68,
-    "end": 7.07,
+    "start": 7.84,
+    "end": 8.39,
     "id": "w24"
   },
   {
     "text": "sends",
-    "start": 7.07,
-    "end": 7.28,
+    "start": 8.39,
+    "end": 8.66,
     "id": "w25"
   },
   {
     "text": "it",
-    "start": 7.28,
-    "end": 7.36,
+    "start": 8.69,
+    "end": 8.77,
     "id": "w26"
   },
   {
     "text": "back.",
-    "start": 7.36,
-    "end": 7.66,
+    "start": 8.81,
+    "end": 9.2,
     "id": "w27"
   }
 ]
