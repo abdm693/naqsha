@@ -319,32 +319,34 @@ def steps_marks(*pairs):
     return list(pairs)
 
 
-# --- 0 Cold open: the finished house, cut on the music's beat ---------------------------------------------------
+# --- 0 Cold open (motion graphics, scripts/mg/mg-cold.html): the finished house cut on the beat, then the one
+#     message it came from, then the sample house's own plan drawing itself and rising floor by floor ---------------
 BEAT = 60 / 110.3                                   # the Lyria bed's tempo
-sc = Scene("ft-cold", 0.0, "The finished house")
-co1 = sc.seg("full", F("photo enlarged") + 0.3, F("photo enlarged") + 0.3 + 2 * BEAT, 1.0)      # the front photo
-co2 = sc.seg("full", F("night") + 0.4, F("night") + 0.4 + 2 * BEAT * 1.6, 1.6)                 # the night orbit
-co3 = sc.seg("full", F("walk") + 8.0, F("walk") + 8.0 + 3 * BEAT * 1.3, 1.3)                    # walking the lounge
-for s_, (z0, z1) in zip((co1, co2, co3), ((1.04, 1.14), (1.08, 1.2), (1.0, 1.12))):
-    sc.cam(s_["t"], z0, 960, 520)
-    sc.cam(s_["t"] + 0.02, z1, 960, 520, d=s_["dur"] - 0.05, ease="none")
-vo("vo00", 0.25)
-S.append(sc)
-CO_END = round(sc.cursor, 3)
-COLD_CUTS = (co2["t"], co3["t"])
+V0 = 1.1
+vo("vo00", V0)
+CO_MSG = at("vo00", "one")                          # "...was ONE message": the picture collapses into the message
+CO_BUILD = round(CO_MSG + 2.3, 3)
+CO_END = round(CO_BUILD + 4.5, 3)
+COLD_CUTS = (round(2 * BEAT, 3), round(3 * BEAT, 3), round(4 * BEAT, 3))
+MG["mg-cold"] = dict(start=0.0, end=CO_END, cues=dict(s2=COLD_CUTS[0], s3=COLD_CUTS[1], s4=COLD_CUTS[2],
+                                                      msg=CO_MSG, build=CO_BUILD),
+                     subs={"__PLAN__": (HERE / "open_plan.json").read_text(),
+                           "__S2__": str(COLD_CUTS[0]), "__S3__": str(COLD_CUTS[1])})
 
 # --- 1 Hook + 2 title (motion graphics) ------------------------------------------------------------------------
-HOOK_START = round(CO_END - 0.05, 3)
-vo("vo01", HOOK_START + 0.35)
+HOOK_START = round(CO_END, 3)
+vo("vo01", HOOK_START + 0.45)
 HOOK_END = round(vo_end("vo01") + 0.75, 3)
 MG["mg-hook"] = dict(start=HOOK_START, end=HOOK_END, cues=dict(
-    l1=at("vo01", "most") - 0.1, l2=at("vo01", "The plan") - 0.1, weeks=at("vo01", "weeks") - 0.1,
+    l1=at("vo01", "most") - 0.1, once=at("vo01", "only") - 0.05, l2=at("vo01", "The plan") - 0.1, weeks=at("vo01", "weeks") - 0.1,
     l4=at("vo01", "one setback") - 0.1, stamp=at("vo01", "returned") - 0.05, room=at("vo01", "until") - 0.15))
-TITLE = HOOK_END - 0.1
-vo("vo02", TITLE + 0.35)
-TITLE_END = round(vo_end("vo02") + 0.5, 3)
+TITLE = HOOK_END
+vo("vo02", TITLE + 0.45)
+TITLE_END = round(vo_end("vo02") + 1.3, 3)
 MG["mg-title"] = dict(start=TITLE, end=TITLE_END, cues=dict(
-    tag=at("vo02", "agentic") - 0.35, nemotron=at("vo02", "NVIDIA Nemotron") - 0.05, nebius=at("vo02", "Nebius") - 0.1))
+    tag=at("vo02", "agentic") - 0.35, every=at("vo02", "every agent") - 0.1, nvidia=at("vo02", "NVIDIA Nemotron") - 0.12,
+    nemotron=at("vo02", "Nemotron"), served=at("vo02", "served") - 0.1, nebius=at("vo02", "Nebius") - 0.12,
+    factory=at("vo02", "Factory")))
 
 # --- 3 Setup agent ------------------------------------------------------------------------------------------------
 sc = Scene("ft-setup", TITLE_END - 0.2, "01 · Setup agent")
@@ -645,7 +647,7 @@ MG["mg-end"] = dict(start=END_START, end=TOTAL, cues=dict(open=at("vo16", "open 
 
 # Music: the Lyria bed, re-fitted (scripts/fit_bed.py)
 BED_PLAN = {"total": TOTAL, "pieces": [
-    {"name": "cold", "at": 0.0, "until": CO_END, "src": 16.45, "fin": 0.05, "fout": 0.2},
+    {"name": "cold", "at": 0.0, "until": CO_END, "src": 101.19, "fin": 0.05, "fout": 0.3},
     {"name": "hook", "at": CO_END, "until": HOOK_END, "src": round(16.45 - (HOOK_END - CO_END), 3), "fin": 0.3, "fout": 0.05},
     {"name": "main", "at": HOOK_END, "until": ARCH_START, "src": 16.45, "fin": 0.05},
     {"name": "break", "at": ARCH_START, "until": END_START - 0.2, "src": 193.64},
@@ -654,10 +656,18 @@ BED_PLAN = {"total": TOTAL, "pieces": [
 
 # Sound design (global start, file, volume)
 SFX = [
-    (COLD_CUTS[0] - 0.12, "whoosh-short.mp3", 0.24), (COLD_CUTS[1] - 0.12, "whoosh-short.mp3", 0.24),
-    (CO_END - 0.3, "whoosh-cinematic.mp3", 0.35),                          # cold open -> hook
+    (0.0, "whoosh-short.mp3", 0.3),                                       # the light slit opens
+    (COLD_CUTS[0] - 0.1, "whoosh-short.mp3", 0.24), (COLD_CUTS[1] - 0.1, "whoosh-short.mp3", 0.2),
+    (COLD_CUTS[2] - 0.1, "whoosh-short.mp3", 0.24),
+    (CO_MSG - 0.3, "whoosh-cinematic.mp3", 0.3),                          # the picture collapses into the message
+    (CO_MSG + 0.22, "typing.mp3", 0.2),
+    (CO_MSG + 1.85, "click-soft.mp3", 0.45),                              # send
+    (CO_BUILD - 0.1, "riser.mp3", 0.3),                                   # the plan draws and rises; peaks on 34/34
+    (CO_BUILD + 1.65, "whoosh.mp3", 0.25),                                # the camera tilts, the walls go up
+    (CO_BUILD + 3.15, "sparkle.mp3", 0.25),                               # 34/34
+    (CO_END - 0.62, "impact-bass-2.mp3", 0.5),                            # bloom to black
+    (TITLE, "impact-bass-1.mp3", 0.6),                                    # the title's slit of light
     (MG["mg-hook"]["cues"]["stamp"] + 0.2, "impact-bass-1.mp3", 0.5),     # REJECTED stamp
-    (HOOK_END - 0.25, "impact-bass-2.mp3", 0.55),                         # title hit
     (SFX_TYPING[0] + 0.1, "typing.mp3", 0.16),
     (BRIEF_POP, "pop.mp3", 0.28),
     (NEMO_START - 0.05, "whoosh.mp3", 0.3),
@@ -983,6 +993,8 @@ def render_mg(sid, spec):
     for k, v in cues.items():
         assert 0 <= v <= dur, f"{sid}: cue {k} at {v} outside 0..{dur}"
     out = src.replace("__DUR__", str(dur)).replace("__CUES__", json.dumps(cues))
+    for k, v in spec.get("subs", {}).items():
+        out = out.replace(k, v)
     out = re.sub(r"\{\{(\w+)\}\}", lambda m: str(NUM[m.group(1)]), out)
     return out
 
@@ -1012,10 +1024,12 @@ def render_index():
                      f'data-track-index="{10 + (k % 2)}" data-audio-group="voiceover" data-volume="1"></audio>')
     audio.append(f'<audio id="music" src="assets/music/bed_fit.wav" data-start="0" data-duration="{TOTAL}" data-track-index="12" '
                  f'data-audio-group="music" data-volume="0.5"></audio>')
-    for k, (t, f, v) in enumerate(sorted(SFX)):
+    for k, (t, f, v, *off) in enumerate(sorted(SFX)):
+        ms = off[0] if off else 0.0                     # optional: start this far into the file
+        d = min(sfx_dur(f), SFX_TYPING[1]) if f == "typing.mp3" else round(sfx_dur(f) - ms, 3)
         audio.append(f'<audio id="sfx{k:02d}" src="assets/sfx/{f}" data-start="{round(t, 3)}" '
-                     f'data-duration="{min(sfx_dur(f), SFX_TYPING[1]) if f == "typing.mp3" else sfx_dur(f)}" '
-                     f'data-track-index="{13 + (k % 3)}" data-audio-group="sfx" data-volume="{v}"></audio>')
+                     f'data-duration="{d}" ' + (f'data-media-start="{ms}" ' if ms else "") +
+                     f'data-track-index="{13 + (k % 5)}" data-audio-group="sfx" data-volume="{v}"></audio>')
     return f"""<!doctype html>
 <html lang="en">
 <head>
