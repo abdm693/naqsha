@@ -32,11 +32,13 @@ async function houseTour() {
   mark("house view");
   await page.waitForFunction(() => !document.body.innerText.includes("Assembling your home"), null, { timeout: 5 * 60_000 }).catch(() => {});
   mark("house built");
+  const summary = await page.getByText(/\d+\/\d+ LDA/).first().textContent().catch(() => "");
+  mark(`summary: ${(summary || "").trim()}`);
   await pause(3);
   // the automatic concept check and photos run after a fresh design; wait for the score
   const chip = page.getByRole("button", { name: /Matches the concept: \d+%/ }).first();
   await chip.waitFor({ timeout: 10 * 60_000 }).catch(() => mark("no match score"));
-  mark("match score");
+  mark(`match score: ${(await chip.textContent().catch(() => "")) || ""}`);
   await pause(2);
   await chip.click().catch(() => {});
   mark("match popover");

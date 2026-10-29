@@ -1,4 +1,6 @@
-{"capture_dir": "../../capture/out",
- "full": "full-202531",
+{
+ "capture_dir": "../../capture/out",
+ "full": "full-022242",
  "drawing": "drawing-200612",
- "_note": "Recording names (without extension) in capture_dir. After a new capture, put its names here and run prep_footage.py, then build.py."}
+ "_note": "Recording names (without extension) in capture_dir. After a new capture, put its names here and run prep_footage.py, then build.py."
+}

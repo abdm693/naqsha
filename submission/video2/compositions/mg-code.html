@@ -30,36 +30,36 @@
 #mg-code .c { color:#8E8E96; } #mg-code .f { color:#9DB0FF; } #mg-code .s { color:#7EE2B8; } #mg-code .n { color:#FFC46B; }
 #mg-code .caret { display:inline-block; width:16px; height:34px; background:#9DB0FF; vertical-align:-6px; margin-left:4px; }
 </style>
-<div id="mg-code" data-composition-id="mg-code" data-width="1920" data-height="1080" data-duration="4.267">
-  <div class="wrap" id="mg-code-wrap">
-    <div class="bg" id="mg-code-bg" data-layout-allow-overflow></div>
-    <div class="list" id="mg-code-list">
-      <div class="lk">from the concept</div>
-      <div class="lt">Feature checklist</div>
-      <div class="ls">read off the chosen concept by the vision model</div>
-      <div class="it"><span class="bx"><i></i></span>Main volume and flat roof</div>
-      <div class="it"><span class="bx"><i></i></span>Cantilevered upper floor</div>
-      <div class="it"><span class="bx"><i></i></span>Stone cladding</div>
-      <div class="it"><span class="bx"><i></i></span>Tall windows, black frames</div>
-      <div class="it"><span class="bx"><i></i></span>Timber screens</div>
-      <div class="it"><span class="bx"><i></i></span>Boundary wall and gate</div>
+<div data-hf-id="hf-p6to" id="mg-code" data-composition-id="mg-code" data-width="1920" data-height="1080" data-duration="4.267">
+  <div data-hf-id="hf-4hft" class="wrap" id="mg-code-wrap">
+    <div data-hf-id="hf-24lw" class="bg" id="mg-code-bg" data-layout-allow-overflow></div>
+    <div data-hf-id="hf-uqt1" class="list" id="mg-code-list">
+      <div data-hf-id="hf-9puk" class="lk">from the concept</div>
+      <div data-hf-id="hf-p1rq" class="lt">Feature checklist</div>
+      <div data-hf-id="hf-vpzy" class="ls">read off the chosen concept by the vision model</div>
+      <div data-hf-id="hf-9m4u" class="it"><span data-hf-id="hf-aedr" class="bx"><i data-hf-id="hf-wt6k"></i></span>Main volume and flat roof</div>
+      <div data-hf-id="hf-z3az" class="it"><span data-hf-id="hf-dab3" class="bx"><i data-hf-id="hf-zeb8"></i></span>Cantilevered upper floor</div>
+      <div data-hf-id="hf-fvc2" class="it"><span data-hf-id="hf-cw02" class="bx"><i data-hf-id="hf-y7e5"></i></span>Stone cladding</div>
+      <div data-hf-id="hf-l2wy" class="it"><span data-hf-id="hf-chp1" class="bx"><i data-hf-id="hf-ylp6"></i></span>Tall windows, black frames</div>
+      <div data-hf-id="hf-11yp" class="it"><span data-hf-id="hf-f9u8" class="bx"><i data-hf-id="hf-0l8b"></i></span>Timber screens</div>
+      <div data-hf-id="hf-hsol" class="it"><span data-hf-id="hf-evj7" class="bx"><i data-hf-id="hf-0zjc"></i></span>Boundary wall and gate</div>
     </div>
-    <div class="ed" id="mg-code-ed">
-      <div class="bar"><i></i><i></i><i></i><span>design.js · written by <b>Nemotron 3 Ultra</b></span></div>
-      <div class="code">
-<div class="cl"><span class="c">// structure</span></div>
-<div class="cl"><span class="f">s.structure</span>({</div>
-<div class="cl">  window_frame: <span class="s">"metal_black"</span>,</div>
-<div class="cl">  railing: <span class="s">"glass"</span>, <span class="c">…</span></div>
-<div class="cl">});</div>
-<div class="cl"><span class="c">// facade</span></div>
-<div class="cl"><span class="f">s.cladding</span>(<span class="s">"stone_grey"</span>, { face: <span class="s">"front"</span> });</div>
-<div class="cl"><span class="f">s.screen</span>(<span class="s">"timber_slats"</span>, { floor: <span class="n">1</span> });</div>
+    <div data-hf-id="hf-32rx" class="ed" id="mg-code-ed">
+      <div data-hf-id="hf-ufsv" class="bar"><i data-hf-id="hf-zsm9"></i><i data-hf-id="hf-06xa"></i><i data-hf-id="hf-26gf"></i><span data-hf-id="hf-fpkz">design.js · written by <b data-hf-id="hf-an8w">Nemotron 3 Ultra</b></span></div>
+      <div data-hf-id="hf-qevj" class="code">
+<div data-hf-id="hf-z3cd" class="cl"><span data-hf-id="hf-6af3" class="c">// structure</span></div>
+<div data-hf-id="hf-yiek" class="cl"><span data-hf-id="hf-1u3x" class="f">s.structure</span>({</div>
+<div data-hf-id="hf-bdab" class="cl">  window_frame: <span data-hf-id="hf-754l" class="s">"metal_black"</span>,</div>
+<div data-hf-id="hf-4c5v" class="cl">  railing: <span data-hf-id="hf-4rys" class="s">"glass"</span>, <span data-hf-id="hf-dc72" class="c">…</span></div>
+<div data-hf-id="hf-elpc" class="cl">});</div>
+<div class="cl"><span class="c">// facade_front · builds F3, F5</span></div>
+<div class="cl"><span class="f">s.facade.cladding</span>({ side: <span class="s">"front"</span>, <span class="c">…</span> });</div>
+<div class="cl"><span class="f">s.facade.fins</span>({ side: <span class="s">"front"</span>, <span class="c">…</span> });</div>
 <div class="cl"><span class="c">// furniture, room by room</span></div>
-<div class="cl"><span class="f">s.furnish</span>(<span class="s">"sofa"</span>, { room: <span class="s">"g_lounge"</span> });</div>
-<div class="cl"><span class="f">s.furnish</span>(<span class="s">"bed"</span>, { room: <span class="s">"f_bed_1"</span> });</div>
+<div class="cl"><span class="f">s.furnish</span>(<span class="s">"plant_floor"</span>, { room: <span class="s">"g_porch"</span> });</div>
+<div class="cl"><span class="f">s.furnish</span>(<span class="s">"car_suv"</span>, { room: <span class="s">"g_porch"</span> });</div>
 <div class="cl"><span class="c">// landscape</span></div>
-<div class="cl"><span class="f">s.gate</span>({ style: <span class="s">"metal_slats"</span> });<span class="caret" id="mg-code-caret"></span></div>
+<div class="cl"><span class="f">s.landscape.planter</span>({ <span class="c">…</span> });<span class="caret" id="mg-code-caret"></span></div>
       </div>
     </div>
   </div>

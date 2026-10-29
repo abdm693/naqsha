@@ -52,15 +52,15 @@
 <div id="ft-outro" data-composition-id="ft-outro" data-width="1920" data-height="1080" data-duration="6.87">
   <div class="topbar">
     <div class="chip" id="ft-outro-chip"><span class="dot" id="ft-outro-live"></span><span>LIVE</span><span class="muted">· real product</span></div>
-    <div class="bslot"><div class="badge rt" id="ft-outro-b0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2"/><path d="M9 2h6"/></svg><span>real time</span></div><div class="badge" id="ft-outro-b1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6l7 6-7 6V6z"/><path d="M13 6l7 6-7 6V6z"/></svg><span>sped up 1.2×</span></div></div>
+    <div class="bslot"><div class="badge rt" id="ft-outro-b0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2"/><path d="M9 2h6"/></svg><span>real time</span></div></div>
     <div class="cslot"></div>
     <div class="chap" id="ft-outro-chap">Who it’s for</div>
   </div>
   <div class="win" id="ft-outro-win">
     <div class="cam" id="ft-outro-cam" data-layout-allow-overflow>
-      <video id="ft-outro-v0" src="assets/footage/full-202531.mp4" data-start="0.0" data-duration="2.3" data-media-start="650.34" data-track-index="0" data-hf-media-start-basis="local" muted playsinline class="vid"></video>
-<video id="ft-outro-v1" src="assets/footage/full-202531.mp4" data-start="2.3" data-duration="2.0" data-media-start="641.0" data-track-index="1" data-hf-media-start-basis="local" muted playsinline class="vid"></video>
-<video id="ft-outro-v2" src="assets/footage/full-202531.mp4" data-start="4.3" data-duration="2.57" data-media-start="662.95" data-track-index="0" data-hf-media-start-basis="local" muted playsinline data-playback-rate="1.2" class="vid"></video>
+      <video id="ft-outro-v0" src="assets/footage/full-202531.mp4" data-start="0.0" data-duration="2.27" data-media-start="649.52" data-track-index="0" data-hf-media-start-basis="local" muted playsinline class="vid"></video>
+<video id="ft-outro-v1" src="assets/footage/full-202531.mp4" data-start="2.27" data-duration="2.3" data-media-start="640.9" data-track-index="1" data-hf-media-start-basis="local" muted playsinline class="vid"></video>
+<video id="ft-outro-v2" src="assets/footage/full-202531.mp4" data-start="4.57" data-duration="2.3" data-media-start="643.42" data-track-index="0" data-hf-media-start-basis="local" muted playsinline class="vid"></video>
       
     </div>
     <div class="callout t-ink" id="ft-outro-o0" style="left:36px;bottom:36px;"><span class="cdot" style="background:#2747F5"></span><div><div class="c-text">For families</div><div class="c-sub">see the home before you build it</div></div></div><div class="callout t-ink" id="ft-outro-o1" style="left:36px;bottom:36px;"><span class="cdot" style="background:#2747F5"></span><div><div class="c-text">For architects</div><div class="c-sub">a checked design for the first meeting</div></div></div>
@@ -75,14 +75,12 @@ tl.fromTo("#ft-outro-live", {opacity:1}, {opacity:0.35, duration:0.6, repeat:10,
 const cam = document.getElementById("ft-outro-cam");
 tl.set(cam, {x:0.0, y:0.0, scale:0.86667, transformOrigin:"0 0"}, 0);
 tl.set(cam, {x:0.0, y:0.0, scale:0.86667}, 0.0);
-tl.to(cam, {x:-49.92, y:-28.08, scale:0.91867, duration:2.2499999999999547, ease:"none"}, 0.02);
-tl.set(cam, {x:0.0, y:0.0, scale:0.86667}, 2.3);
-tl.to(cam, {x:-49.92, y:-28.08, scale:0.91867, duration:1.95, ease:"none"}, 2.32);
-tl.set(cam, {x:0.0, y:0.0, scale:0.86667}, 4.3);
-tl.to(cam, {x:-49.92, y:-28.08, scale:0.91867, duration:2.52000000000005, ease:"none"}, 4.32);
+tl.to(cam, {x:-49.92, y:-28.08, scale:0.91867, duration:2.219999999999982, ease:"none"}, 0.02);
+tl.set(cam, {x:0.0, y:0.0, scale:0.86667}, 2.27);
+tl.to(cam, {x:-49.92, y:-28.08, scale:0.91867, duration:2.2499999999999547, ease:"none"}, 2.29);
+tl.set(cam, {x:0.0, y:0.0, scale:0.86667}, 4.57);
+tl.to(cam, {x:-49.92, y:-28.08, scale:0.91867, duration:2.2499999999999547, ease:"none"}, 4.59);
 tl.fromTo("#ft-outro-b0", {opacity:0, y:10}, {opacity:1, y:0, duration:0.2, ease:"power3.out"}, 0.0);
-tl.to("#ft-outro-b0", {opacity:0, y:-8, duration:0.14, ease:"power2.in"}, 4.16);
-tl.fromTo("#ft-outro-b1", {opacity:0, y:10}, {opacity:1, y:0, duration:0.2, ease:"power3.out"}, 4.3);
 tl.fromTo("#ft-outro-o0", {opacity:0, y:22, scale:0.96}, {opacity:1, y:0, scale:1, duration:0.38, ease:"back.out(1.6)"}, 0.92);
 tl.to("#ft-outro-o0", {opacity:0, y:12, duration:0.2, ease:"power2.in"}, 3.32);
 tl.fromTo("#ft-outro-o1", {opacity:0, y:22, scale:0.96}, {opacity:1, y:0, scale:1, duration:0.38, ease:"back.out(1.6)"}, 3.62);
