@@ -97,9 +97,9 @@ Tests: `cd api && uv run pytest`.
 
 ## Built during the hackathon
 
-Naqsha was started in October 2026, inside the Nebius x NVIDIA Global AI Hackathon's submission period, and prototyped on Gemini first:
-- every text and vision agent moved to NVIDIA Nemotron on Nebius Token Factory, with a new Token Factory adapter;
-- a new tool-using **plan fixer agent** and parallel drafting;
+Naqsha was started in October 2026, inside the Nebius x NVIDIA Global AI Hackathon's submission period. We prototyped it on Gemini, then built every text and vision agent on NVIDIA Nemotron through Nebius Token Factory, with:
+- a Token Factory adapter (`api/app/llm.py`), with the Google ADK agents running through LiteLLM;
+- the **architect harness**: proven starting layouts, four parallel drafts and two tool-using **plan fixer agents**;
 - **start from your own drawing** (Nemotron VL drawing reader);
 - **rules for any city**, researched with Tavily;
 - concepts drawn **from the designed house**, a **concept-to-3D feature checklist and match check** with automatic facade refits, and **photos from every angle** made from the 3D model.
