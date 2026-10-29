@@ -24,13 +24,22 @@ from .. import config, llm
 from ..compliance import lda, planning
 from ..gemini import client
 from ..store import blobs, db
-from . import concepts, drawing, fixer, importer, research
+from . import concepts, drawing, fixer, importer, jsfix, research
 from .intake import FACING_NAME
 
 log = logging.getLogger("naqsha.architect")
 ROOT = Path(__file__).resolve().parents[3]
 CONTRACTS = ROOT / "contracts"
-EXAMPLE_PLAN = Path(__file__).with_name("examples") / "plan-10-marla.json"
+EXAMPLES = Path(__file__).with_name("examples")
+EXAMPLE_PLAN = EXAMPLES / "plan-10-marla.json"
+# Proven layouts (they pass every LDA check), by plot size: the planner adapts the nearest one instead of starting blank.
+TEMPLATES = [(15.0, EXAMPLES / "plan-10-marla-4bed.json"), (999.0, EXAMPLES / "plan-1-kanal.json")]
+
+
+def template_for(brief: dict) -> dict:
+    marla = float((brief.get("plot") or {}).get("area_marla") or 10)
+    path = next(p for cap, p in TEMPLATES if marla < cap)
+    return json.loads(_read(path))
 
 
 def _read(path: Path) -> str:
@@ -99,6 +108,12 @@ bedroom, the drawing room or the prayer room. Proportions stay livable; passages
 THE BRIEF: honour the per-floor program (brief.floors) and the family's preferences (brief.preferences, brief.notes) exactly:
 the bedroom count, the rooms on each floor, attached baths, an open kitchen, parents downstairs. They are promises.
 
+MASSING (how the house reads from the road): upper floors sit over the ground floor, front to back. The front line of every
+enclosed upper floor is within about 2 ft of the ground floor's building line, so the house shows a full facade of every
+storey to the road. Over the car porch put a room or a front balcony (a bedroom's or the lounge's). Habitable rooms (a
+bedroom, the lounge) face the road on every floor; never put a bath, store or stair hall as the main thing on the front
+face. Leave open roof or terraces at the back, not the front, unless the brief asks otherwise.
+
 ROOF: solar-ready roofs stay clear: no minarets, domes or chhatris unless asked; the stair tower and tank sit in one corner.
 roof.water_tank.material follows brief.water_tank ("plastic" sits on the stair tower, its rect inside roof.mumty.rect;
 "concrete" sits on the roof slab beside it). roof.solar = {"mode": brief.solar} when it is "ready" or "panels".
@@ -130,6 +145,7 @@ def storey_limit_note(brief: dict, env: dict) -> str:
 
 
 def _plan_prompt(brief: dict, env: dict, concept: str | None, imported: dict | None = None) -> str:
+    tpl = template_for(brief)
     drawn = ""
     if imported:
         drawn = ("THE FAMILY'S OWN DRAWING (their uploaded floor plan, transcribed room by room in plot feet; road at y = 0):\n"
@@ -144,8 +160,12 @@ def _plan_prompt(brief: dict, env: dict, concept: str | None, imported: dict | N
         f"LDA ENVELOPE (deterministic, from the regulations):\n{json.dumps({k: v for k, v in env.items() if k != '_band'}, indent=1)}\n\n"
         + storey_limit_note(brief, env) +
         f"TYPESCRIPT REFERENCE for the plan (conventions + types):\n{_read(CONTRACTS / 'plan.ts')}\n\n"
-        f"EXAMPLE of a good plan for a 10 marla LDA plot that passes every check (reference only; design for THIS brief):\n"
-        f"{json.dumps(json.loads(_read(EXAMPLE_PLAN)), separators=(',', ':'))}\n\n"
+        + ("" if imported else
+           f"STARTING LAYOUT: a proven plan for a {tpl['site']['plot']['width_ft']:g} × {tpl['site']['plot']['depth_ft']:g} ft "
+           f"plot that passes every check. Adapt it to THIS brief and plot: keep its zoning, its stair and its massing (front "
+           f"rooms and balcony over the porch, rooms stacked floor over floor), resize rooms to the plot, and add, remove or "
+           f"swap rooms to give the family exactly what the brief asks. Don't copy what the brief doesn't want.\n"
+           f"{json.dumps(tpl, separators=(',', ':'))}\n\n")
         + (f"THE EXTERIOR CONCEPT THE FAMILY CHOSE (read from the image): match its massing (porch side, balconies, "
            f"roof features, window rhythm) where the rules allow.\n{concept}\n\n" if concept else "")
         + "Now produce the BuildingPlan JSON for this brief."
@@ -210,6 +230,8 @@ def prepare(plan: dict, brief: dict) -> tuple[dict, list[str]]:
             repairs.append("fitted the stairs to code inside the stair hall")
         if planning.repair_mumty(plan):
             repairs.append("set the stair tower over the stair with its door at the top landing")
+        if (doors := planning.repair_doors(plan)):
+            repairs.append(f"added {len(doors)} door{'s' if len(doors) > 1 else ''} so every room has a way in")
         if (win := planning.add_missing_windows(plan)):
             repairs.append(f"added {len(win)} window{'s' if len(win) > 1 else ''} or ventilator{'s' if len(win) > 1 else ''} "
                            f"on free outside walls for daylight and air")
@@ -319,6 +341,16 @@ async def make_plan(project: dict) -> AsyncIterator[tuple[str, dict]]:
     # 2. the fixer agent: Nemotron edits the draft with tools, each edit dry-run against the rules and kept only if it helps
     if not report["ok"]:
         yield "stage", {"stage": "fix", "message": f"Fixing {fails} problem{'s' if fails != 1 else ''}, one checked edit at a time…"}
+        # a second fixer works on the runner-up draft at the same time; the better plan wins (the screen follows the first)
+        rival = None
+        if len(drafts) > 1 and config.PARALLEL_FIXERS > 1 and not drafts[1][3]["ok"]:
+            async def run_rival():
+                res = None
+                async for ev2, d2 in fixer.fix(drafts[1][1], brief, prepare):
+                    if ev2 == "_result":
+                        res = d2
+                return res
+            rival = asyncio.create_task(run_rival())
         async for ev, d in fixer.fix(plan, brief, prepare):
             if ev == "edit":
                 at += 1
@@ -336,6 +368,24 @@ async def make_plan(project: dict) -> AsyncIterator[tuple[str, dict]]:
                 yield "compliance", {"report": r, "attempt": at}
             elif ev == "_result":
                 plan, report = d["plan"], d["report"]
+        if rival:
+            try:
+                other = await asyncio.wait_for(rival, timeout=60) if not report["ok"] else None
+            except Exception:
+                other = None
+            if not rival.done():
+                rival.cancel()
+            if other and _score(other["report"]) < _score(report):
+                at += 1
+                plan, report = other["plan"], other["report"]
+                f2, w2 = _score(report)
+                log.info("the second fixer's plan won: %d failures", f2)
+                yield "stage", {"stage": "fix", "message": "A second fixer working on another draft got further; using its plan."}
+                yield "plan", {"plan": plan, "attempt": at}
+                history.append({"attempt": at, "pass": sum(1 for x in report["checks"] if x["status"] == "pass"), "warn": w2,
+                                "fail": f2, "failed": [x["id"] for x in report["checks"] if x["status"] == "fail"],
+                                "repairs": [], "tool_edit": True})
+                yield "compliance", {"report": report, "attempt": at}
     yield "_result", {"plan": plan, "report": report, "history": history, "first": first, "chosen_attempt": at}
 
 
@@ -734,7 +784,11 @@ Order and naming:
 2. `facade_<part> [facade]`: several sections building the facade from the CONCEPT SPECIFICATION: cladding, fins, frames,
    canopies, screens, columns, wall lights and LED strips. Every feature in the specification (F1, F2, …) must be built,
    in its place, material and colour; the first line of each facade section is a comment naming the features it builds
-   (e.g. `// builds F2, F5`). Use the palette's hex colours. If a feature can't be built on this plan, say why in a comment. Use s.face(side, level) for facade math. Every element must stay
+   (e.g. `// builds F2, F5`). Use the palette's hex colours. Never skip a feature with a note: adapt it to the plan as
+   built (slats or fins on whichever front wall the plan has, the glass railing on the balcony or terrace that faces the
+   road, a canopy over the door that exists). The facade should read rich from the road: at least two wall finishes, framed
+   windows, one strong feature element (fins, a screen or a projecting frame), a parapet trim, wall lights and a gate that
+   match the concept. Use s.face(side, level) for facade math. Every element must stay
    inside the plot. Canopies and chajjas may project at most 3 ft beyond the building line into a 10 ft+ open space, or 1.5 ft otherwise.
 3. `interior_<room or theme> [interior]`: accent walls, false ceilings with cove lights and downlights for the main rooms
    (drawing, lounges, master bedroom).
@@ -749,7 +803,9 @@ Order and naming:
 Roof: keep it clear for solar unless the brief asks otherwise: no domes, cupolas, minarets, chhatris or pergolas; the water tank
 and solar frame come from the plan.
 Rules: Only use APIs that exist in the SDK reference. Coordinates are plan FEET (x along the road, y into the plot, h above the
-road crown). Keep each section under about 60 lines, self-contained, with const declarations local to it. Never use fetch, XMLHttpRequest,
+road crown). Keep each section under about 60 lines. Sections share NOTHING: each runs on its own, so a material, colour or helper
+used in a section must be declared in that same section (repeat the palette's few consts where needed; never rely on a
+const from another section). Never use fetch, XMLHttpRequest,
 WebSocket, import(), eval, Function, document, window or storage. Prefer clarity over cleverness. Add a brief comment at the top
 of each section saying what it builds."""
 
@@ -821,7 +877,8 @@ async def write_design(project: dict, plan: dict, extra_instruction: str | None 
                 continue
             total += len(chunk.text)
             for sec in parser.feed(chunk.text):
-                yield "section", {"section": sec, "index": len(parser.done) - 1}
+                for ev in _shared(parser.done):
+                    yield ev
             if total // 3000 != (total - len(chunk.text)) // 3000:
                 yield "progress", {"chars": total}
     except llm.Stalled:
@@ -829,8 +886,20 @@ async def write_design(project: dict, plan: dict, extra_instruction: str | None 
             raise
         log.warning("build stream stalled after %d sections; keeping them", len(parser.done))
     for sec in parser.flush():
-        yield "section", {"section": sec, "index": len(parser.done) - 1}
+        for ev in _shared(parser.done):
+            yield ev
     yield "_result", {"sections": parser.done}
+
+
+def _shared(done: list[dict]) -> list[tuple[str, dict]]:
+    """The newest section (and any earlier one that now gets a declaration it was missing), with declarations shared
+    across sections copied in, as `section` events."""
+    before = [s["code"] for s in done]
+    fixed = jsfix.share_declarations(done)
+    if fixed:
+        log.info("shared declarations: %s", "; ".join(fixed))
+    out = [("section", {"section": s, "index": i}) for i, s in enumerate(done[:-1]) if s["code"] != before[i]]
+    return out + [("section", {"section": done[-1], "index": len(done) - 1})]
 
 
 async def repair_section(project: dict, version: dict, name: str, error: str) -> dict:

@@ -1,0 +1,140 @@
+[
+  {
+    "text": "You",
+    "start": 0.2,
+    "end": 0.27,
+    "id": "w0"
+  },
+  {
+    "text": "start",
+    "start": 0.27,
+    "end": 0.54,
+    "id": "w1"
+  },
+  {
+    "text": "with",
+    "start": 0.54,
+    "end": 0.8,
+    "id": "w2"
+  },
+  {
+    "text": "one",
+    "start": 0.82,
+    "end": 1.01,
+    "id": "w3"
+  },
+  {
+    "text": "message",
+    "start": 1.01,
+    "end": 1.5,
+    "id": "w4"
+  },
+  {
+    "text": "about",
+    "start": 1.5,
+    "end": 1.76,
+    "id": "w5"
+  },
+  {
+    "text": "your",
+    "start": 1.76,
+    "end": 1.85,
+    "id": "w6"
+  },
+  {
+    "text": "plot",
+    "start": 1.91,
+    "end": 2,
+    "id": "w7"
+  },
+  {
+    "text": "in",
+    "start": 2,
+    "end": 2.09,
+    "id": "w8"
+  },
+  {
+    "text": "your",
+    "start": 2.12,
+    "end": 2.39,
+    "id": "w9"
+  },
+  {
+    "text": "family.",
+    "start": 2.39,
+    "end": 2.92,
+    "id": "w10"
+  },
+  {
+    "text": "A",
+    "start": 2.93,
+    "end": 2.99,
+    "id": "w11"
+  },
+  {
+    "text": "setup",
+    "start": 3.19,
+    "end": 3.34,
+    "id": "w12"
+  },
+  {
+    "text": "agent",
+    "start": 3.34,
+    "end": 3.69,
+    "id": "w13"
+  },
+  {
+    "text": "for",
+    "start": 3.69,
+    "end": 3.9,
+    "id": "w14"
+  },
+  {
+    "text": "NemoTron",
+    "start": 3.9,
+    "end": 4.46,
+    "id": "w15"
+  },
+  {
+    "text": "3",
+    "start": 4.46,
+    "end": 4.64,
+    "id": "w16"
+  },
+  {
+    "text": "Super",
+    "start": 4.67,
+    "end": 5.01,
+    "id": "w17"
+  },
+  {
+    "text": "turns",
+    "start": 5.04,
+    "end": 5.31,
+    "id": "w18"
+  },
+  {
+    "text": "it",
+    "start": 5.31,
+    "end": 5.41,
+    "id": "w19"
+  },
+  {
+    "text": "into",
+    "start": 5.41,
+    "end": 5.57,
+    "id": "w20"
+  },
+  {
+    "text": "the",
+    "start": 5.63,
+    "end": 5.78,
+    "id": "w21"
+  },
+  {
+    "text": "brief.",
+    "start": 6,
+    "end": 6.16,
+    "id": "w22"
+  }
+]

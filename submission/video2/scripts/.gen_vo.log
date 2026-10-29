@@ -1,0 +1,5 @@
+vo01 take 1:  8.04s speech 7.43/10.5 sim 1.000 naqsha None pass True []
+== vo01: take 1 pass=True 7.94s
+vo03 take 1:  6.32s speech 5.96/8.62 sim 0.913 naqsha None pass True []
+vo02 take 1:  6.80s speech 6.55/7.5 sim 0.850 naqsha NAK-sha pass False ['missed words', 'naqsha']
+vo04 take 1:  8.68s speech 8.13/11.62 sim 0.951 naqsha None pass True []

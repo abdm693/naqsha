@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8" /></head>
+<body>
+<template id="mg-title-template">
+<style>
+@font-face { font-family: "Geist"; src: url("assets/fonts/Geist-Variable.woff2") format("woff2"); font-weight: 100 900; }
+@font-face { font-family: "Geist Mono"; src: url("assets/fonts/GeistMono-Variable.woff2") format("woff2"); font-weight: 100 900; }
+@font-face { font-family: "Noto Nastaliq Urdu"; src: url("assets/fonts/NotoNastaliqUrdu.ttf") format("truetype"); font-weight: 400 700; }
+#mg-title { position:absolute; inset:0; width:100%; height:100%; overflow:hidden; font-family:"Geist", sans-serif; color:#111113; }
+#mg-title .wrap { position:absolute; inset:0; }
+#mg-title .bg { position:absolute; inset:-60px; background-color:#F6F6F3;
+  background-image: radial-gradient(1000px 700px at 50% 38%, rgba(39,71,245,.12), rgba(39,71,245,0) 70%),
+    linear-gradient(rgba(17,17,19,.055) 2px, transparent 2px), linear-gradient(90deg, rgba(17,17,19,.055) 2px, transparent 2px),
+    linear-gradient(rgba(17,17,19,.03) 1px, transparent 1px), linear-gradient(90deg, rgba(17,17,19,.03) 1px, transparent 1px);
+  background-size:100% 100%, 240px 240px, 240px 240px, 48px 48px, 48px 48px; }
+#mg-title .lock { position:absolute; left:0; right:0; top:250px; display:flex; align-items:center; justify-content:center; gap:44px; }
+#mg-title .mark { width:200px; height:200px; flex:none; }
+#mg-title .mark .tile { transform-origin:32px 32px; }
+#mg-title .mark .ln { fill:none; stroke:#FFFFFF; stroke-width:3.2; stroke-linecap:square; }
+#mg-title .word { display:flex; align-items:baseline; gap:30px; }
+#mg-title .en { font-size:190px; font-weight:620; letter-spacing:-0.05em; line-height:1; }
+#mg-title .ur { font-family:"Noto Nastaliq Urdu", serif; font-size:104px; opacity:0.7; line-height:1; }
+#mg-title .tag { position:absolute; left:0; right:0; top:540px; text-align:center; font-size:60px; font-weight:520; letter-spacing:-0.025em; color:#46464B; }
+#mg-title .tag b { color:#111113; font-weight:660; }
+#mg-title .tag i { font-style:normal; color:#2747F5; font-weight:660; }
+#mg-title .chips { position:absolute; left:0; right:0; top:690px; display:flex; justify-content:center; gap:22px; }
+#mg-title .chip { display:flex; align-items:center; gap:16px; height:84px; padding:0 36px 0 30px; border-radius:999px; background:#111113; color:#F5F5F7; font-size:38px; font-weight:580; white-space:nowrap; }
+#mg-title .chip span.k { font-family:"Geist Mono", monospace; font-size:30px; color:#9DB0FF; font-weight:500; }
+#mg-title .chip.lt { background:#FFFFFF; color:#111113; box-shadow:0 0 0 2px rgba(17,17,19,.1); }
+#mg-title .chip.lt span.k { color:#2747F5; }
+#mg-title .cover { position:absolute; inset:0; background:#2747F5; }
+</style>
+<div id="mg-title" data-composition-id="mg-title" data-width="1920" data-height="1080" data-duration="__DUR__">
+  <div class="wrap" id="mg-title-wrap">
+    <div class="bg" id="mg-title-bg" data-layout-allow-overflow></div>
+    <div class="lock">
+      <svg class="mark" id="mg-title-mark" viewBox="0 0 64 64">
+        <rect class="tile" id="mg-title-tile" width="64" height="64" rx="16" fill="#111113" />
+        <rect class="ln" pathLength="1" x="16" y="14" width="32" height="36" />
+        <path class="ln" pathLength="1" d="M16 31h13M29 31v-6" />
+        <path class="ln" pathLength="1" d="M37 14v11M37 31h11" />
+        <path class="ln" pathLength="1" d="M29 50V41" />
+        <circle id="mg-title-dot" cx="45" cy="45" r="5" fill="#2747F5" />
+      </svg>
+      <div class="word" id="mg-title-word"><span class="en">Naqsha</span><span class="ur" lang="ur" dir="rtl">نقشہ</span></div>
+    </div>
+    <div class="tag" id="mg-title-tag"><b>Agentic</b> home design on <i>NVIDIA Nemotron</i></div>
+    <div class="chips" id="mg-title-chips">
+      <div class="chip" id="mg-title-c1"><span class="k">models served by</span><span>Nebius Token Factory</span></div>
+      <div class="chip lt" id="mg-title-c2"><span class="k">city rules from</span><span>Tavily</span></div>
+    </div>
+  </div>
+  <div class="cover" id="mg-title-cover"></div>
+</div>
+<script>
+(function(){
+const C = __CUES__;
+const D = __DUR__;
+const tl = gsap.timeline({ paused: true });
+tl.fromTo("#mg-title-bg", { x: 0 }, { x: -40, duration: D, ease: "none" }, 0);
+tl.fromTo("#mg-title-cover", { xPercent: 0 }, { xPercent: 101, duration: 0.55, ease: "power3.inOut" }, 0.04);
+tl.fromTo("#mg-title-tile", { scale: 0.2, rotation: -25 }, { scale: 1, rotation: 0, duration: 0.55, ease: "back.out(1.7)" }, 0.18);
+document.querySelectorAll("#mg-title .ln").forEach((p, i) => {
+  tl.fromTo(p, { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.4, ease: "power2.out" }, 0.4 + i * 0.08);
+});
+tl.fromTo("#mg-title-dot", { scale: 0, transformOrigin: "45px 45px" }, { scale: 1, duration: 0.4, ease: "back.out(3)" }, 0.85);
+tl.fromTo("#mg-title-word", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.55, ease: "power3.out" }, 0.35);
+// "Naqsha is an agentic home design studio" -> tag; "NVIDIA Nemotron" lights; "Nebius Token Factory" -> chip
+tl.fromTo("#mg-title-tag", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, C.tag);
+tl.fromTo("#mg-title-tag i", { color: "#111113" }, { color: "#2747F5", duration: 0.3 }, C.nemotron);
+tl.fromTo("#mg-title-c1", { opacity: 0, y: 26, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.6)" }, C.nebius);
+tl.fromTo("#mg-title-c2", { opacity: 0, y: 26, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.6)" }, C.nebius + 0.35);
+tl.fromTo("#mg-title-wrap", { clipPath: "inset(0% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 100% 0%)", duration: 0.42, ease: "power3.in" }, D - 0.45);
+window.__timelines["mg-title"] = tl;
+})();
+</script>
+</template>
+</body></html>

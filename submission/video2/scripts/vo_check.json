@@ -1,0 +1,35 @@
+{
+ "vo01": {
+  "id": "vo01",
+  "text": "Most families in Pakistan build a house only once. The plan goes back and forth for weeks, and nobody checks the bylaws until the authority sends it back.",
+  "accepted_take": 1,
+  "pass": true,
+  "duration": 7.941,
+  "takes": [
+   {
+    "extra_spoken": [],
+    "style_direction_spoken": false,
+    "naqsha_said": null,
+    "naqsha_vowel": null,
+    "naqsha_ok": true,
+    "artefacts": [],
+    "delivery": "Natural Pakistani accent with a clear, steady, and engaging delivery.",
+    "whisper": "Most families in Pakistan build a house only once. The plan goes back and forth for weeks and nobody checks the bylaws until the authority sends it back.",
+    "blind": "Most families in Pakistan build a house only once. The plan goes back and forth for weeks and nobody checks the bylaws until the authority sends it back.",
+    "missed": [],
+    "inserted_whisper": [],
+    "inserted_gemini": [],
+    "style_hit": [],
+    "speech_s": 7.43,
+    "expect_s": 10.5,
+    "similarity": 1.0,
+    "reasons": [],
+    "pass": true,
+    "take": 1,
+    "raw": "vo01.take1.wav",
+    "secs": 8.04,
+    "said": "Most families in Pakistan build a house only once. The plan goes back and forth for weeks, and nobody checks the bylaws until the authority sends it back."
+   }
+  ]
+ }
+}

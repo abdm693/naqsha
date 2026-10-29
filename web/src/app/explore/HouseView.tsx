@@ -189,7 +189,14 @@ export function HouseView({ project, onProjectChange, active = true }: { project
 
   const onReady = useCallback(
     async (result: { summary: Parameters<typeof api.asBuilt>[2]; sections: SectionResult[] }) => {
-      setFailed(result.sections.filter((s) => !s.ok));
+      const broken = result.sections.filter((s) => !s.ok);
+      setFailed(broken);
+      // A part that didn't build goes back to the architect once, by itself (the Rebuild chips stay as the manual way).
+      if (shown && editor) {
+        const fresh = broken.filter((f) => !autoRepaired.current.has(`${shown.id}:${f.name}`));
+        fresh.forEach((f) => autoRepaired.current.add(`${shown.id}:${f.name}`));
+        if (fresh.length) void (async () => { for (const f of fresh) await repairRef.current(f); })();
+      }
       const first = !ready.current;
       ready.current = true;
       setBuilt(true);
@@ -228,6 +235,8 @@ export function HouseView({ project, onProjectChange, active = true }: { project
     [shown, project, onProjectChange],
   );
 
+  const autoRepaired = useRef(new Set<string>());
+  const repairRef = useRef<(r: SectionResult) => Promise<void>>(async () => {});
   const repair = async (r: SectionResult) => {
     if (!shown) return;
     try {
@@ -242,6 +251,8 @@ export function HouseView({ project, onProjectChange, active = true }: { project
       notify.error("Couldn't rebuild that part", e);
     }
   };
+
+  repairRef.current = repair;
 
   const startRender = async () => {
     const img = await capture(1280);

@@ -78,3 +78,14 @@ def test_the_front_elevation_draws():
     plan = json.loads((FIX / "plan-sample-10-marla-r3.json").read_text())
     from app.agents import drawing
     assert drawing.render_front_elevation(plan)[:4] == b"\x89PNG"
+
+
+def test_a_const_from_another_section_is_copied_in():
+    from app.agents.jsfix import share_declarations
+    secs = [{"name": "structure", "code": "const stone = { preset: 'stone', color: '#888' };\nconst trim = { color: '#111', base: stone };\ns.structure({});\n"},
+            {"name": "facade_front", "code": "s.facade.cladding({ material: trim });\n"},
+            {"name": "landscape", "code": "const stone = { preset: 'gravel' };\ns.landscape.lawn({ material: stone });\n"}]
+    fixed = share_declarations(secs)
+    assert fixed == ["facade_front: stone, trim"]
+    assert secs[1]["code"].index("const stone") < secs[1]["code"].index("const trim") < secs[1]["code"].index("s.facade")
+    assert "preset: 'gravel'" in secs[2]["code"] and "preset: 'stone'" not in secs[2]["code"]

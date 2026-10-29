@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8" /></head>
+<body>
+<template id="mg-argon-template">
+<style>
+@font-face { font-family: "Geist"; src: url("assets/fonts/Geist-Variable.woff2") format("woff2"); font-weight: 100 900; }
+@font-face { font-family: "Geist Mono"; src: url("assets/fonts/GeistMono-Variable.woff2") format("woff2"); font-weight: 100 900; }
+#mg-argon { position:absolute; inset:0; width:100%; height:100%; overflow:hidden; font-family:"Geist", sans-serif; color:#111113; }
+#mg-argon .wrap { position:absolute; inset:0; }
+#mg-argon .bg { position:absolute; inset:-60px; background-color:#F6F6F3;
+  background-image: radial-gradient(1100px 700px at 30% 70%, rgba(39,71,245,.09), rgba(39,71,245,0) 70%),
+    linear-gradient(rgba(17,17,19,.055) 2px, transparent 2px), linear-gradient(90deg, rgba(17,17,19,.055) 2px, transparent 2px),
+    linear-gradient(rgba(17,17,19,.03) 1px, transparent 1px), linear-gradient(90deg, rgba(17,17,19,.03) 1px, transparent 1px);
+  background-size:100% 100%, 240px 240px, 240px 240px, 48px 48px, 48px 48px; }
+#mg-argon .head { position:absolute; left:140px; top:70px; font-size:58px; font-weight:660; letter-spacing:-0.035em; }
+#mg-argon .head span { color:#2747F5; }
+#mg-argon .pipe { position:absolute; left:140px; top:170px; width:1640px; height:200px; }
+#mg-argon .node { position:absolute; top:0; width:292px; height:124px; border-radius:22px; background:#FFFFFF; box-shadow:0 0 0 2px #CFCFC8; padding:16px 22px; }
+#mg-argon .node .n { font-family:"Geist Mono", monospace; font-size:32px; opacity:0.7; }
+#mg-argon .node .t { font-size:40px; font-weight:650; letter-spacing:-0.02em; margin-top:2px; white-space:nowrap; }
+#mg-argon .node .who { position:absolute; left:0; top:140px; width:292px; font-size:32px; color:#46464B; white-space:nowrap; }
+#mg-argon .node .who b { color:#2747F5; font-weight:600; }
+#mg-argon .node .who i { font-style:normal; color:#0E7A55; font-weight:600; }
+#mg-argon .node .fill { position:absolute; inset:0; border-radius:22px; background:#2747F5; opacity:0; }
+#mg-argon .node .lab { position:relative; }
+#mg-argon .arrow { position:absolute; top:52px; width:50px; height:20px; }
+#mg-argon .arrow path { fill:none; stroke:#A1A1A6; stroke-width:4; stroke-linecap:round; stroke-linejoin:round; }
+#mg-argon .loop { position:absolute; left:470px; top:-34px; width:600px; height:40px; overflow:visible; }
+#mg-argon .loop path { fill:none; stroke:#2747F5; stroke-width:4; stroke-dasharray:10 10; }
+#mg-argon .loop path.head { stroke-dasharray:none; stroke-linecap:round; stroke-linejoin:round; }
+#mg-argon .loopl { position:absolute; left:1040px; top:-52px; font-family:"Geist Mono", monospace; font-size:30px; color:#2747F5; white-space:nowrap; opacity:0; }
+#mg-argon .json { position:absolute; left:140px; top:410px; width:780px; height:620px; border-radius:26px; background:#18181B; color:#F5F5F7; padding:28px 34px; box-shadow:0 30px 70px -30px rgba(17,17,19,.6); }
+#mg-argon .json .ttl, #mg-argon .rules .ttl { font-family:"Geist Mono", monospace; font-size:32px; color:#9DB0FF; margin-bottom:16px; display:flex; align-items:center; gap:12px; }
+#mg-argon .rules .ttl { color:#2747F5; }
+#mg-argon .json .jl { font-family:"Geist Mono", monospace; font-size:32px; line-height:1.45; white-space:pre; opacity:0; }
+#mg-argon .json .k { color:#9DB0FF; } #mg-argon .json .s { color:#F5F5F7; } #mg-argon .json .v { color:#7EE2B8; } #mg-argon .json .p { color:#8E8E96; }
+#mg-argon .rules { position:absolute; left:960px; top:410px; width:820px; height:620px; border-radius:26px; background:#FFFFFF; padding:28px 34px; box-shadow:0 0 0 2px rgba(17,17,19,.07), 0 30px 70px -30px rgba(17,17,19,.4); }
+#mg-argon .rl { display:flex; align-items:center; gap:16px; font-size:32px; line-height:1.2; padding:5px 0; opacity:0; white-space:nowrap; }
+#mg-argon .grp { font-size:30px; font-weight:650; color:#46464B; letter-spacing:0.01em; margin:12px 0 4px; opacity:0; }
+#mg-argon .ptag { display:inline-block; padding:4px 14px; border-radius:999px; background:#EEF1FE; color:#1F3BD0; font-family:"Geist Mono", monospace; font-size:30px; margin:-4px 0 2px; opacity:0; }
+#mg-argon .rl.hot { color:#111113; }
+#mg-argon .rl .ck { width:34px; height:34px; border-radius:9px; background:#E3F3EC; color:#0E7A55; display:flex; align-items:center; justify-content:center; flex:none; }
+#mg-argon .rl .ck svg { width:24px; height:24px; }
+#mg-argon .rl .m { color:#6E6E73; }
+#mg-argon .foot { position:absolute; left:34px; right:34px; bottom:26px; font-size:32px; color:#46464B; border-top:2px solid #E4E4DF; padding-top:16px; opacity:0; }
+#mg-argon .foot b { color:#0E7A55; }
+</style>
+<div data-hf-id="hf-pk5m" id="mg-argon" data-composition-id="mg-argon" data-width="1920" data-height="1080" data-duration="12.737">
+  <div data-hf-id="hf-4mkf" class="wrap" id="mg-argon-wrap">
+    <div data-hf-id="hf-kl16" class="bg" id="mg-argon-bg" data-layout-allow-overflow></div>
+    <div data-hf-id="hf-pk9g" class="head" id="mg-argon-head">How <span data-hf-id="hf-ow3n">Gemini 4 Argon</span> designs a home</div>
+    <div data-hf-id="hf-a338" class="pipe">
+      <svg data-hf-id="hf-99x1" class="loop" id="mg-argon-loop" viewBox="0 0 600 40"><path data-hf-id="hf-92sc" id="mg-argon-loopp" d="M520 38 C 520 4, 80 4, 80 38" /><path data-hf-id="hf-92sd" class="head" d="M70 26 L80 38 L90 26" /></svg>
+      <div data-hf-id="hf-lpl1" class="loopl" id="mg-argon-loopl">fix → check again</div>
+      <div data-hf-id="hf-za8d" class="node" id="mg-argon-n1" style="left:0"><div data-hf-id="hf-4qej" class="fill"></div><div data-hf-id="hf-mnnx" class="lab"><div data-hf-id="hf-mfcd" class="n">1</div><div data-hf-id="hf-qbe7" class="t">Plan</div></div><div data-hf-id="hf-8dip" class="who">every room, sized</div></div>
+      <svg data-hf-id="hf-4wy4" class="arrow" style="left:296px" viewBox="0 0 50 20"><path data-hf-id="hf-ezr4" d="M2 10H44M36 3l8 7-8 7" /></svg>
+      <div data-hf-id="hf-ed2p" class="node" id="mg-argon-n2" style="left:342px"><div data-hf-id="hf-lwnf" class="fill"></div><div data-hf-id="hf-8io1" class="lab"><div data-hf-id="hf-nm9g" class="n">2</div><div data-hf-id="hf-xsac" class="t">Check</div></div><div data-hf-id="hf-xhzk" class="who"><i data-hf-id="hf-7j43">rules in code</i></div></div>
+      <svg data-hf-id="hf-tf2o" class="arrow" style="left:638px" viewBox="0 0 50 20"><path data-hf-id="hf-lpq0" d="M2 10H44M36 3l8 7-8 7" /></svg>
+      <div data-hf-id="hf-gj05" class="node" id="mg-argon-n3" style="left:684px"><div data-hf-id="hf-lice" class="fill"></div><div data-hf-id="hf-9pl4" class="lab"><div data-hf-id="hf-n7yf" class="n">3</div><div data-hf-id="hf-1j3b" class="t">Fix</div></div><div data-hf-id="hf-vrbm" class="who">until it passes</div></div>
+      <svg data-hf-id="hf-kt6i" class="arrow" style="left:980px" viewBox="0 0 50 20"><path data-hf-id="hf-kisx" d="M2 10H44M36 3l8 7-8 7" /></svg>
+      <div data-hf-id="hf-u849" class="node" id="mg-argon-n4" style="left:1026px"><div data-hf-id="hf-l41d" class="fill"></div><div data-hf-id="hf-9ba3" class="lab"><div data-hf-id="hf-oevi" class="n">4</div><div data-hf-id="hf-p4l1" class="t">Self-review</div></div><div data-hf-id="hf-wlzp" class="who">of its drawing</div></div>
+      <svg data-hf-id="hf-28zx" class="arrow" style="left:1322px" viewBox="0 0 50 20"><path data-hf-id="hf-kx3y" d="M2 10H44M36 3l8 7-8 7" /></svg>
+      <div data-hf-id="hf-jnul" class="node" id="mg-argon-n5" style="left:1368px"><div data-hf-id="hf-kpqc" class="fill"></div><div data-hf-id="hf-7bqy" class="lab"><div data-hf-id="hf-o0kh" class="n">5</div><div data-hf-id="hf-4lks" class="t">Build</div></div><div data-hf-id="hf-zp86" class="who">3D as code</div></div>
+    </div>
+    <div data-hf-id="hf-m9kj" class="json" id="mg-argon-json">
+      <div data-hf-id="hf-qlv1" class="ttl">plan.json · ground floor</div>
+      <div data-hf-id="hf-xatu" class="jl"><span data-hf-id="hf-jjhw" class="p">{</span></div>
+      <div data-hf-id="hf-sx1y" class="jl"> <span data-hf-id="hf-uap1" class="k">"plot"</span><span data-hf-id="hf-tpl3" class="p">:</span> <span data-hf-id="hf-m57u" class="v">[35, 65]</span><span data-hf-id="hf-0v3l" class="p">,</span> <span data-hf-id="hf-83ta" class="k">"faces"</span><span data-hf-id="hf-rq3r" class="p">:</span> <span data-hf-id="hf-xibp" class="s">"north"</span><span data-hf-id="hf-cqqt" class="p">,</span></div>
+      <div data-hf-id="hf-tbcz" class="jl"> <span data-hf-id="hf-n2vg" class="k">"rooms"</span><span data-hf-id="hf-z9mi" class="p">: {</span></div>
+      <div data-hf-id="hf-tpo0" class="jl">  <span data-hf-id="hf-vqqn" class="s">"Drawing room"</span><span data-hf-id="hf-rbsq" class="p">:</span> <span data-hf-id="hf-h2i2" class="v">[17, 18]</span><span data-hf-id="hf-hzn0" class="p">,</span></div>
+      <div data-hf-id="hf-qxit" class="jl">  <span data-hf-id="hf-68h5" class="s">"TV lounge &amp; dining"</span><span data-hf-id="hf-qxhp" class="p">:</span> <span data-hf-id="hf-1jqm" class="v">[22, 14.75]</span><span data-hf-id="hf-hlbz" class="p">,</span></div>
+      <div data-hf-id="hf-rbtu" class="jl">  <span data-hf-id="hf-ir5w" class="s">"Open kitchen"</span><span data-hf-id="hf-tpmw" class="p">:</span> <span data-hf-id="hf-vrfi" class="v">[12, 9.25]</span><span data-hf-id="hf-is92" class="p">,</span></div>
+      <div data-hf-id="hf-rq4v" class="jl">  <span data-hf-id="hf-8ptu" class="s">"Parents' bedroom"</span><span data-hf-id="hf-tbbv" class="p">:</span> <span data-hf-id="hf-zvdh" class="v">[12, 15.25]</span><span data-hf-id="hf-idy1" class="p">,</span></div>
+      <div data-hf-id="hf-s4fw" class="jl">  <span data-hf-id="hf-c2jo" class="s">"Dirty kitchen"</span><span data-hf-id="hf-sx0u" class="p">:</span> <span data-hf-id="hf-ahow" class="v">[12, 6]</span></div>
+      <div data-hf-id="hf-pcap" class="jl"> <span data-hf-id="hf-nsvp" class="p">} }</span></div>
+    </div>
+    <div data-hf-id="hf-qcx1" class="rules" id="mg-argon-rules">
+      <div data-hf-id="hf-8l6f" class="ttl">Rules engine · checks every plan</div>
+      <div data-hf-id="hf-rtag" class="ptag" id="mg-argon-ptag">Prototype rules: LDA, Lahore</div>
+      <div data-hf-id="hf-grp1" class="grp" id="mg-argon-g1">Building bylaws</div>
+      <div data-hf-id="hf-263z" class="rl" id="mg-argon-r1"><span class="ck">✓</span>Front setback 10′ <span class="m">· min 10′</span></div>
+      <div data-hf-id="hf-blny" class="rl" id="mg-argon-r2"><span class="ck">✓</span>Ground coverage 63.3% <span class="m">· max 70%</span></div>
+      <div data-hf-id="hf-ul3m" class="rl" id="mg-argon-r3"><span class="ck">✓</span>Height 27′ <span class="m">· max 45′</span></div>
+      <div data-hf-id="hf-grp2" class="grp" id="mg-argon-g2">Livable home</div>
+      <div data-hf-id="hf-z7mb" class="rl" id="mg-argon-r4"><span class="ck">✓</span>Every bedroom has its own way in</div>
+      <div data-hf-id="hf-z7e2" class="rl" id="mg-argon-r5"><span class="ck">✓</span>Stairs reach the roof <span class="m">· roof door at the top</span></div>
+      <div data-hf-id="hf-w605" class="rl" id="mg-argon-r6"><span class="ck">✓</span>Railing at every drop <span class="m">· 3′6″</span></div>
+      <div data-hf-id="hf-2zje" class="foot" id="mg-argon-foot">This run, after the fixes: <b data-hf-id="hf-k6tq">36 / 36 bylaw checks</b></div>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+const tl = gsap.timeline({ paused: true });
+tl.fromTo("#mg-argon-bg", { x: 0 }, { x: -50, duration: 12.74, ease: "none" }, 0);
+tl.fromTo("#mg-argon-head", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.2);
+tl.fromTo("#mg-argon .node", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.45, stagger: 0.08, ease: "power3.out" }, 0.3);
+tl.fromTo("#mg-argon .arrow", { opacity: 0, x: -10 }, { opacity: 1, x: 0, duration: 0.35, stagger: 0.08, ease: "power2.out" }, 0.45);
+tl.fromTo("#mg-argon-loop", { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.8, ease: "power2.inOut" }, 0.9);
+tl.fromTo("#mg-argon-loop", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0.9);
+// "It lays out every floor, room by room": Plan active, plan.json streams
+tl.fromTo("#mg-argon-n1 .fill", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 0.35);
+tl.fromTo("#mg-argon-n1 .lab", { color: "#111113" }, { color: "#FFFFFF", duration: 0.3 }, 0.35);
+tl.fromTo("#mg-argon-json", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.4);
+tl.fromTo("#mg-argon .jl", { opacity: 0, x: -12 }, { opacity: 1, x: 0, duration: 0.25, stagger: 0.11, ease: "power2.out" }, 0.55);
+// "a rules engine checks the plan against the building bylaws and a set of livability rules"
+tl.to("#mg-argon-n1 .fill", { opacity: 0.18, duration: 0.3 }, 1.3);
+tl.to("#mg-argon-n1 .lab", { color: "#111113", duration: 0.3 }, 1.3);
+tl.fromTo("#mg-argon-n2 .fill", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 1.3);
+tl.fromTo("#mg-argon-n2 .lab", { color: "#111113" }, { color: "#FFFFFF", duration: 0.3 }, 1.3);
+tl.fromTo("#mg-argon-rules", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 1.4);
+tl.fromTo("#mg-argon-ptag", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, 1.9);
+tl.fromTo("#mg-argon-g1", { opacity: 0, x: 18 }, { opacity: 1, x: 0, duration: 0.3, ease: "power2.out" }, 2.7);
+const tick = (id, at) => {
+  tl.fromTo(id, { opacity: 0, x: 18 }, { opacity: 1, x: 0, duration: 0.3, ease: "power2.out" }, at);
+  tl.fromTo(id + " .ck", { scale: 0.4 }, { scale: 1, duration: 0.3, ease: "back.out(2.5)" }, at + 0.1);
+};
+tick("#mg-argon-r1", 3.05); tick("#mg-argon-r2", 3.4); tick("#mg-argon-r3", 3.75);
+tl.fromTo("#mg-argon-g2", { opacity: 0, x: 18 }, { opacity: 1, x: 0, duration: 0.3, ease: "power2.out" }, 4.7);
+// "Every bedroom has its own way in, the stairs reach the roof, and every drop has a railing"
+tick("#mg-argon-r4", 6.55); tick("#mg-argon-r5", 8.05); tick("#mg-argon-r6", 9.5);
+tl.fromTo("#mg-argon-foot", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 9.9);
+// "Argon fixes whatever fails": Fix lights on the words, the loop runs back to Check, then hand off to the real run
+tl.to("#mg-argon-n2 .fill", { opacity: 0.18, duration: 0.3 }, 11.2);
+tl.to("#mg-argon-n2 .lab", { color: "#111113", duration: 0.3 }, 11.2);
+tl.fromTo("#mg-argon-n3 .fill", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 11.2);
+tl.fromTo("#mg-argon-n3 .lab", { color: "#111113" }, { color: "#FFFFFF", duration: 0.3 }, 11.2);
+tl.fromTo("#mg-argon-loopp", { strokeDashoffset: 0 }, { strokeDashoffset: -80, duration: 1.0, ease: "none" }, 11.4);
+tl.fromTo("#mg-argon-loop", { scale: 1, transformOrigin: "50% 100%" }, { scale: 1.06, duration: 0.25, yoyo: true, repeat: 1, ease: "power2.out", immediateRender: false }, 11.4);
+tl.fromTo("#mg-argon-loopl", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, 11.4);
+tl.fromTo("#mg-argon-n2 .fill", { opacity: 0.18 }, { opacity: 0.6, duration: 0.25, yoyo: true, repeat: 1, immediateRender: false }, 11.85);
+tl.fromTo("#mg-argon-wrap", { clipPath: "inset(0% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 100% 0%)", duration: 0.42, ease: "power3.in" }, 12.3);
+window.__timelines["mg-argon"] = tl;
+})();
+</script>
+</template>
+</body></html>

@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8" /></head>
+<body>
+<template id="mg-arch-template">
+<style>
+@font-face { font-family: "Geist"; src: url("assets/fonts/Geist-Variable.woff2") format("woff2"); font-weight: 100 900; }
+@font-face { font-family: "Geist Mono"; src: url("assets/fonts/GeistMono-Variable.woff2") format("woff2"); font-weight: 100 900; }
+#mg-arch { position:absolute; inset:0; width:100%; height:100%; overflow:hidden; font-family:"Geist", sans-serif; color:#111113; }
+#mg-arch .wrap { position:absolute; inset:0; }
+#mg-arch .bg { position:absolute; inset:-60px; background-color:#F6F6F3;
+  background-image: radial-gradient(1200px 800px at 50% 45%, rgba(39,71,245,.09), rgba(39,71,245,0) 70%),
+    linear-gradient(rgba(17,17,19,.055) 2px, transparent 2px), linear-gradient(90deg, rgba(17,17,19,.055) 2px, transparent 2px),
+    linear-gradient(rgba(17,17,19,.03) 1px, transparent 1px), linear-gradient(90deg, rgba(17,17,19,.03) 1px, transparent 1px);
+  background-size:100% 100%, 240px 240px, 240px 240px, 48px 48px, 48px 48px; }
+#mg-arch .head { position:absolute; left:120px; top:56px; }
+#mg-arch .head .k { font-family:"Geist Mono", monospace; font-size:34px; color:#2747F5; }
+#mg-arch .head .t { font-size:68px; font-weight:670; letter-spacing:-0.04em; line-height:1.05; margin-top:4px; }
+#mg-arch .card { position:absolute; border-radius:24px; background:#FFFFFF; padding:22px 28px; box-shadow:0 0 0 2px rgba(17,17,19,.08), 0 26px 60px -28px rgba(17,17,19,.4); opacity:0; }
+#mg-arch .card.hero { background:#111113; color:#F5F5F7; box-shadow:0 0 0 2px #111113, 0 36px 80px -30px rgba(17,17,19,.7); }
+#mg-arch .card.ai { box-shadow:0 0 0 3px #2747F5, 0 26px 60px -28px rgba(39,71,245,.5); }
+#mg-arch .ct { display:flex; align-items:center; gap:14px; font-size:40px; font-weight:660; letter-spacing:-0.02em; white-space:nowrap; }
+#mg-arch .ct svg { width:40px; height:40px; flex:none; }
+#mg-arch .cs { font-family:"Geist Mono", monospace; font-size:32px; color:#6E6E73; margin-top:2px; white-space:nowrap; }
+#mg-arch .hero .cs { color:#A1A1A6; }
+#mg-arch .row { display:flex; align-items:center; gap:14px; font-size:32px; line-height:1.2; margin-top:14px; white-space:nowrap; opacity:0; }
+#mg-arch .row i { width:12px; height:12px; border-radius:50%; background:#2747F5; display:block; flex:none; }
+#mg-arch .hero .row i { background:#7EE2B8; }
+#mg-arch .row b { font-weight:640; }
+#mg-arch .ai .row b { color:#2747F5; }
+#mg-arch .chips { display:flex; gap:12px; margin-top:16px; flex-wrap:wrap; }
+#mg-arch .chips span { font-size:32px; padding:6px 18px; border-radius:999px; background:#EEEEEA; white-space:nowrap; }
+#mg-arch svg.wires { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+#mg-arch .wires path { fill:none; stroke:#2747F5; stroke-width:5; stroke-linecap:round; }
+#mg-arch .wires circle { fill:#2747F5; }
+#mg-arch .foot { position:absolute; left:0; right:0; bottom:22px; text-align:center; font-size:34px; color:#46464B; opacity:0; }
+#mg-arch .foot b { color:#111113; }
+</style>
+<div data-hf-id="hf-672f" id="mg-arch" data-composition-id="mg-arch" data-width="1920" data-height="1080" data-duration="19.946">
+  <div data-hf-id="hf-95w8" class="wrap" id="mg-arch-wrap">
+    <div data-hf-id="hf-p6qd" class="bg" id="mg-arch-bg" data-layout-allow-overflow></div>
+    <div data-hf-id="hf-v0wg" class="head" id="mg-arch-head"><div data-hf-id="hf-r13c" class="k">Architecture</div><div data-hf-id="hf-nxex" class="t">Built on Google Cloud</div></div>
+    <svg data-hf-id="hf-yjtr" class="wires" viewBox="0 0 1920 1080">
+      <path data-hf-id="hf-1ub1" id="mg-arch-w1" pathLength="1" d="M470 500 H560" />
+      <path data-hf-id="hf-jidw" id="mg-arch-w2" pathLength="1" d="M840 760 V820" />
+      <path data-hf-id="hf-dwac" id="mg-arch-w3" pathLength="1" d="M1120 700 C 1170 700, 1170 900, 1220 900" />
+      <path data-hf-id="hf-cxht" id="mg-arch-w4" pathLength="1" d="M285 760 V820" />
+      <path data-hf-id="hf-olp7" id="mg-arch-w5" pathLength="1" d="M1120 640 H1220" />
+      <path data-hf-id="hf-ccil" id="mg-arch-w6" pathLength="1" d="M1120 340 H1220" />
+      <path data-hf-id="hf-fcrk" id="mg-arch-w7" pathLength="1" d="M1525 490 V515" />
+      <circle data-hf-id="hf-qhkq" id="mg-arch-p1" r="9" cx="470" cy="500" />
+      <circle data-hf-id="hf-3rlq" id="mg-arch-p5" r="9" cx="1120" cy="640" />
+      <circle data-hf-id="hf-bxug" id="mg-arch-p6" r="9" cx="1120" cy="340" />
+    </svg>
+    <div data-hf-id="hf-6hwd" class="card" id="mg-arch-users" style="left:100px; top:240px; width:370px; height:520px;">
+      <div data-hf-id="hf-hq4e" class="ct"><svg data-hf-id="hf-r6y0" viewBox="0 0 24 24" fill="none" stroke="#2747F5" stroke-width="2"><circle data-hf-id="hf-1jcf" cx="9" cy="8" r="3.5"/><path data-hf-id="hf-nza7" d="M2.5 20c.8-3.6 3.4-5.5 6.5-5.5s5.7 1.9 6.5 5.5"/><circle data-hf-id="hf-jrbu" cx="17.5" cy="9" r="2.6"/><path data-hf-id="hf-26uh" d="M16.5 14.6c2.6.2 4.4 1.9 5 5.4"/></svg>People</div>
+      <div data-hf-id="hf-z85z" class="cs">browser · phone</div>
+      <div data-hf-id="hf-exrd" class="chips"><span data-hf-id="hf-wo88">Owner</span><span data-hf-id="hf-khr4">Team</span><span data-hf-id="hf-9pey">Client</span></div>
+      <div data-hf-id="hf-osuw" class="row"><i data-hf-id="hf-wt6k"></i>React app</div>
+      <div data-hf-id="hf-ish1" class="row"><i data-hf-id="hf-zeb8"></i>three.js 3D, walk</div>
+      <div data-hf-id="hf-q4d1" class="row"><i data-hf-id="hf-y7e5"></i>share links for clients</div>
+    </div>
+    <div data-hf-id="hf-0l83" class="card hero" id="mg-arch-run" style="left:560px; top:240px; width:560px; height:520px;">
+      <div data-hf-id="hf-6vl7" class="ct"><svg data-hf-id="hf-esgy" viewBox="0 0 24 24" fill="none" stroke="#7EE2B8" stroke-width="2"><path data-hf-id="hf-jybr" d="M12 2l8.5 5v10L12 22l-8.5-5V7z"/><path data-hf-id="hf-n1f3" d="M12 7v10M7.5 9.5l9 5M16.5 9.5l-9 5"/></svg>Cloud Run</div>
+      <div data-hf-id="hf-b23n" class="cs">one service · us-central1</div>
+      <div data-hf-id="hf-cfod" class="row"><i data-hf-id="hf-ylp6"></i><b data-hf-id="hf-hlxh">FastAPI</b> API + React app</div>
+      <div data-hf-id="hf-kl4f" class="row"><i data-hf-id="hf-0l8b"></i>SSE streams long agent runs</div>
+      <div data-hf-id="hf-xssa" class="row"><i data-hf-id="hf-0zjc"></i>runs survive a closed tab</div>
+      <div data-hf-id="hf-ckrx" class="row"><i data-hf-id="hf-zsm9"></i><b data-hf-id="hf-50ky">Rules engine</b> · bylaws as data</div>
+      <div data-hf-id="hf-knye" class="row"><i data-hf-id="hf-06xa"></i>Fix loop: Argon ⇄ rules engine</div>
+    </div>
+    <div data-hf-id="hf-l8lj" class="card ai" id="mg-arch-adk" style="left:1220px; top:240px; width:610px; height:250px;">
+      <div data-hf-id="hf-tqck" class="ct"><svg data-hf-id="hf-t9ax" viewBox="0 0 24 24" fill="#2747F5"><path data-hf-id="hf-z85q" d="M12 2c.6 4.9 2.6 7.6 7.8 8.6v.8c-5.2 1-7.2 3.7-7.8 8.6h-.8c-.6-4.9-2.6-7.6-7.8-8.6v-.8c5.2-1 7.2-3.7 7.8-8.6z"/></svg>Google ADK</div>
+      <div data-hf-id="hf-hoql" class="row"><i data-hf-id="hf-26gf"></i><b data-hf-id="hf-a91z">Setup agent</b> · Gemini 3.8 Flash</div>
+      <div data-hf-id="hf-ibil" class="row"><i data-hf-id="hf-2krg"></i><b data-hf-id="hf-as4h">Revision agent</b> · Argon · 9 tools</div>
+      <div data-hf-id="hf-ibim" class="row"><i data-hf-id="hf-2krh"></i>tests edits with check_plan_ops</div>
+    </div>
+    <div data-hf-id="hf-8tbh" class="card ai" id="mg-arch-vertex" style="left:1220px; top:515px; width:610px; height:290px;">
+      <div data-hf-id="hf-ijaj" class="ct"><svg data-hf-id="hf-j4rk" viewBox="0 0 24 24" fill="none" stroke="#2747F5" stroke-width="2"><path data-hf-id="hf-bphg" d="M12 3l9 16H3z"/><circle data-hf-id="hf-7f8a" cx="12" cy="14" r="2.4" fill="#2747F5"/></svg>Gemini on Vertex AI</div>
+      <div data-hf-id="hf-0d4i" class="row"><i data-hf-id="hf-oz7w"></i><b data-hf-id="hf-tnon">Gemini 4 Argon</b> · architect</div>
+      <div data-hf-id="hf-isp0" class="row"><i data-hf-id="hf-okwv"></i><b data-hf-id="hf-jpq7">Gemini 3.8 Flash</b> · setup</div>
+      <div data-hf-id="hf-thy4" class="row"><i data-hf-id="hf-o6lu"></i><b data-hf-id="hf-hy5d">Gemini 3.1 Flash Image</b></div>
+      <div data-hf-id="hf-jyib" class="row"><i data-hf-id="hf-jqbp"></i>concepts · AI renders</div>
+    </div>
+    <div data-hf-id="hf-zsdg" class="card" id="mg-arch-auth" style="left:100px; top:820px; width:420px; height:190px;">
+      <div data-hf-id="hf-txnu" class="ct"><svg data-hf-id="hf-2i49" viewBox="0 0 24 24" fill="none" stroke="#A35A00" stroke-width="2"><rect data-hf-id="hf-1gk6" x="4" y="10" width="16" height="11" rx="2.5"/><path data-hf-id="hf-apke" d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Firebase Auth</div>
+      <div data-hf-id="hf-bswp" class="row"><i data-hf-id="hf-qkg0"></i>Identity Platform</div>
+      <div data-hf-id="hf-79pg" class="row"><i data-hf-id="hf-q64z"></i>roles checked on Cloud Run</div>
+    </div>
+    <div data-hf-id="hf-w762" class="card" id="mg-arch-fs" style="left:560px; top:820px; width:560px; height:190px;">
+      <div data-hf-id="hf-7g3m" class="ct"><svg data-hf-id="hf-a425" viewBox="0 0 24 24" fill="none" stroke="#A35A00" stroke-width="2"><path data-hf-id="hf-nmis" d="M5 19l3-15 4 7 3-5 4 13z"/></svg>Firestore</div>
+      <div data-hf-id="hf-kbz7" class="row"><i data-hf-id="hf-prty"></i>projects · chat · versions</div>
+      <div data-hf-id="hf-urnl" class="row"><i data-hf-id="hf-pdix"></i>comments · share links</div>
+    </div>
+    <div data-hf-id="hf-2clo" class="card" id="mg-arch-gcs" style="left:1220px; top:820px; width:610px; height:190px;">
+      <div data-hf-id="hf-2vjj" class="ct"><svg data-hf-id="hf-hxuh" viewBox="0 0 24 24" fill="none" stroke="#2747F5" stroke-width="2"><rect data-hf-id="hf-tjjj" x="3" y="4" width="18" height="6" rx="1.5"/><rect data-hf-id="hf-jpne" x="3" y="14" width="18" height="6" rx="1.5"/><path data-hf-id="hf-kki1" d="M7 7h.01M7 17h.01"/></svg>Cloud Storage</div>
+      <div data-hf-id="hf-1bvp" class="row"><i data-hf-id="hf-hqsk"></i>concepts · renders · snapshots</div>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+const tl = gsap.timeline({ paused: true });
+const show = (id, at) => {
+  tl.fromTo(id, { opacity: 0, y: 30, scale: 0.97 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.4)" }, at);
+  tl.fromTo(id + " .row", { opacity: 0, x: -12 }, { opacity: 1, x: 0, duration: 0.3, stagger: 0.14, ease: "power2.out" }, at + 0.25);
+};
+const wire = (id, at, d = 0.5) => tl.fromTo(id, { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, at);
+const flow = (id, path, at, n) => {
+  // a packet travelling the wire, n round trips; points are authored constants
+  tl.fromTo(id, { attr: { cx: path[0], cy: path[1] }, opacity: 1 }, { attr: { cx: path[2], cy: path[3] }, duration: 0.7, ease: "sine.inOut", repeat: n, yoyo: true }, at);
+};
+tl.fromTo("#mg-arch-wrap", { clipPath: "inset(0% 0% 0% 100%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.45, ease: "power3.inOut" }, 0);
+tl.fromTo("#mg-arch-bg", { x: 0 }, { x: -60, duration: 19.95, ease: "none" }, 0);
+tl.fromTo("#mg-arch-head", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.45);
+tl.set(["#mg-arch-p1", "#mg-arch-p5", "#mg-arch-p6"], { opacity: 0 }, 0);
+show("#mg-arch-users", 0.6);
+show("#mg-arch-run", 1.75);                       // "one Cloud Run service hosts the app and streams the agent runs"
+wire("#mg-arch-w1", 2.35);
+flow("#mg-arch-p1", [470, 500, 560, 500], 2.8, 20);
+show("#mg-arch-fs", 5.5);                        // "Firestore stores projects, versions and comments"
+wire("#mg-arch-w2", 5.7, 0.4);
+show("#mg-arch-gcs", 8.45);                      // "Cloud Storage keeps the images"
+wire("#mg-arch-w3", 8.6, 0.6);
+show("#mg-arch-auth", 9.97);                     // "Firebase Authentication signs people in"
+wire("#mg-arch-w4", 10.17, 0.4);
+show("#mg-arch-vertex", 12.5);                  // "and Gemini runs on Vertex AI"
+wire("#mg-arch-w5", 12.75, 0.4);
+flow("#mg-arch-p5", [1120, 640, 1220, 640], 12.9, 4);
+show("#mg-arch-adk", 14.45);                     // "The setup agent and the revision agent are built with Google's Agent Development Kit"
+wire("#mg-arch-w6", 14.7, 0.4);
+wire("#mg-arch-w7", 14.9, 0.3);
+flow("#mg-arch-p6", [1120, 340, 1220, 340], 15.1, 2);
+tl.fromTo("#mg-arch-run", { boxShadow: "0 0 0 2px #111113, 0 36px 80px -30px rgba(17,17,19,.7)" }, { boxShadow: "0 0 0 6px #2747F5, 0 36px 80px -30px rgba(39,71,245,.7)", duration: 0.6, yoyo: true, repeat: 1, ease: "sine.inOut" }, 17.0);
+tl.fromTo("#mg-arch-wrap", { y: 0 }, { y: -30, duration: 0.45, ease: "power2.in", immediateRender: false }, 19.48);
+tl.to("#mg-arch-wrap", { clipPath: "inset(0% 0% 100% 0%)", duration: 0.45, ease: "power3.in" }, 19.48);
+window.__timelines["mg-arch"] = tl;
+})();
+</script>
+</template>
+</body></html>

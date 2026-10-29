@@ -1,0 +1,122 @@
+[
+  {
+    "text": "Nakhsha",
+    "start": 0.01,
+    "end": 0.48,
+    "id": "w0"
+  },
+  {
+    "text": "is",
+    "start": 0.48,
+    "end": 0.63,
+    "id": "w1"
+  },
+  {
+    "text": "an",
+    "start": 0.63,
+    "end": 0.77,
+    "id": "w2"
+  },
+  {
+    "text": "agentic",
+    "start": 0.77,
+    "end": 1.27,
+    "id": "w3"
+  },
+  {
+    "text": "home",
+    "start": 1.27,
+    "end": 1.56,
+    "id": "w4"
+  },
+  {
+    "text": "design",
+    "start": 1.56,
+    "end": 1.98,
+    "id": "w5"
+  },
+  {
+    "text": "studio.",
+    "start": 1.98,
+    "end": 2.62,
+    "id": "w6"
+  },
+  {
+    "text": "Every",
+    "start": 2.87,
+    "end": 2.95,
+    "id": "w7"
+  },
+  {
+    "text": "agent",
+    "start": 2.95,
+    "end": 3.28,
+    "id": "w8"
+  },
+  {
+    "text": "in",
+    "start": 3.28,
+    "end": 3.41,
+    "id": "w9"
+  },
+  {
+    "text": "it",
+    "start": 3.41,
+    "end": 3.49,
+    "id": "w10"
+  },
+  {
+    "text": "runs",
+    "start": 3.56,
+    "end": 3.81,
+    "id": "w11"
+  },
+  {
+    "text": "on",
+    "start": 3.81,
+    "end": 3.89,
+    "id": "w12"
+  },
+  {
+    "text": "Navidya",
+    "start": 3.94,
+    "end": 4.4,
+    "id": "w13"
+  },
+  {
+    "text": "Nemotron,",
+    "start": 4.4,
+    "end": 5.09,
+    "id": "w14"
+  },
+  {
+    "text": "served",
+    "start": 5.3,
+    "end": 5.38,
+    "id": "w15"
+  },
+  {
+    "text": "by",
+    "start": 5.38,
+    "end": 5.47,
+    "id": "w16"
+  },
+  {
+    "text": "Nebia",
+    "start": 5.47,
+    "end": 5.7,
+    "id": "w17"
+  },
+  {
+    "text": "Stokken",
+    "start": 5.7,
+    "end": 6.02,
+    "id": "w18"
+  },
+  {
+    "text": "factory.",
+    "start": 6.02,
+    "end": 6.56,
+    "id": "w19"
+  }
+]

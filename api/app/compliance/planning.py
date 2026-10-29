@@ -598,6 +598,44 @@ class _Out:
         self.checks.append(c)
 
 
+FRONT_SLACK_FT = 3.0
+FRONT_FACERS = {"bedroom", "master_bedroom", "guest_bedroom", "lounge", "drawing", "dining", "study", "balcony", "terrace"}
+
+
+def _massing(ix: PlanIndex, out: _Out) -> None:
+    """The house reads as a full facade from the road: each upper floor comes forward to the ground floor's building line
+    (with a room or a balcony), and the front of every floor is a room people live in."""
+    def front(lid: str, types: set[str] | None = None) -> tuple[float, str] | None:
+        rs = [(ix.R[r["id"]][1], r["id"]) for r in ix.level_rooms(lid)
+              if r.get("type") not in {"lawn", "driveway", "open_space", "courtyard", "porch"}
+              and (types is None or r.get("type") in types)]
+        return min(rs) if rs else None
+    levels = [lv for lv in ix.levels if lv["id"] != ix.roof_id and lv.get("index", 0) >= 0]
+    ground = next((lv for lv in levels if lv.get("index") == 0), None)
+    g = front(ground["id"]) if ground else None
+    if not g:
+        return
+    for lv in levels:
+        if lv.get("index", 0) < 1:
+            continue
+        f = front(lv["id"])
+        if not f:
+            continue
+        gap = f[0] - g[0]
+        name = ix.lname(lv["id"])
+        out.add(f"plan.massing.front:{lv['id']}", f"{name} facade", "fail" if gap > FRONT_SLACK_FT else "pass",
+                f"The {name.lower()} starts {gap:g} ft behind the ground floor's front, so from the road the house reads as a "
+                f"stepped box." if gap > FRONT_SLACK_FT else f"The {name.lower()} comes forward to the building line.",
+                ids=[f[1]], value=round(gap, 2), limit=FRONT_SLACK_FT, unit="ft",
+                fix=f"Bring the {name.lower()}'s front rooms (a bedroom, the lounge or a balcony over the porch) forward to "
+                    f"y = {g[0]:g} ft, the ground floor's building line, and move the open roof or terrace to the back.")
+        lead = front(lv["id"], FRONT_FACERS)
+        if lead and gap <= FRONT_SLACK_FT and lead[0] - f[0] > 8:
+            out.add(f"plan.massing.front_rooms:{lv['id']}", f"{name} front rooms", "warn",
+                    f"The front of the {name.lower()} is a service room ({ix.name(f[1])}); bedrooms and lounges should face "
+                    f"the road.", ids=[f[1]], fix="Swap it with a bedroom or the lounge, or put a balcony in front of it.")
+
+
 def check(plan: dict, brief: dict | None = None) -> list[dict]:
     """All Naqsha planning rules for a plan (and optionally the brief it should honour)."""
     out = _Out()
@@ -609,7 +647,7 @@ def check(plan: dict, brief: dict | None = None) -> list[dict]:
         return out.checks
     for rule in (_openings, _clash, _open_to, _privacy, _baths, _wc_on_entry, _reach, _routes, _main_door, _widths, _dead_ends,
                  _porch, _solid_walls, _bath_sizes, _dressing_sizes, _covered_open, _stairs, _mumty, _roof_services, _program,
-                 _wet_over_dry):
+                 _wet_over_dry, _massing):
         try:
             if rule in (_roof_services, _program, _porch):
                 rule(ix, out, brief or {})
@@ -2155,7 +2193,7 @@ def _free_segments(ix: "PlanIndex", rid: str, side: str) -> list[tuple[float, fl
             continue
         cuts.append((e[2], e[3], other["id"] if other.get("type") in OPEN else None))
     out, cur = [], lo
-    for a, b, oid in sorted(cuts):
+    for a, b, oid in sorted(cuts, key=lambda c: (c[0], c[1])):
         if a > cur + 0.5:
             out.append((cur, a, "exterior"))
         if oid:
@@ -2214,4 +2252,95 @@ def add_missing_windows(plan: dict) -> list[str]:
                                                 "between": [rid, out]})
         added.append(oid)
         ix = PlanIndex(plan)
+    return added
+
+
+# --- deterministic door repair --------------------------------------------------------------------------------------
+# Who a room may be entered from, in order of preference (the house's circulation logic, plainly).
+DOOR_FROM = {
+    "bath": ("bedroom", "master_bedroom", "guest_bedroom", "corridor", "lobby", "lounge", "stair"),
+    "powder": ("corridor", "lobby", "lounge", "stair"),
+    "dressing": ("bedroom", "master_bedroom", "guest_bedroom"),
+    "bedroom": ("corridor", "lobby", "lounge", "stair", "dining"),
+    "master_bedroom": ("corridor", "lobby", "lounge", "stair", "dining"),
+    "guest_bedroom": ("corridor", "lobby", "lounge", "stair", "drawing"),
+    "servant": ("corridor", "lobby", "dirty_kitchen", "kitchen", "open_space", "porch"),
+    "kitchen": ("dining", "lounge", "lobby", "corridor"),
+    "dirty_kitchen": ("kitchen", "corridor", "lobby", "open_space"),
+    "store": ("corridor", "lobby", "kitchen", "dirty_kitchen", "lounge"),
+    "laundry": ("corridor", "lobby", "dirty_kitchen", "terrace", "open_space"),
+    "prayer": ("corridor", "lobby", "lounge"),
+    "study": ("corridor", "lobby", "lounge"),
+    "dining": ("lounge", "lobby", "corridor", "kitchen"),
+    "drawing": ("lobby", "porch", "corridor"),
+    "lounge": ("lobby", "corridor", "stair", "dining"),
+    "lobby": ("porch", "lounge", "corridor"),
+    "corridor": ("lounge", "lobby", "stair"),
+    "balcony": ("bedroom", "master_bedroom", "lounge", "corridor"),
+    "terrace": ("lounge", "corridor", "stair", "bedroom", "master_bedroom"),
+}
+
+
+def _door_on(ix: "PlanIndex", a: str, b: str, width: float) -> list[float] | None:
+    """A point for a door between rooms a and b on their shared wall, clear of the openings already on it."""
+    e = shared_edge(ix.R[a], ix.R[b])
+    if not e or e[3] - e[2] < width + 1.0:
+        return None
+    axis, c, lo, hi = e
+    busy = []
+    for o in ix.openings:
+        if a in o.get("between") or [] or b in o.get("between") or []:
+            ox, oy = float(o["at"][0]), float(o["at"][1])
+            if abs((oy if axis == "x" else ox) - c) < 0.3:
+                busy.append(((ox if axis == "x" else oy), float(o.get("width_ft") or 3)))
+    for along in [lo + 0.5 + width / 2, hi - 0.5 - width / 2, (lo + hi) / 2]:  # near a corner first, as architects do
+        if all(abs(along - p) >= (w + width) / 2 + 0.5 for p, w in busy):
+            along = round(along * 4) / 4
+            return [along, round(c, 2)] if axis == "x" else [round(c, 2), along]
+    return None
+
+
+def repair_doors(plan: dict, rounds: int = 3) -> list[str]:
+    """Doors the plan can't build (between rooms that share no wall) are dropped, and every enclosed room nobody can reach
+    gets a door from the right kind of neighbour (a bath from its bedroom, a bedroom from a corridor or the lounge).
+    Returns the ids added."""
+    added: list[str] = []
+    for _ in range(rounds):
+        ix = PlanIndex(plan)
+        bad = {o["id"] for o in ix.openings if o.get("type") in DOORS and not ix.info[o["id"]]["valid"]
+               and len(set(r for r in o.get("between") or [] if r != EXT)) == 2}
+        if bad:
+            plan["openings"] = [o for o in plan.get("openings") or [] if o.get("id") not in bad]
+            ix = PlanIndex(plan)
+        out = _Out()
+        try:
+            _reach(ix, out)
+        except Exception:
+            return added
+        stuck = [c["id"].split(":", 1)[1] for c in out.checks if c["id"].startswith("plan.circulation.unreachable:")
+                 and c["status"] == "fail"]
+        if not stuck:
+            break
+        made = False
+        for rid in stuck:
+            if rid not in ix.by_id:
+                continue
+            t = ix.by_id[rid].get("type")
+            wants = DOOR_FROM.get(t, ("corridor", "lobby", "lounge"))
+            nbs = [n for n in ix.adj.get(rid, ()) if n in ix.by_id and ix.by_id[n].get("level") == ix.by_id[rid].get("level")]
+            nbs.sort(key=lambda n: wants.index(ix.by_id[n].get("type")) if ix.by_id[n].get("type") in wants else 99)
+            for n in nbs:
+                if ix.by_id[n].get("type") not in wants:
+                    break
+                w = 2.5 if t in WET or t == "dressing" else 3.0
+                at = _door_on(ix, rid, n, w)
+                if at:
+                    oid = f"{rid}_door_auto"
+                    plan.setdefault("openings", []).append({"id": oid, "level": ix.by_id[rid].get("level"), "type": "door",
+                                                            "at": at, "width_ft": w, "height_ft": 7, "between": [rid, n]})
+                    added.append(oid)
+                    made = True
+                    break
+        if not made:
+            break
     return added

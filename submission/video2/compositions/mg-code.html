@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8" /></head>
+<body>
+<template id="mg-code-template">
+<style>
+@font-face { font-family: "Geist"; src: url("assets/fonts/Geist-Variable.woff2") format("woff2"); font-weight: 100 900; }
+@font-face { font-family: "Geist Mono"; src: url("assets/fonts/GeistMono-Variable.woff2") format("woff2"); font-weight: 100 900; }
+#mg-code { position:absolute; inset:0; width:100%; height:100%; overflow:hidden; font-family:"Geist", sans-serif; color:#111113; }
+#mg-code .wrap { position:absolute; inset:0; }
+#mg-code .bg { position:absolute; inset:-60px; background-color:#F6F6F3;
+  background-image: radial-gradient(1000px 760px at 78% 50%, rgba(39,71,245,.11), rgba(39,71,245,0) 70%),
+    linear-gradient(rgba(17,17,19,.055) 2px, transparent 2px), linear-gradient(90deg, rgba(17,17,19,.055) 2px, transparent 2px),
+    linear-gradient(rgba(17,17,19,.03) 1px, transparent 1px), linear-gradient(90deg, rgba(17,17,19,.03) 1px, transparent 1px);
+  background-size:100% 100%, 240px 240px, 240px 240px, 48px 48px, 48px 48px; }
+#mg-code .ed { position:absolute; left:110px; top:100px; width:990px; height:880px; border-radius:28px; background:#18181B; overflow:hidden; box-shadow:0 40px 90px -30px rgba(17,17,19,.6); }
+#mg-code .bar { height:72px; display:flex; align-items:center; gap:12px; padding:0 28px; background:#232327; }
+#mg-code .bar i { width:16px; height:16px; border-radius:50%; background:#46464B; display:block; }
+#mg-code .bar span { margin-left:14px; font-family:"Geist Mono", monospace; font-size:32px; color:#C9C9D1; }
+#mg-code .bar b { color:#9DB0FF; font-weight:500; }
+#mg-code .code { padding:22px 34px; }
+#mg-code .cl { font-family:"Geist Mono", monospace; font-size:32px; line-height:1.36; white-space:pre; color:#F5F5F7; opacity:0; }
+#mg-code .c { color:#8E8E96; } #mg-code .f { color:#9DB0FF; } #mg-code .s { color:#7EE2B8; } #mg-code .n { color:#FFC46B; }
+#mg-code .caret { display:inline-block; width:16px; height:34px; background:#9DB0FF; vertical-align:-6px; margin-left:4px; }
+#mg-code .side { position:absolute; left:1180px; top:96px; width:640px; }
+#mg-code .k { font-family:"Geist Mono", monospace; font-size:34px; color:#46464B; }
+#mg-code .cnt { display:flex; align-items:baseline; gap:20px; margin-top:6px; }
+#mg-code .cnt .big { font-size:200px; font-weight:720; letter-spacing:-0.06em; line-height:0.9; color:#2747F5; font-variant-numeric:tabular-nums; width:290px; }
+#mg-code .cnt .of { display:flex; flex-direction:column; font-size:48px; font-weight:600; color:#111113; letter-spacing:-0.02em; line-height:1.1; }
+#mg-code .grid { position:relative; margin-top:26px; width:564px; height:318px; }
+#mg-code .tile { position:absolute; width:72px; height:72px; border-radius:14px; box-shadow:inset 0 0 0 2px rgba(17,17,19,.08); background:#EEEEEA; }
+#mg-code .tile .on { position:absolute; inset:0; border-radius:14px; opacity:0; }
+#mg-code .leg { margin-top:22px; display:flex; flex-wrap:wrap; gap:10px 26px; font-size:32px; color:#46464B; }
+#mg-code .leg span { display:inline-flex; align-items:center; gap:10px; white-space:nowrap; }
+#mg-code .leg i { width:22px; height:22px; border-radius:6px; display:block; }
+#mg-code .live { margin-top:24px; display:inline-flex; align-items:center; gap:14px; height:70px; padding:0 30px; border-radius:999px; background:#111113; color:#F5F5F7; font-size:34px; font-weight:560; opacity:0; }
+#mg-code .live i { width:14px; height:14px; border-radius:50%; background:#7EE2B8; display:block; }
+</style>
+<div data-hf-id="hf-ql8e" id="mg-code" data-composition-id="mg-code" data-width="1920" data-height="1080" data-duration="5.35">
+  <div data-hf-id="hf-4hft" class="wrap" id="mg-code-wrap">
+    <div data-hf-id="hf-24lw" class="bg" id="mg-code-bg" data-layout-allow-overflow></div>
+    <div data-hf-id="hf-32rx" class="ed" id="mg-code-ed">
+      <div data-hf-id="hf-ufsv" class="bar"><i data-hf-id="hf-wt6k"></i><i data-hf-id="hf-zeb8"></i><i data-hf-id="hf-y7e5"></i><span data-hf-id="hf-fpkz">design.js · written by <b data-hf-id="hf-tnon">Gemini 4 Argon</b></span></div>
+      <div data-hf-id="hf-qevj" class="code">
+<div data-hf-id="hf-z3cd" class="cl"><span data-hf-id="hf-6af3" class="c">// structure</span></div>
+<div data-hf-id="hf-yiek" class="cl"><span data-hf-id="hf-1u3x" class="f">s.structure</span>({</div>
+<div data-hf-id="hf-dmqh" class="cl">  floors: {</div>
+<div data-hf-id="hf-ztqh" class="cl">    drawing: <span data-hf-id="hf-z5w1" class="s">"marble_white"</span>,</div>
+<div data-hf-id="hf-k1tq" class="cl">    master_bedroom: <span data-hf-id="hf-wr5y" class="s">"wood_floor_walnut"</span>,</div>
+<div data-hf-id="hf-jy3l" class="cl">    <span data-hf-id="hf-dc72" class="c">…</span></div>
+<div data-hf-id="hf-ea50" class="cl">  },</div>
+<div data-hf-id="hf-bdab" class="cl">  window_frame: <span data-hf-id="hf-754l" class="s">"metal_black"</span>,</div>
+<div data-hf-id="hf-4c5v" class="cl">  railing: <span data-hf-id="hf-4rys" class="s">"glass"</span>, <span data-hf-id="hf-cvdu" class="c">…</span></div>
+<div data-hf-id="hf-elpc" class="cl">});</div>
+<div data-hf-id="hf-l50o" class="cl"><span data-hf-id="hf-c0jy" class="c">// furnish_g_kitchen (12 x 9.25 ft)</span></div>
+<div data-hf-id="hf-h23r" class="cl"><span data-hf-id="hf-3esz" class="f">s.furnish</span>(<span data-hf-id="hf-1ndn" class="s">"hob"</span>, { room: <span data-hf-id="hf-gz12" class="s">"g_kitchen"</span>,</div>
+<div data-hf-id="hf-7b9b" class="cl">  against: <span data-hf-id="hf-06of" class="s">"left"</span>, along_ft: <span data-hf-id="hf-f60n" class="n">4.6</span> });</div>
+<div data-hf-id="hf-9093" class="cl"><span data-hf-id="hf-sowj" class="f">s.furnish</span>(<span data-hf-id="hf-l5wv" class="s">"fridge"</span>, { room: <span data-hf-id="hf-zcje" class="s">"g_kitchen"</span>,</div>
+<div data-hf-id="hf-2p4v" class="cl">  against: <span data-hf-id="hf-4hbl" class="s">"back"</span>, along_ft: <span data-hf-id="hf-s7vx" class="n">9.5</span> });</div>
+<div data-hf-id="hf-kqpn" class="cl"><span data-hf-id="hf-rouu" class="c">// lighting</span></div>
+<div data-hf-id="hf-zg0w" class="cl"><span data-hf-id="hf-l4tp" class="f">s.lights.sun</span>({ hour: <span data-hf-id="hf-031w" class="n">17.5</span>, intensity: <span data-hf-id="hf-ztpb" class="n">1.25</span> });<span data-hf-id="hf-hzx8" class="caret" id="mg-code-caret"></span></div>
+      </div>
+    </div>
+    <div data-hf-id="hf-8351" class="side" id="mg-code-side">
+      <div data-hf-id="hf-02z1" class="k">streamed section by section</div>
+      <div data-hf-id="hf-crwh" class="cnt"><span data-hf-id="hf-xxx6" class="big" id="mg-code-n">0</span><span data-hf-id="hf-fadi" class="of"><span data-hf-id="hf-40as">design.js</span><span data-hf-id="hf-bip5">sections</span></span></div>
+      <div data-hf-id="hf-i049" class="grid" id="mg-code-grid"></div>
+      <div data-hf-id="hf-rsqk" class="leg">
+        <span data-hf-id="hf-qauq"><i data-hf-id="hf-94c0" style="background:#111113"></i>structure</span>
+        <span data-hf-id="hf-70d3"><i data-hf-id="hf-x5bt" style="background:#2747F5"></i>facade ×3</span>
+        <span data-hf-id="hf-zv55"><i data-hf-id="hf-ggbt" style="background:#7D93FF"></i>interior</span>
+        <span data-hf-id="hf-tw2h"><i data-hf-id="hf-7t7v" style="background:#B9C5FF"></i>furniture ×21</span>
+        <span data-hf-id="hf-z6li"><i data-hf-id="hf-xt4j" style="background:#0E7A55"></i>landscape</span>
+        <span data-hf-id="hf-apcd"><i data-hf-id="hf-vvox" style="background:#E0A100"></i>lighting</span>
+      </div>
+      <div data-hf-id="hf-3g4z" class="live" id="mg-code-live"><i data-hf-id="hf-ylp6"></i>assembled live · three.js</div>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+const tl = gsap.timeline({ paused: true });
+const grid = document.getElementById("mg-code-grid");
+const layers = ["#111113", "#2747F5", "#2747F5", "#2747F5", "#7D93FF"].concat(Array(21).fill("#B9C5FF"), ["#0E7A55", "#E0A100"]);
+layers.forEach((c, i) => {
+  const t = document.createElement("div"); t.className = "tile"; t.style.left = (i % 7) * 82 + "px"; t.style.top = Math.floor(i / 7) * 82 + "px";
+  const on = document.createElement("div"); on.className = "on"; on.style.background = c; t.appendChild(on); grid.appendChild(t);
+});
+tl.fromTo("#mg-code-bg", { x: 0 }, { x: -50, duration: 5.35, ease: "none" }, 0);
+tl.fromTo("#mg-code-ed", { opacity: 0, y: 40, rotationY: 8, transformPerspective: 1600 }, { opacity: 1, y: 0, rotationY: 0, duration: 0.6, ease: "power3.out" }, 0.3);
+tl.fromTo("#mg-code .cl", { opacity: 0, x: -14 }, { opacity: 1, x: 0, duration: 0.22, stagger: 0.16, ease: "power2.out" }, 0.6);
+tl.fromTo("#mg-code-caret", { opacity: 1 }, { opacity: 0, duration: 0.3, repeat: 7, yoyo: true, ease: "steps(1)" }, 0.6);
+tl.fromTo("#mg-code-side", { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.45);
+tl.fromTo("#mg-code-grid .on", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.25, stagger: 0.11, ease: "back.out(2)" }, 0.8);
+const n = document.getElementById("mg-code-n"); const st = { v: 0 };
+tl.fromTo(st, { v: 0 }, { v: 28, duration: 3.1, ease: "none", onUpdate: () => { n.textContent = Math.round(st.v); } }, 0.8);
+tl.fromTo("#mg-code-n", { scale: 1 }, { scale: 1.08, duration: 0.18, yoyo: true, repeat: 1, ease: "power2.out", transformOrigin: "0% 100%" }, 3.9);
+tl.fromTo("#mg-code-live", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.45, ease: "back.out(1.6)" }, 3.95);
+tl.fromTo("#mg-code-wrap", { clipPath: "inset(0% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 100% 0%)", duration: 0.45, ease: "power3.in" }, 4.9);
+window.__timelines["mg-code"] = tl;
+})();
+</script>
+</template>
+</body></html>

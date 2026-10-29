@@ -68,3 +68,4 @@ FIXER_THINK = os.environ.get("FIXER_THINK", "1") not in ("0", "false", "no")
 FIX_BUDGET_S = float(os.environ.get("FIX_BUDGET_S", "420"))
 PLAN_DRAFTS = int(os.environ.get("PLAN_DRAFTS", "3"))   # quick drafts in parallel; the one with the fewest failures is fixed
 REVIEW_MAX_ISSUES = int(os.environ.get("REVIEW_MAX_ISSUES", "4"))
+PARALLEL_FIXERS = int(os.environ.get("PARALLEL_FIXERS", "2"))  # fixer agents on the best drafts at once; the better plan wins

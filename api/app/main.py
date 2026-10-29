@@ -21,7 +21,7 @@ from pydantic import BaseModel
 from starlette.middleware.gzip import GZipMiddleware
 
 from . import auth, busy, config, runs, sse
-from .agents import architect, concepts, importer, intake, reviser, reviser_adk, views
+from .agents import architect, concepts, importer, intake, jsfix, reviser, reviser_adk, views
 from .auth import Identity
 from .compliance import lda
 from .store import blobs, db
@@ -143,6 +143,11 @@ def fresh_version(v: dict | None, brief: dict | None) -> dict | None:
             v["compliance"] = lda.check(v["plan"], brief)
         except Exception:
             logging.exception("re-check failed for %s", v.get("id"))
+    if v and v.get("sections"):
+        try:  # sections saved before declarations were shared still build (nothing is written)
+            jsfix.share_declarations(v["sections"])
+        except Exception:
+            logging.exception("sharing declarations failed for %s", v.get("id"))
     return v
 
 
@@ -788,6 +793,9 @@ async def version_match(pid: str, vid: str, body: MatchBody, me: Identity = Depe
                 stored["pre_refit"] = {"score": res.get("score"), "sections": fresh["sections"],
                                        "match": {k: val for k, val in stored.items() if k != "pre_refit"}}
                 merged = reviser.merge_sections(fresh["sections"], new_secs, [])
+                before_codes = {x["name"]: x["code"] for x in merged}
+                jsfix.share_declarations(merged)
+                new_secs = [x for x in merged if x["name"] in {n["name"] for n in new_secs} or x["code"] != before_codes[x["name"]]]
                 await db.patch_version(pid, vid, sections=merged)
                 for sec in new_secs:
                     idx = next(i for i, x in enumerate(merged) if x["name"] == sec["name"])

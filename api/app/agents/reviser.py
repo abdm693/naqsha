@@ -356,6 +356,8 @@ async def finalize(project: dict, version: dict, plan: dict, sections: list[dict
     kept: a window or room an earlier comment had changed is put back if this run shrank it without being asked, or the
     earlier thread is told why not."""
     pid = project["id"]
+    from . import jsfix
+    jsfix.share_declarations(sections)  # a rewritten section may use a const declared in another one
     real = {c["id"] for c in comments}
     for ch in changes:  # the typed request isn't a comment: flag it instead of counting it
         ids = list(ch.get("comment_ids") or [])

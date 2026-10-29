@@ -119,6 +119,7 @@ def _stub_planning(plans, monkeypatch, drafts, fix):
     monkeypatch.setattr(architect, "_ask_plan", ask)
     monkeypatch.setattr(architect, "_concept_spec", no_concept)
     monkeypatch.setattr(architect.config, "PLAN_DRAFTS", len(drafts))
+    monkeypatch.setattr(architect.config, "PARALLEL_FIXERS", 1)
     monkeypatch.setattr(architect.fixer, "fix", fix)
 
 
@@ -325,5 +326,5 @@ def test_status_line_matches_the_app():
     """'A/B LDA · C/D livable · N architect's notes': warns are not passes, review notes counted apart (10 marla today)."""
     plan, brief, issues = _ten_marla()
     rep = architect.with_review(lda.check(plan, brief), issues, plan)
-    assert architect._status(rep) == "36/36 LDA · 10/12 livable · 2 architect's notes"
+    assert architect._status(rep) == "36/36 LDA · 11/13 livable · 2 architect's notes"  # + the facade massing rule
     assert architect.review_note_count(rep) == 2
