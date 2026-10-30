@@ -1,7 +1,6 @@
-"""Assets for the opening (mg-cold, mg-hook, mg-title): brand marks, full-bleed shots, grain and the plan outline.
+"""Assets for the opening (mg-cold, mg-hook, mg-title): full-bleed shots, grain and the plan outline.
 
-Logos come from official sources only (media-use logo resolve: theSVG / simple-icons; Nebius wordmark from nebius.com);
-they are copied, never redrawn. Run once: python3 scripts/prep_open.py
+The film uses no third-party logos; partners are named in text. Run once: python3 scripts/prep_open.py
 """
 import json
 import shutil
@@ -14,22 +13,6 @@ REPO = ROOT.parent.parent
 IMG = ROOT / "assets/img"
 FOOT = ROOT / "assets/footage"
 MEDIA = ROOT / ".media/images"
-SCRATCH_NEBIUS = Path(__file__).with_name("nebius-wordmark.svg")   # decoded from nebius.com's footer logo
-
-BRAND = {"nvidia.svg": MEDIA / "logo_001.svg", "nebius-mark.svg": MEDIA / "logo_002.svg",
-         "tavily.svg": MEDIA / "logo_003.svg", "gemini.svg": MEDIA / "logo_004.svg"}
-
-
-def brand():
-    out = IMG / "brand"
-    out.mkdir(parents=True, exist_ok=True)
-    for name, src in BRAND.items():
-        if src.exists():
-            shutil.copy(src, out / name)
-    if SCRATCH_NEBIUS.exists():
-        shutil.move(SCRATCH_NEBIUS, out / "nebius.svg")
-
-
 def photos():
     out = IMG / "photos"
     out.mkdir(parents=True, exist_ok=True)
@@ -76,7 +59,6 @@ def plan():
 
 
 if __name__ == "__main__":
-    brand()
     photos()
     clip("open_night", 748.6, 1.0, 1.7)
     clip("open_walk", 766.0, 1.0, 1.4)

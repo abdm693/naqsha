@@ -28,17 +28,14 @@
 /* the stack */
 #mg-title .runs { position:absolute; left:0; right:0; top:500px; text-align:center; font-family:"Geist Mono", monospace; font-size:30px; letter-spacing:.2em; color:#8A90A2; text-transform:uppercase; opacity:0; }
 #mg-title .row { position:absolute; left:0; right:0; top:570px; display:flex; justify-content:center; align-items:stretch; gap:0; }
-#mg-title .card { position:relative; width:700px; height:330px; border-radius:30px; padding:38px 46px; background:linear-gradient(180deg, rgba(24,27,36,.96), rgba(14,16,22,.96)); opacity:0; }
-#mg-title .card.nv { box-shadow: 0 0 0 2px rgba(118,185,0,.55), 0 30px 120px -30px rgba(118,185,0,.55); }
-#mg-title .card.nb { box-shadow: 0 0 0 2px rgba(224,255,79,.45), 0 30px 120px -30px rgba(224,255,79,.40); }
-#mg-title .card .top { display:flex; align-items:center; gap:28px; height:130px; }
-#mg-title .card .nvlogo { height:130px; width:auto; }
-#mg-title .card .nblogo { height:58px; width:auto; }
+#mg-title .card { position:relative; width:700px; height:340px; border-radius:30px; padding:38px 46px; background:linear-gradient(180deg, rgba(24,27,36,.96), rgba(14,16,22,.96)); opacity:0; }
+#mg-title .card.nv, #mg-title .card.nb { box-shadow: 0 0 0 2px rgba(124,143,255,.50), 0 30px 120px -30px rgba(39,71,245,.60); }
+#mg-title .card .top { display:flex; flex-direction:column; align-items:flex-start; gap:12px; }
+#mg-title .card .brand { font-family:"Geist Mono", monospace; font-size:30px; letter-spacing:.22em; color:#9DA3B4; text-transform:uppercase; }
 #mg-title .card .name { font-size:96px; font-weight:680; letter-spacing:-0.045em; line-height:1; color:#fff; white-space:nowrap; }
-#mg-title .card .sub { margin-top:30px; display:flex; gap:14px; flex-wrap:nowrap; }
+#mg-title .card .sub { margin-top:22px; display:flex; gap:14px; flex-wrap:nowrap; }
 #mg-title .pill { height:62px; display:flex; align-items:center; padding:0 24px; border-radius:999px; font-size:32px; font-weight:560; white-space:nowrap; }
-#mg-title .nv .pill { background:rgba(118,185,0,.14); color:#C9F27A; box-shadow: inset 0 0 0 2px rgba(118,185,0,.45); }
-#mg-title .nb .pill { background:rgba(224,255,79,.10); color:#EEFFA8; box-shadow: inset 0 0 0 2px rgba(224,255,79,.38); }
+#mg-title .nv .pill, #mg-title .nb .pill { background:rgba(124,143,255,.12); color:#C8D0FF; box-shadow: inset 0 0 0 2px rgba(124,143,255,.42); }
 #mg-title .card .sheen { position:absolute; inset:0; border-radius:30px; overflow:hidden; pointer-events:none; }
 #mg-title .card .sheen i { position:absolute; top:0; left:-50%; width:40%; height:100%; background:linear-gradient(100deg, rgba(255,255,255,0), rgba(255,255,255,.14), rgba(255,255,255,0)); }
 #mg-title .join { width:200px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px; opacity:0; }
@@ -46,7 +43,6 @@
 #mg-title .join svg { width:84px; height:30px; }
 #mg-title .also { position:absolute; left:0; right:0; bottom:70px; display:flex; justify-content:center; align-items:center; gap:56px; opacity:0; }
 #mg-title .also .it { display:flex; align-items:center; gap:16px; font-size:34px; font-weight:520; color:#C9CCD6; white-space:nowrap; }
-#mg-title .also .it img { height:46px; width:46px; }
 #mg-title .also .k { font-family:"Geist Mono", monospace; font-size:28px; letter-spacing:.16em; color:#6E7488; text-transform:uppercase; }
 #mg-title .grain { position:absolute; inset:-256px; background:url("assets/img/grain.png"); opacity:.06; mix-blend-mode:overlay; }
 #mg-title .cover { position:absolute; inset:0; background:#2747F5; transform-origin:0 50%; transform:scaleX(0); }
@@ -72,22 +68,21 @@
     <div class="runs" id="mg-title-runs">Every agent runs on</div>
     <div class="row">
       <div class="card nv" id="mg-title-nv">
-        <div class="top"><img class="nvlogo" src="assets/img/brand/nvidia.svg" alt="NVIDIA" /><div class="name">Nemotron</div></div>
+        <div class="top"><div class="brand">NVIDIA</div><div class="name">Nemotron</div></div>
         <div class="sub"><div class="pill">3 Ultra</div><div class="pill">3 Super</div><div class="pill">3.5 Super VL</div></div>
         <div class="sheen"><i id="mg-title-sh1"></i></div>
       </div>
       <div class="join" id="mg-title-join"><span>served by</span><svg viewBox="0 0 84 30" fill="none" stroke="#9DA3B4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15h72M64 4l12 11-12 11"/></svg></div>
       <div class="card nb" id="mg-title-nb">
-        <div class="top"><img class="nblogo" src="assets/img/brand/nebius.svg" alt="Nebius" /></div>
-        <div class="name" style="margin-top:-6px;font-size:84px">Token Factory</div>
+        <div class="top"><div class="brand">Nebius</div><div class="name" style="font-size:84px;line-height:1.14">Token Factory</div></div>
         <div class="sub"><div class="pill">every model, one API</div></div>
         <div class="sheen"><i id="mg-title-sh2"></i></div>
       </div>
     </div>
     <div class="also" id="mg-title-also">
       <span class="k">With</span>
-      <div class="it"><img src="assets/img/brand/tavily.svg" alt="" />Tavily for city rules</div>
-      <div class="it"><img src="assets/img/brand/gemini.svg" alt="" />Gemini for photos</div>
+      <div class="it">Tavily for city rules</div>
+      <div class="it">Gemini for photos</div>
     </div>
     <div class="grain" id="mg-title-grain"></div>
   </div>
